@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from __future__ import annotations
 """
 MetalsTerminal Unified Master Pipeline
 ======================================================
@@ -248,7 +249,7 @@ try:
 except ImportError:
     HAS_GENAI = False
 
-def fetch_realtime_news(query: str, max_items: int = 3) -> List[Dict[str, Any]]:
+def fetch_realtime_news(query: str, max_items: int = 3) -> list:
     """Google News RSS 피드에서 실시간 최신 기사(최근 7일) 크롤링 & 메타데이터 파싱"""
     encoded = urllib.parse.quote(query)
     url = f"https://news.google.com/rss/search?q={encoded}&hl=ko&gl=KR&ceid=KR:ko"
