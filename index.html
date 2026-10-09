@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MetalsTerminal - 비철·스크랩·폐촉매 실시간 시세 포털</title>
-    <meta name="description" content="매일 아침 9시 고시되는 비철금속, 스크랩, 폐촉매 원화 시세와 현장 추정단가">
+    <title>MetalsTerminal - 국제 원자재 시세 &amp; 데이터 포털</title>
+    <meta name="description" content="LME, NYMEX, Johnson Matthey 공식 고시 기준 12대 철·비철·귀금속(백금/팔라듐/로듐) 실시간 원화 시세">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,8 +28,8 @@
         <!-- 2. 도싸식 4대 서브 메뉴 탭 -->
         <nav class="dossa-subnav">
             <div class="container dossa-subnav-inner">
-                <a href="#section-price" class="nav-tab active">시세·스크랩</a>
-                <a href="#section-report" class="nav-tab">쉬운리포트</a>
+                <a href="#section-price" class="nav-tab active">국제시세</a>
+                <a href="#section-report" class="nav-tab">리포트</a>
                 <a href="#section-market" class="nav-tab">직거래장터</a>
                 <a href="#section-free" class="nav-tab">자유게시판</a>
                 <a href="calc.html" class="nav-tab nav-highlight">계산기</a>
@@ -53,40 +53,35 @@
     <main class="mobile-container">
 
         <!-- ============================================================
-             [핵심] 1. 모바일 극단적 가독성 시세 & 스크랩 전광판
+             [1] 국제 시세 (철 ➔ 비철 ➔ 귀금속 순차 나열)
              ============================================================ -->
         <section class="section-box" id="section-price">
             <div class="section-header price-header">
                 <div class="sh-left">
                     <span class="header-indicator red"></span>
-                    <h2>오늘의 시세 &amp; 스크랩 단가표</h2>
+                    <h2>국제 시세 (Global Benchmark)</h2>
                 </div>
-                <div class="sh-filter">
-                    <button class="filter-chip active" onclick="filterMetals('all', this)">전체</button>
-                    <button class="filter-chip" onclick="filterMetals('nonferrous', this)">비철</button>
-                    <button class="filter-chip" onclick="filterMetals('pgm', this)">촉매·귀금속</button>
-                </div>
+                <span class="header-source-note">LME · NYMEX · JM 기준</span>
             </div>
 
-            <!-- 시세 카드 리스트 (모바일 한 손 스캔 최적화) -->
-            <div class="metals-card-list" id="metals-container">
-                <!-- app.js에서 data/prices.json을 읽어와 동적 렌더링 -->
+            <!-- 시세 카드 리스트 (철 ➔ 비철 ➔ 귀금속 3대 섹션) -->
+            <div class="metals-section-container" id="metals-container">
+                <!-- app.js에서 data/prices.json 읽어와서 동적 렌더링 -->
             </div>
 
             <div class="price-notice-footer">
-                <p>※ <strong>현장 추정가</strong>는 서울·경기권 A급 스크랩(부가가치세 별도, 마당 상차) 기준 참고용 지표입니다.</p>
-                <p>※ LME 및 해외 고시 데이터 기준 (환율: 하나은행 전신환매도율 적용)</p>
+                <p>※ LME, NYMEX, Johnson Matthey 공식 고시 종가 및 실시간 원달러 환율(하나은행 전신환매도율) 적용 단가입니다. (부가가치세 별도)</p>
             </div>
         </section>
 
         <!-- ============================================================
-             2. 쉬운 리포트 (시세 바로 다음에 배치: 3줄 해설 & 팩트)
+             [2] 리포트 (차트 분석, 재고 상황, 거시경제 심층 아티클)
              ============================================================ -->
         <section class="section-box" id="section-report">
             <div class="section-header">
                 <div class="sh-left">
                     <span class="header-indicator amber"></span>
-                    <h2>오늘의 쉬운 리포트 (매거진)</h2>
+                    <h2>오늘의 리포트 (차트 &amp; 심층분석)</h2>
                 </div>
                 <span class="header-badge">매일 9시 발행</span>
             </div>
@@ -98,12 +93,12 @@
         <!-- 파트너 야적장 1줄 스폰서 배너 -->
         <div class="sponsor-mini-banner">
             <span class="sb-tag">공식 파트너</span>
-            <div class="sb-text"><strong>[경기 화성] ㈜대성메탈</strong> — A동·모터동·구리선 당일 현금 결제</div>
-            <a href="tel:010-8291-3841" class="sb-tel">📞 전화</a>
+            <div class="sb-text"><strong>[경기 화성] ㈜대성메탈</strong> — 구리·비철·모터 스크랩 당일 현금 결제</div>
+            <a href="tel:010-8291-3841" class="sb-tel">📞 문의</a>
         </div>
 
         <!-- ============================================================
-             3. 직거래 장터 (비철·고철·폐촉매 통합 최신순 매물)
+             [3] 직거래 장터 (비철·고철·폐촉매 통합 최신 매물)
              ============================================================ -->
         <section class="section-box" id="section-market">
             <div class="section-header">
@@ -119,7 +114,7 @@
         </section>
 
         <!-- ============================================================
-             4. 자유게시판 (현장 소통, 노하우, 질문)
+             [4] 자유게시판 (현장 소통, 노하우, 질문)
              ============================================================ -->
         <section class="section-box" id="section-free">
             <div class="section-header">
@@ -139,18 +134,18 @@
     <!-- 푸터 (도싸식 미니멀 블랙 푸터) -->
     <footer class="dossa-footer">
         <div class="container footer-links">
-            <a href="#section-price">시세표</a>
+            <a href="#section-price">국제시세</a>
             <span class="sep">|</span>
             <a href="calc.html">계산기</a>
             <span class="sep">|</span>
             <a href="#section-market">직거래장터</a>
             <span class="sep">|</span>
-            <a href="#section-report">쉬운리포트</a>
+            <a href="#section-report">리포트</a>
             <span class="sep">|</span>
             <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP ▲</a>
         </div>
         <div class="container footer-copyright">
-            <p>※ 안내된 단가는 시장 참고용 추정치이며 실제 거래 법적 책임을 지지 않습니다.</p>
+            <p>※ 안내된 단가는 공식 시장 지표 참고용이며 거래 계약의 당사자가 아닙니다.</p>
             <p>Copyright © 2026 MetalsTerminal. All Rights Reserved.</p>
         </div>
     </footer>
@@ -207,12 +202,12 @@
 
                     <div class="form-group">
                         <label for="post-title">글 제목 *</label>
-                        <input type="text" id="post-title" placeholder="품목과 수량을 적어주세요 (예: 굵은 전선 A동 2톤 팝니다)" required maxlength="60">
+                        <input type="text" id="post-title" placeholder="품목과 수량을 적어주세요" required maxlength="60">
                     </div>
 
                     <div class="form-group">
                         <label for="post-content">상세 내용 *</label>
-                        <textarea id="post-content" rows="4" placeholder="상태, 상차 위치, 계근 조건 등을 적어주세요." required></textarea>
+                        <textarea id="post-content" rows="4" placeholder="상태, 상차 위치, 희망 조건 등을 적어주세요." required></textarea>
                     </div>
 
                     <div class="form-group spam-group">

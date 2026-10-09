@@ -203,58 +203,62 @@ async function loadPricesData() {
     renderMetalsCards();
 }
 
-// 시세 카드 렌더링
+// 시세 카드 렌더링 (철 -> 비철 -> 귀금속 3대 섹션)
 function renderMetalsCards() {
     const container = document.getElementById("metals-container");
     if (!container || !pricesData) return;
 
     container.innerHTML = "";
 
-    const metals = pricesData.metals || [];
-    const filtered = metals.filter(m => {
-        if (currentCategoryFilter === "all") return true;
-        return m.category === currentCategoryFilter;
-    });
+    const sections = pricesData.sections || [];
 
-    filtered.forEach(m => {
-        const row = document.createElement("div");
-        row.className = `metal-row tint-${m.trend}`;
+    sections.forEach(sec => {
+        const groupBlock = document.createElement("div");
+        groupBlock.className = "market-group-block";
 
-        let diffSymbol = "─";
-        let diffClass = "same";
-        let diffText = "보합 (0.0%)";
+        const headerLabel = document.createElement("div");
+        headerLabel.className = "group-header-label";
+        headerLabel.innerHTML = `<span>●</span> ${sec.section_name}`;
+        groupBlock.appendChild(headerLabel);
 
-        if (m.diff_krw > 0) {
-            diffSymbol = "▲";
-            diffClass = "up";
-            diffText = `▲ +${m.diff_krw.toLocaleString()} (+${m.diff_pct.toFixed(1)}%)`;
-        } else if (m.diff_krw < 0) {
-            diffSymbol = "▼";
-            diffClass = "down";
-            diffText = `▼ ${m.diff_krw.toLocaleString()} (${m.diff_pct.toFixed(1)}%)`;
-        }
+        sec.items.forEach(m => {
+            const row = document.createElement("div");
+            row.className = "metal-row";
 
-        const isHighlight = m.key === "rhodium" || m.key === "copper";
+            let diffClass = "same";
+            let diffText = "─ 보합 (0.0%)";
 
-        row.innerHTML = `
-            <div class="mr-info">
-                <div class="mr-name-line">
-                    <span class="badge-metal ${m.badge}">${m.name}</span>
-                    <strong>${m.scrap_name}</strong>
+            if (m.diff_krw > 0) {
+                diffClass = "up";
+                diffText = `▲ +${m.diff_krw.toLocaleString()} (+${m.diff_pct.toFixed(1)}%)`;
+            } else if (m.diff_krw < 0) {
+                diffClass = "down";
+                diffText = `▼ ${m.diff_krw.toLocaleString()} (${m.diff_pct.toFixed(1)}%)`;
+            }
+
+            row.innerHTML = `
+                <div class="mr-info">
+                    <div class="mr-name-line">
+                        <strong>${m.name_kr}</strong>
+                        <span class="mr-en-name">${m.name_en}</span>
+                    </div>
+                    <div class="mr-benchmark">
+                        <span class="mr-source-tag">${m.source}</span>
+                        <span>${m.raw_usd}</span>
+                    </div>
                 </div>
-                <div class="mr-benchmark">기준 ${m.raw_krw ? m.raw_krw.toLocaleString() + ' ' + m.unit : m.raw_usd}</div>
-            </div>
-            <div class="mr-price-block">
-                <div class="mr-floor-wrap">
-                    <span class="mr-floor-label">추정</span>
-                    <strong class="mr-floor-val ${isHighlight ? 'highlight' : ''}">${m.floor_price}</strong>
-                    <span class="mr-floor-unit">${m.floor_unit || m.unit}</span>
+                <div class="mr-price-block">
+                    <div class="mr-krw-wrap">
+                        <strong class="mr-krw-val">${m.krw_price.toLocaleString()}</strong>
+                        <span class="mr-krw-unit">${m.unit}</span>
+                    </div>
+                    <div class="mr-diff ${diffClass}">${diffText}</div>
                 </div>
-                <div class="mr-diff ${diffClass}">${diffText}</div>
-            </div>
-        `;
+            `;
+            groupBlock.appendChild(row);
+        });
 
-        container.appendChild(row);
+        container.appendChild(groupBlock);
     });
 }
 
