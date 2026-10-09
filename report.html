@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>리포트 &amp; 제강사 이슈 - MetalsTerminal</title>
+    <meta name="description" content="국내 제강사 고철 구매가 변동 공시, LME 런던 재고량 분석 및 폐촉매 실무 매각 가이드 일일 리포트">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .report-filter-bar {
+            display: flex;
+            gap: 6px;
+            padding: 10px 14px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-line);
+            overflow-x: auto;
+        }
+        .rf-chip {
+            background: #f1f5f9;
+            color: var(--text-muted);
+            border: 1px solid var(--border-line);
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .rf-chip.active {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+        }
+        .report-card-item {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-line);
+            padding: 16px 14px;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+        .report-card-item:hover {
+            background: #f8fafc;
+        }
+        .rc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .rc-tag {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .rc-tag.steel { background: #f1f5f9; color: #334155; }
+        .rc-tag.cu { background: #fee2e2; color: #b91c1c; }
+        .rc-tag.cat { background: #fef3c7; color: #b45309; }
+        .rc-date {
+            font-size: 12px;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+        .rc-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .rc-summary-box {
+            background: #f8fafc;
+            border-left: 3px solid #3b82f6;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 12.5px;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .rc-summary-box ul {
+            margin: 0;
+            padding-left: 16px;
+        }
+        .rc-footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="dossa-header">
+        <div class="container dossa-header-inner">
+            <a href="index.html" class="dossa-logo">
+                <span class="logo-accent">⚡</span> METALS<strong>TERMINAL</strong>
+            </a>
+            <div class="dossa-header-right">
+                <a href="price.html" class="btn-write-header">
+                    국제시세 &gt;
+                </a>
+            </div>
+        </div>
+        <nav class="dossa-subnav">
+            <div class="container dossa-subnav-inner">
+                <a href="price.html" class="nav-tab">국제시세</a>
+                <a href="scrap.html" class="nav-tab">스크랩시세</a>
+                <a href="report.html" class="nav-tab active">리포트</a>
+                <a href="index.html#section-free" class="nav-tab">자유게시판</a>
+                <a href="index.html#section-market" class="nav-tab">직거래</a>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="status-bar">
+        <div class="container status-inner">
+            <div class="status-badge-wrap">
+                <span class="live-dot"></span>
+                <span class="status-date">매일 09:00 정기 발행 쉬운 리포트</span>
+            </div>
+            <div class="status-rate">
+                기준환율: <strong>1,342.0원</strong>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 카테고리 필터 칩 -->
+    <div class="report-filter-bar">
+        <button class="rf-chip active" onclick="filterReports('all', this)">전체</button>
+        <button class="rf-chip" onclick="filterReports('steel', this)">🏗️ 제강사 고철</button>
+        <button class="rf-chip" onclick="filterReports('copper', this)">🥉 LME 구리</button>
+        <button class="rf-chip" onclick="filterReports('catalyst', this)">🚗 폐촉매·PGM</button>
+    </div>
+
+    <main class="mobile-container">
+        <section class="section-box">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator amber"></span>
+                    <h2>발행 리포트 &amp; 제강사 이슈</h2>
+                </div>
+                <span class="header-badge">4대 챕터 정형 피드</span>
+            </div>
+
+            <!-- 동적 렌더링 컨테이너 -->
+            <div id="reports-feed-container">
+                <!-- app.js 또는 report.html 내장 스크립트에서 data/reports.json 로드 -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="dossa-footer">
+        <div class="container footer-links">
+            <a href="price.html">국제시세</a>
+            <span class="sep">|</span>
+            <a href="scrap.html">스크랩시세</a>
+            <span class="sep">|</span>
+            <a href="report.html">리포트</a>
+            <span class="sep">|</span>
+            <a href="index.html#section-free">자유게시판</a>
+            <span class="sep">|</span>
+            <a href="index.html#section-market">직거래</a>
+            <span class="sep">|</span>
+            <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP ▲</a>
+        </div>
+        <div class="container footer-copyright">
+            <p>※ 안내된 분석치는 시장 참고용이며 개별 매매 판단의 법적 책임을 지지 않습니다.</p>
+            <p>Copyright © 2026 MetalsTerminal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let allReports = [];
+        let currentFilter = 'all';
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            await loadReportsFeed();
+        });
+
+        async function loadReportsFeed() {
+            const container = document.getElementById("reports-feed-container");
+            try {
+                const res = await fetch("data/reports.json");
+                if (res.ok) {
+                    allReports = await res.json();
+                }
+            } catch (e) {
+                console.warn("로컬 fallback 데이터 사용:", e);
+            }
+
+            renderFeed();
+        }
+
+        function renderFeed() {
+            const container = document.getElementById("reports-feed-container");
+            if (!container) return;
+            container.innerHTML = "";
+
+            const filtered = allReports.filter(rep => {
+                if (currentFilter === 'all') return true;
+                if (currentFilter === 'steel') return rep.category.includes('제강사') || rep.category.includes('고철');
+                if (currentFilter === 'copper') return rep.category.includes('구리');
+                if (currentFilter === 'catalyst') return rep.category.includes('촉매') || rep.category.includes('로듐');
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding:30px; color:#94a3b8; font-size:13px;">해당 분류의 리포트가 없습니다.</div>`;
+                return;
+            }
+
+            filtered.forEach(rep => {
+                let tagClass = "steel";
+                if (rep.category.includes("구리")) tagClass = "cu";
+                else if (rep.category.includes("촉매") || rep.category.includes("로듐")) tagClass = "cat";
+
+                const card = document.createElement("article");
+                card.className = "report-card-item";
+                card.onclick = () => {
+                    if (rep.article_url) window.location.href = rep.article_url;
+                };
+
+                const summaryLines = rep.summary_3lines ? rep.summary_3lines.map(line => `<li>${line}</li>`).join('') : '';
+
+                card.innerHTML = `
+                    <div class="rc-header">
+                        <span class="rc-tag ${tagClass}">${rep.type || '[리포트]'}</span>
+                        <span class="rc-date">${rep.date} 발행</span>
+                    </div>
+                    <h3 class="rc-title">${rep.title}</h3>
+                    <div class="rc-summary-box">
+                        <strong>💡 3줄 핵심 요약:</strong>
+                        <ul>${summaryLines}</ul>
+                    </div>
+                    <div class="rc-footer-meta">
+                        <span>작성: ${rep.author || 'MetalsTerminal Desk'}</span>
+                        <span style="color:#2563eb; font-weight:700;">전체 본문 읽기 &gt;</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterReports(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll(".rf-chip").forEach(el => el.classList.remove("active"));
+            if (btn) btn.classList.add("active");
+            renderFeed();
+        }
+    </script>
+</body>
+</html>
