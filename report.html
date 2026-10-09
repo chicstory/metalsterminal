@@ -7,26 +7,28 @@
     <meta name="description" content="구리, 철스크랩, 알루미늄, 아연, 납, 니켈, 주석, 백금, 팔라듐, 로듐, 금, 은 등 품목별 Gemini Flash AI 시장 및 스크랩 여파 분석 일일 리포트">
     <link rel="stylesheet" href="style.css">
     <style>
-        .report-filter-bar {
-            display: flex;
-            gap: 6px;
-            padding: 10px 14px;
+        .report-filter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            padding: 8px 12px;
             background: #ffffff;
             border-bottom: 1px solid var(--border-line);
-            overflow-x: auto;
         }
-        .rf-chip {
+        .rf-btn {
             background: #f1f5f9;
-            color: var(--text-muted);
+            color: var(--text-body);
             border: 1px solid var(--border-line);
-            padding: 5px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 700;
+            border-radius: 6px;
+            padding: 8px 2px;
+            font-size: 11.5px;
+            font-weight: 800;
             cursor: pointer;
+            text-align: center;
+            transition: all 0.15s ease;
             white-space: nowrap;
         }
-        .rf-chip.active {
+        .rf-btn.active, .rf-btn:hover {
             background: #0f172a;
             color: #ffffff;
             border-color: #0f172a;
@@ -265,21 +267,16 @@
         </div>
     </aside>
 
-    <!-- 금속 카테고리 필터 칩 (12종 전 품목) -->
-    <div class="report-filter-bar">
-        <button class="rf-chip active" onclick="filterReports('all', this)">전체</button>
-        <button class="rf-chip" onclick="filterReports('steel', this)">🏗️ 철스크랩</button>
-        <button class="rf-chip" onclick="filterReports('copper', this)">🥉 구리</button>
-        <button class="rf-chip" onclick="filterReports('aluminum', this)">🥫 알루미늄</button>
-        <button class="rf-chip" onclick="filterReports('zinc', this)">⚡ 아연</button>
-        <button class="rf-chip" onclick="filterReports('lead', this)">🔋 납</button>
-        <button class="rf-chip" onclick="filterReports('nickel', this)">⚙️ 니켈</button>
-        <button class="rf-chip" onclick="filterReports('tin', this)">🧪 주석</button>
-        <button class="rf-chip" onclick="filterReports('platinum', this)">🚗 백금</button>
-        <button class="rf-chip" onclick="filterReports('palladium', this)">🚘 팔라듐</button>
-        <button class="rf-chip" onclick="filterReports('rhodium', this)">✨ 로듐</button>
-        <button class="rf-chip" onclick="filterReports('gold', this)">👑 금</button>
-        <button class="rf-chip" onclick="filterReports('silver', this)">🪙 은</button>
+    <!-- 4칸 표 그리드 필터 (가로 스크롤 없이 모바일 한 화면에 100% 안착) -->
+    <div class="report-filter-grid">
+        <button class="rf-btn active" onclick="filterReports('all', this)">전체</button>
+        <button class="rf-btn" onclick="filterReports('copper', this)">🥉 구리</button>
+        <button class="rf-btn" onclick="filterReports('steel', this)">🏗️ 철스크랩</button>
+        <button class="rf-btn" onclick="filterReports('aluminum', this)">🥫 알루미늄</button>
+        <button class="rf-btn" onclick="filterReports('zinc_lead', this)">⚡ 아연·납</button>
+        <button class="rf-btn" onclick="filterReports('nickel_tin', this)">⚙️ 니켈·주석</button>
+        <button class="rf-btn" onclick="filterReports('precious', this)">💎 귀금속</button>
+        <button class="rf-btn" onclick="filterReports('catalyst', this)">🚗 폐촉매</button>
     </div>
 
     <main class="mobile-container">
@@ -332,16 +329,16 @@
             const urlParams = new URLSearchParams(window.location.search);
             const targetMetal = urlParams.get('metal');
 
-            // 금속 키 -> 카테고리 매핑
+            // 금속 키 -> 필터 그룹 매핑
             const catMap = {
                 'copper': 'copper',
                 'iron_scrap': 'steel',
                 'steel': 'steel',
                 'aluminum': 'aluminum',
-                'zinc': 'zinc',
-                'lead': 'lead',
-                'nickel': 'nickel',
-                'tin': 'tin',
+                'zinc': 'zinc_lead',
+                'lead': 'zinc_lead',
+                'nickel': 'nickel_tin',
+                'tin': 'nickel_tin',
                 'gold': 'precious',
                 'silver': 'precious',
                 'platinum': 'precious',
@@ -352,8 +349,8 @@
 
             if (targetMetal && catMap[targetMetal]) {
                 currentFilter = catMap[targetMetal];
-                // 칩 UI 동기화
-                document.querySelectorAll(".rf-chip").forEach(el => {
+                // 버튼 UI 동기화
+                document.querySelectorAll(".rf-btn").forEach(el => {
                     const onclickAttr = el.getAttribute("onclick") || "";
                     if (onclickAttr.includes(`'${currentFilter}'`)) {
                         el.classList.add("active");
@@ -399,7 +396,17 @@
 
             const filtered = allReports.filter(rep => {
                 if (currentFilter === 'all') return true;
-                return rep.category === currentFilter;
+                if (currentFilter === 'zinc_lead') {
+                    return ['zinc', 'lead'].includes(rep.category) || ['zinc', 'lead'].includes(rep.metal_key);
+                }
+                if (currentFilter === 'nickel_tin') {
+                    return ['nickel', 'tin'].includes(rep.category) || ['nickel', 'tin'].includes(rep.metal_key);
+                }
+                if (currentFilter === 'precious') {
+                    return ['precious', 'gold', 'silver', 'platinum', 'palladium', 'rhodium'].includes(rep.category) ||
+                           ['gold', 'silver', 'platinum', 'palladium', 'rhodium'].includes(rep.metal_key);
+                }
+                return rep.category === currentFilter || rep.metal_key === currentFilter;
             });
 
             if (filtered.length === 0) {
@@ -505,7 +512,7 @@
 
         function filterReports(cat, btn) {
             currentFilter = cat;
-            document.querySelectorAll(".rf-chip").forEach(el => el.classList.remove("active"));
+            document.querySelectorAll(".rf-btn").forEach(el => el.classList.remove("active"));
             if (btn) btn.classList.add("active");
             renderFeed();
         }

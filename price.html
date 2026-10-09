@@ -130,39 +130,6 @@
             margin-bottom: 16px;
             overflow: hidden;
         }
-        .pps-table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .pps-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            min-width: 540px;
-        }
-        .pps-table th {
-            background: #f8fafc;
-            color: #475569;
-            font-weight: 700;
-            padding: 10px 12px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 12px;
-            white-space: nowrap;
-        }
-        .pps-table td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #f1f5f9;
-            color: #1e293b;
-            font-size: 12.5px;
-            vertical-align: middle;
-        }
-        .pps-table tr:last-child td {
-            border-bottom: none;
-        }
-        .pps-badge {
-            background: #ecfdf5;
-            color: #047857;
             font-size: 11px;
             font-weight: 800;
             padding: 2px 6px;
@@ -262,41 +229,7 @@
     <main class="mobile-container">
 
         <!-- ============================================================
-             [1] 🏛️ 조달청(PPS) 비축물자 판매고시표 (LME 무관 공식 판매가격)
-             ============================================================ -->
-        <section class="pps-section-box">
-            <div class="section-header" style="background:#f0fdf4; border-bottom:1px solid #bbf7d0;">
-                <div class="sh-left">
-                    <span class="header-indicator green"></span>
-                    <h2 style="color:#166534;">🏛️ 조달청(PPS) 비축물자 판매고시표</h2>
-                </div>
-                <a href="https://www.pps.go.kr/bichuk/index.do" target="_blank" rel="noopener noreferrer" style="font-size:12px; color:#047857; font-weight:800; text-decoration:underline;">조달청 공식 누리집 ↗</a>
-            </div>
-
-            <div style="padding:10px 14px; background:#f8fafc; font-size:12px; color:#475569; border-bottom:1px solid #e2e8f0; line-height:1.5;">
-                💡 <strong>안내</strong>: 조달청 비축물자 홈페이지에 게시하는 원자재 판매가격은 조달청 비축이용업체로 등록한 실수요업체가 조달청 비축기지에 보관된 비축물자를 구매할 경우에 적용되는 공식 판매가격(부가세 포함)입니다.
-            </div>
-
-            <div class="pps-table-responsive">
-                <table class="pps-table" id="pps-stockpile-table">
-                    <thead>
-                        <tr>
-                            <th>품명</th>
-                            <th>판매지방청</th>
-                            <th style="text-align:right;">판매가격 (부가세포함)</th>
-                            <th style="text-align:right;">업체별 판매한도량</th>
-                            <th style="text-align:center;">판매기간(기준일)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pps-tbody">
-                        <!-- JS Dynamic Injected -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- ============================================================
-             [2] 📊 국제 금속 시세 & Trading Economics 1년 종가 차트
+             [1] 📊 국제 금속 시세 & Trading Economics 1년 종가 차트
              ============================================================ -->
         <section class="section-box">
             <div class="section-header price-header">
@@ -320,6 +253,36 @@
             <div class="price-notice-footer">
                 <p>※ LME, NYMEX, Johnson Matthey 공식 고시 종가 및 실시간 원달러 환율(하나은행 전신환매도율) 적용 단가입니다. (부가가치세 별도)</p>
                 <p>※ 현장 스크랩(고물상/야적장) 실거래 추정 단가는 상단 <a href="scrap.html" style="color:#2563eb; font-weight:700;">[스크랩·폐촉매관]</a>에서 확인하실 수 있습니다.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             [2] 🏛️ 조달청(PPS) 비축물자 판매고시표 (최하단 배치 & 캡처본 탑재 - 모바일 오버플로우 제로)
+             ============================================================ -->
+        <section class="pps-section-box" style="margin-top: 20px;">
+            <div class="section-header" style="background:#f0fdf4; border-bottom:1px solid #bbf7d0;">
+                <div class="sh-left">
+                    <span class="header-indicator green"></span>
+                    <h2 style="color:#166534;">🏛️ 조달청(PPS) 비축물자 판매고시표</h2>
+                </div>
+                <a href="https://www.pps.go.kr/bichuk/index.do" target="_blank" rel="noopener noreferrer" style="font-size:12px; color:#047857; font-weight:800; text-decoration:underline;">조달청 공식 누리집 ↗</a>
+            </div>
+
+            <div style="padding:10px 14px; background:#f8fafc; font-size:12px; color:#475569; border-bottom:1px solid #e2e8f0; line-height:1.5;">
+                💡 <strong>안내</strong>: 조달청 비축물자 홈페이지에 게시하는 원자재 판매가격은 조달청 비축이용업체로 등록한 실수요업체가 조달청 비축기지에 보관된 비축물자를 구매할 경우에 적용되는 공식 판매가격(부가세 포함)입니다.
+            </div>
+
+            <!-- 캡처 이미지로 모바일 오버플로우 없이 선명하게 노출 (metals 레퍼런스 방식) -->
+            <div style="padding: 12px; background:#ffffff; text-align:center;">
+                <img src="assets/charts/pps_table.png" alt="조달청 비축물자 판매고시표 공식 캡처" 
+                     style="width:100%; max-width:100%; height:auto; border-radius:6px; border:1px solid #e2e8f0; box-shadow:0 1px 4px rgba(0,0,0,0.05); display:block;"
+                     onerror="this.onerror=null; this.src='https://www.pps.go.kr/bichuk/index.do';">
+                <div style="margin-top: 10px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:11.5px; color:#64748b;">공식 출처: 조달청 비축물자 누리집</span>
+                    <a href="https://www.pps.go.kr/bichuk/index.do" target="_blank" rel="noopener noreferrer" class="btn-metal-report" style="font-size:12px; padding:5px 12px;">
+                        조달청 공식 누리집 실시간 바로가기 ↗
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -362,31 +325,7 @@
             if (dateEl && pricesData.display_date) dateEl.innerText = pricesData.display_date;
             if (rateEl && pricesData.usd_rate) rateEl.innerText = `${pricesData.usd_rate.toLocaleString()}원`;
 
-            // 2. 조달청 비축물자 테이블 갱신 (공식 9종 실판매 데이터 렌더링)
-            const ppsTbody = document.getElementById("pps-tbody");
-            if (ppsTbody && pricesData.pps_stockpiles && pricesData.pps_stockpiles.length > 0) {
-                ppsTbody.innerHTML = pricesData.pps_stockpiles.map(item => {
-                    const itemName = item.item_name || item.name_kr;
-                    const region = item.region || "부산,인천,대구,대전,전북";
-                    const priceTon = item.price_ton ? item.price_ton.toLocaleString() + "원/톤" : (item.pps_price * 1000).toLocaleString() + "원/톤";
-                    const priceKg = item.price_kg ? item.price_kg.toLocaleString() + "원/kg" : (item.pps_price ? item.pps_price.toLocaleString() + "원/kg" : "");
-                    const limit = item.limit || "40톤/주";
-                    const date = item.date || "2026.10.08";
-                    return `
-                        <tr>
-                            <td><strong>${itemName}</strong></td>
-                            <td style="color:#475569; font-size:12px;">${region}</td>
-                            <td style="text-align:right; font-weight:800; color:#0f172a;">
-                                ${priceTon} <span style="font-size:11px; color:#64748b; font-weight:normal;">(${priceKg})</span>
-                            </td>
-                            <td style="text-align:right; color:#334155; font-size:12px;">${limit}</td>
-                            <td style="text-align:center; color:#64748b; font-size:11.5px;">${date}</td>
-                        </tr>
-                    `;
-                }).join("");
-            }
-
-            // 3. 12개 품목 시세 리스트 렌더링 (중복 절대 없이 1회 순회)
+            // 2. 12개 품목 시세 리스트 렌더링 (중복 절대 없이 1회 순회)
             container.innerHTML = "";
             const sections = pricesData.sections || [];
 

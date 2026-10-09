@@ -8,25 +8,30 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .scrap-subnav {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
             background: #ffffff;
             border-bottom: 1px solid var(--border-line);
-            padding: 8px 12px;
-            gap: 6px;
-            overflow-x: auto;
+            padding: 10px 14px;
         }
         .scrap-chip {
-            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #f8fafc;
             color: var(--text-body);
             border: 1px solid var(--border-line);
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-size: 12px;
-            font-weight: 700;
-            white-space: nowrap;
+            border-radius: 8px;
+            padding: 9px 8px;
+            font-size: 12.5px;
+            font-weight: 800;
             text-decoration: none;
+            text-align: center;
+            transition: all 0.15s ease;
         }
-        .scrap-chip.active {
+        .scrap-chip.active, .scrap-chip:hover {
             background: #0f172a;
             color: #ffffff;
             border-color: #0f172a;
@@ -148,13 +153,12 @@
         </div>
     </aside>
 
-    <!-- 상단 퀵 앵커: 철스크랩 -> 구리 -> 알루미늄/서스 -> 폐촉매 -> 조달청(국제시세) -->
+    <!-- 상단 4칸 그리드 퀵 메뉴 (가로 스크롤 없이 모바일 한 화면에 100% 안착) -->
     <div class="scrap-subnav">
         <a href="#sec-iron" class="scrap-chip active">🏗️ 철스크랩 5등급</a>
-        <a href="#sec-copper" class="scrap-chip">🥉 구리 스크랩</a>
-        <a href="#sec-al" class="scrap-chip">🥫 알루미늄·서스</a>
-        <a href="#sec-catalyst" class="scrap-chip">🚗 폐촉매 단가표</a>
-        <a href="price.html" class="scrap-chip" style="background:#ecfdf5; color:#047857; border-color:#a7f3d0;">🏛️ 조달청 고시가 &gt;</a>
+        <a href="#sec-copper" class="scrap-chip">🥉 구리·황동(신주)</a>
+        <a href="#sec-al" class="scrap-chip">🥫 알미늄·스텐</a>
+        <a href="#sec-catalyst" class="scrap-chip">🚗 폐촉매 견적표</a>
     </div>
 
     <main class="mobile-container">

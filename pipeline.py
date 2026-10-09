@@ -309,7 +309,8 @@ def compute_and_sync_scrap(prices_data, usd_rate):
 
     base_copper = prices_map.get("copper", 19590)
     base_aluminum = prices_map.get("aluminum", 4390)
-    base_iron = prices_map.get("iron_scrap", 548)
+    raw_iron_cif = prices_map.get("iron_scrap", 548)
+    base_iron = round(raw_iron_cif * 0.80)  # ThePathLab 제강사 납품 실물 기준단가(scrap_80 80% 앵커링)
     base_zinc = prices_map.get("zinc", 4120)
     base_tin = prices_map.get("tin", 46500)
     base_lead = prices_map.get("lead", 2850)
@@ -318,7 +319,7 @@ def compute_and_sync_scrap(prices_data, usd_rate):
     price_rh = prices_map.get("rhodium", 206000)
     price_pt = prices_map.get("platinum", 43400)
 
-    RETAIL_FACTOR = 0.90  # 소매 단가 (고물상 기준 10% 안전마진)
+    RETAIL_FACTOR = 0.90  # 소매 단가 (동네 고물상 기준 10% 안전마진)
 
     # 1. 철스크랩 5대 등급 (ThePathLab 공식 비율: base_iron 대비)
     iron_items = [
