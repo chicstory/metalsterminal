@@ -24,6 +24,8 @@ import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
+from email.utils import parsedate_to_datetime
+from typing import List, Dict, Any, Optional, Tuple
 
 # Windows 콘솔 cp949 인코딩 방어
 if sys.stdout.encoding != 'utf-8':
