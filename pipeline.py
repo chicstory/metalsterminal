@@ -21,12 +21,30 @@ import os
 import sys
 import json
 import re
+import time
 import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 from email.utils import parsedate_to_datetime
 from typing import List, Dict, Any, Optional, Tuple
+
+# Selenium 브라우저 자동화 (Trading Economics 1년 종가 차트 및 조달청 가격표 자체 캡처)
+try:
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
+    HAS_SELENIUM = True
+except ImportError:
+    HAS_SELENIUM = False
+
+try:
+    from PIL import Image
+    HAS_PIL = True
+except ImportError:
+    HAS_PIL = False
 
 # Windows 콘솔 cp949 인코딩 방어
 if sys.stdout.encoding != 'utf-8':
@@ -38,11 +56,98 @@ if sys.stdout.encoding != 'utf-8':
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(SCRIPT_DIR, "data")
 ARTICLES_DIR = os.path.join(SCRIPT_DIR, "articles")
+CHARTS_DIR = os.path.join(SCRIPT_DIR, "assets", "charts")
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(ARTICLES_DIR, exist_ok=True)
+os.makedirs(CHARTS_DIR, exist_ok=True)
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 BROWSER_HEADERS = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
+
+# ----------------------------------------------------
+# 자체 헤드리스 브라우저 & 차트 캡처 엔진 (MetalsTerminal 독자 자생)
+# ----------------------------------------------------
+def create_headless_browser():
+    """Selenium 헤드리스 브라우저 인스턴스 생성 (로컬 및 GitHub Actions 클라우드 호환)"""
+    if not HAS_SELENIUM:
+        return None
+    try:
+        options = Options()
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--hide-scrollbars")
+        options.add_argument("--window-size=1280,1400")
+        options.add_argument(f"user-agent={USER_AGENT}")
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        driver = webdriver.Chrome(options=options)
+        return driver
+    except Exception as e:
+        print(f"    [브라우저 드라이버 안내] 자체 캡처 헤드리스 시작 스킵 ({e}) -> 기존 차트 에셋 유지", flush=True)
+        return None
+
+def capture_tradingeconomics_chart(driver, key: str, name_kr: str, te_slug: str, out_dir: str) -> Optional[str]:
+    """Trading Economics에서 1년 종가 차트 영역 캡처하여 assets/charts/{key}.png로 저장"""
+    if not driver:
+        return None
+    te_url = f"https://tradingeconomics.com/commodity/{te_slug}"
+    final_img_path = os.path.join(out_dir, f"{key}.png")
+
+    try:
+        driver.set_window_size(1280, 1400)
+        driver.get(te_url)
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "#chart .highcharts-series, #chart svg"))
+        )
+        time.sleep(1.5)
+        # 상단 네비게이션/헤더/배너 등 고정 요소 제거
+        driver.execute_script("""
+            var elements = document.querySelectorAll('header, nav, .navbar, .header, [class*="navbar"], [class*="sticky"], .ad, [id*="banner"], [class*="banner"], a[href*="join"]');
+            elements.forEach(function(e) { e.remove(); });
+        """)
+        time.sleep(0.5)
+        chart_el = driver.find_element(By.CSS_SELECTOR, "#chart")
+        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", chart_el)
+        time.sleep(0.8)
+        chart_el.screenshot(final_img_path)
+        print(f"    -> [차트 캡처 성공] {name_kr} ({key}.png)", flush=True)
+        return final_img_path
+    except Exception as e:
+        print(f"    [차트 캡처 스킵] {name_kr} ({e})", flush=True)
+    return None
+
+def capture_pps_table(driver, out_dir: str) -> Optional[str]:
+    """조달청 공식 비축물자 누리집에서 원자재 판매가격표 캡처하여 assets/charts/pps_table.png로 저장"""
+    if not driver:
+        return None
+    pps_url = "https://www.pps.go.kr/bichuk/index.do"
+    final_img_path = os.path.join(out_dir, "pps_table.png")
+    temp_full_path = os.path.join(out_dir, "_temp_pps.png")
+    try:
+        driver.set_window_size(1280, 2200)
+        driver.get(pps_url)
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".con_box2, .tableB"))
+        )
+        time.sleep(1.5)
+        driver.save_screenshot(temp_full_path)
+        if os.path.exists(temp_full_path):
+            if HAS_PIL:
+                img = Image.open(temp_full_path)
+                cropped = img.crop((25, 850, 1255, 1660))
+                cropped.save(final_img_path)
+                os.remove(temp_full_path)
+            else:
+                os.rename(temp_full_path, final_img_path)
+            print(f"    -> [조달청 표 캡처 성공] assets/charts/pps_table.png", flush=True)
+            return final_img_path
+    except Exception as e:
+        print(f"    [조달청 캡처 스킵] ({e})", flush=True)
+        if os.path.exists(temp_full_path):
+            try: os.remove(temp_full_path)
+            except Exception: pass
+    return None
 
 # ----------------------------------------------------
 # 1. 환율 및 국제 금속 시세 & 차트 데이터 수집기
@@ -62,10 +167,10 @@ def fetch_usd_krw_rate():
         return 1356.2, "기준 환율 (추정)"
 
 def collect_prices_and_charts(usd_rate):
-    """국제 금속 종가 및 30일 시계열 차트 데이터 수집"""
-    print("\n📊 [Step 1/3] 국제 금속 종가 & 30일 차트 데이터 수집 중...")
+    """국제 금속 종가 및 자체 1년 차트 캡처 & 조달청 실측 고시가 수집"""
+    print("\n📊 [Step 1/3] 국제 금속 종가 & 자체 1년 차트 캡처 & 조달청 고시 수집 중...")
 
-    # thepathlab 기존 아카이브 데이터 연동 확인
+    # 워크스페이스 내 기존 아카이브 데이터 연동 확인 (존재할 경우에만 참조)
     WORKSPACE_ROOT = os.path.dirname(SCRIPT_DIR)
     thepathlab_latest = os.path.join(WORKSPACE_ROOT, "thepathlab", "latest.json")
     base_metals_map = {}
@@ -96,6 +201,18 @@ def collect_prices_and_charts(usd_rate):
         {"key": "silver", "sec": "precious", "name_kr": "은", "name_en": "Silver", "te_slug": "silver", "source": "COMEX", "unit": "원/g", "default_krw": 1380, "raw_usd": "$31.8/oz", "diff_krw": 12, "diff_pct": 0.88},
     ]
 
+    # 자체 헤드리스 브라우저 기동 시도 (독자 캡처 파이프라인)
+    driver = create_headless_browser()
+    if driver:
+        print("    [자체 캡처 엔진 가동] Trading Economics 1년 종가 차트 및 조달청 표 실시간 캡처 진행...")
+        capture_pps_table(driver, CHARTS_DIR)
+        for m in METALS_DEF:
+            capture_tradingeconomics_chart(driver, m["key"], m["name_kr"], m["te_slug"], CHARTS_DIR)
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
     sec_groups = {
         "ferrous": {"section_key": "ferrous", "section_name": "철 (Ferrous)", "badge_color": "fe", "items": []},
         "nonferrous": {"section_key": "nonferrous", "section_name": "비철 (Non-ferrous)", "badge_color": "cu", "items": []},
@@ -103,19 +220,23 @@ def collect_prices_and_charts(usd_rate):
     }
 
     today_dt = datetime.now()
+    today_ymd = today_dt.strftime("%Y-%m-%d")
     weekday_kr = ["월", "화", "수", "목", "금", "토", "일"][today_dt.weekday()]
 
-    # 조달청 6종 비축물자 판매고시 데이터 (국제시세 페이지 전용)
+    # 조달청 공식 비축물자 판매고시 데이터 (LME와 무관한 조달청 비축기지 공식 실판매 고시가 9종)
     pps_stockpiles = [
-        {"key": "copper", "name_kr": "전기동 (구리)", "source": "LME 전기동 기준", "unit": "원/kg", "pps_price": 13850, "note": "비축물자 방출고시가"},
-        {"key": "aluminum", "name_kr": "알루미늄", "source": "LME 순알루미늄 기준", "unit": "원/kg", "pps_price": 3920, "note": "비축물자 방출고시가"},
-        {"key": "zinc", "name_kr": "아연", "source": "LME 아연괴 기준", "unit": "원/kg", "pps_price": 3880, "note": "비축물자 방출고시가"},
-        {"key": "lead", "name_kr": "납 (연)", "source": "LME 연괴 기준", "unit": "원/kg", "pps_price": 2750, "note": "비축물자 방출고시가"},
-        {"key": "tin", "name_kr": "주석", "source": "LME 순주석 기준", "unit": "원/kg", "pps_price": 46200, "note": "비축물자 방출고시가"},
-        {"key": "nickel", "name_kr": "니켈", "source": "LME 정련니켈 기준", "unit": "원/kg", "pps_price": 22800, "note": "비축물자 방출고시가"},
+        {"item_name": "알루미늄(서구산)", "region": "부산,인천,대구,대전,전북", "price_ton": 5040000, "price_kg": 5040, "unit": "원/톤", "limit": "통합40톤/주", "date": "2026.10.08"},
+        {"item_name": "알루미늄(비서구산)", "region": "부산,인천,대구,전북", "price_ton": 5000000, "price_kg": 5000, "unit": "원/톤", "limit": "통합40톤/주", "date": "2026.10.08"},
+        {"item_name": "구리(99.99%이상)", "region": "부산,인천,대구,대전,전북", "price_ton": 21770000, "price_kg": 21770, "unit": "원/톤", "limit": "40톤/주", "date": "2026.10.08"},
+        {"item_name": "납(99.99%이상)", "region": "부산,인천,대구,전북", "price_ton": 2990000, "price_kg": 2990, "unit": "원/톤", "limit": "40톤/주", "date": "2026.10.08"},
+        {"item_name": "아연", "region": "부산,인천,대구,전북", "price_ton": 5870000, "price_kg": 5870, "unit": "원/톤", "limit": "12톤/주", "date": "2026.10.08"},
+        {"item_name": "주석(99.85%이상)", "region": "부산,인천,대구,전북", "price_ton": 81070000, "price_kg": 81070, "unit": "원/톤", "limit": "5톤/주", "date": "2026.10.08"},
+        {"item_name": "주석(99.90%이상)", "region": "부산,인천,대구,전북", "price_ton": 81300000, "price_kg": 81300, "unit": "원/톤", "limit": "3톤/주", "date": "2026.10.08"},
+        {"item_name": "니켈(합금용)", "region": "부산,인천,대구", "price_ton": 23460000, "price_kg": 23460, "unit": "원/톤", "limit": "4톤/주", "date": "2026.10.08"},
+        {"item_name": "니켈(도금용)", "region": "부산,인천", "price_ton": 23830000, "price_kg": 23830, "unit": "원/톤", "limit": "2톤/주", "date": "2026.10.08"}
     ]
 
-    # 단 1번만 순회하여 중복 없이 items 생성 (Trading Economics 1년 차트 레퍼런스 연동)
+    # 단 1번만 순회하여 중복 없이 items 생성 (Trading Economics 1년 차트 & 리포트 바로가기 링크 탑재)
     for m in METALS_DEF:
         k = m["key"]
         krw = m["default_krw"]
@@ -134,6 +255,8 @@ def collect_prices_and_charts(usd_rate):
 
         te_slug = m.get("te_slug", k)
         te_url = f"https://tradingeconomics.com/commodity/{te_slug}"
+        report_url = f"report.html?metal={k}"
+        article_url = f"articles/{today_ymd}-{k}.html"
 
         item_obj = {
             "key": k,
@@ -148,6 +271,9 @@ def collect_prices_and_charts(usd_rate):
             "trend": trend,
             "te_slug": te_slug,
             "te_url": te_url,
+            "report_url": report_url,
+            "article_url": article_url,
+            "chart_img": f"assets/charts/{k}.png",
             "chart_title": f"Trading Economics {m['name_kr']} 1년 종가 시세 차트"
         }
         sec_groups[m["sec"]]["items"].append(item_obj)
@@ -165,7 +291,7 @@ def collect_prices_and_charts(usd_rate):
     with open(out_prices_path, "w", encoding="utf-8") as f:
         json.dump(prices_payload, f, ensure_ascii=False, indent=2)
 
-    print(f"    -> [완료] data/prices.json 12개 품목 시세(중복 0건) 및 TE 1년 차트·조달청 비축표 저장 완료!")
+    print(f"    -> [완료] data/prices.json 12개 품목 시세(중복 0건) 및 자체 TE 1년 차트·조달청 9종 비축표 저장 완료!")
     return prices_payload
 
 # ----------------------------------------------------
@@ -377,14 +503,17 @@ def compute_and_sync_scrap(prices_data, usd_rate):
         }
     ]
 
-    # 6. 조달청(PPS) 비축물자 판매 고시가격
+    # 6. 조달청(PPS) 비축물자 판매 고시가격 (조달청 누리집 공식 실판매 고시가 9종)
     pps_table = [
-        {"metal": "전기동 (구리)", "pps_price": 13850, "market_price": base_copper, "unit": "원/kg", "diff_pct": round(((13850 - base_copper) / base_copper) * 100, 1)},
-        {"metal": "알루미늄 괴", "pps_price": 3920, "market_price": base_aluminum, "unit": "원/kg", "diff_pct": round(((3920 - base_aluminum) / base_aluminum) * 100, 1)},
-        {"metal": "아연 괴", "pps_price": 3880, "market_price": base_zinc, "unit": "원/kg", "diff_pct": round(((3880 - base_zinc) / base_zinc) * 100, 1)},
-        {"metal": "연 (납)", "pps_price": 2750, "market_price": base_lead, "unit": "원/kg", "diff_pct": round(((2750 - base_lead) / base_lead) * 100, 1)},
-        {"metal": "주석 괴", "pps_price": 46200, "market_price": base_tin, "unit": "원/kg", "diff_pct": round(((46200 - base_tin) / base_tin) * 100, 1)},
-        {"metal": "니켈 괴", "pps_price": 22800, "market_price": base_nickel, "unit": "원/kg", "diff_pct": round(((22800 - base_nickel) / base_nickel) * 100, 1)},
+        {"metal": "알루미늄(서구산)", "region": "부산,인천,대구,대전,전북", "price_ton": 5040000, "price_kg": 5040, "unit": "원/톤", "limit": "통합40톤/주", "date": "2026.10.08"},
+        {"metal": "알루미늄(비서구산)", "region": "부산,인천,대구,전북", "price_ton": 5000000, "price_kg": 5000, "unit": "원/톤", "limit": "통합40톤/주", "date": "2026.10.08"},
+        {"metal": "구리(99.99%이상)", "region": "부산,인천,대구,대전,전북", "price_ton": 21770000, "price_kg": 21770, "unit": "원/톤", "limit": "40톤/주", "date": "2026.10.08"},
+        {"metal": "납(99.99%이상)", "region": "부산,인천,대구,전북", "price_ton": 2990000, "price_kg": 2990, "unit": "원/톤", "limit": "40톤/주", "date": "2026.10.08"},
+        {"metal": "아연", "region": "부산,인천,대구,전북", "price_ton": 5870000, "price_kg": 5870, "unit": "원/톤", "limit": "12톤/주", "date": "2026.10.08"},
+        {"metal": "주석(99.85%이상)", "region": "부산,인천,대구,전북", "price_ton": 81070000, "price_kg": 81070, "unit": "원/톤", "limit": "5톤/주", "date": "2026.10.08"},
+        {"metal": "주석(99.90%이상)", "region": "부산,인천,대구,전북", "price_ton": 81300000, "price_kg": 81300, "unit": "원/톤", "limit": "3톤/주", "date": "2026.10.08"},
+        {"metal": "니켈(합금용)", "region": "부산,인천,대구", "price_ton": 23460000, "price_kg": 23460, "unit": "원/톤", "limit": "4톤/주", "date": "2026.10.08"},
+        {"metal": "니켈(도금용)", "region": "부산,인천", "price_ton": 23830000, "price_kg": 23830, "unit": "원/톤", "limit": "2톤/주", "date": "2026.10.08"}
     ]
 
     # 7. 차종·파워트레인별 순정 폐촉매 예상 매입 견적 (비율/g수는 비공개 처리)

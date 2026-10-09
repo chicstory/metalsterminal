@@ -41,7 +41,7 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/ articles/ index.html price.html scrap.html report.html TASK_HISTORY.md
+          git add assets/ data/ articles/ index.html price.html scrap.html report.html TASK_HISTORY.md
           if git diff --staged --quiet; then
             echo "No changes detected to commit."
           else

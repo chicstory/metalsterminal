@@ -186,46 +186,85 @@
   ],
   "pps_table": [
     {
-      "metal": "전기동 (구리)",
-      "pps_price": 13850,
-      "market_price": 19590,
-      "unit": "원/kg",
-      "diff_pct": -29.3
+      "metal": "알루미늄(서구산)",
+      "region": "부산,인천,대구,대전,전북",
+      "price_ton": 5040000,
+      "price_kg": 5040,
+      "unit": "원/톤",
+      "limit": "통합40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "metal": "알루미늄 괴",
-      "pps_price": 3920,
-      "market_price": 4390,
-      "unit": "원/kg",
-      "diff_pct": -10.7
+      "metal": "알루미늄(비서구산)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 5000000,
+      "price_kg": 5000,
+      "unit": "원/톤",
+      "limit": "통합40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "metal": "아연 괴",
-      "pps_price": 3880,
-      "market_price": 5231,
-      "unit": "원/kg",
-      "diff_pct": -25.8
+      "metal": "구리(99.99%이상)",
+      "region": "부산,인천,대구,대전,전북",
+      "price_ton": 21770000,
+      "price_kg": 21770,
+      "unit": "원/톤",
+      "limit": "40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "metal": "연 (납)",
-      "pps_price": 2750,
-      "market_price": 2594,
-      "unit": "원/kg",
-      "diff_pct": 6.0
+      "metal": "납(99.99%이상)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 2990000,
+      "price_kg": 2990,
+      "unit": "원/톤",
+      "limit": "40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "metal": "주석 괴",
-      "pps_price": 46200,
-      "market_price": 72945,
-      "unit": "원/kg",
-      "diff_pct": -36.7
+      "metal": "아연",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 5870000,
+      "price_kg": 5870,
+      "unit": "원/톤",
+      "limit": "12톤/주",
+      "date": "2026.10.08"
     },
     {
-      "metal": "니켈 괴",
-      "pps_price": 22800,
-      "market_price": 22030,
-      "unit": "원/kg",
-      "diff_pct": 3.5
+      "metal": "주석(99.85%이상)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 81070000,
+      "price_kg": 81070,
+      "unit": "원/톤",
+      "limit": "5톤/주",
+      "date": "2026.10.08"
+    },
+    {
+      "metal": "주석(99.90%이상)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 81300000,
+      "price_kg": 81300,
+      "unit": "원/톤",
+      "limit": "3톤/주",
+      "date": "2026.10.08"
+    },
+    {
+      "metal": "니켈(합금용)",
+      "region": "부산,인천,대구",
+      "price_ton": 23460000,
+      "price_kg": 23460,
+      "unit": "원/톤",
+      "limit": "4톤/주",
+      "date": "2026.10.08"
+    },
+    {
+      "metal": "니켈(도금용)",
+      "region": "부산,인천",
+      "price_ton": 23830000,
+      "price_kg": 23830,
+      "unit": "원/톤",
+      "limit": "2톤/주",
+      "date": "2026.10.08"
     }
   ],
   "catalyst_presets": [

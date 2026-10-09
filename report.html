@@ -329,7 +329,53 @@
         let currentFilter = 'all';
 
         document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetMetal = urlParams.get('metal');
+
+            // 금속 키 -> 카테고리 매핑
+            const catMap = {
+                'copper': 'copper',
+                'iron_scrap': 'steel',
+                'steel': 'steel',
+                'aluminum': 'aluminum',
+                'zinc': 'zinc',
+                'lead': 'lead',
+                'nickel': 'nickel',
+                'tin': 'tin',
+                'gold': 'precious',
+                'silver': 'precious',
+                'platinum': 'precious',
+                'palladium': 'precious',
+                'rhodium': 'precious',
+                'catalyst': 'catalyst'
+            };
+
+            if (targetMetal && catMap[targetMetal]) {
+                currentFilter = catMap[targetMetal];
+                // 칩 UI 동기화
+                document.querySelectorAll(".rf-chip").forEach(el => {
+                    const onclickAttr = el.getAttribute("onclick") || "";
+                    if (onclickAttr.includes(`'${currentFilter}'`)) {
+                        el.classList.add("active");
+                    } else {
+                        el.classList.remove("active");
+                    }
+                });
+            }
+
             await loadReportsFeed();
+
+            // 대상 금속 리포트가 있으면 자동 펼침 및 스크롤
+            if (targetMetal) {
+                setTimeout(() => {
+                    const targetCard = document.querySelector(`[data-metal-key="${targetMetal}"]`) || document.querySelector(".report-card-item");
+                    if (targetCard) {
+                        const toggleBtn = targetCard.querySelector(".rc-clickable-header");
+                        if (toggleBtn) toggleBtn.click();
+                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 200);
+            }
         });
 
         async function loadReportsFeed() {
@@ -364,6 +410,7 @@
             filtered.forEach((rep, idx) => {
                 const card = document.createElement("article");
                 card.className = "report-card-item";
+                card.setAttribute("data-metal-key", rep.metal_key || rep.category || "");
 
                 const tagClass = rep.category || "steel";
                 const badgeLabel = rep.badge || rep.name_kr;

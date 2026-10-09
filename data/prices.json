@@ -1,56 +1,89 @@
 {
   "updated_at": "2026-10-10 09:00 KST",
   "display_date": "2026.10.10(토) 09:00 정기고시",
-  "usd_rate": 1342.9,
+  "usd_rate": 1342.6,
   "rate_source": "하나은행 고시환율 (전신환매도율)",
   "pps_stockpiles": [
     {
-      "key": "copper",
-      "name_kr": "전기동 (구리)",
-      "source": "LME 전기동 기준",
-      "unit": "원/kg",
-      "pps_price": 13850,
-      "note": "비축물자 방출고시가"
+      "item_name": "알루미늄(서구산)",
+      "region": "부산,인천,대구,대전,전북",
+      "price_ton": 5040000,
+      "price_kg": 5040,
+      "unit": "원/톤",
+      "limit": "통합40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "key": "aluminum",
-      "name_kr": "알루미늄",
-      "source": "LME 순알루미늄 기준",
-      "unit": "원/kg",
-      "pps_price": 3920,
-      "note": "비축물자 방출고시가"
+      "item_name": "알루미늄(비서구산)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 5000000,
+      "price_kg": 5000,
+      "unit": "원/톤",
+      "limit": "통합40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "key": "zinc",
-      "name_kr": "아연",
-      "source": "LME 아연괴 기준",
-      "unit": "원/kg",
-      "pps_price": 3880,
-      "note": "비축물자 방출고시가"
+      "item_name": "구리(99.99%이상)",
+      "region": "부산,인천,대구,대전,전북",
+      "price_ton": 21770000,
+      "price_kg": 21770,
+      "unit": "원/톤",
+      "limit": "40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "key": "lead",
-      "name_kr": "납 (연)",
-      "source": "LME 연괴 기준",
-      "unit": "원/kg",
-      "pps_price": 2750,
-      "note": "비축물자 방출고시가"
+      "item_name": "납(99.99%이상)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 2990000,
+      "price_kg": 2990,
+      "unit": "원/톤",
+      "limit": "40톤/주",
+      "date": "2026.10.08"
     },
     {
-      "key": "tin",
-      "name_kr": "주석",
-      "source": "LME 순주석 기준",
-      "unit": "원/kg",
-      "pps_price": 46200,
-      "note": "비축물자 방출고시가"
+      "item_name": "아연",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 5870000,
+      "price_kg": 5870,
+      "unit": "원/톤",
+      "limit": "12톤/주",
+      "date": "2026.10.08"
     },
     {
-      "key": "nickel",
-      "name_kr": "니켈",
-      "source": "LME 정련니켈 기준",
-      "unit": "원/kg",
-      "pps_price": 22800,
-      "note": "비축물자 방출고시가"
+      "item_name": "주석(99.85%이상)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 81070000,
+      "price_kg": 81070,
+      "unit": "원/톤",
+      "limit": "5톤/주",
+      "date": "2026.10.08"
+    },
+    {
+      "item_name": "주석(99.90%이상)",
+      "region": "부산,인천,대구,전북",
+      "price_ton": 81300000,
+      "price_kg": 81300,
+      "unit": "원/톤",
+      "limit": "3톤/주",
+      "date": "2026.10.08"
+    },
+    {
+      "item_name": "니켈(합금용)",
+      "region": "부산,인천,대구",
+      "price_ton": 23460000,
+      "price_kg": 23460,
+      "unit": "원/톤",
+      "limit": "4톤/주",
+      "date": "2026.10.08"
+    },
+    {
+      "item_name": "니켈(도금용)",
+      "region": "부산,인천",
+      "price_ton": 23830000,
+      "price_kg": 23830,
+      "unit": "원/톤",
+      "limit": "2톤/주",
+      "date": "2026.10.08"
     }
   ],
   "sections": [
@@ -72,6 +105,9 @@
           "trend": "up",
           "te_slug": "scrap-steel",
           "te_url": "https://tradingeconomics.com/commodity/scrap-steel",
+          "report_url": "report.html?metal=iron_scrap",
+          "article_url": "articles/2026-10-10-iron_scrap.html",
+          "chart_img": "assets/charts/iron_scrap.png",
           "chart_title": "Trading Economics 철스크랩 1년 종가 시세 차트"
         }
       ]
@@ -94,6 +130,9 @@
           "trend": "down",
           "te_slug": "copper",
           "te_url": "https://tradingeconomics.com/commodity/copper",
+          "report_url": "report.html?metal=copper",
+          "article_url": "articles/2026-10-10-copper.html",
+          "chart_img": "assets/charts/copper.png",
           "chart_title": "Trading Economics 구리 1년 종가 시세 차트"
         },
         {
@@ -109,6 +148,9 @@
           "trend": "down",
           "te_slug": "aluminum",
           "te_url": "https://tradingeconomics.com/commodity/aluminum",
+          "report_url": "report.html?metal=aluminum",
+          "article_url": "articles/2026-10-10-aluminum.html",
+          "chart_img": "assets/charts/aluminum.png",
           "chart_title": "Trading Economics 알루미늄 1년 종가 시세 차트"
         },
         {
@@ -124,6 +166,9 @@
           "trend": "down",
           "te_slug": "zinc",
           "te_url": "https://tradingeconomics.com/commodity/zinc",
+          "report_url": "report.html?metal=zinc",
+          "article_url": "articles/2026-10-10-zinc.html",
+          "chart_img": "assets/charts/zinc.png",
           "chart_title": "Trading Economics 아연 1년 종가 시세 차트"
         },
         {
@@ -139,6 +184,9 @@
           "trend": "down",
           "te_slug": "lead",
           "te_url": "https://tradingeconomics.com/commodity/lead",
+          "report_url": "report.html?metal=lead",
+          "article_url": "articles/2026-10-10-lead.html",
+          "chart_img": "assets/charts/lead.png",
           "chart_title": "Trading Economics 납 1년 종가 시세 차트"
         },
         {
@@ -154,6 +202,9 @@
           "trend": "up",
           "te_slug": "nickel",
           "te_url": "https://tradingeconomics.com/commodity/nickel",
+          "report_url": "report.html?metal=nickel",
+          "article_url": "articles/2026-10-10-nickel.html",
+          "chart_img": "assets/charts/nickel.png",
           "chart_title": "Trading Economics 니켈 1년 종가 시세 차트"
         },
         {
@@ -169,6 +220,9 @@
           "trend": "down",
           "te_slug": "tin",
           "te_url": "https://tradingeconomics.com/commodity/tin",
+          "report_url": "report.html?metal=tin",
+          "article_url": "articles/2026-10-10-tin.html",
+          "chart_img": "assets/charts/tin.png",
           "chart_title": "Trading Economics 주석 1년 종가 시세 차트"
         }
       ]
@@ -191,6 +245,9 @@
           "trend": "down",
           "te_slug": "platinum",
           "te_url": "https://tradingeconomics.com/commodity/platinum",
+          "report_url": "report.html?metal=platinum",
+          "article_url": "articles/2026-10-10-platinum.html",
+          "chart_img": "assets/charts/platinum.png",
           "chart_title": "Trading Economics 백금 1년 종가 시세 차트"
         },
         {
@@ -206,6 +263,9 @@
           "trend": "down",
           "te_slug": "palladium",
           "te_url": "https://tradingeconomics.com/commodity/palladium",
+          "report_url": "report.html?metal=palladium",
+          "article_url": "articles/2026-10-10-palladium.html",
+          "chart_img": "assets/charts/palladium.png",
           "chart_title": "Trading Economics 팔라듐 1년 종가 시세 차트"
         },
         {
@@ -221,6 +281,9 @@
           "trend": "down",
           "te_slug": "rhodium",
           "te_url": "https://tradingeconomics.com/commodity/rhodium",
+          "report_url": "report.html?metal=rhodium",
+          "article_url": "articles/2026-10-10-rhodium.html",
+          "chart_img": "assets/charts/rhodium.png",
           "chart_title": "Trading Economics 로듐 1년 종가 시세 차트"
         },
         {
@@ -236,6 +299,9 @@
           "trend": "down",
           "te_slug": "gold",
           "te_url": "https://tradingeconomics.com/commodity/gold",
+          "report_url": "report.html?metal=gold",
+          "article_url": "articles/2026-10-10-gold.html",
+          "chart_img": "assets/charts/gold.png",
           "chart_title": "Trading Economics 금 1년 종가 시세 차트"
         },
         {
@@ -251,6 +317,9 @@
           "trend": "down",
           "te_slug": "silver",
           "te_url": "https://tradingeconomics.com/commodity/silver",
+          "report_url": "report.html?metal=silver",
+          "article_url": "articles/2026-10-10-silver.html",
+          "chart_img": "assets/charts/silver.png",
           "chart_title": "Trading Economics 은 1년 종가 시세 차트"
         }
       ]

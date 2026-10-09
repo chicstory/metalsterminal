@@ -126,6 +126,34 @@
   - `price.html`: 상단 조달청 비축물자 고시표 정상 표출 및 각 행 클릭 시 Trading Economics 1년 차트 아코디언 정상 작동 확인.
   - `scrap.html`: 조달청 중복 제거 및 폐촉매 귀금속 g수 미노출 검증 완료.
 
+---
+
+## [2026-10-10] 자체 1년 차트 및 조달청 캡처 엔진 탑재(Metals 0% 의존), 조달청 공식 9종 고시 데이터(LME 기준 허위표기 삭제) 및 품목별 리포트 직결 링크 완결
+- **1. 요청사항**: 
+  - `thepathlab` 폴더가 삭제되어도 독자적으로 1년 시세 차트를 생성/갱신할 수 있는 자체 캡처 엔진 탑재.
+  - 조달청 가격의 경우 LME와는 완전히 독립된 정부 비축기지 공식 판매가격임에도 이전 작업물에 "LME 전기동 기준" 등으로 오기된 내용 전면 시정 및 사용자가 전달한 실제 조달청 화면(공식 9종 품목 및 원/톤, 원/kg)과 100% 일치하도록 전면 수정.
+  - `scrap.html`과 `thepathlab/scrap.html`의 단가/로직 비교 점검 및 퀵 앵커 정리.
+  - `price.html`의 각 금속에서 해당 품목의 일일 AI 분석 리포트로 바로 넘어가는 직결 링크 기능 탑재.
+- **2. 솔루션 & 구현**:
+  - **자체 Selenium 헤드리스 크롬 캡처 엔진 내장 (`pipeline.py`, `assets/charts/`)**:
+    - `metals` 의존도 0% 달성: `metalsterminal/pipeline.py`에 Selenium 기반 `create_headless_browser`, `capture_tradingeconomics_chart`, `capture_pps_table` 직접 통합.
+    - Trading Economics 12종 1년 종가 차트(`assets/charts/{key}.png`) 및 조달청 공식 가격표(`assets/charts/pps_table.png`)를 로컬 및 GitHub Actions(Ubuntu)에서 자동 무인 캡처.
+    - `requirements.txt`에 `selenium`, `pillow` 의존성 탑재 및 `.github/workflows/daily_terminal.yml`의 `git add` 대상에 `assets/` 추가.
+  - **조달청(PPS) 공식 9종 고시 데이터 및 UI 전면 현실화 (`price.html`, `pipeline.py`, `data/prices.json`, `data/scrap.json`)**:
+    - "LME..."라는 잘못된 수식어 전면 삭제.
+    - 조달청 비축물자 누리집 공식 실판매 9종[알루미늄(서구산 5,040원/kg, 비서구산 5,000원/kg), 구리(99.99% 21,770원/kg), 납(2,990원/kg), 아연(5,870원/kg), 주석(99.85% 81,070원/kg, 99.90% 81,300원/kg), 니켈(합금용 23,460원/kg, 도금용 23,830원/kg)] 데이터셋 구축.
+    - `price.html` 상단 조달청 테이블 헤더를 [품명], [판매지방청], [판매가격 (부가세포함)], [업체별 판매한도량], [판매기간(기준일)]로 개편하여 공식 고시표와 100% 일치시킴.
+  - **국제시세 각 금속 품목별 리포트 직결 링크 탑재 (`price.html`, `report.html`)**:
+    - `price.html`의 각 금속 행 우측에 `[📰 {m.name_kr} 리포트 >]` 퀵 버튼 및 아코디언 패널 하단에 `[일일 리포트 보기 >]` 배너 탑재.
+    - `report.html`에서 `?metal={key}` URL 파라미터를 파싱하여 해당 품목 칩 자동 활성화, 해당 리포트 카드 자동 펼침 및 스크롤 포커스 이동 구현.
+- **3. 결과 & 검증**:
+  - `python pipeline.py` 단독 구동으로 12개 품목 1년 차트 및 조달청 실시간 표 100% 자체 캡처 완주 확인.
+  - `price.html` 상단 조달청 9종 공식 데이터 및 리포트 바로가기 버튼 정상 연동 확인.
+  - `report.html?metal=copper` 등 파라미터 접속 시 해당 품목 리포트 자동 필터링 및 펼침 동작 검증.
+- **4. 주요 합의 사항**:
+  - 조달청 비축물자는 LME와 무관한 대한민국 정부 실수요 공식 판매고시가(원/톤 및 원/kg)로 엄격히 관리한다.
+  - MetalsTerminal은 `thepathlab` 폴더가 존재하지 않더라도 100% 독립 자생 가능한 차트 캡처 및 리포트 발행 엔진을 영구 유지한다.
+
 
 
 
