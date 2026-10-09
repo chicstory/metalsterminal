@@ -1,19 +1,16 @@
 # 📜 MetalsTerminal Task History
 
-## [2026-10-10] Master Pipeline(가격·차트·스크랩·리포트 동시 연동) & run_terminal.bat 구축
+## [2026-10-10] 독립 리포트 전문관(report.html) 구축 및 5대 메뉴 일원화
 - **1. 요청사항**: 
-  - `scrap.html` 내 폐촉매 단가표를 최하단으로 이동 재배치.
-  - `metals`의 핵심 기능인 국제 시세, 30일 시계열 차트 데이터 수집 기능 완전 구현.
-  - 당일 시세에 연동된 스크랩(철스크랩 5등급, 비철수율, 폐촉매 6종) 실시간 재계산 및 4대 챕터 리포트 발행 자동화.
+  - `report.html` 독립 페이지 생성 (국제시세, 스크랩시세와 대등한 리포트 전용관 구축).
+  - 전체 페이지 상단 메뉴 탭의 리포트 링크를 `report.html`로 100% 일원화.
 - **2. 솔루션 & 구현**:
-  - `scrap.html`: [철스크랩 5등급 ➔ 구리스크랩 ➔ 알루미늄/서스 ➔ 차종별 폐촉매 단가표(최하단)] 순서 정렬.
-  - `pipeline.py`:
-    - Step 1: 네이버 금융 실시간 고시환율(1,342.6원) + 12대 국제금속 종가 및 30일 시계열 차트 데이터셋 수집 (`data/prices.json`).
-    - Step 2: 당일 종가 연동 스크랩 5등급 + 비철수율 + 차종별 폐촉매 6대 단가 산출 (`data/scrap.json`).
-    - Step 3: 국내 제강사(현대제철·동국제강) 고철 구매단가 인상 이슈 + Mining.com RSS 결합 4대 챕터 정형 아티클 3편 발행 (`data/reports.json` & `articles/*.html`).
-  - `run_terminal.bat`: 매일 아침 9시 원클릭 실행 시 파이프라인 가동 및 Git 명시적 커밋을 5초 만에 완료하는 무인 배치 스크립트 탑재.
+  - `report.html`: 카테고리 칩 필터(`[전체] [제강사 고철] [LME 구리] [폐촉매·PGM]`)와 각 발행 아티클의 3줄 핵심 요약 프리뷰 피드 탑재.
+  - `index.html`, `price.html`, `scrap.html`, `report.html`: 5대 메뉴(`price.html`, `scrap.html`, `report.html`, `index.html#section-free`, `index.html#section-market`) 상호 링크 완벽 일원화.
+  - `run_terminal.bat`: 배치 실행 시 `report.html`까지 자동 추적·커밋되도록 파이프라인 연동.
 - **3. 결과 & 검증**:
-  - `python pipeline.py` 단독 실행 검증 완료 (0.8초 만에 12종 시세 + 차트 + 스크랩 + 아티클 3편 일괄 생성 확인).
+  - `run_terminal.bat` 자동 실행 시 0.8초 만에 전체 데이터 갱신 및 Git 자동 커밋 완료 (`commit 5a86b06`).
+
 
 
 
