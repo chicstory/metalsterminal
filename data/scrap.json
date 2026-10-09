@@ -1,5 +1,13 @@
 {
   "updated_at": "2026-10-10 09:00 KST",
+  "base_metals": {
+    "copper": 19590,
+    "aluminum": 4390,
+    "iron": 548,
+    "pd": 53631,
+    "rh": 403326,
+    "pt": 73850
+  },
   "iron_scrap": [
     {
       "name": "생철 A",
@@ -55,13 +63,13 @@
       "name": "황동 노베 (신주)",
       "spec": "판재 스크랩 (Cu 65% + Zn 35%)",
       "unit": "원/kg",
-      "price": 7800
+      "price": 7836
     },
     {
       "name": "황동 절봉 (신주)",
       "spec": "황동 봉 절삭 부스러기",
       "unit": "원/kg",
-      "price": 7200
+      "price": 7248
     },
     {
       "name": "알루미늄 샷시",
@@ -91,57 +99,51 @@
   "catalyst_presets": [
     {
       "id": "lpi",
-      "name": "LPG 가스차 (쏘나타·K5·그랜저 2.0~3.0 LPi)",
-      "pd_g": 1.9,
-      "rh_g": 0.85,
-      "pt_g": 0.0,
-      "min_quote": 105000,
-      "max_quote": 125000
+      "name": "LPG 가스차 (2.0~3.0 LPi)",
+      "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi",
+      "metals": "Pd 1.9g + Rh 0.85g",
+      "min_quote": 289000,
+      "max_quote": 334000
     },
     {
       "id": "gdi",
-      "name": "직분사 가솔린 (아반떼MD·YF·그랜저HG 1.6~2.4 GDi)",
-      "pd_g": 2.1,
-      "rh_g": 0.45,
-      "pt_g": 0.0,
-      "min_quote": 85000,
-      "max_quote": 105000
+      "name": "직분사 가솔린 (1.6~2.4 GDi)",
+      "models": "아반떼MD · YF/K5 · 그랜저HG GDi",
+      "metals": "Pd 2.1g + Rh 0.45g",
+      "min_quote": 191000,
+      "max_quote": 221000
     },
     {
       "id": "turbo",
-      "name": "터보 가솔린 (아반떼N·쏘나타터보 1.6T~2.0T)",
-      "pd_g": 2.5,
-      "rh_g": 0.65,
-      "pt_g": 0.0,
-      "min_quote": 120000,
-      "max_quote": 145000
+      "name": "터보 가솔린 (1.6T~2.0T)",
+      "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터",
+      "metals": "Pd 2.5g + Rh 0.65g",
+      "min_quote": 258000,
+      "max_quote": 297000
     },
     {
       "id": "mpi",
-      "name": "자연흡기 가솔린 (모닝·레이·아반떼 1.0~1.6 MPi)",
-      "pd_g": 1.8,
-      "rh_g": 0.2,
-      "pt_g": 0.0,
-      "min_quote": 60000,
-      "max_quote": 75000
+      "name": "자연흡기 가솔린 (1.0~1.6 MPi)",
+      "models": "모닝 · 레이 · 아반떼HD/AD MPi",
+      "metals": "Pd 1.8g + Rh 0.20g",
+      "min_quote": 115000,
+      "max_quote": 133000
     },
     {
       "id": "hev",
-      "name": "하이브리드 (니로·아반떼·쏘나타 HEV)",
-      "pd_g": 2.2,
-      "rh_g": 0.5,
-      "pt_g": 0.0,
-      "min_quote": 95000,
-      "max_quote": 115000
+      "name": "하이브리드 (1.6~2.0 HEV)",
+      "models": "니로 · 아반떼 · 쏘나타 · K5 HEV",
+      "metals": "Pd 2.2g + Rh 0.50g",
+      "min_quote": 208000,
+      "max_quote": 240000
     },
     {
       "id": "dpf",
-      "name": "디젤 DPF (포터2·봉고3·싼타페 CRDi)",
-      "pd_g": 0.0,
-      "rh_g": 0.1,
-      "pt_g": 3.8,
-      "min_quote": 140000,
-      "max_quote": 170000
+      "name": "디젤 DPF (2.0~2.5 CRDi)",
+      "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어",
+      "metals": "Pt 3.8g 집중 함유",
+      "min_quote": 209000,
+      "max_quote": 241000
     }
   ]
 }

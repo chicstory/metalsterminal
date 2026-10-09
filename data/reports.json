@@ -11,13 +11,13 @@
     "article_url": "articles/2026-10-10-steel-scrap.html",
     "summary_3lines": [
       "국내 주요 전기로 제강사들이 마당 재고 바닥으로 고철 납품 단가를 kg당 10원 인상했습니다.",
-      "생철A 기준 제강사 도착도 456원, 중량A는 409원으로 상향 조정되었습니다.",
+      "생철A 기준 제강사 도착도 455원, 중량A는 411원으로 상향 조정되었습니다.",
       "야적장 물동량 유입을 유도하기 위한 특별 구매 인센티브가 이번 주말까지 적용됩니다."
     ],
     "sections": {
-      "current": "현대제철(인천·당진)과 동국제강(인천)이 10일 입고분부터 철스크랩 전 등급 구매 가격을 kg당 10원 인상 고시했습니다. 이에 따라 제강사 납품 기준 생철A는 456원/kg, 중량A는 409원/kg, 경량A는 355원/kg으로 상향 조정되었습니다.",
+      "current": "현대제철(인천·당진)과 동국제강(인천)이 10일 입고분부터 철스크랩 전 등급 구매 가격을 kg당 10원 인상 고시했습니다. 이에 따라 제강사 납품 기준 생철A는 455원/kg, 중량A는 411원/kg, 경량A는 356원/kg으로 상향 조정되었습니다.",
       "stocks": "추석 연휴 이후 제강사들의 철근 감산에도 불구하고 국내 야적장들의 출하 기피로 제강사 야드 재고가 안전 재고 일수(7일) 밑으로 떨어졌습니다. 남부권 대한제강·한국철강 역시 단가 인상 압박을 받고 있습니다.",
-      "macro": "글로벌 수입 고철(터키·일본 H2) 오퍼 가격이 톤당 370달러 중반에서 횡보하는 가운데, 원달러 환율 상승으로 수입산 고철 조달 부담이 커지자 국내산 고철 구매 비중을 늘리는 전략으로 풀이됩니다.",
+      "macro": "글로벌 수입 고철(터키·일본 H2) 오퍼 가격이 톤당 370달러 선에서 횡보하는 가운데, 원달러 환율(1342.6원) 상승으로 수입산 조달 부담이 커지자 국내산 고철 구매 비중을 늘리는 전략으로 풀이됩니다.",
       "outlook": "단기 1~2주간은 제강사의 추가 인상 눈치보기가 이어질 전망입니다. 마당에 묵혀둔 중량/생철 재고가 있다면 이번 특별 인상 단가 구간에 1차 분할 납품을 추천합니다."
     },
     "disclaimer": "본 제강사 구매단가 정보는 주요 제강사 납품 협력사 및 업계 공시 기준이며, 공장별 하역 감가율 및 결제 조건에 따라 차이가 있을 수 있습니다.",
@@ -43,18 +43,18 @@
     "category": "구리",
     "type": "[차트분석]",
     "tagClass": "report",
-    "title": "런던 창고 재고 1,425톤 급감과 국내 A동 스크랩 가격 전망",
+    "title": "런던 LME 창고 재고 1,425톤 급감과 국내 A동 스크랩 가격 전망",
     "date": "10-10",
     "author": "MetalsTerminal Desk",
     "replies": 7,
     "article_url": "articles/2026-10-10-copper.html",
     "summary_3lines": [
       "외국 대형 가공업체들이 런던 LME 창고에서 구리를 1,425톤 출고해갔습니다.",
-      "창고에 남은 즉시 반출 가능한 구리가 줄어들면서 종가가 톤당 $9,685로 반등했습니다.",
-      "급전이 필요하지 않다면 마당에 쌓인 깨끗한 A동은 며칠 더 쥐고 계셔도 좋습니다."
+      "창고 즉시 반출 가능 물량이 줄어들면서 국내 기준원가가 19,590원/kg으로 반등했습니다.",
+      "마당 A동(밀베리) 현장 추정가는 kg당 12,342원 선으로 강보합세입니다."
     ],
     "sections": {
-      "current": "오늘 LME 전기동 종가는 톤당 $9,685 (+0.6%)로 마감했습니다. 원달러 환율 1,356.2원을 적용한 국내 원화 기준원가는 19,590원/kg이며, 현장 A동(밀베리) 매입 추정가는 kg당 12,300원 선을 형성하고 있습니다.",
+      "current": "오늘 LME 전기동 종가는 톤당 $9,685 (+0.6%)로 마감했습니다. 원달러 환율 1342.6원을 적용한 국내 원화 기준원가는 19,590원/kg이며, 현장 A동(밀베리) 매입 추정가는 kg당 12,342원 선을 형성하고 있습니다.",
       "stocks": "LME 총 재고는 301,250톤으로 전일 대비 -1,425톤 감소했습니다. 특히 즉시 출고를 신청한 '취소영수증(Cancelled Warrants)' 비중이 21.4%로 올라서며 실물 인도 대기 수요가 집중되고 있습니다.",
       "macro": "미국 기준금리 추가 인하 기대감으로 달러화 인덱스가 안정세를 보이고 있으며, 중국 지방정부의 전력망 투자 확대로 전력 케이블용 전기동 수요가 완만하게 회복되고 있습니다.",
       "outlook": "단기 1~2주는 톤당 $9,500 ~ $9,800 박스권 내 완만한 강보합세가 예상됩니다. 마당 상차 기준 A동은 급하게 던지기보다는 이번 주 후반까지 추이를 지켜보시는 전략을 추천합니다."
@@ -63,17 +63,15 @@
     "rss_sources": [
       {
         "media": "Mining.com",
-        "title": "Copper prices bounce as warehouse warrants get cancelled in Europe",
-        "date": "2026-10-10",
-        "url": "https://www.mining.com/markets/copper",
-        "snippet": "LME copper stocks recorded sharp withdrawals amid physical demand."
+        "title": "Lithium Triangle’s vast resources face unsolved extraction hurdles",
+        "url": "https://www.mining.com/lithium-triangles-vast-resources-face-unsolved-extraction-hurdles/",
+        "snippet": "A review of 43 Andean salt flats highlights how brine chemistry and water availability shape lithium"
       },
       {
-        "media": "Reuters Commodities",
-        "title": "China grid investment supports refined copper consumption",
-        "date": "2026-10-10",
-        "url": "https://www.reuters.com/markets/commodities",
-        "snippet": "State grid procurement offset property sector weakness in Asia."
+        "media": "Mining.com",
+        "title": "EU puts KGHM’s $2.4B copper projects on fast track",
+        "url": "https://www.mining.com/eu-puts-kghms-2-4b-copper-projects-on-fast-track/",
+        "snippet": "Brussels gives two Polish investments priority designation as Europe seeks to expand domestic metals"
       }
     ]
   },
@@ -88,12 +86,12 @@
     "replies": 5,
     "article_url": "articles/2026-10-10-catalyst.html",
     "summary_3lines": [
-      "남아공 주요 광산 공급 지연으로 존슨매티 로듐이 1g당 206,000원에 안착했습니다.",
+      "남아공 주요 광산 공급 지연으로 존슨매티 로듐이 1g당 403,326원에 안착했습니다.",
       "팔라듐(44,500원)과 백금(43,400원)도 바닥을 다지며 동반 반등세입니다.",
-      "승용 삼원촉매 및 포터 DPF 실무 매입 견적이 개당 1만~2만 원 상향 조정되었습니다."
+      "LPi 촉매 매입 견적이 개당 289,000원 ~ 334,000원으로 상향 조정되었습니다."
     ],
     "sections": {
-      "current": "존슨매티(JM) 기준 로듐 가격은 온스당 $4,750 (1g당 206,000원)으로 강세를 유지 중입니다. 팔라듐은 $1,020/oz (44,500원/g), 백금은 $995/oz (43,400원/g) 선입니다.",
+      "current": "존슨매티(JM) 기준 로듐 가격은 온스당 $4,750 (1g당 403,326원)으로 강세를 유지 중입니다. 팔라듐은 $1,020/oz, 백금은 $995/oz 선입니다.",
       "stocks": "남아프리카공화국 PGM 광산의 전력난 및 설비 보수로 1차 제련 공급이 타이트한 상태이며, 유럽 자동차 배출가스 정화용 촉매 교체 수요가 견조합니다.",
       "macro": "내연기관차 및 하이브리드(HEV) 차량의 글로벌 판매 비중이 여전히 75% 이상을 유지하면서 PGM 귀금속 수요의 절벽 우려가 해소되었습니다.",
       "outlook": "가솔린 LPi 촉매(로듐 다량 함유)와 포터 DPF(백금 함유)는 현재 단가가 연중 최상단 부근이므로 분할 매각을 진행하기에 매우 유리한 타이밍입니다."

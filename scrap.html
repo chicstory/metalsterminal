@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>스크랩 &amp; 폐촉매 전용관 - MetalsTerminal</title>
-    <meta name="description" content="철스크랩 5대 등급, 비철금속 수율표 및 차종·엔진별 순정 폐촉매 실무 매입 견적기">
+    <meta name="description" content="철스크랩 5대 등급, 비철금속 수율표 및 차종·엔진별 순정 폐촉매 실무 매입 단가표">
     <link rel="stylesheet" href="style.css">
     <style>
         .scrap-subnav {
@@ -111,17 +111,194 @@
         </div>
     </aside>
 
+    <!-- 상단 퀵 앵커: 철스크랩 -> 구리 -> 알루미늄/서스 -> 폐촉매 (최하단) -->
     <div class="scrap-subnav">
-        <a href="#sec-catalyst" class="scrap-chip active">🚗 폐촉매 실무견적</a>
-        <a href="#sec-iron" class="scrap-chip">🏗️ 철스크랩 5등급</a>
+        <a href="#sec-iron" class="scrap-chip active">🏗️ 철스크랩 5등급</a>
         <a href="#sec-copper" class="scrap-chip">🥉 구리 스크랩</a>
         <a href="#sec-al" class="scrap-chip">🥫 알루미늄·서스</a>
+        <a href="#sec-catalyst" class="scrap-chip">🚗 폐촉매 단가표</a>
     </div>
 
     <main class="mobile-container">
 
         <!-- ============================================================
-             [1] 🚗 차종·엔진별 순정 폐촉매 단가표 (테이블)
+             [1] 🏗️ 철스크랩 5대 등급 수율표
+             ============================================================ -->
+        <section class="section-box" id="sec-iron">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator blue"></span>
+                    <h2>🏗️ 철스크랩 5대 등급 단가표</h2>
+                </div>
+                <span class="header-badge">제강사 도착도 / 마당 소매</span>
+            </div>
+
+            <table class="scrap-table">
+                <thead>
+                    <tr>
+                        <th>품목 및 규격</th>
+                        <th style="text-align:right;">제강사 도매</th>
+                        <th style="text-align:right;">마당 소매 (참고)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="st-name">
+                            <strong>생철 A</strong>
+                            <span>프레스 신품 강판 (순도 99%↑)</span>
+                        </td>
+                        <td class="st-price"><strong>456</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>410</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>중량 A</strong>
+                            <span>두께 6mm 이상 H빔·철골·레일</span>
+                        </td>
+                        <td class="st-price"><strong>409</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>368</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>중량 B</strong>
+                            <span>두께 3~6mm 기계류·배관 파이프</span>
+                        </td>
+                        <td class="st-price"><strong>377</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>340</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>경량 A</strong>
+                            <span>두께 1~3mm 가전외판·드럼통</span>
+                        </td>
+                        <td class="st-price"><strong>355</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>320</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>선반설 A</strong>
+                            <span>절삭칩·선반 가공 찌꺼기</span>
+                        </td>
+                        <td class="st-price"><strong>332</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>300</strong> <span>원/kg</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ============================================================
+             [2] 🥉 구리 & 신주 스크랩 수율표
+             ============================================================ -->
+        <section class="section-box" id="sec-copper">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator amber"></span>
+                    <h2>🥉 구리 &amp; 황동(신주) 스크랩</h2>
+                </div>
+                <span class="header-badge">LME 전기동 19,590원 연동</span>
+            </div>
+
+            <table class="scrap-table">
+                <thead>
+                    <tr>
+                        <th>품목 및 상태</th>
+                        <th style="text-align:right;">추정 매입단가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="st-name">
+                            <strong>A동 (밀베리)</strong>
+                            <span>피복 벗긴 굵은 단선 (순도 99.9%)</span>
+                        </td>
+                        <td class="st-price"><strong style="color:var(--dossa-red);">12,300</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>상동 (중품)</strong>
+                            <span>모터 분해선, 변압기 코일동</span>
+                        </td>
+                        <td class="st-price"><strong>11,400</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>파동 (하품)</strong>
+                            <span>주석도금선, 얇은 에나멜선, 혼합동</span>
+                        </td>
+                        <td class="st-price"><strong>10,100</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>황동 노베 (신주)</strong>
+                            <span>판재 스크랩 (Cu 65% + Zn 35%)</span>
+                        </td>
+                        <td class="st-price"><strong>7,800</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>황동 절봉 (신주)</strong>
+                            <span>황동 봉 절삭 부스러기</span>
+                        </td>
+                        <td class="st-price"><strong>7,200</strong> <span>원/kg</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ============================================================
+             [3] 🥫 알루미늄 & 스테인리스 스크랩
+             ============================================================ -->
+        <section class="section-box" id="sec-al">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator green"></span>
+                    <h2>🥫 알루미늄 &amp; 서스 (STS)</h2>
+                </div>
+                <span class="header-badge">제련소 직납 기준</span>
+            </div>
+
+            <table class="scrap-table">
+                <thead>
+                    <tr>
+                        <th>품목 및 상태</th>
+                        <th style="text-align:right;">추정 매입단가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="st-name">
+                            <strong>알루미늄 샷시</strong>
+                            <span>창틀 프로파일 (페인트/부속 제거)</span>
+                        </td>
+                        <td class="st-price"><strong>2,500</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>자동차 알루미늄 휠</strong>
+                            <span>납추/타이어 완전 분리 휠</span>
+                        </td>
+                        <td class="st-price"><strong>2,200</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>알루미늄 캔 (UBC)</strong>
+                            <span>음료수 캔 압축 베일</span>
+                        </td>
+                        <td class="st-price"><strong>1,800</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>스테인리스 STS 304 (서스)</strong>
+                            <span>자석 안 붙는 니켈 8% 함유 정품</span>
+                        </td>
+                        <td class="st-price"><strong>1,850</strong> <span>원/kg</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ============================================================
+             [4] 🚗 차종·엔진별 순정 폐촉매 단가표 (최하단 배치)
              ============================================================ -->
         <section class="section-box" id="sec-catalyst">
             <div class="section-header">
@@ -198,182 +375,6 @@
             </div>
         </section>
 
-        <!-- ============================================================
-             [2] 🏗️ 철스크랩 5대 등급 수율표
-             ============================================================ -->
-        <section class="section-box" id="sec-iron">
-            <div class="section-header">
-                <div class="sh-left">
-                    <span class="header-indicator blue"></span>
-                    <h2>🏗️ 철스크랩 5대 등급 단가표</h2>
-                </div>
-                <span class="header-badge">제강사 도착도 / 마당 소매</span>
-            </div>
-
-            <table class="scrap-table">
-                <thead>
-                    <tr>
-                        <th>품목 및 규격</th>
-                        <th style="text-align:right;">제강사 도매</th>
-                        <th style="text-align:right;">마당 소매 (참고)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="st-name">
-                            <strong>생철 A</strong>
-                            <span>프레스 신품 강판 (순도 99%↑)</span>
-                        </td>
-                        <td class="st-price"><strong>456</strong> <span>원/kg</span></td>
-                        <td class="st-price"><strong>410</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>중량 A</strong>
-                            <span>두께 6mm 이상 H빔·철골·레일</span>
-                        </td>
-                        <td class="st-price"><strong>409</strong> <span>원/kg</span></td>
-                        <td class="st-price"><strong>368</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>중량 B</strong>
-                            <span>두께 3~6mm 기계류·배관 파이프</span>
-                        </td>
-                        <td class="st-price"><strong>377</strong> <span>원/kg</span></td>
-                        <td class="st-price"><strong>340</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>경량 A</strong>
-                            <span>두께 1~3mm 가전외판·드럼통</span>
-                        </td>
-                        <td class="st-price"><strong>355</strong> <span>원/kg</span></td>
-                        <td class="st-price"><strong>320</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>선반설 A</strong>
-                            <span>절삭칩·선반 가공 찌꺼기</span>
-                        </td>
-                        <td class="st-price"><strong>332</strong> <span>원/kg</span></td>
-                        <td class="st-price"><strong>300</strong> <span>원/kg</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- ============================================================
-             [3] 🥉 구리 & 신주 스크랩 수율표
-             ============================================================ -->
-        <section class="section-box" id="sec-copper">
-            <div class="section-header">
-                <div class="sh-left">
-                    <span class="header-indicator amber"></span>
-                    <h2>🥉 구리 &amp; 황동(신주) 스크랩</h2>
-                </div>
-                <span class="header-badge">LME 전기동 19,590원 연동</span>
-            </div>
-
-            <table class="scrap-table">
-                <thead>
-                    <tr>
-                        <th>품목 및 상태</th>
-                        <th style="text-align:right;">추정 매입단가</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="st-name">
-                            <strong>A동 (밀베리)</strong>
-                            <span>피복 벗긴 굵은 단선 (순도 99.9%)</span>
-                        </td>
-                        <td class="st-price"><strong>12,300</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>상동 (중품)</strong>
-                            <span>모터 분해선, 변압기 코일동</span>
-                        </td>
-                        <td class="st-price"><strong>11,400</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>파동 (하품)</strong>
-                            <span>주석도금선, 얇은 에나멜선, 혼합동</span>
-                        </td>
-                        <td class="st-price"><strong>10,100</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>황동 노베 (신주)</strong>
-                            <span>판재 스크랩 (Cu 65% + Zn 35%)</span>
-                        </td>
-                        <td class="st-price"><strong>7,800</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>황동 절봉 (신주)</strong>
-                            <span>황동 봉 절삭 부스러기</span>
-                        </td>
-                        <td class="st-price"><strong>7,200</strong> <span>원/kg</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- ============================================================
-             [4] 🥫 알루미늄 & 스테인리스 스크랩
-             ============================================================ -->
-        <section class="section-box" id="sec-al">
-            <div class="section-header">
-                <div class="sh-left">
-                    <span class="header-indicator green"></span>
-                    <h2>🥫 알루미늄 &amp; 서스 (STS)</h2>
-                </div>
-                <span class="header-badge">제련소 직납 기준</span>
-            </div>
-
-            <table class="scrap-table">
-                <thead>
-                    <tr>
-                        <th>품목 및 상태</th>
-                        <th style="text-align:right;">추정 매입단가</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="st-name">
-                            <strong>알루미늄 샷시</strong>
-                            <span>창틀 프로파일 (페인트/부속 제거)</span>
-                        </td>
-                        <td class="st-price"><strong>2,500</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>자동차 알루미늄 휠</strong>
-                            <span>납추/타이어 완전 분리 휠</span>
-                        </td>
-                        <td class="st-price"><strong>2,200</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>알루미늄 캔 (UBC)</strong>
-                            <span>음료수 캔 압축 베일</span>
-                        </td>
-                        <td class="st-price"><strong>1,800</strong> <span>원/kg</span></td>
-                    </tr>
-                    <tr>
-                        <td class="st-name">
-                            <strong>스테인리스 STS 304 (서스)</strong>
-                            <span>자석 안 붙는 니켈 8% 함유 정품</span>
-                        </td>
-                        <td class="st-price"><strong>1,850</strong> <span>원/kg</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
     </main>
 
     <footer class="dossa-footer">
@@ -395,8 +396,5 @@
         </div>
     </footer>
 
-    <script>
-        // 정적 테이블 렌더링 유지
-    </script>
 </body>
 </html>
