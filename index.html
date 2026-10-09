@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MetalsTerminal - 국제 원자재 시세 &amp; 데이터 포털</title>
-    <meta name="description" content="LME, NYMEX, Johnson Matthey 공식 고시 기준 12대 철·비철·귀금속(백금/팔라듐/로듐) 실시간 원화 시세">
+    <meta name="description" content="LME, NYMEX, Johnson Matthey 공식 고시 기준 12대 철·비철·귀금속(백금/팔라듐/로듐) 실시간 원화 시세 및 스크랩 단가">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,20 +19,20 @@
                 <span class="logo-accent">⚡</span> METALS<strong>TERMINAL</strong>
             </a>
             <div class="dossa-header-right">
-                <a href="calc.html" class="btn-calc-nav" title="계산기">
-                    <span>📱</span> 계산기
-                </a>
+                <button class="btn-write-header" onclick="openWriteModal('market')">
+                    + 글쓰기
+                </button>
             </div>
         </div>
 
-        <!-- 2. 도싸식 4대 서브 메뉴 탭 -->
+        <!-- 2. 확정 메뉴 순서: 국제시세 - 스크랩시세 - 리포트 - 자유게시판 - 직거래 -->
         <nav class="dossa-subnav">
             <div class="container dossa-subnav-inner">
-                <a href="#section-price" class="nav-tab active">국제시세</a>
+                <a href="price.html" class="nav-tab active">국제시세</a>
+                <a href="scrap.html" class="nav-tab">스크랩시세</a>
                 <a href="#section-report" class="nav-tab">리포트</a>
-                <a href="#section-market" class="nav-tab">직거래장터</a>
                 <a href="#section-free" class="nav-tab">자유게시판</a>
-                <a href="calc.html" class="nav-tab nav-highlight">계산기</a>
+                <a href="#section-market" class="nav-tab">직거래</a>
             </div>
         </nav>
     </header>
@@ -53,15 +53,15 @@
     <main class="mobile-container">
 
         <!-- ============================================================
-             [1] 국제 시세 (철 ➔ 비철 ➔ 귀금속 순차 나열)
+             [1] 국제시세 요약 (철 ➔ 비철 ➔ 귀금속 순차 나열)
              ============================================================ -->
         <section class="section-box" id="section-price">
             <div class="section-header price-header">
                 <div class="sh-left">
                     <span class="header-indicator red"></span>
-                    <h2>국제 시세 (Global Benchmark)</h2>
+                    <h2>국제시세 (Global Benchmark)</h2>
                 </div>
-                <span class="header-source-note">LME · NYMEX · JM 기준</span>
+                <a href="price.html" class="header-link-all">전체보기 &gt;</a>
             </div>
 
             <!-- 시세 카드 리스트 (철 ➔ 비철 ➔ 귀금속 3대 섹션) -->
@@ -70,18 +70,25 @@
             </div>
 
             <div class="price-notice-footer">
-                <p>※ LME, NYMEX, Johnson Matthey 공식 고시 종가 및 실시간 원달러 환율(하나은행 전신환매도율) 적용 단가입니다. (부가가치세 별도)</p>
+                <p>※ LME, NYMEX, Johnson Matthey 공식 고시 종가 및 실시간 원달러 환율 적용 단가입니다. (VAT 별도)</p>
             </div>
         </section>
 
+        <!-- 스크랩시세 & 폐촉매 퀵 배너 -->
+        <div class="sponsor-mini-banner" style="background:#f8fafc; border-color:#cbd5e1;">
+            <span class="sb-tag" style="background:#0f172a; color:#fff;">현장 수율</span>
+            <div class="sb-text"><strong>철스크랩 5등급 · 비철 수율 · 폐촉매 엔진별 견적</strong> 확인</div>
+            <a href="scrap.html" class="sb-tel" style="background:#2563eb; color:#fff;">바로가기 &gt;</a>
+        </div>
+
         <!-- ============================================================
-             [2] 리포트 (차트 분석, 재고 상황, 거시경제 심층 아티클)
+             [2] 리포트 (국내 제강사 고철 이슈 & LME 차트 심층 분석)
              ============================================================ -->
         <section class="section-box" id="section-report">
             <div class="section-header">
                 <div class="sh-left">
                     <span class="header-indicator amber"></span>
-                    <h2>오늘의 리포트 (차트 &amp; 심층분석)</h2>
+                    <h2>오늘의 리포트 &amp; 제강사 이슈</h2>
                 </div>
                 <span class="header-badge">매일 9시 발행</span>
             </div>
@@ -98,23 +105,7 @@
         </div>
 
         <!-- ============================================================
-             [3] 직거래 장터 (비철·고철·폐촉매 통합 최신 매물)
-             ============================================================ -->
-        <section class="section-box" id="section-market">
-            <div class="section-header">
-                <div class="sh-left">
-                    <span class="header-indicator green"></span>
-                    <h2>직거래 장터 (팝니다·삽니다)</h2>
-                </div>
-                <button class="btn-header-write" onclick="openWriteModal('market')">+ 매물등록</button>
-            </div>
-            <ul class="dossa-board-list" id="list-market">
-                <!-- app.js 동적 렌더링 -->
-            </ul>
-        </section>
-
-        <!-- ============================================================
-             [4] 자유게시판 (현장 소통, 노하우, 질문)
+             [3] 자유게시판 (현장 소통, 노하우, 질문)
              ============================================================ -->
         <section class="section-box" id="section-free">
             <div class="section-header">
@@ -129,18 +120,36 @@
             </ul>
         </section>
 
+        <!-- ============================================================
+             [4] 직거래 (비철·고철·폐촉매 통합 최신 매물)
+             ============================================================ -->
+        <section class="section-box" id="section-market">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator green"></span>
+                    <h2>직거래 (팝니다·삽니다)</h2>
+                </div>
+                <button class="btn-header-write" onclick="openWriteModal('market')">+ 매물등록</button>
+            </div>
+            <ul class="dossa-board-list" id="list-market">
+                <!-- app.js 동적 렌더링 -->
+            </ul>
+        </section>
+
     </main>
 
     <!-- 푸터 (도싸식 미니멀 블랙 푸터) -->
     <footer class="dossa-footer">
         <div class="container footer-links">
-            <a href="#section-price">국제시세</a>
+            <a href="price.html">국제시세</a>
             <span class="sep">|</span>
-            <a href="calc.html">계산기</a>
-            <span class="sep">|</span>
-            <a href="#section-market">직거래장터</a>
+            <a href="scrap.html">스크랩시세</a>
             <span class="sep">|</span>
             <a href="#section-report">리포트</a>
+            <span class="sep">|</span>
+            <a href="#section-free">자유게시판</a>
+            <span class="sep">|</span>
+            <a href="#section-market">직거래</a>
             <span class="sep">|</span>
             <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP ▲</a>
         </div>
