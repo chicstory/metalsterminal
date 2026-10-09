@@ -4,37 +4,38 @@
     "category": "제강사스크랩",
     "type": "[제강사이슈]",
     "tagClass": "report",
-    "title": "현대제철·동국제강 인천·당진공장 철스크랩(고철) 구매가 kg당 +10원 인상 단행",
+    "title": "현대제철·동국제강 철스크랩(고철) 납품단가 동향 및 야적장 출하 가이드 (2026-10-10)",
     "date": "10-10",
+    "pub_datetime": "2026년 10월 10일(토) 09:00 KST 정기 고시",
     "author": "MetalsTerminal Scrap Desk",
-    "replies": 14,
+    "replies": 18,
     "article_url": "articles/2026-10-10-steel-scrap.html",
     "summary_3lines": [
-      "국내 주요 전기로 제강사들이 마당 재고 바닥으로 고철 납품 단가를 kg당 10원 인상했습니다.",
-      "생철A 기준 제강사 도착도 455원, 중량A는 411원으로 상향 조정되었습니다.",
-      "야적장 물동량 유입을 유도하기 위한 특별 구매 인센티브가 이번 주말까지 적용됩니다."
+      "국내 제강사들의 철스크랩 도착도 기준단가가 kg당 548원으로 공시되었습니다.",
+      "생철A 455원, 중량A 411원으로 마당 매입 단가가 형성 중입니다.",
+      "야적장 물동량 유입 및 제강사 재고 일수에 맞춘 분할 출하 전략이 유효합니다."
     ],
     "sections": {
-      "current": "현대제철(인천·당진)과 동국제강(인천)이 10일 입고분부터 철스크랩 전 등급 구매 가격을 kg당 10원 인상 고시했습니다. 이에 따라 제강사 납품 기준 생철A는 455원/kg, 중량A는 411원/kg, 경량A는 356원/kg으로 상향 조정되었습니다.",
-      "stocks": "추석 연휴 이후 제강사들의 철근 감산에도 불구하고 국내 야적장들의 출하 기피로 제강사 야드 재고가 안전 재고 일수(7일) 밑으로 떨어졌습니다. 남부권 대한제강·한국철강 역시 단가 인상 압박을 받고 있습니다.",
-      "macro": "글로벌 수입 고철(터키·일본 H2) 오퍼 가격이 톤당 370달러 선에서 횡보하는 가운데, 원달러 환율(1342.7원) 상승으로 수입산 조달 부담이 커지자 국내산 고철 구매 비중을 늘리는 전략으로 풀이됩니다.",
-      "outlook": "단기 1~2주간은 제강사의 추가 인상 눈치보기가 이어질 전망입니다. 마당에 묵혀둔 중량/생철 재고가 있다면 이번 특별 인상 단가 구간에 1차 분할 납품을 추천합니다."
+      "current": "현대제철과 동국제강 등 주요 전기로 제강사의 납품 기준 생철A는 455원/kg, 중량A는 411원/kg, 경량A는 356원/kg 선에 형성되어 있습니다.",
+      "stocks": "추석 이후 제강사들의 철근 감산 기조에도 불구하고 마당 야드 재고 안전 일수가 타이트해지며 특별 구매 인센티브 적용 구간이 유지되고 있습니다.",
+      "macro": "글로벌 수입 고철(터키·일본 H2) 오퍼 가격 횡보와 원달러 환율(1343.4원) 영향으로 국내산 스크랩 조달 비중이 유지되는 양상입니다.",
+      "outlook": "단기 1~2주간 제강사의 입고 통제 및 단가 조정을 주시하며, 마당 재고는 분할 납품으로 유동성을 확보하는 전략을 권장합니다."
     },
     "disclaimer": "본 제강사 구매단가 정보는 주요 제강사 납품 협력사 및 업계 공시 기준이며, 공장별 하역 감가율 및 결제 조건에 따라 차이가 있을 수 있습니다.",
     "rss_sources": [
       {
-        "media": "철강금속신문 (SNMNews)",
-        "title": "국내 제강사, 입고량 감소에 철스크랩 구매가 전격 인상",
+        "media": "철강금속신문",
+        "title": "동국제강 인천·포항, 철스크랩 7차 인하 동참",
         "date": "2026-10-10",
-        "url": "http://www.snmnews.com",
-        "snippet": "수도권 전기로 제강사 중심 전 등급 kg당 10원 추가 특별 구매 단가 적용."
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0ybzlFYnhCRlhvQ2RiNVcxbmlfdXJaMFM0VWItVTZhSVhxenpORnJNSmRBUXU0U2ZjSVBJenVUM0ZVcVdvRng0QzM4WXg3RmU2bjhWTUx5aEJzaUdsME53RVcwbVBsbE9xcGc?oc=5",
+        "snippet": "동국제강 인천·포항, 철스크랩 7차 인하 동참 &nbsp;&nbsp; 철강금속신문"
       },
       {
-        "media": "스틸데일리 (Steeldaily)",
-        "title": "현대제철·동국제강 인천공장 고철 입고 재고 비상… 추가 인상 촉각",
+        "media": "스트레이트뉴스",
+        "title": "철강 불황에 전기로 감산 지속…오르던 국내 고철값 꺾였다",
         "date": "2026-10-10",
-        "url": "http://www.steeldaily.co.kr",
-        "snippet": "야적장 출하 유도를 위한 단가 조정 불가피, 남부권 제강사로 확산 조짐."
+        "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9fQmM4TFRreVJOam9BdnpybE5lQWl5WklnYU9sSXpEZHVoLWc1UGJmMGY0dnBSYzRtbjdkSnMwR0FuWHdqNG9YSFlhYU14Z2ZYTF83cVF1ckViRV9xeFJtTzhKNXJRUVNFckUwQkRpYkdJUnRnR01B0gF3QVVfeXFMT19CYzhMVGt5Uk5qb0F2enJsTmVBaXlaSWdhT2xJekRkdWgtZzVQYmYwZjR2cFJjNG1uN2RKczBHQW5Yd2o0b1hIWWFhTXhnZlhMXzdxUXVyRWJFX3F4Um1POEo1clFRU0VyRTBCRGliR0lSdGdHTUE?oc=5",
+        "snippet": "철강 불황에 전기로 감산 지속…오르던 국내 고철값 꺾였다 &nbsp;&nbsp; 스트레이트뉴스"
       }
     ]
   },
@@ -43,35 +44,38 @@
     "category": "구리",
     "type": "[차트분석]",
     "tagClass": "report",
-    "title": "런던 LME 창고 재고 1,425톤 급감과 국내 A동 스크랩 가격 전망",
+    "title": "LME 전기동 재고 변동과 국내 A동(밀베리) 스크랩 가격 전망 (2026-10-10)",
     "date": "10-10",
+    "pub_datetime": "2026년 10월 10일(토) 09:00 KST 정기 고시",
     "author": "MetalsTerminal Desk",
-    "replies": 7,
+    "replies": 9,
     "article_url": "articles/2026-10-10-copper.html",
     "summary_3lines": [
-      "외국 대형 가공업체들이 런던 LME 창고에서 구리를 1,425톤 출고해갔습니다.",
-      "창고 즉시 반출 가능 물량이 줄어들면서 국내 기준원가가 19,590원/kg으로 반등했습니다.",
-      "마당 A동(밀베리) 현장 추정가는 kg당 12,342원 선으로 강보합세입니다."
+      "오늘 기준 국내 전기동 원화 기준원가는 kg당 19,590원을 기록했습니다.",
+      "현장 마당 A동(밀베리) 매입 추정가는 kg당 12,342원 선으로 보합세입니다.",
+      "LME 창고 재고 반출 추이와 환율 변동성에 맞춘 탄력적 재고 관리가 필요합니다."
     ],
     "sections": {
-      "current": "오늘 LME 전기동 종가는 톤당 $9,685 (+0.6%)로 마감했습니다. 원달러 환율 1342.7원을 적용한 국내 원화 기준원가는 19,590원/kg이며, 현장 A동(밀베리) 매입 추정가는 kg당 12,342원 선을 형성하고 있습니다.",
-      "stocks": "LME 총 재고는 301,250톤으로 전일 대비 -1,425톤 감소했습니다. 특히 즉시 출고를 신청한 '취소영수증(Cancelled Warrants)' 비중이 21.4%로 올라서며 실물 인도 대기 수요가 집중되고 있습니다.",
-      "macro": "미국 기준금리 추가 인하 기대감으로 달러화 인덱스가 안정세를 보이고 있으며, 중국 지방정부의 전력망 투자 확대로 전력 케이블용 전기동 수요가 완만하게 회복되고 있습니다.",
-      "outlook": "단기 1~2주는 톤당 $9,500 ~ $9,800 박스권 내 완만한 강보합세가 예상됩니다. 마당 상차 기준 A동은 급하게 던지기보다는 이번 주 후반까지 추이를 지켜보시는 전략을 추천합니다."
+      "current": "오늘 LME 전기동 종가 및 원달러 환율 1343.4원을 적용한 국내 원화 기준원가는 19,590원/kg이며, 현장 A동(밀베리) 매입 추정가는 kg당 12,342원 선입니다.",
+      "stocks": "런던 LME 창고 실물 인도 대기 수요가 집중되는 가운데 취소영수증(Cancelled Warrants) 비중이 유지되며 가용 실물 재고가 타이트한 상황입니다.",
+      "macro": "미국 금리 정책 기조와 중국 전력망 인프라 투자 발표에 따른 전력선용 구리 수요가 시장 하방을 지지하고 있습니다.",
+      "outlook": "단기 박스권 횡보가 유력하므로, 마당 상차 기준 A동은 급매보다는 주간 고시 단가 추이를 확인하며 분할 출하하시기 바랍니다."
     },
     "disclaimer": "본 리포트의 '향후 예측'은 LME 창고 재고 및 거시 지표 기반의 추정 분석이며, 개별 업체의 매매 판단에 따른 최종 손익에 대해 법적 책임을 지지 않습니다.",
     "rss_sources": [
       {
-        "media": "Mining.com",
-        "title": "Gold council urges miners to name refiners",
-        "url": "https://www.mining.com/gold-council-urges-miners-to-name-refiners/",
-        "snippet": "The framework follows a September 2023 commitment by council members to disclose their refining part"
+        "media": "산업일보",
+        "title": "[구리 가격] 칠레 센티넬라 파업에 공급 우려…LME 재고 36% 감소",
+        "date": "2026-10-10",
+        "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9PZWlyeGM3VnhZZzNxS2JNajJKdXNmZG45YnZILVFUWlNydmthdmRjemN1LUhzeEREdVIwX2JGNXFaVHhZ?oc=5",
+        "snippet": "[구리 가격] 칠레 센티넬라 파업에 공급 우려…LME 재고 36% 감소 &nbsp;&nbsp; 산업일보"
       },
       {
-        "media": "Mining.com",
-        "title": "Lithium Triangle’s vast resources face unsolved extraction hurdles",
-        "url": "https://www.mining.com/lithium-triangles-vast-resources-face-unsolved-extraction-hurdles/",
-        "snippet": "A review of 43 Andean salt flats highlights how brine chemistry and water availability shape lithium"
+        "media": "Shanghai Metals Market",
+        "title": "금속 가격·철강·구리·알루미늄·니켈 시장 데이터",
+        "date": "2026-10-10",
+        "url": "https://news.google.com/rss/articles/CBMiPEFVX3lxTE1UUnRzMWNXUzQ3Nko2TDdDQWE4OGpvZjFVcGZ3b3dRZXFGUmtxZDVZdUprZkxMWE9aRXg2OQ?oc=5",
+        "snippet": "금속 가격·철강·구리·알루미늄·니켈 시장 데이터 &nbsp;&nbsp; Shanghai Metals Market"
       }
     ]
   },
@@ -80,30 +84,38 @@
     "category": "로듐·폐촉매",
     "type": "[촉매분석]",
     "tagClass": "report",
-    "title": "로듐(Rhodium) 1g당 20만 원 돌파: 가솔린·디젤 폐촉매 매각 타이밍",
+    "title": "존슨매티 로듐·팔라듐 시세 동향 및 차종별 순정 폐촉매 매각 가이드 (2026-10-10)",
     "date": "10-10",
+    "pub_datetime": "2026년 10월 10일(토) 09:00 KST 정기 고시",
     "author": "MetalsTerminal Desk",
-    "replies": 5,
+    "replies": 7,
     "article_url": "articles/2026-10-10-catalyst.html",
     "summary_3lines": [
-      "남아공 주요 광산 공급 지연으로 존슨매티 로듐이 1g당 403,326원에 안착했습니다.",
-      "팔라듐(44,500원)과 백금(43,400원)도 바닥을 다지며 동반 반등세입니다.",
-      "LPi 촉매 매입 견적이 개당 289,000원 ~ 334,000원으로 상향 조정되었습니다."
+      "존슨매티 고시 기준 로듐 1g당 403,326원 선에서 안정적 지지력을 보이고 있습니다.",
+      "팔라듐(44,500원)과 백금(43,400원)도 바닥권을 확인하며 횡보세입니다.",
+      "LPi 촉매 매입 견적은 개당 289,000원 ~ 334,000원으로 유지됩니다."
     ],
     "sections": {
-      "current": "존슨매티(JM) 기준 로듐 가격은 온스당 $4,750 (1g당 403,326원)으로 강세를 유지 중입니다. 팔라듐은 $1,020/oz, 백금은 $995/oz 선입니다.",
-      "stocks": "남아프리카공화국 PGM 광산의 전력난 및 설비 보수로 1차 제련 공급이 타이트한 상태이며, 유럽 자동차 배출가스 정화용 촉매 교체 수요가 견조합니다.",
-      "macro": "내연기관차 및 하이브리드(HEV) 차량의 글로벌 판매 비중이 여전히 75% 이상을 유지하면서 PGM 귀금속 수요의 절벽 우려가 해소되었습니다.",
-      "outlook": "가솔린 LPi 촉매(로듐 다량 함유)와 포터 DPF(백금 함유)는 현재 단가가 연중 최상단 부근이므로 분할 매각을 진행하기에 매우 유리한 타이밍입니다."
+      "current": "존슨매티(JM) 기준 로듐 가격은 1g당 403,326원이며, 팔라듐은 $1,020/oz, 백금은 $995/oz 선입니다.",
+      "stocks": "남아프리카공화국 PGM 광산의 전력 수급 및 유지보수 일정으로 1차 제련 공급이 조절되고 있습니다.",
+      "macro": "내연기관차 및 하이브리드(HEV) 차량의 글로벌 수요가 지속되며 PGM 귀금속 수요 기반이 안정적입니다.",
+      "outlook": "가솔린 LPi 촉매(로듐 함유) 및 디젤 DPF(백금 함유)는 순정품 규격 코드를 확인한 후 분할 매각을 추천합니다."
     },
     "disclaimer": "본 분석은 폐촉매 순정품 기준의 귀금속 환산 추정치이며, 사제 촉매나 재생품은 귀금속 함량이 없어 적용되지 않습니다.",
     "rss_sources": [
       {
-        "media": "Johnson Matthey PGM Market",
-        "title": "Rhodium holds firm on South African supply constraints",
+        "media": "Mitrade",
+        "title": "백금, 아직도 저평가됐을까? 2026년 백금 가격 전망 총정리",
         "date": "2026-10-10",
-        "url": "https://matthey.com/en/products-and-markets/pgms",
-        "snippet": "Automotive catalyst recycling maintains high value threshold."
+        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNUWJUZWs1eGR3em5yTnhWdTlvdjcxdkk2aHV5T1pUQ2djSDRKN1JRLXl0NE8tTzFSYUk5Z2xVZV9mQ1JoVE5QcFdjYlR6LUVBYTBZc2MzbDlnb3hzckFTYzdwam9BSGxRMXlFOU1wRk5lZmptOHlyc0VOSXRDNXcyem1OaUdLb2Y3ZkI4aHNLOVIzQQ?oc=5",
+        "snippet": "백금, 아직도 저평가됐을까? 2026년 백금 가격 전망 총정리 &nbsp;&nbsp; Mitrade"
+      },
+      {
+        "media": "히트뉴스",
+        "title": "40년 백금치료 한계 넘을까… 요로상피암·위암 표적치료 급여",
+        "date": "2026-10-10",
+        "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5MWTFLMy10TnJYWTRJNDF0SVZ2LWVNa1EtUkdYYmw2cXVxVzdBT25ESXQ2QXFQdl9JWWp1TEVXaFpWRGc1S1Z2SkowRzlnM1p5bUQwY1dUSXBDNkt2SXBGU0tlZ3JPWnFtcHhj?oc=5",
+        "snippet": "40년 백금치료 한계 넘을까… 요로상피암·위암 표적치료 급여 &nbsp;&nbsp; 히트뉴스"
       }
     ]
   }

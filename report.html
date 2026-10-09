@@ -228,7 +228,7 @@
                 card.innerHTML = `
                     <div class="rc-header">
                         <span class="rc-tag ${tagClass}">${rep.type || '[리포트]'}</span>
-                        <span class="rc-date">${rep.date} 발행</span>
+                        <span class="rc-date">📅 ${rep.pub_datetime || rep.date + ' 발행'}</span>
                     </div>
                     <h3 class="rc-title">${rep.title}</h3>
                     <div class="rc-summary-box">
