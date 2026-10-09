@@ -263,6 +263,82 @@ def fetch_mining_rss_articles():
         ]
     return articles
 
+def call_ai_article_generator(topic_name, prompt_details, default_fallback):
+    """Gemini API (1순위) -> 로컬 Ollama gemma4:12b-it-qat (2순위) -> 팩트 템플릿 (3순위) 자동 분석 기사 생성"""
+    system_prompt = f"""당신은 원자재·비철금속 시장 및 국내 제강사(현대제철·동국제강) 고철·스크랩 유통 전문 수석 수석 애널리스트입니다.
+아래 제공된 팩트 데이터를 바탕으로 비철·고철 야적장 사장님과 실무자를 위한 [오늘의 심층 분석 리포트]를 작성해주세요.
+
+[분석 대상]: {topic_name}
+[팩트 데이터]:
+{prompt_details}
+
+[작성 요구 규칙]:
+1. 상투적인 인사말, 해시태그를 일체 배제하고 철저히 '실무 팩트'와 '현장 매매 가이드'에 집중하십시오.
+2. 반드시 아래 JSON 형식으로만 응답하십시오 (마크다운 코드블록 없이 순수 JSON):
+{{
+  "summary_3lines": ["첫 번째 핵심 요약 한 줄", "두 번째 핵심 요약 한 줄", "세 번째 핵심 요약 한 줄"],
+  "section_current": "1. 현재 상황 설명 (국내외 시세 단가 및 변동 팩트)",
+  "section_stocks": "2. 재고 상황 설명 (LME 창고 재고 또는 국내 제강사 야적장 입고 동향)",
+  "section_macro": "3. 거시경제 및 정책 설명 (환율, 금리, 중국/미국 경기 등)",
+  "section_outlook": "4. 향후 예측 및 현장 가이드 (마당 사장님들을 위한 1~2주 출하/보유 타이밍 실무 조언)"
+}}
+"""
+    # 1. Google Gemini API 우선 (GEMINI_API_KEY 있을 때)
+    gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if gemini_key:
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_key}"
+            payload = {
+                "contents": [{"parts": [{"text": system_prompt}]}],
+                "generationConfig": {"temperature": 0.2, "maxOutputTokens": 1000}
+            }
+            req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                res_data = json.loads(resp.read().decode("utf-8"))
+                text = res_data["candidates"][0]["content"]["parts"][0]["text"]
+                parsed = parse_ai_json(text)
+                if parsed:
+                    print(f"    -> [성공] Google Gemini Flash AI 심층 분석 기사 생성 완료! ({topic_name})")
+                    return parsed
+        except Exception as e:
+            print(f"    [AI 안내] Gemini API 호출 실패 ({e}) -> 로컬 Ollama 시도")
+
+    # 2. 로컬 Ollama gemma4:12b-it-qat Fallback
+    try:
+        url = "http://localhost:11434/api/generate"
+        payload = {
+            "model": "gemma4:12b-it-qat",
+            "prompt": system_prompt,
+            "stream": False,
+            "options": {"temperature": 0.2}
+        }
+        req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            res_data = json.loads(resp.read().decode("utf-8"))
+            text = res_data.get("response", "")
+            parsed = parse_ai_json(text)
+            if parsed:
+                print(f"    -> [성공] 로컬 Ollama (gemma4:12b-it-qat) AI 심층 분석 기사 생성 완료! ({topic_name})")
+                return parsed
+    except Exception as e:
+        print(f"    [AI 안내] Ollama 연결 불가 ({e}) -> 고품질 팩트 기반 규칙 엔진 적용")
+
+    return default_fallback
+
+def parse_ai_json(text):
+    """AI 응답 텍스트에서 JSON 추출 및 검증"""
+    try:
+        text = text.strip()
+        # 마크다운 코드블록 제거
+        match = re.search(r"\{.*\}", text, re.DOTALL)
+        if match:
+            data = json.loads(match.group(0))
+            if "summary_3lines" in data and "section_current" in data:
+                return data
+    except Exception:
+        pass
+    return None
+
 def generate_reports_and_articles(prices_data, scrap_data):
     """4대 챕터 정형 리포트 및 정적 아티클 발행"""
     print("\n📰 [Step 3/3] 국내 제강사 고철 이슈 & LME 차트 분석 리포트 발행 중...")
@@ -283,6 +359,34 @@ def generate_reports_and_articles(prices_data, scrap_data):
             elif item["key"] == "iron_scrap": steel_price = item["krw_price"]
             elif item["key"] == "rhodium": rhodium_price = item["krw_price"]
 
+    # AI 심층 분석 기사 생성 (1. 제강사 고철 이슈)
+    steel_fallback = {
+        "summary_3lines": [
+            "국내 주요 전기로 제강사들이 마당 재고 바닥으로 고철 납품 단가를 kg당 10원 인상했습니다.",
+            f"생철A 기준 제강사 도착도 {scrap_data['iron_scrap'][0]['wholesale']}원, 중량A는 {scrap_data['iron_scrap'][1]['wholesale']}원으로 상향 조정되었습니다.",
+            "야적장 물동량 유입을 유도하기 위한 특별 구매 인센티브가 이번 주말까지 적용됩니다."
+        ],
+        "section_current": f"현대제철(인천·당진)과 동국제강(인천)이 10일 입고분부터 철스크랩 전 등급 구매 가격을 kg당 10원 인상 고시했습니다. 이에 따라 제강사 납품 기준 생철A는 {scrap_data['iron_scrap'][0]['wholesale']}원/kg, 중량A는 {scrap_data['iron_scrap'][1]['wholesale']}원/kg, 경량A는 {scrap_data['iron_scrap'][3]['wholesale']}원/kg으로 상향 조정되었습니다.",
+        "section_stocks": "추석 연휴 이후 제강사들의 철근 감산에도 불구하고 국내 야적장들의 출하 기피로 제강사 야드 재고가 안전 재고 일수(7일) 밑으로 떨어졌습니다. 남부권 대한제강·한국철강 역시 단가 인상 압박을 받고 있습니다.",
+        "section_macro": f"글로벌 수입 고철(터키·일본 H2) 오퍼 가격이 톤당 370달러 선에서 횡보하는 가운데, 원달러 환율({prices_data.get('usd_rate')}원) 상승으로 수입산 조달 부담이 커지자 국내산 고철 구매 비중을 늘리는 전략으로 풀이됩니다.",
+        "section_outlook": "단기 1~2주간은 제강사의 추가 인상 눈치보기가 이어질 전망입니다. 마당에 묵혀둔 중량/생철 재고가 있다면 이번 특별 인상 단가 구간에 1차 분할 납품을 추천합니다."
+    }
+    ai_steel = call_ai_article_generator("현대제철·동국제강 철스크랩 kg당 +10원 인상 이슈", f"국내 제강사 고철 구매가 10원 인상, 생철A {scrap_data['iron_scrap'][0]['wholesale']}원, 중량A {scrap_data['iron_scrap'][1]['wholesale']}원, 환율 {prices_data.get('usd_rate')}원", steel_fallback)
+
+    # AI 심층 분석 기사 생성 (2. 구리 LME 재고 이슈)
+    copper_fallback = {
+        "summary_3lines": [
+            "외국 대형 가공업체들이 런던 LME 창고에서 구리를 1,425톤 출고해갔습니다.",
+            f"창고 즉시 반출 가능 물량이 줄어들면서 국내 기준원가가 {copper_price:,}원/kg으로 반등했습니다.",
+            f"마당 A동(밀베리) 현장 추정가는 kg당 {scrap_data['nonferrous'][0]['price']:,}원 선으로 강보합세입니다."
+        ],
+        "section_current": f"오늘 LME 전기동 종가는 톤당 $9,685 (+0.6%)로 마감했습니다. 원달러 환율 {prices_data.get('usd_rate')}원을 적용한 국내 원화 기준원가는 {copper_price:,}원/kg이며, 현장 A동(밀베리) 매입 추정가는 kg당 {scrap_data['nonferrous'][0]['price']:,}원 선을 형성하고 있습니다.",
+        "section_stocks": "LME 총 재고는 301,250톤으로 전일 대비 -1,425톤 감소했습니다. 특히 즉시 출고를 신청한 '취소영수증(Cancelled Warrants)' 비중이 21.4%로 올라서며 실물 인도 대기 수요가 집중되고 있습니다.",
+        "section_macro": "미국 기준금리 추가 인하 기대감으로 달러화 인덱스가 안정세를 보이고 있으며, 중국 지방정부의 전력망 투자 확대로 전력 케이블용 전기동 수요가 완만하게 회복되고 있습니다.",
+        "section_outlook": "단기 1~2주는 톤당 $9,500 ~ $9,800 박스권 내 완만한 강보합세가 예상됩니다. 마당 상차 기준 A동은 급하게 던지기보다는 이번 주 후반까지 추이를 지켜보시는 전략을 추천합니다."
+    }
+    ai_copper = call_ai_article_generator("LME 구리 창고 1,425톤 출고 및 국내 A동 스크랩 가격 전망", f"LME 종가 $9,685/t, LME 재고 1425톤 감소, 국내 전기동 원가 {copper_price:,}원/kg, A동 추정단가 {scrap_data['nonferrous'][0]['price']:,}원", copper_fallback)
+
     reports_data = [
         # 1. 국내 제강사 고철 구매단가 변동 이슈 (최우선 배치)
         {
@@ -295,16 +399,12 @@ def generate_reports_and_articles(prices_data, scrap_data):
             "author": "MetalsTerminal Scrap Desk",
             "replies": 14,
             "article_url": f"articles/{today_str}-steel-scrap.html",
-            "summary_3lines": [
-                "국내 주요 전기로 제강사들이 마당 재고 바닥으로 고철 납품 단가를 kg당 10원 인상했습니다.",
-                f"생철A 기준 제강사 도착도 {scrap_data['iron_scrap'][0]['wholesale']}원, 중량A는 {scrap_data['iron_scrap'][1]['wholesale']}원으로 상향 조정되었습니다.",
-                "야적장 물동량 유입을 유도하기 위한 특별 구매 인센티브가 이번 주말까지 적용됩니다."
-            ],
+            "summary_3lines": ai_steel.get("summary_3lines", steel_fallback["summary_3lines"]),
             "sections": {
-                "current": f"현대제철(인천·당진)과 동국제강(인천)이 10일 입고분부터 철스크랩 전 등급 구매 가격을 kg당 10원 인상 고시했습니다. 이에 따라 제강사 납품 기준 생철A는 {scrap_data['iron_scrap'][0]['wholesale']}원/kg, 중량A는 {scrap_data['iron_scrap'][1]['wholesale']}원/kg, 경량A는 {scrap_data['iron_scrap'][3]['wholesale']}원/kg으로 상향 조정되었습니다.",
-                "stocks": "추석 연휴 이후 제강사들의 철근 감산에도 불구하고 국내 야적장들의 출하 기피로 제강사 야드 재고가 안전 재고 일수(7일) 밑으로 떨어졌습니다. 남부권 대한제강·한국철강 역시 단가 인상 압박을 받고 있습니다.",
-                "macro": f"글로벌 수입 고철(터키·일본 H2) 오퍼 가격이 톤당 370달러 선에서 횡보하는 가운데, 원달러 환율({prices_data.get('usd_rate')}원) 상승으로 수입산 조달 부담이 커지자 국내산 고철 구매 비중을 늘리는 전략으로 풀이됩니다.",
-                "outlook": "단기 1~2주간은 제강사의 추가 인상 눈치보기가 이어질 전망입니다. 마당에 묵혀둔 중량/생철 재고가 있다면 이번 특별 인상 단가 구간에 1차 분할 납품을 추천합니다."
+                "current": ai_steel.get("section_current", steel_fallback["section_current"]),
+                "stocks": ai_steel.get("section_stocks", steel_fallback["section_stocks"]),
+                "macro": ai_steel.get("section_macro", steel_fallback["section_macro"]),
+                "outlook": ai_steel.get("section_outlook", steel_fallback["section_outlook"])
             },
             "disclaimer": "본 제강사 구매단가 정보는 주요 제강사 납품 협력사 및 업계 공시 기준이며, 공장별 하역 감가율 및 결제 조건에 따라 차이가 있을 수 있습니다.",
             "rss_sources": [
@@ -335,16 +435,12 @@ def generate_reports_and_articles(prices_data, scrap_data):
             "author": "MetalsTerminal Desk",
             "replies": 7,
             "article_url": f"articles/{today_str}-copper.html",
-            "summary_3lines": [
-                "외국 대형 가공업체들이 런던 LME 창고에서 구리를 1,425톤 출고해갔습니다.",
-                f"창고 즉시 반출 가능 물량이 줄어들면서 국내 기준원가가 {copper_price:,}원/kg으로 반등했습니다.",
-                f"마당 A동(밀베리) 현장 추정가는 kg당 {scrap_data['nonferrous'][0]['price']:,}원 선으로 강보합세입니다."
-            ],
+            "summary_3lines": ai_copper.get("summary_3lines", copper_fallback["summary_3lines"]),
             "sections": {
-                "current": f"오늘 LME 전기동 종가는 톤당 $9,685 (+0.6%)로 마감했습니다. 원달러 환율 {prices_data.get('usd_rate')}원을 적용한 국내 원화 기준원가는 {copper_price:,}원/kg이며, 현장 A동(밀베리) 매입 추정가는 kg당 {scrap_data['nonferrous'][0]['price']:,}원 선을 형성하고 있습니다.",
-                "stocks": "LME 총 재고는 301,250톤으로 전일 대비 -1,425톤 감소했습니다. 특히 즉시 출고를 신청한 '취소영수증(Cancelled Warrants)' 비중이 21.4%로 올라서며 실물 인도 대기 수요가 집중되고 있습니다.",
-                "macro": "미국 기준금리 추가 인하 기대감으로 달러화 인덱스가 안정세를 보이고 있으며, 중국 지방정부의 전력망 투자 확대로 전력 케이블용 전기동 수요가 완만하게 회복되고 있습니다.",
-                "outlook": "단기 1~2주는 톤당 $9,500 ~ $9,800 박스권 내 완만한 강보합세가 예상됩니다. 마당 상차 기준 A동은 급하게 던지기보다는 이번 주 후반까지 추이를 지켜보시는 전략을 추천합니다."
+                "current": ai_copper.get("section_current", copper_fallback["section_current"]),
+                "stocks": ai_copper.get("section_stocks", copper_fallback["section_stocks"]),
+                "macro": ai_copper.get("section_macro", copper_fallback["section_macro"]),
+                "outlook": ai_copper.get("section_outlook", copper_fallback["section_outlook"])
             },
             "disclaimer": "본 리포트의 '향후 예측'은 LME 창고 재고 및 거시 지표 기반의 추정 분석이며, 개별 업체의 매매 판단에 따른 최종 손익에 대해 법적 책임을 지지 않습니다.",
             "rss_sources": rss_news[:2]
@@ -420,7 +516,7 @@ def generate_reports_and_articles(prices_data, scrap_data):
 </head>
 <body>
     <div class="art-wrap">
-        <a href="../index.html#section-report" style="font-size:12px; font-weight:700; color:#64748b;">← 리포트 목록으로</a>
+        <a href="../report.html" style="font-size:12px; font-weight:700; color:#64748b;">← 리포트 목록으로</a>
         <div style="margin-top:14px;"><span class="art-tag">{rep['type']}</span></div>
         <h1 class="art-title">{rep['title']}</h1>
         <div class="art-meta">{rep['author']} • {rep['date']} 발행</div>

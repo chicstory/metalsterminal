@@ -22,7 +22,7 @@ echo   [SUCCESS] Price, Scrap, and Reports updated!
 echo =======================================================
 echo.
 
-git add data/ articles/ index.html price.html scrap.html pipeline.py TASK_HISTORY.md
+git add data/ articles/ index.html price.html scrap.html report.html pipeline.py TASK_HISTORY.md
 git commit -m "Auto update MetalsTerminal data" > nul 2>&1
 
 echo [INFO] Local Git commit completed.
