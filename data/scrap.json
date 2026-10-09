@@ -233,7 +233,7 @@
       "id": "lpi",
       "name": "LPG 가스차 (2.0~3.0 LPi)",
       "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi",
-      "metals": "Pd 1.9g + Rh 0.85g",
+      "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 289000,
       "max_quote": 334000
     },
@@ -241,7 +241,7 @@
       "id": "gdi",
       "name": "직분사 가솔린 (1.6~2.4 GDi)",
       "models": "아반떼MD · YF/K5 · 그랜저HG GDi",
-      "metals": "Pd 2.1g + Rh 0.45g",
+      "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 191000,
       "max_quote": 221000
     },
@@ -249,7 +249,7 @@
       "id": "turbo",
       "name": "터보 가솔린 (1.6T~2.0T)",
       "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터",
-      "metals": "Pd 2.5g + Rh 0.65g",
+      "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 258000,
       "max_quote": 297000
     },
@@ -257,7 +257,7 @@
       "id": "mpi",
       "name": "자연흡기 가솔린 (1.0~1.6 MPi)",
       "models": "모닝 · 레이 · 아반떼HD/AD MPi",
-      "metals": "Pd 1.8g + Rh 0.20g",
+      "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 115000,
       "max_quote": 133000
     },
@@ -265,7 +265,7 @@
       "id": "hev",
       "name": "하이브리드 (1.6~2.0 HEV)",
       "models": "니로 · 아반떼 · 쏘나타 · K5 HEV",
-      "metals": "Pd 2.2g + Rh 0.50g",
+      "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 208000,
       "max_quote": 240000
     },
@@ -273,7 +273,7 @@
       "id": "dpf",
       "name": "디젤 DPF (2.0~2.5 CRDi)",
       "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어",
-      "metals": "Pt 3.8g 집중 함유",
+      "spec_desc": "출고 당시 순정 정품 DPF 기준 (백금 코어 일체형)",
       "min_quote": 209000,
       "max_quote": 241000
     }

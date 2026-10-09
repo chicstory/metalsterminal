@@ -80,20 +80,20 @@ def collect_prices_and_charts(usd_rate):
     # 국제 금속 마스터 정의 (철 -> 비철 -> 귀금속)
     METALS_DEF = [
         # 1. 철 (1종)
-        {"key": "iron_scrap", "sec": "ferrous", "name_kr": "철스크랩", "name_en": "Steel Scrap", "source": "Global Index", "unit": "원/kg", "default_krw": 548, "raw_usd": "$372/t", "diff_krw": 0, "diff_pct": 0.0},
+        {"key": "iron_scrap", "sec": "ferrous", "name_kr": "철스크랩", "name_en": "Steel Scrap", "te_slug": "scrap-steel", "source": "Global Index", "unit": "원/kg", "default_krw": 548, "raw_usd": "$372/t", "diff_krw": 0, "diff_pct": 0.0},
         # 2. 비철 (6종)
-        {"key": "copper", "sec": "nonferrous", "name_kr": "구리", "name_en": "Copper", "source": "LME", "unit": "원/kg", "default_krw": 19590, "raw_usd": "$9,685/t", "diff_krw": 120, "diff_pct": 0.61},
-        {"key": "aluminum", "sec": "nonferrous", "name_kr": "알루미늄", "name_en": "Aluminum", "source": "LME", "unit": "원/kg", "default_krw": 4390, "raw_usd": "$2,540/t", "diff_krw": -35, "diff_pct": -0.80},
-        {"key": "zinc", "sec": "nonferrous", "name_kr": "아연", "name_en": "Zinc", "source": "LME", "unit": "원/kg", "default_krw": 5231, "raw_usd": "$3,085/t", "diff_krw": 40, "diff_pct": 0.77},
-        {"key": "lead", "sec": "nonferrous", "name_kr": "납", "name_en": "Lead", "source": "LME", "unit": "원/kg", "default_krw": 2594, "raw_usd": "$2,050/t", "diff_krw": -24, "diff_pct": -0.92},
-        {"key": "nickel", "sec": "nonferrous", "name_kr": "니켈", "name_en": "Nickel", "source": "LME", "unit": "원/kg", "default_krw": 22030, "raw_usd": "$16,250/t", "diff_krw": 110, "diff_pct": 0.50},
-        {"key": "tin", "sec": "nonferrous", "name_kr": "주석", "name_en": "Tin", "source": "LME", "unit": "원/kg", "default_krw": 72945, "raw_usd": "$32,800/t", "diff_krw": -519, "diff_pct": -0.71},
+        {"key": "copper", "sec": "nonferrous", "name_kr": "구리", "name_en": "Copper", "te_slug": "copper", "source": "LME", "unit": "원/kg", "default_krw": 19590, "raw_usd": "$9,685/t", "diff_krw": 120, "diff_pct": 0.61},
+        {"key": "aluminum", "sec": "nonferrous", "name_kr": "알루미늄", "name_en": "Aluminum", "te_slug": "aluminum", "source": "LME", "unit": "원/kg", "default_krw": 4390, "raw_usd": "$2,540/t", "diff_krw": -35, "diff_pct": -0.80},
+        {"key": "zinc", "sec": "nonferrous", "name_kr": "아연", "name_en": "Zinc", "te_slug": "zinc", "source": "LME", "unit": "원/kg", "default_krw": 5231, "raw_usd": "$3,085/t", "diff_krw": 40, "diff_pct": 0.77},
+        {"key": "lead", "sec": "nonferrous", "name_kr": "납", "name_en": "Lead", "te_slug": "lead", "source": "LME", "unit": "원/kg", "default_krw": 2594, "raw_usd": "$2,050/t", "diff_krw": -24, "diff_pct": -0.92},
+        {"key": "nickel", "sec": "nonferrous", "name_kr": "니켈", "name_en": "Nickel", "te_slug": "nickel", "source": "LME", "unit": "원/kg", "default_krw": 22030, "raw_usd": "$16,250/t", "diff_krw": 110, "diff_pct": 0.50},
+        {"key": "tin", "sec": "nonferrous", "name_kr": "주석", "name_en": "Tin", "te_slug": "tin", "source": "LME", "unit": "원/kg", "default_krw": 72945, "raw_usd": "$32,800/t", "diff_krw": -519, "diff_pct": -0.71},
         # 3. 귀금속 & PGM (5종)
-        {"key": "platinum", "sec": "precious", "name_kr": "백금", "name_en": "Platinum", "source": "NYMEX", "unit": "원/g", "default_krw": 43400, "raw_usd": "$995/oz", "diff_krw": 350, "diff_pct": 0.81},
-        {"key": "palladium", "sec": "precious", "name_kr": "팔라듐", "name_en": "Palladium", "source": "NYMEX", "unit": "원/g", "default_krw": 44500, "raw_usd": "$1,020/oz", "diff_krw": -210, "diff_pct": -0.47},
-        {"key": "rhodium", "sec": "precious", "name_kr": "로듐", "name_en": "Rhodium", "source": "Johnson Matthey", "unit": "원/g", "default_krw": 206000, "raw_usd": "$4,750/oz", "diff_krw": 1500, "diff_pct": 0.73},
-        {"key": "gold", "sec": "precious", "name_kr": "금", "name_en": "Gold", "source": "COMEX", "unit": "원/g", "default_krw": 115200, "raw_usd": "$2,650/oz", "diff_krw": 600, "diff_pct": 0.52},
-        {"key": "silver", "sec": "precious", "name_kr": "은", "name_en": "Silver", "source": "COMEX", "unit": "원/g", "default_krw": 1380, "raw_usd": "$31.8/oz", "diff_krw": 12, "diff_pct": 0.88},
+        {"key": "platinum", "sec": "precious", "name_kr": "백금", "name_en": "Platinum", "te_slug": "platinum", "source": "NYMEX", "unit": "원/g", "default_krw": 43400, "raw_usd": "$995/oz", "diff_krw": 350, "diff_pct": 0.81},
+        {"key": "palladium", "sec": "precious", "name_kr": "팔라듐", "name_en": "Palladium", "te_slug": "palladium", "source": "NYMEX", "unit": "원/g", "default_krw": 44500, "raw_usd": "$1,020/oz", "diff_krw": -210, "diff_pct": -0.47},
+        {"key": "rhodium", "sec": "precious", "name_kr": "로듐", "name_en": "Rhodium", "te_slug": "rhodium", "source": "Johnson Matthey", "unit": "원/g", "default_krw": 206000, "raw_usd": "$4,750/oz", "diff_krw": 1500, "diff_pct": 0.73},
+        {"key": "gold", "sec": "precious", "name_kr": "금", "name_en": "Gold", "te_slug": "gold", "source": "COMEX", "unit": "원/g", "default_krw": 115200, "raw_usd": "$2,650/oz", "diff_krw": 600, "diff_pct": 0.52},
+        {"key": "silver", "sec": "precious", "name_kr": "은", "name_en": "Silver", "te_slug": "silver", "source": "COMEX", "unit": "원/g", "default_krw": 1380, "raw_usd": "$31.8/oz", "diff_krw": 12, "diff_pct": 0.88},
     ]
 
     sec_groups = {
@@ -102,64 +102,20 @@ def collect_prices_and_charts(usd_rate):
         "precious": {"section_key": "precious", "section_name": "귀금속 & PGM (폐촉매·도시광산)", "badge_color": "au", "items": []}
     }
 
-    # 최근 30일 시뮬레이션 시계열 날짜 생성
     today_dt = datetime.now()
-    dates_30d = [(today_dt - timedelta(days=29 - i)).strftime("%m-%d") for i in range(30)]
-
-    for m in METALS_DEF:
-        k = m["key"]
-        krw = m["default_krw"]
-        diff_k = m["diff_krw"]
-        diff_p = m["diff_pct"]
-
-        if k in base_metals_map:
-            bm = base_metals_map[k]
-            krw = bm.get("krw_price", krw)
-            diff_k = bm.get("diff_krw", diff_k)
-            diff_p = bm.get("diff_pct", diff_p)
-
-        trend = "same"
-        if diff_k > 0: trend = "up"
-        elif diff_k < 0: trend = "down"
-
-        # 30일 차트 데이터 배열 (스파크라인 및 Highcharts 연동용)
-        # 종가 기준 자연스러운 30일 변동폭 배열 생성
-        history_series = []
-        base_val = krw - (diff_k * 15)
-        for i in range(30):
-            step_val = round(base_val + (diff_k * i) + ((i % 5 - 2) * (krw * 0.003)))
-            history_series.append(step_val)
-        history_series[-1] = krw  # 마지막은 당일 확정 종가
-
-        item_obj = {
-            "key": k,
-            "name_kr": m["name_kr"],
-            "name_en": m["name_en"],
-            "source": m["source"],
-            "unit": m["unit"],
-            "raw_usd": m["raw_usd"],
-            "krw_price": krw,
-            "diff_krw": diff_k,
-            "diff_pct": diff_p,
-            "trend": trend,
-            "history_dates": dates_30d,
-            "history_30d": history_series
-        }
-        sec_groups[m["sec"]]["items"].append(item_obj)
-
-    # PPS 조달청 비축물자 판매단가 매핑 테이블
-    PPS_PRICES_MAP = {
-        "copper": 13850,
-        "aluminum": 3920,
-        "zinc": 3880,
-        "lead": 2750,
-        "tin": 46200,
-        "nickel": 22800,
-    }
-
     weekday_kr = ["월", "화", "수", "목", "금", "토", "일"][today_dt.weekday()]
-    dates_30d = [(today_dt - timedelta(days=29 - i)).strftime("%m-%d") for i in range(30)]
 
+    # 조달청 6종 비축물자 판매고시 데이터 (국제시세 페이지 전용)
+    pps_stockpiles = [
+        {"key": "copper", "name_kr": "전기동 (구리)", "source": "LME 전기동 기준", "unit": "원/kg", "pps_price": 13850, "note": "비축물자 방출고시가"},
+        {"key": "aluminum", "name_kr": "알루미늄", "source": "LME 순알루미늄 기준", "unit": "원/kg", "pps_price": 3920, "note": "비축물자 방출고시가"},
+        {"key": "zinc", "name_kr": "아연", "source": "LME 아연괴 기준", "unit": "원/kg", "pps_price": 3880, "note": "비축물자 방출고시가"},
+        {"key": "lead", "name_kr": "납 (연)", "source": "LME 연괴 기준", "unit": "원/kg", "pps_price": 2750, "note": "비축물자 방출고시가"},
+        {"key": "tin", "name_kr": "주석", "source": "LME 순주석 기준", "unit": "원/kg", "pps_price": 46200, "note": "비축물자 방출고시가"},
+        {"key": "nickel", "name_kr": "니켈", "source": "LME 정련니켈 기준", "unit": "원/kg", "pps_price": 22800, "note": "비축물자 방출고시가"},
+    ]
+
+    # 단 1번만 순회하여 중복 없이 items 생성 (Trading Economics 1년 차트 레퍼런스 연동)
     for m in METALS_DEF:
         k = m["key"]
         krw = m["default_krw"]
@@ -176,16 +132,8 @@ def collect_prices_and_charts(usd_rate):
         if diff_k > 0: trend = "up"
         elif diff_k < 0: trend = "down"
 
-        # 30일 차트 데이터 배열 (스파크라인 및 Highcharts 연동용)
-        history_series = []
-        base_val = krw - (diff_k * 15)
-        for i in range(30):
-            step_val = round(base_val + (diff_k * i) + ((i % 5 - 2) * (krw * 0.003)))
-            history_series.append(step_val)
-        history_series[-1] = krw  # 마지막은 당일 확정 종가
-
-        pps_val = PPS_PRICES_MAP.get(k, None)
-        pps_diff = round(((pps_val - krw) / krw) * 100, 1) if pps_val and krw else None
+        te_slug = m.get("te_slug", k)
+        te_url = f"https://tradingeconomics.com/commodity/{te_slug}"
 
         item_obj = {
             "key": k,
@@ -198,10 +146,9 @@ def collect_prices_and_charts(usd_rate):
             "diff_krw": diff_k,
             "diff_pct": diff_p,
             "trend": trend,
-            "pps_price": pps_val,
-            "pps_diff_pct": pps_diff,
-            "history_dates": dates_30d,
-            "history_30d": history_series
+            "te_slug": te_slug,
+            "te_url": te_url,
+            "chart_title": f"Trading Economics {m['name_kr']} 1년 종가 시세 차트"
         }
         sec_groups[m["sec"]]["items"].append(item_obj)
 
@@ -210,6 +157,7 @@ def collect_prices_and_charts(usd_rate):
         "display_date": f"{today_dt.strftime('%Y.%m.%d')}({weekday_kr}) 09:00 정기고시",
         "usd_rate": usd_rate,
         "rate_source": "하나은행 고시환율 (전신환매도율)",
+        "pps_stockpiles": pps_stockpiles,
         "sections": list(sec_groups.values())
     }
 
@@ -217,7 +165,7 @@ def collect_prices_and_charts(usd_rate):
     with open(out_prices_path, "w", encoding="utf-8") as f:
         json.dump(prices_payload, f, ensure_ascii=False, indent=2)
 
-    print(f"    -> [완료] data/prices.json 12종 시세 및 30일 차트 데이터 저장 완료!")
+    print(f"    -> [완료] data/prices.json 12개 품목 시세(중복 0건) 및 TE 1년 차트·조달청 비축표 저장 완료!")
     return prices_payload
 
 # ----------------------------------------------------
@@ -439,7 +387,7 @@ def compute_and_sync_scrap(prices_data, usd_rate):
         {"metal": "니켈 괴", "pps_price": 22800, "market_price": base_nickel, "unit": "원/kg", "diff_pct": round(((22800 - base_nickel) / base_nickel) * 100, 1)},
     ]
 
-    # 7. 차종·엔진별 순정 폐촉매 6대 단가
+    # 7. 차종·파워트레인별 순정 폐촉매 예상 매입 견적 (비율/g수는 비공개 처리)
     def calc_cat_quote(pd_g, rh_g, pt_g):
         raw_val = (pd_g * price_pd) + (rh_g * price_rh) + (pt_g * price_pt)
         min_q = int(round((raw_val * 0.65) / 1000.0) * 1000)
@@ -447,12 +395,12 @@ def compute_and_sync_scrap(prices_data, usd_rate):
         return min_q, max_q
 
     catalyst_presets = [
-        {"id": "lpi", "name": "LPG 가스차 (2.0~3.0 LPi)", "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi", "metals": "Pd 1.9g + Rh 0.85g", "min_quote": calc_cat_quote(1.9, 0.85, 0.0)[0], "max_quote": calc_cat_quote(1.9, 0.85, 0.0)[1]},
-        {"id": "gdi", "name": "직분사 가솔린 (1.6~2.4 GDi)", "models": "아반떼MD · YF/K5 · 그랜저HG GDi", "metals": "Pd 2.1g + Rh 0.45g", "min_quote": calc_cat_quote(2.1, 0.45, 0.0)[0], "max_quote": calc_cat_quote(2.1, 0.45, 0.0)[1]},
-        {"id": "turbo", "name": "터보 가솔린 (1.6T~2.0T)", "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터", "metals": "Pd 2.5g + Rh 0.65g", "min_quote": calc_cat_quote(2.5, 0.65, 0.0)[0], "max_quote": calc_cat_quote(2.5, 0.65, 0.0)[1]},
-        {"id": "mpi", "name": "자연흡기 가솔린 (1.0~1.6 MPi)", "models": "모닝 · 레이 · 아반떼HD/AD MPi", "metals": "Pd 1.8g + Rh 0.20g", "min_quote": calc_cat_quote(1.8, 0.20, 0.0)[0], "max_quote": calc_cat_quote(1.8, 0.20, 0.0)[1]},
-        {"id": "hev", "name": "하이브리드 (1.6~2.0 HEV)", "models": "니로 · 아반떼 · 쏘나타 · K5 HEV", "metals": "Pd 2.2g + Rh 0.50g", "min_quote": calc_cat_quote(2.2, 0.50, 0.0)[0], "max_quote": calc_cat_quote(2.2, 0.50, 0.0)[1]},
-        {"id": "dpf", "name": "디젤 DPF (2.0~2.5 CRDi)", "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어", "metals": "Pt 3.8g 집중 함유", "min_quote": calc_cat_quote(0.0, 0.10, 3.8)[0], "max_quote": calc_cat_quote(0.0, 0.10, 3.8)[1]},
+        {"id": "lpi", "name": "LPG 가스차 (2.0~3.0 LPi)", "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi", "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)", "min_quote": calc_cat_quote(1.9, 0.85, 0.0)[0], "max_quote": calc_cat_quote(1.9, 0.85, 0.0)[1]},
+        {"id": "gdi", "name": "직분사 가솔린 (1.6~2.4 GDi)", "models": "아반떼MD · YF/K5 · 그랜저HG GDi", "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)", "min_quote": calc_cat_quote(2.1, 0.45, 0.0)[0], "max_quote": calc_cat_quote(2.1, 0.45, 0.0)[1]},
+        {"id": "turbo", "name": "터보 가솔린 (1.6T~2.0T)", "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터", "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)", "min_quote": calc_cat_quote(2.5, 0.65, 0.0)[0], "max_quote": calc_cat_quote(2.5, 0.65, 0.0)[1]},
+        {"id": "mpi", "name": "자연흡기 가솔린 (1.0~1.6 MPi)", "models": "모닝 · 레이 · 아반떼HD/AD MPi", "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)", "min_quote": calc_cat_quote(1.8, 0.20, 0.0)[0], "max_quote": calc_cat_quote(1.8, 0.20, 0.0)[1]},
+        {"id": "hev", "name": "하이브리드 (1.6~2.0 HEV)", "models": "니로 · 아반떼 · 쏘나타 · K5 HEV", "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)", "min_quote": calc_cat_quote(2.2, 0.50, 0.0)[0], "max_quote": calc_cat_quote(2.2, 0.50, 0.0)[1]},
+        {"id": "dpf", "name": "디젤 DPF (2.0~2.5 CRDi)", "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어", "spec_desc": "출고 당시 순정 정품 DPF 기준 (백금 코어 일체형)", "min_quote": calc_cat_quote(0.0, 0.10, 3.8)[0], "max_quote": calc_cat_quote(0.0, 0.10, 3.8)[1]},
     ]
 
     scrap_payload = {

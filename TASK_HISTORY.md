@@ -104,6 +104,28 @@
   - `python pipeline.py` 로컬 실행 시 GPU 점유율 0%로 6초 만에 12종 전 품목 데이터셋 및 정적 아티클 생성 완결.
   - GitHub Actions 워크플로우(`.github/workflows/daily_terminal.yml`) 매일 09:00 KST 완전 무인 자동화 배포 확인.
 
+## [2026-10-10] 중복 출력 버그 원천 해결, TE 1년 차트 레퍼런스 확립, 조달청 비축물자 국제시세 상단 배치, 폐촉매 g수 비공개 원칙 완결
+- **1. 요청사항**: 
+  - 품목 2번 반복 출력 버그 원인 규명 및 즉시 해결.
+  - 30일 임의 차트 대신 `thepathlab` 레퍼런스 원형인 **Trading Economics 1년 종가 시세 차트**로 전면 전환.
+  - 조달청(PPS) 비축물자 판매고시표를 스크랩관이 아닌 **국제시세(`price.html`) 상단**으로 정상 이전 배치.
+  - 스크랩 페이지에서 폐촉매 함유 귀금속(g수, 특정 비율) 노출을 즉시 삭제하고, 출고 당시 순정 정품 기준 예상 실거래 매입 견적표로 정돈.
+- **2. 솔루션 & 구현**:
+  - **중복 출력 버그 원천 제거 (`pipeline.py`, `data/prices.json`)**:
+    - `collect_prices_and_charts` 함수 내 중복 실행되던 `for m in METALS_DEF:` 루프를 제거하여 12개 품목이 정확히 1번씩만 `items`에 등록되도록 수정.
+  - **Trading Economics 1년 종가 차트 레퍼런스 이식 (`price.html`, `assets/charts/`)**:
+    - `thepathlab/resources/`의 공식 1년 시세 차트 에셋 12종을 `assets/charts/`로 표준화 매핑.
+    - 품목 행 클릭 시 펼쳐지는 아코디언에 **"📈 Trading Economics 1년 종가 시세 차트"** 및 공식 원문 인터랙티브 차트 바로가기(`https://tradingeconomics.com/commodity/{te_slug}`) 링크 연동.
+  - **조달청(PPS) 비축물자 판매고시표 국제시세 상단 배치 (`price.html`, `scrap.html`)**:
+    - `scrap.html` 상단에서 조달청 테이블을 제거하고, `price.html` 최상단에 **🏛️ 조달청(PPS) 비축물자 판매고시표** 독립 카드 배치 (전기동, 알루미늄, 아연, 납, 주석, 니켈 6종의 고시가격 및 공식 누리집 링크 제공).
+  - **폐촉매 함유 귀금속 g수 비공개 원칙 적용 (`scrap.html`, `pipeline.py`)**:
+    - 상단 공식 가이드 및 테이블에서 특정 귀금속 g수(`Pd 1.9g + Rh 0.85g` 등)를 완전히 삭제.
+    - "출고 당시 순정 정품 촉매 기준 (국제 PGM 시세 및 실무 30% 안전할인 선차감 반영)" 안내 및 파워트레인별 예상 실거래 매입 견적표로 정돈.
+- **3. 결과 & 검증**:
+  - `python pipeline.py` 정상 완료: `data/prices.json` 내 12개 품목 단 1회 등록(중복 0건) 및 조달청 6종 정형화 완료.
+  - `price.html`: 상단 조달청 비축물자 고시표 정상 표출 및 각 행 클릭 시 Trading Economics 1년 차트 아코디언 정상 작동 확인.
+  - `scrap.html`: 조달청 중복 제거 및 폐촉매 귀금속 g수 미노출 검증 완료.
+
 
 
 
