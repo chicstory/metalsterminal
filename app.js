@@ -179,23 +179,26 @@ async function renderReports() {
         return;
     }
 
-    reports.slice(0, 5).forEach(rep => {
+    reports.slice(0, 6).forEach(rep => {
         const li = document.createElement("li");
         li.className = "dossa-board-item";
         li.onclick = () => {
             if (rep.article_url) {
                 window.location.href = rep.article_url;
             } else {
-                openViewModal(rep, "reports");
+                window.location.href = "report.html";
             }
         };
 
+        const badgeLabel = rep.badge || rep.type || '[리포트]';
+        const tagClass = rep.category || "report";
+
         li.innerHTML = `
             <div class="dbi-title-wrap">
-                <span class="dbi-tag report">${rep.type || '[리포트]'}</span>
+                <span class="dbi-tag ${tagClass}">${badgeLabel}</span>
                 <span class="dbi-title">${escapeHtml(rep.title)}</span>
             </div>
-            <span class="dbi-comment-count">${rep.replies || 0}</span>
+            <span class="dbi-comment-count" style="color:#2563eb; font-weight:700; font-size:11px;">읽기 &gt;</span>
         `;
         ul.appendChild(li);
     });

@@ -3,81 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>존슨매티 로듐·팔라듐 시세 동향 및 차종별 순정 폐촉매 매각 가이드 (2026-10-10) - MetalsTerminal 리포트</title>
+    <title>[2026-10-10] 폐촉매·PGM 일일 리포트: 남아공 PGM 광산 생산 조정 및 하이브리드차 확대로 백금족 지지선 확보 - MetalsTerminal</title>
     <link rel="stylesheet" href="../style.css">
     <style>
-        .art-wrap { max-width: 640px; margin: 0 auto; padding: 18px 14px 60px 14px; background: #fff; min-height: 100vh; }
-        .art-tag { font-size: 11px; font-weight: 800; background: #fee2e2; color: #b91c1c; padding: 2px 6px; border-radius: 4px; }
-        .art-title { font-size: 19px; font-weight: 900; color: #0f172a; margin: 10px 0 8px 0; line-height: 1.4; }
-        .art-meta { font-size: 12px; color: #64748b; margin-bottom: 20px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
-        .pub-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-size: 11.5px; margin-top: 4px; }
-        .sum-box { background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #3b82f6; border-radius: 6px; padding: 14px; margin-bottom: 24px; }
-        .sum-title { font-size: 13px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-        .sum-ol { padding-left: 18px; font-size: 13px; color: #334155; line-height: 1.6; margin: 0; }
-        .chapter-box { margin-bottom: 24px; }
-        .chapter-title { font-size: 15px; font-weight: 800; color: #0f172a; border-left: 3px solid #dc2626; padding-left: 8px; margin-bottom: 8px; }
-        .chapter-desc { font-size: 13.5px; line-height: 1.7; color: #334155; }
-        .disc-box { background: #fef2f2; border: 1px solid #fecaca; border-radius: 6px; padding: 12px; font-size: 11.5px; color: #991b1b; line-height: 1.5; margin-bottom: 24px; }
-        .rss-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px; }
-        .rss-item { padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
-        .rss-item:last-child { border-bottom: none; }
-        .rss-link { font-size: 13px; font-weight: 700; color: #2563eb; text-decoration: underline; }
-        .rss-date-tag { font-size: 10.5px; color: #059669; font-weight: 700; background: #ecfdf5; padding: 1px 5px; border-radius: 3px; margin-left: 6px; }
-        .rss-snip { font-size: 11.5px; color: #64748b; margin-top: 4px; line-height: 1.5; }
+        body { background: #0f172a; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif; margin:0; padding:16px; }
+        .rep-container { max-width: 980px; margin: 0 auto; }
+        .back-link { display:inline-block; font-size:13px; color:#94a3b8; text-decoration:none; margin-bottom:14px; font-weight:700; }
+        .rep-header-bar { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; }
+        .rep-badge { display:inline-block; font-size:12px; font-weight:800; background:#3b82f6; color:#ffffff; padding:3px 8px; border-radius:4px; margin-bottom:8px; }
+        .rep-title { font-size: 21px; font-weight: 900; margin: 0 0 10px 0; color: #ffffff; line-height: 1.4; }
+        .rep-meta { font-size: 13px; color: #94a3b8; display:flex; gap:16px; flex-wrap:wrap; }
+        .grid-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 20px; }
+        @media (max-width: 768px) { .grid-layout { grid-template-columns: 1fr; } }
+        .card-panel { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; }
+        .panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #334155; }
+        .panel-title { font-size: 16px; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 6px; margin: 0; }
+        .ai-chip { background: #8b5cf6; color: #ffffff; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 4px; }
+        /* 뉴스 목록 */
+        .news-item { padding: 12px 0; border-bottom: 1px solid #334155; }
+        .news-item:last-child { border-bottom: none; }
+        .news-title { font-size: 14.5px; font-weight: 700; color: #60a5fa; text-decoration: none; line-height: 1.4; display: inline-block; }
+        .news-meta { font-size: 11.5px; color: #94a3b8; margin: 4px 0; }
+        .news-snip { font-size: 12.5px; color: #cbd5e1; line-height: 1.5; }
+        /* AI 분석 */
+        .ai-sec-title { font-size: 14.5px; font-weight: 800; color: #f8fafc; margin: 16px 0 8px 0; }
+        .ai-verdict-box { background: #0f172a; border-left: 3px solid #8b5cf6; padding: 10px 14px; border-radius: 4px; font-size: 13.5px; color: #e2e8f0; line-height: 1.6; }
+        .ai-bullets { padding-left: 20px; font-size: 13.5px; color: #e2e8f0; line-height: 1.7; margin: 8px 0; }
+        .sub-bullet-title { font-size: 13.5px; font-weight: 700; color: #cbd5e1; margin-top: 10px; }
+        .sub-bullet-desc { font-size: 13px; color: #94a3b8; line-height: 1.6; margin: 4px 0 8px 14px; }
     </style>
 </head>
 <body>
-    <div class="art-wrap">
-        <a href="../report.html" style="font-size:12px; font-weight:700; color:#64748b;">← 리포트 목록으로</a>
-        <div style="margin-top:14px;"><span class="art-tag">[촉매분석]</span></div>
-        <h1 class="art-title">존슨매티 로듐·팔라듐 시세 동향 및 차종별 순정 폐촉매 매각 가이드 (2026-10-10)</h1>
-        <div class="art-meta">
-            <div>MetalsTerminal Desk</div>
-            <div class="pub-badge">📅 2026년 10월 10일(토) 09:00 KST 정기 고시</div>
+    <div class="rep-container">
+        <a href="../report.html" class="back-link">← 전체 리포트 피드로 돌아가기</a>
+        <div class="rep-header-bar">
+            <span class="rep-badge">JM 로듐·팔라듐</span>
+            <h1 class="rep-title">[2026-10-10] 폐촉매·PGM 일일 리포트: 남아공 PGM 광산 생산 조정 및 하이브리드차 확대로 백금족 지지선 확보</h1>
+            <div class="rep-meta">
+                <span>📅 2026년 10월 10일(토) 09:00 정기고시</span>
+                <span>💰 당일 단가: <strong>0원/kg</strong> (-)</span>
+                <span>✍️ MetalsTerminal Scrap Desk</span>
+            </div>
         </div>
 
-        <div class="sum-box">
-            <div class="sum-title">💡 3줄 핵심 요약</div>
-            <ol class="sum-ol">
-                <li>존슨매티 고시 기준 로듐 1g당 403,326원 선에서 안정적 지지력을 보이고 있습니다.</li><li>팔라듐(44,500원)과 백금(43,400원)도 바닥권을 확인하며 횡보세입니다.</li><li>LPi 촉매 매입 견적은 개당 289,000원 ~ 334,000원으로 유지됩니다.</li>
-            </ol>
-        </div>
+        <div class="grid-layout">
+            <!-- 좌측: 최근 주요 뉴스 5건 -->
+            <div class="card-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">📰 최근 주요 뉴스 (5건)</h2>
+                </div>
+                
+            <div class="news-item">
+                <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNUWJUZWs1eGR3em5yTnhWdTlvdjcxdkk2aHV5T1pUQ2djSDRKN1JRLXl0NE8tTzFSYUk5Z2xVZV9mQ1JoVE5QcFdjYlR6LUVBYTBZc2MzbDlnb3hzckFTYzdwam9BSGxRMXlFOU1wRk5lZmptOHlyc0VOSXRDNXcyem1OaUdLb2Y3ZkI4aHNLOVIzQQ?oc=5" target="_blank" rel="noopener noreferrer" class="news-title">백금, 아직도 저평가됐을까? 2026년 백금 가격 전망 총정리 ↗</a>
+                <div class="news-meta">출처: <span>Mitrade</span> | 일시: 2026-10-07 07:00</div>
+                <div class="news-snip">백금, 아직도 저평가됐을까? 2026년 백금 가격 전망 총정리 &nbsp;&nbsp; Mitrade</div>
+            </div>
+        
+            <div class="news-item">
+                <a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE5MWTFLMy10TnJYWTRJNDF0SVZ2LWVNa1EtUkdYYmw2cXVxVzdBT25ESXQ2QXFQdl9JWWp1TEVXaFpWRGc1S1Z2SkowRzlnM1p5bUQwY1dUSXBDNkt2SXBGU0tlZ3JPWnFtcHhj?oc=5" target="_blank" rel="noopener noreferrer" class="news-title">40년 백금치료 한계 넘을까… 요로상피암·위암 표적치료 급여 ↗</a>
+                <div class="news-meta">출처: <span>히트뉴스</span> | 일시: 2026-10-08 21:01</div>
+                <div class="news-snip">40년 백금치료 한계 넘을까… 요로상피암·위암 표적치료 급여 &nbsp;&nbsp; 히트뉴스</div>
+            </div>
+        
+            <div class="news-item">
+                <a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE1BRWNjQU15bGpGSWNTdm9ublNNalFXRW5WQ01LX1pHQ2cxeWtLX2ZLenJLc2h4VGU3UkZJc2d1bHhxR05CaDhhWF9iNWJHU19nOTZEVlE0bw?oc=5" target="_blank" rel="noopener noreferrer" class="news-title">젠맙, 'FRα ADC' 백금저항성 난소암 1/2상 “cORR 45.9%" ↗</a>
+                <div class="news-meta">출처: <span>바이오스펙테이터</span> | 일시: 2026-10-07 01:59</div>
+                <div class="news-snip">젠맙, 'FRα ADC' 백금저항성 난소암 1/2상 “cORR 45.9%" &nbsp;&nbsp; 바이오스펙테이터</div>
+            </div>
+        
+            <div class="news-item">
+                <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE9OcENHYlhrcUNZSEVNbjhoMXVlcDZlTDhMUG9QVVpFM1A0ZlJ6V0xfOXc0ZkJPOVZlTlZDSl9MaWNjLVlXWHhXVk1xb2Q4NEF3WlFWaWo1STM5Ny1wdHJiMnRUX1hTMzFtdnc?oc=5" target="_blank" rel="noopener noreferrer" class="news-title">국표원, 분말야금 샘플링 KS 제정 및 구리합금·팔라듐납 KS 2종 개정 ↗</a>
+                <div class="news-meta">출처: <span>철강금속신문</span> | 일시: 2026-10-07 00:05</div>
+                <div class="news-snip">국표원, 분말야금 샘플링 KS 제정 및 구리합금·팔라듐납 KS 2종 개정 &nbsp;&nbsp; 철강금속신문</div>
+            </div>
+        
+            <div class="news-item">
+                <a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE9XSlMwRFd0MEt0XzNEdzhVOXZDWmZPZ0p6bjlyaUU0c1Y1Y2xlZ2pBQ19QZnF2a29lVndwSzFtLXBfcEY3WXF5cjVvWXVwRmtLekhOSA?oc=5" target="_blank" rel="noopener noreferrer" class="news-title">수소 생산 에너지 획기적으로 낮추는 수전해 촉매 ↗</a>
+                <div class="news-meta">출처: <span>DongA Science</span> | 일시: 2026-10-08 03:00</div>
+                <div class="news-snip">수소 생산 에너지 획기적으로 낮추는 수전해 촉매 &nbsp;&nbsp; DongA Science</div>
+            </div>
+        
+            </div>
 
-        <div class="chapter-box">
-            <h2 class="chapter-title">1. 현재 상황 (Market Status)</h2>
-            <p class="chapter-desc">존슨매티(JM) 기준 로듐 가격은 1g당 403,326원이며, 팔라듐은 $1,020/oz, 백금은 $995/oz 선입니다.</p>
-        </div>
+            <!-- 우측: AI 시장 및 스크랩 여파 분석 -->
+            <div class="card-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">🔮 AI 시장 및 스크랩 여파 분석</h2>
+                    <span class="ai-chip">Gemini Flash</span>
+                </div>
+                <div class="ai-sec-title">1. 이슈 판정:</div>
+                <div class="ai-verdict-box">중요 이슈 발생 (남아공 PGM 광산 생산 조정 및 하이브리드차 확대로 백금족 지지선 확보)</div>
 
-        <div class="chapter-box">
-            <h2 class="chapter-title">2. 재고 상황 (Warehouse Stocks)</h2>
-            <p class="chapter-desc">남아프리카공화국 PGM 광산의 전력 수급 및 유지보수 일정으로 1차 제련 공급이 조절되고 있습니다.</p>
-        </div>
+                <div class="ai-sec-title">2. 핵심 내용 요약:</div>
+                <ul class="ai-bullets">
+                    <li>존슨매티 로듐 1g당 20만원선 안착: 사상 최저가 구간을 벗어나 강력한 가격 바닥을 다지며 기술적 반등.</li><li>하이브리드(HEV) 차량 글로벌 인기 지속: 순수 전기차 캐즘(Chasm)으로 내연기관·HEV용 촉매 귀금속 수요 유지.</li><li>남아프리카공화국 전력난 및 샤프트 폐쇄: PGM 채굴 원가 상승으로 인해 글로벌 신규 공급 축소.</li>
+                </ul>
 
-        <div class="chapter-box">
-            <h2 class="chapter-title">3. 거시경제 (Macro & Policy)</h2>
-            <p class="chapter-desc">내연기관차 및 하이브리드(HEV) 차량의 글로벌 수요가 지속되며 PGM 귀금속 수요 기반이 안정적입니다.</p>
-        </div>
+                <div class="ai-sec-title">3. 향후 시장 여파 및 전망 코멘트:</div>
+                <div class="sub-bullet-title">* 원자재 가격 및 글로벌 수급 여파:</div>
+                <div class="sub-bullet-desc">• <strong>(단기)</strong> 로듐·팔라듐의 투기적 매도세가 진정되며 백금족 3종 모두 단기 저점을 확인하고 완만한 우상향 추세가 예상됨.</div>
+                <div class="sub-bullet-desc">• <strong>(중기)</strong> 수소 경제(연료전지 백금 촉매)와 고효율 하이브리드 촉매 수요가 맞물려 귀금속 재활용의 전략적 가치가 급상승할 것임.</div>
 
-        <div class="chapter-box">
-            <h2 class="chapter-title">4. 향후 예측 및 현장 가이드 (Outlook)</h2>
-            <p class="chapter-desc">가솔린 LPi 촉매(로듐 함유) 및 디젤 DPF(백금 함유)는 순정품 규격 코드를 확인한 후 분할 매각을 추천합니다.</p>
-        </div>
-
-        <div class="disc-box">
-            <strong>⚠️ [가격 예측치 면책 고지]</strong><br>
-            본 분석은 폐촉매 순정품 기준의 귀금속 환산 추정치이며, 사제 촉매나 재생품은 귀금속 함량이 없어 적용되지 않습니다.
-        </div>
-
-        <div class="rss-box">
-            <div style="font-size:12px; font-weight:800; color:#0f172a; margin-bottom:8px;">🔗 최근 언론사 실시간 보도 원문 (Source)</div>
-            <div class="rss-item">
-                <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxNUWJUZWs1eGR3em5yTnhWdTlvdjcxdkk2aHV5T1pUQ2djSDRKN1JRLXl0NE8tTzFSYUk5Z2xVZV9mQ1JoVE5QcFdjYlR6LUVBYTBZc2MzbDlnb3hzckFTYzdwam9BSGxRMXlFOU1wRk5lZmptOHlyc0VOSXRDNXcyem1OaUdLb2Y3ZkI4aHNLOVIzQQ?oc=5" target="_blank" rel="noopener noreferrer" class="rss-link">[Mitrade] 백금, 아직도 저평가됐을까? 2026년 백금 가격 전망 총정리</a>
-                <span class="rss-date-tag">보도일: 2026-10-10</span>
-                <div class="rss-snip">백금, 아직도 저평가됐을까? 2026년 백금 가격 전망 총정리 &nbsp;&nbsp; Mitrade</div>
-            </div><div class="rss-item">
-                <a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE5MWTFLMy10TnJYWTRJNDF0SVZ2LWVNa1EtUkdYYmw2cXVxVzdBT25ESXQ2QXFQdl9JWWp1TEVXaFpWRGc1S1Z2SkowRzlnM1p5bUQwY1dUSXBDNkt2SXBGU0tlZ3JPWnFtcHhj?oc=5" target="_blank" rel="noopener noreferrer" class="rss-link">[히트뉴스] 40년 백금치료 한계 넘을까… 요로상피암·위암 표적치료 급여</a>
-                <span class="rss-date-tag">보도일: 2026-10-10</span>
-                <div class="rss-snip">40년 백금치료 한계 넘을까… 요로상피암·위암 표적치료 급여 &nbsp;&nbsp; 히트뉴스</div>
+                <div class="sub-bullet-title">* 자동차 부품 및 스크랩 유통 영향:</div>
+                <div class="sub-bullet-desc">• <strong>(부품 제조 및 원가)</strong> 완성차 배기가스 정화용 세라믹 모노리스 코어 내 귀금속 함량 설계가 타이트해지며 신품 촉매 납품단가 유지.</div>
+                <div class="sub-bullet-desc">• <strong>(스크랩 유통 및 재생 시장)</strong> 국내 폐차장에서 적출되는 LPi(로듐 함유) 및 GDi 폐촉매 단가는 개당 15~20만원대, DPF는 18~23만원대의 견조한 시세 유지.</div>
             </div>
         </div>
     </div>

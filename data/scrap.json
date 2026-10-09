@@ -1,99 +1,231 @@
 {
-  "updated_at": "2026-10-09 09:00 KST",
+  "updated_at": "2026-10-10 09:00 KST",
   "base_metals": {
     "copper": 19590,
     "aluminum": 4390,
     "iron": 548,
-    "pd": 44500,
-    "rh": 206000,
-    "pt": 43400
+    "zinc": 5231,
+    "tin": 72945,
+    "lead": 2594,
+    "nickel": 22030,
+    "pd": 53631,
+    "rh": 403326,
+    "pt": 73850
   },
   "iron_scrap": [
     {
+      "id": "steel_fresh_a",
       "name": "생철 A",
-      "spec": "프레스 신품 강판 (순도 99%↑)",
-      "wholesale": 455,
-      "retail": 411
+      "name_sub": "프레스 신품 강판 (순도 99%↑)",
+      "ratio_pct": 101.5,
+      "desc": "자동차·가전공장 프레스 신품 강판 (순도 99%↑, 불순물 제로 최상급)",
+      "wholesale": 556,
+      "retail": 501
     },
     {
+      "id": "steel_heavy_a",
       "name": "중량 A",
-      "spec": "두께 6mm 이상 H빔·철골·레일",
-      "wholesale": 411,
-      "retail": 367
+      "name_sub": "두께 6mm 이상 대형 철골",
+      "ratio_pct": 91.0,
+      "desc": "두께 6mm 이상 H빔, 형강, 철골, 강관, 레일, 중장비 프레임",
+      "wholesale": 499,
+      "retail": 449
     },
     {
+      "id": "steel_heavy_b",
       "name": "중량 B",
-      "spec": "두께 3~6mm 기계류·배관 파이프",
-      "wholesale": 378,
-      "retail": 340
+      "name_sub": "두께 3~6mm 기계류·샤시",
+      "ratio_pct": 84.0,
+      "desc": "두께 3~6mm 기계 부품, 농기계, 자동차 하체 샤시, 배관 파이프",
+      "wholesale": 460,
+      "retail": 414
     },
     {
+      "id": "steel_light_a",
       "name": "경량 A",
-      "spec": "두께 1~3mm 가전외판·드럼통",
-      "wholesale": 356,
-      "retail": 318
+      "name_sub": "두께 1~3mm 박판·가전 외판",
+      "ratio_pct": 79.0,
+      "desc": "두께 1~3mm 가전제품 외판, 캐비닛, 차체 껍데기, 드럼통, 철판",
+      "wholesale": 433,
+      "retail": 390
     },
     {
-      "name": "선반설 A",
-      "spec": "절삭칩·선반 가공 찌꺼기",
-      "wholesale": 334,
-      "retail": 301
+      "id": "steel_chips",
+      "name": "선반설 (분철)",
+      "name_sub": "절삭 쇳가루·가공 칩",
+      "ratio_pct": 72.0,
+      "desc": "공작기계 절삭 가공 쇳가루, 드릴 분철 (절삭유·수분 함유)",
+      "wholesale": 395,
+      "retail": 355
     }
   ],
-  "nonferrous": [
+  "copper": [
     {
-      "name": "A동 (밀베리)",
-      "spec": "피복 벗긴 굵은 단선 (순도 99.9%)",
+      "id": "cu_twist",
+      "name": "A동 (꽈배기동)",
+      "name_sub": "피복 벗긴 고순도 나동선 (순도 99.9%)",
+      "ratio_pct": 95.0,
       "unit": "원/kg",
-      "price": 12342
+      "price": 18610,
+      "retail": 16749
     },
     {
-      "name": "상동 (중품)",
-      "spec": "모터 분해선, 변압기 코일동",
+      "id": "cu_pipe",
+      "name": "상동 (파이프·판동)",
+      "name_sub": "동파이프·부스바·변압기동",
+      "ratio_pct": 89.0,
       "unit": "원/kg",
-      "price": 11362
+      "price": 17435,
+      "retail": 15692
     },
     {
-      "name": "파동 (하품)",
-      "spec": "주석도금선, 얇은 에나멜선, 혼합동",
+      "id": "cu_mixed",
+      "name": "파동 (하동·잡선)",
+      "name_sub": "모터선·에나멜선·도금동",
+      "ratio_pct": 81.0,
       "unit": "원/kg",
-      "price": 9991
+      "price": 15868,
+      "retail": 14281
+    }
+  ],
+  "brass": [
+    {
+      "id": "brass_nobe",
+      "name": "노베 신주 (황동 판재)",
+      "name_sub": "황동판·동단조 (Cu 65% + Zn 35%)",
+      "ratio_pct": 92.0,
+      "unit": "원/kg",
+      "price": 12738,
+      "retail": 11464
     },
     {
-      "name": "황동 노베 (신주)",
-      "spec": "판재 스크랩 (Cu 65% + Zn 35%)",
+      "id": "brass_rod",
+      "name": "절봉 신주 (황동 봉·볼트)",
+      "name_sub": "선반 절삭봉·볼트·너트 (Cu 60% + Zn 40%)",
+      "ratio_pct": 86.0,
       "unit": "원/kg",
-      "price": 7836
+      "price": 11908,
+      "retail": 10717
     },
     {
-      "name": "황동 절봉 (신주)",
-      "spec": "황동 봉 절삭 부스러기",
+      "id": "brass_cast",
+      "name": "주물 신주 (수도꼭지·밸브)",
+      "name_sub": "수도꼭지·수전금구·배관 밸브",
+      "ratio_pct": 74.0,
       "unit": "원/kg",
-      "price": 7248
+      "price": 10246,
+      "retail": 9221
+    }
+  ],
+  "aluminum": [
+    {
+      "id": "al_wheel",
+      "name": "알루미늄 휠 (A356)",
+      "name_sub": "납추·타이어 완전 분리 고순도 휠",
+      "ratio_pct": 92.0,
+      "unit": "원/kg",
+      "price": 4039,
+      "retail": 3635
     },
     {
-      "name": "알루미늄 샷시",
-      "spec": "창틀 프로파일 (페인트/부속 제거)",
+      "id": "al_engine",
+      "name": "엔진·미션 케이스 (주물)",
+      "name_sub": "철 부속 분리 엔진 블록·변속기 케이스",
+      "ratio_pct": 85.0,
       "unit": "원/kg",
-      "price": 2502
+      "price": 3732,
+      "retail": 3358
     },
     {
-      "name": "알루미늄 휠",
-      "spec": "납추/타이어 완전 분리 휠",
+      "id": "al_sash",
+      "name": "알루미늄 샤시 (A급)",
+      "name_sub": "창호 프로파일 (페인트/부속 제거 6063재)",
+      "ratio_pct": 82.0,
       "unit": "원/kg",
-      "price": 2195
+      "price": 3600,
+      "retail": 3240
     },
     {
-      "name": "알루미늄 캔",
-      "spec": "음료수 캔 압축 베일",
+      "id": "al_can",
+      "name": "알루미늄 캔 (UBC)",
+      "name_sub": "음료수 캔 압축 베일",
+      "ratio_pct": 50.0,
       "unit": "원/kg",
-      "price": 1800
+      "price": 2195,
+      "retail": 1976
+    }
+  ],
+  "special": [
+    {
+      "id": "sus_304",
+      "name": "스테인리스 (SUS 304)",
+      "name_sub": "비자성 정품 서스 (니켈 8% + 크롬 18%)",
+      "ratio_pct": 370.0,
+      "unit": "원/kg",
+      "price": 2028,
+      "retail": 1825
     },
     {
-      "name": "스테인리스 STS 304",
-      "spec": "자석 안 붙는 니켈 8% 정품 서스",
+      "id": "zinc_diecast",
+      "name": "아연 다이캐스팅 (Zamak)",
+      "name_sub": "아연 합금 주물 부속",
+      "ratio_pct": 68.0,
       "unit": "원/kg",
-      "price": 1850
+      "price": 3557,
+      "retail": 3201
+    },
+    {
+      "id": "tin_solder",
+      "name": "주석 솔더 (Sn 99%)",
+      "name_sub": "전자 솔더·화이트메탈 베어링",
+      "ratio_pct": 78.0,
+      "unit": "원/kg",
+      "price": 56897,
+      "retail": 51207
+    }
+  ],
+  "pps_table": [
+    {
+      "metal": "전기동 (구리)",
+      "pps_price": 13850,
+      "market_price": 19590,
+      "unit": "원/kg",
+      "diff_pct": -29.3
+    },
+    {
+      "metal": "알루미늄 괴",
+      "pps_price": 3920,
+      "market_price": 4390,
+      "unit": "원/kg",
+      "diff_pct": -10.7
+    },
+    {
+      "metal": "아연 괴",
+      "pps_price": 3880,
+      "market_price": 5231,
+      "unit": "원/kg",
+      "diff_pct": -25.8
+    },
+    {
+      "metal": "연 (납)",
+      "pps_price": 2750,
+      "market_price": 2594,
+      "unit": "원/kg",
+      "diff_pct": 6.0
+    },
+    {
+      "metal": "주석 괴",
+      "pps_price": 46200,
+      "market_price": 72945,
+      "unit": "원/kg",
+      "diff_pct": -36.7
+    },
+    {
+      "metal": "니켈 괴",
+      "pps_price": 22800,
+      "market_price": 22030,
+      "unit": "원/kg",
+      "diff_pct": 3.5
     }
   ],
   "catalyst_presets": [
@@ -102,48 +234,48 @@
       "name": "LPG 가스차 (2.0~3.0 LPi)",
       "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi",
       "metals": "Pd 1.9g + Rh 0.85g",
-      "min_quote": 169000,
-      "max_quote": 195000
+      "min_quote": 289000,
+      "max_quote": 334000
     },
     {
       "id": "gdi",
       "name": "직분사 가솔린 (1.6~2.4 GDi)",
       "models": "아반떼MD · YF/K5 · 그랜저HG GDi",
       "metals": "Pd 2.1g + Rh 0.45g",
-      "min_quote": 121000,
-      "max_quote": 140000
+      "min_quote": 191000,
+      "max_quote": 221000
     },
     {
       "id": "turbo",
       "name": "터보 가솔린 (1.6T~2.0T)",
       "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터",
       "metals": "Pd 2.5g + Rh 0.65g",
-      "min_quote": 159000,
-      "max_quote": 184000
+      "min_quote": 258000,
+      "max_quote": 297000
     },
     {
       "id": "mpi",
       "name": "자연흡기 가솔린 (1.0~1.6 MPi)",
       "models": "모닝 · 레이 · 아반떼HD/AD MPi",
       "metals": "Pd 1.8g + Rh 0.20g",
-      "min_quote": 79000,
-      "max_quote": 91000
+      "min_quote": 115000,
+      "max_quote": 133000
     },
     {
       "id": "hev",
       "name": "하이브리드 (1.6~2.0 HEV)",
       "models": "니로 · 아반떼 · 쏘나타 · K5 HEV",
       "metals": "Pd 2.2g + Rh 0.50g",
-      "min_quote": 131000,
-      "max_quote": 151000
+      "min_quote": 208000,
+      "max_quote": 240000
     },
     {
       "id": "dpf",
       "name": "디젤 DPF (2.0~2.5 CRDi)",
       "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어",
       "metals": "Pt 3.8g 집중 함유",
-      "min_quote": 121000,
-      "max_quote": 139000
+      "min_quote": 209000,
+      "max_quote": 241000
     }
   ]
 }

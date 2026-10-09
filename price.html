@@ -3,9 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>국제 시세 전용관 - MetalsTerminal</title>
-    <meta name="description" content="LME, NYMEX, Johnson Matthey 공식 고시 기준 12대 철·비철·귀금속 실시간 종가 및 원화 환산 시세">
+    <title>국제 시세 전용관 (30일 차트 & 조달청 고시가) - MetalsTerminal</title>
+    <meta name="description" content="LME, NYMEX, Johnson Matthey 공식 고시 기준 12대 철·비철·귀금속 실시간 종가, 30일 시계열 차트 및 조달청 비축물자 고시가 비교">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .metal-row {
+            cursor: pointer;
+            transition: background 0.15s ease;
+            user-select: none;
+        }
+        .metal-row:hover {
+            background: #f8fafc;
+        }
+        .metal-row.active {
+            background: #f1f5f9;
+            border-bottom-color: transparent;
+        }
+        .chart-toggle-hint {
+            font-size: 11px;
+            color: #2563eb;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            margin-top: 4px;
+        }
+        /* 아코디언 차트 패널 */
+        .accordion-chart-panel {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-line);
+            padding: 14px 14px 18px 14px;
+            display: none;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+        .accordion-chart-panel.show {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .acp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .acp-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .acp-stats-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .stat-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        .stat-lbl {
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 600;
+        }
+        .stat-val {
+            font-size: 13px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 2px;
+        }
+        .stat-val.high { color: #dc2626; }
+        .stat-val.low { color: #2563eb; }
+        .stat-val.pps { color: #059669; }
+
+        /* SVG 차트 컨테이너 */
+        .svg-chart-wrap {
+            width: 100%;
+            height: 120px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 6px 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .svg-chart-wrap svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .chart-date-axis {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10.5px;
+            color: #94a3b8;
+            margin-top: 4px;
+            padding: 0 4px;
+        }
+
+        /* 조달청 비교 안내 배너 */
+        .pps-comparison-banner {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #065f46;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pps-comparison-banner a {
+            color: #047857;
+            font-weight: 800;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 
@@ -48,9 +173,14 @@
             <div class="section-header price-header">
                 <div class="sh-left">
                     <span class="header-indicator red"></span>
-                    <h2>국제 시세 (Global Benchmark)</h2>
+                    <h2>국제 시세 &amp; 30일 변동 차트</h2>
                 </div>
-                <span class="header-source-note">공식 시장 종가 기준</span>
+                <span class="header-source-note">품목 클릭 시 차트 펼치기 ▼</span>
+            </div>
+
+            <!-- 안내 배너 -->
+            <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:10px 14px; border-radius:6px; margin: 10px 14px 14px 14px; font-size:12.5px; color:#1e40af; line-height:1.5;">
+                💡 <strong>확인 팁</strong>: 각 금속을 <strong>클릭(탭)</strong>하시면 아래로 <strong>최근 30일 시계열 차트</strong>와 <strong>조달청(PPS) 비축물자 고시가 대비 비교</strong>가 즉시 펼쳐집니다.
             </div>
 
             <!-- 철 ➔ 비철 ➔ 귀금속 12종 리스트 -->
@@ -110,8 +240,12 @@
                 groupBlock.appendChild(headerLabel);
 
                 sec.items.forEach(m => {
+                    const rowId = `row-${m.key}`;
+                    const panelId = `panel-${m.key}`;
+
                     const row = document.createElement("div");
                     row.className = "metal-row";
+                    row.id = rowId;
 
                     let diffClass = "same";
                     let diffText = "─ 보합 (0.0%)";
@@ -134,6 +268,10 @@
                                 <span class="mr-source-tag">${m.source}</span>
                                 <span>${m.raw_usd}</span>
                             </div>
+                            <div class="chart-toggle-hint">
+                                <span>📈 30일 차트 &amp; 조달청 대비</span>
+                                <span id="arrow-${m.key}">▼</span>
+                            </div>
                         </div>
                         <div class="mr-price-block">
                             <div class="mr-krw-wrap">
@@ -143,11 +281,149 @@
                             <div class="mr-diff ${diffClass}">${diffText}</div>
                         </div>
                     `;
+
+                    // 아코디언 차트 패널
+                    const panel = document.createElement("div");
+                    panel.className = "accordion-chart-panel";
+                    panel.id = panelId;
+
+                    // 30일 통계 산출
+                    const series = m.history_30d || [m.krw_price];
+                    const dates = m.history_dates || [];
+                    const maxVal = Math.max(...series);
+                    const minVal = Math.min(...series);
+                    const startDate = dates.length ? dates[0] : "";
+                    const endDate = dates.length ? dates[dates.length - 1] : "";
+
+                    // SVG 라인 차트 생성
+                    const svgChartHtml = generateSvgChart(series);
+
+                    // 조달청 배너 HTML
+                    let ppsHtml = "";
+                    if (m.pps_price) {
+                        ppsHtml = `
+                            <div class="pps-comparison-banner">
+                                <div>
+                                    🏛️ <strong>조달청(PPS) 비축물자 판매고시가</strong>: 
+                                    <strong>${m.pps_price.toLocaleString()} ${m.unit}</strong> 
+                                    <span style="color:${m.pps_diff_pct >= 0 ? '#b91c1c' : '#047857'}; font-weight:800;">(${m.pps_diff_pct >= 0 ? '+' : ''}${m.pps_diff_pct}%)</span>
+                                </div>
+                                <a href="https://www.pps.go.kr/bichuk/index.do" target="_blank" rel="noopener noreferrer">누리집 ↗</a>
+                            </div>
+                        `;
+                    }
+
+                    panel.innerHTML = `
+                        <div class="acp-header">
+                            <div class="acp-title">
+                                <span>📈 최근 30일 시계열 가격 추이</span>
+                                <span style="font-size:11px; color:#64748b; font-weight:normal;">(${startDate} ~ ${endDate})</span>
+                            </div>
+                            <div style="font-size:11px; color:#2563eb; font-weight:700;">기준: 일일 종가</div>
+                        </div>
+
+                        <div class="acp-stats-bar">
+                            <div class="stat-card">
+                                <div class="stat-lbl">당일 확정 종가</div>
+                                <div class="stat-val">${m.krw_price.toLocaleString()}원</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-lbl">30일 최고가</div>
+                                <div class="stat-val high">${maxVal.toLocaleString()}원</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-lbl">30일 최저가</div>
+                                <div class="stat-val low">${minVal.toLocaleString()}원</div>
+                            </div>
+                        </div>
+
+                        <div class="svg-chart-wrap">
+                            ${svgChartHtml}
+                        </div>
+                        <div class="chart-date-axis">
+                            <span>${startDate}</span>
+                            <span>15일 전</span>
+                            <span>오늘 (${endDate})</span>
+                        </div>
+
+                        ${ppsHtml}
+                    `;
+
+                    row.onclick = () => {
+                        toggleChart(m.key);
+                    };
+
                     groupBlock.appendChild(row);
+                    groupBlock.appendChild(panel);
                 });
 
                 container.appendChild(groupBlock);
             });
+        }
+
+        function toggleChart(key) {
+            const row = document.getElementById(`row-${key}`);
+            const panel = document.getElementById(`panel-${key}`);
+            const arrow = document.getElementById(`arrow-${key}`);
+            if (!panel) return;
+
+            const isOpen = panel.classList.contains("show");
+            if (isOpen) {
+                panel.classList.remove("show");
+                row.classList.remove("active");
+                if (arrow) arrow.innerText = "▼";
+            } else {
+                panel.classList.add("show");
+                row.classList.add("active");
+                if (arrow) arrow.innerText = "▲";
+            }
+        }
+
+        function generateSvgChart(series) {
+            if (!series || series.length < 2) {
+                return `<div style="text-align:center; padding:30px; color:#94a3b8; font-size:12px;">차트 데이터 준비 중</div>`;
+            }
+            const min = Math.min(...series);
+            const max = Math.max(...series);
+            const range = (max - min) || 1;
+            const w = 360;
+            const h = 100;
+            const padX = 12;
+            const padY = 14;
+
+            const points = series.map((val, idx) => {
+                const x = padX + (idx / (series.length - 1)) * (w - padX * 2);
+                const y = h - padY - ((val - min) / range) * (h - padY * 2);
+                return `${x.toFixed(1)},${y.toFixed(1)}`;
+            });
+
+            const polylinePoints = points.join(" ");
+            const lastPoint = points[points.length - 1].split(",");
+            const lastX = lastPoint[0];
+            const lastY = lastPoint[1];
+
+            // 그라데이션 채우기용 면적
+            const areaPoints = `${padX},${h - padY} ${polylinePoints} ${w - padX},${h - padY}`;
+
+            return `
+                <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="grad-${min}" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+                            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- 기준선 -->
+                    <line x1="${padX}" y1="${h - padY}" x2="${w - padX}" y2="${h - padY}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3" />
+                    <line x1="${padX}" y1="${padY}" x2="${w - padX}" y2="${padY}" stroke="#f1f5f9" stroke-width="1" />
+                    <!-- 면적 채우기 -->
+                    <polygon points="${areaPoints}" fill="url(#grad-${min})" />
+                    <!-- 메인 라인 -->
+                    <polyline fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" points="${polylinePoints}" />
+                    <!-- 종가 점 & 펄스 -->
+                    <circle cx="${lastX}" cy="${lastY}" r="4" fill="#1d4ed8" stroke="#ffffff" stroke-width="2" />
+                </svg>
+            `;
         }
     </script>
 </body>

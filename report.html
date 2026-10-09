@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>리포트 &amp; 제강사 이슈 - MetalsTerminal</title>
-    <meta name="description" content="국내 제강사 고철 구매가 변동 공시, LME 런던 재고량 분석 및 폐촉매 실무 매각 가이드 일일 리포트">
+    <title>일일 금속 리포트 &amp; AI 스크랩 분석 - MetalsTerminal</title>
+    <meta name="description" content="구리, 철스크랩, 알루미늄, 아연, 납, 니켈, 폐촉매, 귀금속 등 8대 금속별 Gemini Flash AI 시장 및 스크랩 여파 분석 일일 리포트">
     <link rel="stylesheet" href="style.css">
     <style>
         .report-filter-bar {
@@ -31,63 +31,201 @@
             color: #ffffff;
             border-color: #0f172a;
         }
+
+        /* 리포트 카드 */
         .report-card-item {
             background: #ffffff;
             border-bottom: 1px solid var(--border-line);
-            padding: 16px 14px;
-            cursor: pointer;
             transition: background 0.15s ease;
         }
-        .report-card-item:hover {
+        .rc-clickable-header {
+            padding: 16px 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .rc-clickable-header:hover {
             background: #f8fafc;
         }
-        .rc-header {
+        .rc-header-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         .rc-tag {
             font-size: 11px;
             font-weight: 800;
-            padding: 2px 6px;
+            padding: 3px 8px;
             border-radius: 4px;
         }
+        .rc-tag.copper { background: #fee2e2; color: #b91c1c; }
         .rc-tag.steel { background: #f1f5f9; color: #334155; }
-        .rc-tag.cu { background: #fee2e2; color: #b91c1c; }
-        .rc-tag.cat { background: #fef3c7; color: #b45309; }
+        .rc-tag.aluminum { background: #ecfdf5; color: #047857; }
+        .rc-tag.catalyst { background: #fef3c7; color: #b45309; }
+        .rc-tag.precious { background: #fef9c3; color: #854d0e; }
+        .rc-tag.zinc, .rc-tag.lead, .rc-tag.nickel { background: #eff6ff; color: #1d4ed8; }
+
         .rc-date {
             font-size: 12px;
             color: var(--text-dim);
             font-weight: 600;
         }
         .rc-title {
-            font-size: 16px;
+            font-size: 15.5px;
             font-weight: 800;
             color: var(--text-title);
-            line-height: 1.4;
-            margin-bottom: 10px;
+            line-height: 1.45;
+            margin: 0 0 10px 0;
         }
-        .rc-summary-box {
-            background: #f8fafc;
-            border-left: 3px solid #3b82f6;
-            padding: 10px 12px;
-            border-radius: 4px;
-            font-size: 12.5px;
-            color: #334155;
-            line-height: 1.6;
-        }
-        .rc-summary-box ul {
-            margin: 0;
-            padding-left: 16px;
-        }
-        .rc-footer-meta {
+        .rc-header-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
+            font-size: 12px;
+            color: #64748b;
+        }
+        .toggle-btn {
+            color: #2563eb;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* 아코디언 상세 내용 (사용자 스크린샷 100% 동일 레이아웃) */
+        .report-accordion-body {
+            display: none;
+            padding: 0 14px 20px 14px;
+            background: #ffffff;
+            border-top: 1px dashed #e2e8f0;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+        .report-accordion-body.show {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 🔮 AI 시장 및 스크랩 여파 분석 카드 (다크/블루 테크 스타일) */
+        .ai-analysis-card {
+            background: #1e293b;
+            color: #f8fafc;
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-top: 14px;
+            border: 1px solid #334155;
+        }
+        .ai-head-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #334155;
+        }
+        .ai-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+        }
+        .ai-badge {
+            background: #8b5cf6;
+            color: #ffffff;
             font-size: 11px;
-            color: var(--text-dim);
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+        }
+        .ai-section-lbl {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #f8fafc;
+            margin: 14px 0 6px 0;
+        }
+        .ai-verdict-text {
+            background: #0f172a;
+            border-left: 3px solid #8b5cf6;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+        .ai-core-list {
+            padding-left: 18px;
+            margin: 6px 0 12px 0;
+            font-size: 13px;
+            line-height: 1.65;
+            color: #e2e8f0;
+        }
+        .ai-core-list li {
+            margin-bottom: 6px;
+        }
+        .ai-sub-group {
+            margin-top: 8px;
+        }
+        .ai-sub-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #cbd5e1;
+            margin: 8px 0 4px 0;
+        }
+        .ai-bullet-p {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin: 4px 0 6px 10px;
+        }
+
+        /* 📰 최근 주요 뉴스 섹션 */
+        .recent-news-section {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-top: 14px;
+        }
+        .news-sec-header {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .news-row-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .news-row-item:last-child {
+            border-bottom: none;
+        }
+        .nr-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: underline;
+            line-height: 1.4;
+            display: inline-block;
+        }
+        .nr-meta {
+            font-size: 11px;
+            color: #64748b;
+            margin: 3px 0 4px 0;
+        }
+        .nr-snip {
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -119,20 +257,25 @@
         <div class="container status-inner">
             <div class="status-badge-wrap">
                 <span class="live-dot"></span>
-                <span class="status-date">매일 09:00 정기 발행 쉬운 리포트</span>
+                <span class="status-date" id="report-status-date">매일 09:00 정기 고시 8대 금속 리포트</span>
             </div>
             <div class="status-rate">
-                기준환율: <strong>1,342.0원</strong>
+                기준환율: <strong id="report-usd-rate">1,356.2원</strong>
             </div>
         </div>
     </aside>
 
-    <!-- 카테고리 필터 칩 -->
+    <!-- 8대 금속 카테고리 필터 칩 -->
     <div class="report-filter-bar">
         <button class="rf-chip active" onclick="filterReports('all', this)">전체</button>
-        <button class="rf-chip" onclick="filterReports('steel', this)">🏗️ 제강사 고철</button>
-        <button class="rf-chip" onclick="filterReports('copper', this)">🥉 LME 구리</button>
+        <button class="rf-chip" onclick="filterReports('copper', this)">🥉 구리</button>
+        <button class="rf-chip" onclick="filterReports('steel', this)">🏗️ 철스크랩</button>
+        <button class="rf-chip" onclick="filterReports('aluminum', this)">🥫 알루미늄</button>
+        <button class="rf-chip" onclick="filterReports('zinc', this)">⚡ 아연</button>
+        <button class="rf-chip" onclick="filterReports('lead', this)">🔋 납</button>
+        <button class="rf-chip" onclick="filterReports('nickel', this)">⚙️ 니켈·STS</button>
         <button class="rf-chip" onclick="filterReports('catalyst', this)">🚗 폐촉매·PGM</button>
+        <button class="rf-chip" onclick="filterReports('precious', this)">👑 금·은</button>
     </div>
 
     <main class="mobile-container">
@@ -140,14 +283,19 @@
             <div class="section-header">
                 <div class="sh-left">
                     <span class="header-indicator amber"></span>
-                    <h2>발행 리포트 &amp; 제강사 이슈</h2>
+                    <h2>8대 금속 일일 리포트 &amp; AI 여파 분석</h2>
                 </div>
-                <span class="header-badge">4대 챕터 정형 피드</span>
+                <span class="header-badge">리포트 클릭 시 본문 펼치기 ▼</span>
             </div>
 
-            <!-- 동적 렌더링 컨테이너 -->
+            <!-- 안내 배너 -->
+            <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:10px 14px; border-radius:6px; margin: 10px 14px 14px 14px; font-size:12.5px; color:#1e40af; line-height:1.5;">
+                💡 <strong>안내</strong>: 각 금속의 일일 리포트를 <strong>클릭(탭)</strong>하시면 아래로 <strong>AI 시장 및 스크랩 여파 분석</strong>과 <strong>최근 주요 뉴스 원문</strong>이 펼쳐집니다.
+            </div>
+
+            <!-- 동적 렌더링 피드 컨테이너 -->
             <div id="reports-feed-container">
-                <!-- app.js 또는 report.html 내장 스크립트에서 data/reports.json 로드 -->
+                <!-- 동적 렌더링 -->
             </div>
         </section>
     </main>
@@ -201,10 +349,7 @@
 
             const filtered = allReports.filter(rep => {
                 if (currentFilter === 'all') return true;
-                if (currentFilter === 'steel') return rep.category.includes('제강사') || rep.category.includes('고철');
-                if (currentFilter === 'copper') return rep.category.includes('구리');
-                if (currentFilter === 'catalyst') return rep.category.includes('촉매') || rep.category.includes('로듐');
-                return true;
+                return rep.category === currentFilter;
             });
 
             if (filtered.length === 0) {
@@ -212,36 +357,99 @@
                 return;
             }
 
-            filtered.forEach(rep => {
-                let tagClass = "steel";
-                if (rep.category.includes("구리")) tagClass = "cu";
-                else if (rep.category.includes("촉매") || rep.category.includes("로듐")) tagClass = "cat";
-
+            filtered.forEach((rep, idx) => {
                 const card = document.createElement("article");
                 card.className = "report-card-item";
-                card.onclick = () => {
-                    if (rep.article_url) window.location.href = rep.article_url;
-                };
 
-                const summaryLines = rep.summary_3lines ? rep.summary_3lines.map(line => `<li>${line}</li>`).join('') : '';
+                const tagClass = rep.category || "steel";
+                const badgeLabel = rep.badge || rep.name_kr;
+                const ai = rep.ai_analysis || {};
+                const newsList = rep.recent_news || rep.rss_sources || [];
+
+                // AI 코어 불릿 HTML
+                const bullets = (ai.core_bullets || []).map(b => `<li>${b}</li>`).join("");
+
+                // 최근 뉴스 HTML
+                const newsHtml = newsList.map(n => `
+                    <div class="news-row-item">
+                        <a href="${n.url}" target="_blank" rel="noopener noreferrer" class="nr-link">${n.title} ↗</a>
+                        <div class="nr-meta">출처: <strong>${n.media || '뉴스'}</strong> | 일시: ${n.date || rep.date}</div>
+                        <div class="nr-snip">${n.snippet || ''}</div>
+                    </div>
+                `).join("");
+
+                const accordionId = `acc-${rep.id || idx}`;
+                const arrowId = `arr-${rep.id || idx}`;
 
                 card.innerHTML = `
-                    <div class="rc-header">
-                        <span class="rc-tag ${tagClass}">${rep.type || '[리포트]'}</span>
-                        <span class="rc-date">📅 ${rep.pub_datetime || rep.date + ' 발행'}</span>
+                    <div class="rc-clickable-header" onclick="toggleReport('${accordionId}', '${arrowId}')">
+                        <div class="rc-header-top">
+                            <span class="rc-tag ${tagClass}">${badgeLabel}</span>
+                            <span class="rc-date">📅 ${rep.pub_datetime || rep.date}</span>
+                        </div>
+                        <h3 class="rc-title">${rep.title}</h3>
+                        <div class="rc-header-meta">
+                            <span>당일 기준가: <strong>${rep.current_price || '-'}</strong></span>
+                            <span class="toggle-btn" id="${arrowId}">펼쳐보기 ▼</span>
+                        </div>
                     </div>
-                    <h3 class="rc-title">${rep.title}</h3>
-                    <div class="rc-summary-box">
-                        <strong>💡 3줄 핵심 요약:</strong>
-                        <ul>${summaryLines}</ul>
-                    </div>
-                    <div class="rc-footer-meta">
-                        <span>작성: ${rep.author || 'MetalsTerminal Desk'}</span>
-                        <span style="color:#2563eb; font-weight:700;">전체 본문 읽기 &gt;</span>
+
+                    <!-- 펼쳐지는 아코디언 본문 (사용자 스크린샷 100% 동일) -->
+                    <div class="report-accordion-body" id="${accordionId}">
+                        <!-- 🔮 AI 시장 및 스크랩 여파 분석 카드 -->
+                        <div class="ai-analysis-card">
+                            <div class="ai-head-row">
+                                <h4 class="ai-title">🔮 AI 시장 및 스크랩 여파 분석</h4>
+                                <span class="ai-badge">${ai.engine || 'Gemini Flash'}</span>
+                            </div>
+
+                            <div class="ai-section-lbl">1. 이슈 판정:</div>
+                            <div class="ai-verdict-text">${ai.issue_verdict || '단순 시황 (특이 급변동 없음)'}</div>
+
+                            <div class="ai-section-lbl">2. 핵심 내용 요약:</div>
+                            <ul class="ai-core-list">
+                                ${bullets || '<li>수급 및 가격 횡보세 유지</li>'}
+                            </ul>
+
+                            <div class="ai-section-lbl">3. 향후 시장 여파 및 전망 코멘트:</div>
+                            <div class="ai-sub-group">
+                                <div class="ai-sub-title">* 원자재 가격 및 글로벌 수급 여파:</div>
+                                <div class="ai-bullet-p">• <strong>(단기)</strong> ${ai.outlook_raw_short || '단기 박스권 횡보'}</div>
+                                <div class="ai-bullet-p">• <strong>(중기)</strong> ${ai.outlook_raw_mid || '중기 수급 밸런스 유지'}</div>
+
+                                <div class="ai-sub-title">* 자동차 부품 및 스크랩 유통 영향:</div>
+                                <div class="ai-bullet-p">• <strong>(부품 제조 및 원가)</strong> ${ai.outlook_scrap_parts || '부품 제조 원가 안정'}</div>
+                                <div class="ai-bullet-p">• <strong>(스크랩 유통 및 재생 시장)</strong> ${ai.outlook_scrap_recy || '야적장 매입 단가 보합세'}</div>
+                            </div>
+                        </div>
+
+                        <!-- 📰 최근 주요 뉴스 (5건) -->
+                        <div class="recent-news-section">
+                            <div class="news-sec-header">
+                                <span>📰 최근 주요 뉴스 (${newsList.length}건)</span>
+                            </div>
+                            ${newsHtml}
+                        </div>
                     </div>
                 `;
+
                 container.appendChild(card);
             });
+        }
+
+        function toggleReport(accId, arrId) {
+            const body = document.getElementById(accId);
+            const arr = document.getElementById(arrId);
+            if (!body) return;
+
+            const isOpen = body.classList.contains("show");
+            if (isOpen) {
+                body.classList.remove("show");
+                if (arr) arr.innerText = "펼쳐보기 ▼";
+            } else {
+                body.classList.add("show");
+                if (arr) arr.innerText = "접기 ▲";
+            }
         }
 
         function filterReports(cat, btn) {
