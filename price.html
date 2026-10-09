@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>국제 시세 전용관 - MetalsTerminal</title>
+    <meta name="description" content="LME, NYMEX, Johnson Matthey 공식 고시 기준 12대 철·비철·귀금속 실시간 종가 및 원화 환산 시세">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="dossa-header">
+        <div class="container dossa-header-inner">
+            <a href="index.html" class="dossa-logo">
+                <span class="logo-accent">⚡</span> METALS<strong>TERMINAL</strong>
+            </a>
+            <div class="dossa-header-right">
+                <a href="scrap.html" class="btn-calc-nav">
+                    <span>🗂️</span> 스크랩·폐촉매관 &gt;
+                </a>
+            </div>
+        </div>
+        <nav class="dossa-subnav">
+            <div class="container dossa-subnav-inner">
+                <a href="index.html" class="nav-tab">포털홈</a>
+                <a href="price.html" class="nav-tab active">국제시세</a>
+                <a href="scrap.html" class="nav-tab">스크랩·폐촉매</a>
+                <a href="index.html#section-report" class="nav-tab">리포트</a>
+                <a href="index.html#section-market" class="nav-tab">직거래장터</a>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="status-bar">
+        <div class="container status-inner">
+            <div class="status-badge-wrap">
+                <span class="live-dot"></span>
+                <span class="status-date" id="display-date">2026.10.10(금) 09:00 정기고시</span>
+            </div>
+            <div class="status-rate">
+                기준환율: <strong id="display-rate">1,356.2원</strong>
+            </div>
+        </div>
+    </aside>
+
+    <main class="mobile-container">
+        <section class="section-box">
+            <div class="section-header price-header">
+                <div class="sh-left">
+                    <span class="header-indicator red"></span>
+                    <h2>국제 시세 (Global Benchmark)</h2>
+                </div>
+                <span class="header-source-note">공식 시장 종가 기준</span>
+            </div>
+
+            <!-- 철 ➔ 비철 ➔ 귀금속 12종 리스트 -->
+            <div class="metals-section-container" id="price-page-container">
+                <!-- app.js 동적 렌더링 -->
+            </div>
+
+            <div class="price-notice-footer">
+                <p>※ LME, NYMEX, Johnson Matthey 공식 고시 종가 및 실시간 원달러 환율(하나은행 전신환매도율) 적용 단가입니다. (부가가치세 별도)</p>
+                <p>※ 현장 스크랩(고물상/야적장) 실거래 추정 단가는 상단 <a href="scrap.html" style="color:#2563eb; font-weight:700;">[스크랩·폐촉매관]</a>에서 확인하실 수 있습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="dossa-footer">
+        <div class="container footer-links">
+            <a href="index.html">포털홈</a>
+            <span class="sep">|</span>
+            <a href="price.html">국제시세</a>
+            <span class="sep">|</span>
+            <a href="scrap.html">스크랩·폐촉매</a>
+            <span class="sep">|</span>
+            <a href="index.html#section-market">직거래장터</a>
+            <span class="sep">|</span>
+            <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP ▲</a>
+        </div>
+        <div class="container footer-copyright">
+            <p>Copyright © 2026 MetalsTerminal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPricePage();
+        });
+
+        async function renderPricePage() {
+            if (!pricesData) {
+                await loadPricesData();
+            }
+            const container = document.getElementById("price-page-container");
+            if (!container || !pricesData) return;
+
+            container.innerHTML = "";
+            const sections = pricesData.sections || [];
+
+            sections.forEach(sec => {
+                const groupBlock = document.createElement("div");
+                groupBlock.className = "market-group-block";
+
+                const headerLabel = document.createElement("div");
+                headerLabel.className = "group-header-label";
+                headerLabel.innerHTML = `<span>●</span> ${sec.section_name}`;
+                groupBlock.appendChild(headerLabel);
+
+                sec.items.forEach(m => {
+                    const row = document.createElement("div");
+                    row.className = "metal-row";
+
+                    let diffClass = "same";
+                    let diffText = "─ 보합 (0.0%)";
+
+                    if (m.diff_krw > 0) {
+                        diffClass = "up";
+                        diffText = `▲ +${m.diff_krw.toLocaleString()} (+${m.diff_pct.toFixed(1)}%)`;
+                    } else if (m.diff_krw < 0) {
+                        diffClass = "down";
+                        diffText = `▼ ${m.diff_krw.toLocaleString()} (${m.diff_pct.toFixed(1)}%)`;
+                    }
+
+                    row.innerHTML = `
+                        <div class="mr-info">
+                            <div class="mr-name-line">
+                                <strong>${m.name_kr}</strong>
+                                <span class="mr-en-name">${m.name_en}</span>
+                            </div>
+                            <div class="mr-benchmark">
+                                <span class="mr-source-tag">${m.source}</span>
+                                <span>${m.raw_usd}</span>
+                            </div>
+                        </div>
+                        <div class="mr-price-block">
+                            <div class="mr-krw-wrap">
+                                <strong class="mr-krw-val">${m.krw_price.toLocaleString()}</strong>
+                                <span class="mr-krw-unit">${m.unit}</span>
+                            </div>
+                            <div class="mr-diff ${diffClass}">${diffText}</div>
+                        </div>
+                    `;
+                    groupBlock.appendChild(row);
+                });
+
+                container.appendChild(groupBlock);
+            });
+        }
+    </script>
+</body>
+</html>

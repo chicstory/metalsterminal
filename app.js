@@ -158,11 +158,54 @@ let currentViewItem = null;
 let pricesData = null;
 let currentCategoryFilter = "all";
 
-// 초기 로딩
+// 리포트 목록 렌더링 (data/reports.json 연동)
+async function renderReports() {
+    const ul = document.getElementById("list-reports");
+    if (!ul) return;
+
+    let reports = appData.reports || [];
+    try {
+        const res = await fetch("data/reports.json");
+        if (res.ok) {
+            reports = await res.json();
+        }
+    } catch (e) {
+        console.warn("로컬 환경 fallback reports 사용:", e);
+    }
+
+    ul.innerHTML = "";
+    if (reports.length === 0) {
+        ul.innerHTML = `<li class="dossa-board-item" style="color:#94a3b8; justify-content:center;">발행된 리포트가 없습니다.</li>`;
+        return;
+    }
+
+    reports.slice(0, 5).forEach(rep => {
+        const li = document.createElement("li");
+        li.className = "dossa-board-item";
+        li.onclick = () => {
+            if (rep.article_url) {
+                window.location.href = rep.article_url;
+            } else {
+                openViewModal(rep, "reports");
+            }
+        };
+
+        li.innerHTML = `
+            <div class="dbi-title-wrap">
+                <span class="dbi-tag report">${rep.type || '[리포트]'}</span>
+                <span class="dbi-title">${escapeHtml(rep.title)}</span>
+            </div>
+            <span class="dbi-comment-count">${rep.replies || 0}</span>
+        `;
+        ul.appendChild(li);
+    });
+}
+
+// 초기 로딩 수정
 document.addEventListener("DOMContentLoaded", () => {
     loadLocalData();
     loadPricesData();
-    renderBoard("reports", "list-reports");
+    renderReports();
     renderBoard("market", "list-market");
     renderBoard("free", "list-free");
 });

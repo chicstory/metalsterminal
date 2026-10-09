@@ -1,0 +1,147 @@
+{
+  "updated_at": "2026-10-10 09:00 KST",
+  "iron_scrap": [
+    {
+      "name": "생철 A",
+      "spec": "프레스 신품 강판 (순도 99%↑)",
+      "wholesale": 455,
+      "retail": 411
+    },
+    {
+      "name": "중량 A",
+      "spec": "두께 6mm 이상 H빔·철골·레일",
+      "wholesale": 411,
+      "retail": 367
+    },
+    {
+      "name": "중량 B",
+      "spec": "두께 3~6mm 기계류·배관 파이프",
+      "wholesale": 378,
+      "retail": 340
+    },
+    {
+      "name": "경량 A",
+      "spec": "두께 1~3mm 가전외판·드럼통",
+      "wholesale": 356,
+      "retail": 318
+    },
+    {
+      "name": "선반설 A",
+      "spec": "절삭칩·선반 가공 찌꺼기",
+      "wholesale": 334,
+      "retail": 301
+    }
+  ],
+  "nonferrous": [
+    {
+      "name": "A동 (밀베리)",
+      "spec": "피복 벗긴 굵은 단선 (순도 99.9%)",
+      "unit": "원/kg",
+      "price": 12342
+    },
+    {
+      "name": "상동 (중품)",
+      "spec": "모터 분해선, 변압기 코일동",
+      "unit": "원/kg",
+      "price": 11362
+    },
+    {
+      "name": "파동 (하품)",
+      "spec": "주석도금선, 얇은 에나멜선, 혼합동",
+      "unit": "원/kg",
+      "price": 9991
+    },
+    {
+      "name": "황동 노베 (신주)",
+      "spec": "판재 스크랩 (Cu 65% + Zn 35%)",
+      "unit": "원/kg",
+      "price": 7800
+    },
+    {
+      "name": "황동 절봉 (신주)",
+      "spec": "황동 봉 절삭 부스러기",
+      "unit": "원/kg",
+      "price": 7200
+    },
+    {
+      "name": "알루미늄 샷시",
+      "spec": "창틀 프로파일 (페인트/부속 제거)",
+      "unit": "원/kg",
+      "price": 2502
+    },
+    {
+      "name": "알루미늄 휠",
+      "spec": "납추/타이어 완전 분리 휠",
+      "unit": "원/kg",
+      "price": 2195
+    },
+    {
+      "name": "알루미늄 캔",
+      "spec": "음료수 캔 압축 베일",
+      "unit": "원/kg",
+      "price": 1800
+    },
+    {
+      "name": "스테인리스 STS 304",
+      "spec": "자석 안 붙는 니켈 8% 정품 서스",
+      "unit": "원/kg",
+      "price": 1850
+    }
+  ],
+  "catalyst_presets": [
+    {
+      "id": "lpi",
+      "name": "LPG 가스차 (쏘나타·K5·그랜저 2.0~3.0 LPi)",
+      "pd_g": 1.9,
+      "rh_g": 0.85,
+      "pt_g": 0.0,
+      "min_quote": 105000,
+      "max_quote": 125000
+    },
+    {
+      "id": "gdi",
+      "name": "직분사 가솔린 (아반떼MD·YF·그랜저HG 1.6~2.4 GDi)",
+      "pd_g": 2.1,
+      "rh_g": 0.45,
+      "pt_g": 0.0,
+      "min_quote": 85000,
+      "max_quote": 105000
+    },
+    {
+      "id": "turbo",
+      "name": "터보 가솔린 (아반떼N·쏘나타터보 1.6T~2.0T)",
+      "pd_g": 2.5,
+      "rh_g": 0.65,
+      "pt_g": 0.0,
+      "min_quote": 120000,
+      "max_quote": 145000
+    },
+    {
+      "id": "mpi",
+      "name": "자연흡기 가솔린 (모닝·레이·아반떼 1.0~1.6 MPi)",
+      "pd_g": 1.8,
+      "rh_g": 0.2,
+      "pt_g": 0.0,
+      "min_quote": 60000,
+      "max_quote": 75000
+    },
+    {
+      "id": "hev",
+      "name": "하이브리드 (니로·아반떼·쏘나타 HEV)",
+      "pd_g": 2.2,
+      "rh_g": 0.5,
+      "pt_g": 0.0,
+      "min_quote": 95000,
+      "max_quote": 115000
+    },
+    {
+      "id": "dpf",
+      "name": "디젤 DPF (포터2·봉고3·싼타페 CRDi)",
+      "pd_g": 0.0,
+      "rh_g": 0.1,
+      "pt_g": 3.8,
+      "min_quote": 140000,
+      "max_quote": 170000
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>스크랩 &amp; 폐촉매 전용관 - MetalsTerminal</title>
+    <meta name="description" content="철스크랩 5대 등급, 비철금속 수율표 및 차종·엔진별 순정 폐촉매 실무 매입 견적기">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .scrap-subnav {
+            display: flex;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-line);
+            padding: 8px 12px;
+            gap: 6px;
+            overflow-x: auto;
+        }
+        .scrap-chip {
+            background: #f1f5f9;
+            color: var(--text-body);
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        .scrap-chip.active {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+        }
+        .scrap-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .scrap-table th {
+            background: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 700;
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-line);
+            font-size: 11px;
+        }
+        .scrap-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .scrap-table tr:last-child td {
+            border-bottom: none;
+        }
+        .st-name strong {
+            display: block;
+            color: var(--text-title);
+            font-size: 13px;
+        }
+        .st-name span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .st-price {
+            text-align: right;
+        }
+        .st-price strong {
+            font-size: 15px;
+            font-weight: 900;
+            color: #0f172a;
+        }
+        .st-price span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        /* 폐촉매 계산기 카드 */
+        .catalyst-calc-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px 14px;
+        }
+        .cc-preset-select {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid var(--border-line);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: #f8fafc;
+        }
+        .cc-result-banner {
+            background: #0f172a;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .cc-result-label {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .cc-result-price {
+            font-size: 26px;
+            font-weight: 900;
+            color: #38bdf8;
+        }
+        .cc-result-won {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .cc-metals-tag {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #94a3b8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="dossa-header">
+        <div class="container dossa-header-inner">
+            <a href="index.html" class="dossa-logo">
+                <span class="logo-accent">⚡</span> METALS<strong>TERMINAL</strong>
+            </a>
+            <div class="dossa-header-right">
+                <a href="price.html" class="btn-calc-nav">
+                    <span>📊</span> 국제시세관 &gt;
+                </a>
+            </div>
+        </div>
+        <nav class="dossa-subnav">
+            <div class="container dossa-subnav-inner">
+                <a href="index.html" class="nav-tab">포털홈</a>
+                <a href="price.html" class="nav-tab">국제시세</a>
+                <a href="scrap.html" class="nav-tab active">스크랩·폐촉매</a>
+                <a href="index.html#section-report" class="nav-tab">리포트</a>
+                <a href="index.html#section-market" class="nav-tab">직거래장터</a>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="status-bar">
+        <div class="container status-inner">
+            <div class="status-badge-wrap">
+                <span class="live-dot"></span>
+                <span class="status-date">현장 스크랩 &amp; 폐촉매 실거래 수율표</span>
+            </div>
+            <div class="status-rate">
+                기준환율: <strong>1,356.2원</strong>
+            </div>
+        </div>
+    </aside>
+
+    <div class="scrap-subnav">
+        <a href="#sec-catalyst" class="scrap-chip active">🚗 폐촉매 실무견적</a>
+        <a href="#sec-iron" class="scrap-chip">🏗️ 철스크랩 5등급</a>
+        <a href="#sec-copper" class="scrap-chip">🥉 구리 스크랩</a>
+        <a href="#sec-al" class="scrap-chip">🥫 알루미늄·서스</a>
+    </div>
+
+    <main class="mobile-container">
+
+        <!-- ============================================================
+             [1] 🚗 폐촉매 차종·엔진별 순정 실무 매입 견적기 (핵심!)
+             ============================================================ -->
+        <section class="section-box" id="sec-catalyst">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator red"></span>
+                    <h2>🚗 가솔린·LPG·디젤 순정 폐촉매 견적기</h2>
+                </div>
+                <span class="header-badge">Pt·Pd·Rh 실시간 연동</span>
+            </div>
+
+            <div class="catalyst-calc-box">
+                <label for="cat-select" style="display:block; font-size:12px; font-weight:700; margin-bottom:6px; color:#0f172a;">차종 및 엔진 파워트레인 선택</label>
+                <select id="cat-select" class="cc-preset-select" onchange="runCatalystQuote()">
+                    <option value="lpi">🚗 [LPG 가스차] 쏘나타 · K5 · 그랜저 (2.0~3.0 LPi)</option>
+                    <option value="gdi">🚗 [직분사 가솔린] 아반떼MD · YF/K5 · 그랜저HG (1.6~2.4 GDi)</option>
+                    <option value="turbo">⚡ [터보 가솔린] 아반떼 N라인 · 쏘나타 터보 · 벨로스터 (1.6T~2.0T)</option>
+                    <option value="mpi">🚙 [자연흡기 가솔린] 모닝 · 레이 · 아반떼 (1.0~1.6 MPi)</option>
+                    <option value="hev">🔋 [하이브리드] 니로 · 아반떼 · 쏘나타 (1.6~2.0 HEV)</option>
+                    <option value="dpf">🚛 [디젤 DPF] 포터2 · 봉고3 · 싼타페 (2.0~2.5 CRDi DPF)</option>
+                </select>
+
+                <div class="cc-result-banner">
+                    <span class="cc-result-label">오늘의 차주 순정 폐촉매 예상 매입 견적</span>
+                    <div>
+                        <strong class="cc-result-price" id="cat-quote-val">105,000</strong>
+                        <span class="cc-result-won">원 ~</span>
+                        <strong class="cc-result-price" id="cat-quote-max" style="margin-left:4px;">125,000</strong>
+                        <span class="cc-result-won">원</span>
+                    </div>
+                    <div class="cc-metals-tag" id="cat-metals-desc">
+                        팔라듐(Pd 1.9g) + 로듐(Rh 0.85g) 귀금속 가치 반영 (실무 안전마진 30% 선차감)
+                    </div>
+                </div>
+
+                <div style="font-size:11px; color:#64748b; margin-top:10px; line-height:1.5;">
+                    ※ <strong>출고 당시 순정 정품 촉매</strong> 기준입니다. (사제·재생 촉매는 귀금속이 거의 없어 매입 불가)<br>
+                    ※ 당일 Johnson Matthey(로듐) 및 NYMEX(팔라듐/백금) 국제 시세에 실무 제련/정제 마진을 선차감한 실거래 참고가입니다.
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             [2] 🏗️ 철스크랩 5대 등급 수율표
+             ============================================================ -->
+        <section class="section-box" id="sec-iron">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator blue"></span>
+                    <h2>🏗️ 철스크랩 5대 등급 단가표</h2>
+                </div>
+                <span class="header-badge">제강사 도착도 / 마당 소매</span>
+            </div>
+
+            <table class="scrap-table">
+                <thead>
+                    <tr>
+                        <th>품목 및 규격</th>
+                        <th style="text-align:right;">제강사 도매</th>
+                        <th style="text-align:right;">마당 소매 (참고)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="st-name">
+                            <strong>생철 A</strong>
+                            <span>프레스 신품 강판 (순도 99%↑)</span>
+                        </td>
+                        <td class="st-price"><strong>456</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>410</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>중량 A</strong>
+                            <span>두께 6mm 이상 H빔·철골·레일</span>
+                        </td>
+                        <td class="st-price"><strong>409</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>368</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>중량 B</strong>
+                            <span>두께 3~6mm 기계류·배관 파이프</span>
+                        </td>
+                        <td class="st-price"><strong>377</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>340</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>경량 A</strong>
+                            <span>두께 1~3mm 가전외판·드럼통</span>
+                        </td>
+                        <td class="st-price"><strong>355</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>320</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>선반설 A</strong>
+                            <span>절삭칩·선반 가공 찌꺼기</span>
+                        </td>
+                        <td class="st-price"><strong>332</strong> <span>원/kg</span></td>
+                        <td class="st-price"><strong>300</strong> <span>원/kg</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ============================================================
+             [3] 🥉 구리 & 신주 스크랩 수율표
+             ============================================================ -->
+        <section class="section-box" id="sec-copper">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator amber"></span>
+                    <h2>🥉 구리 &amp; 황동(신주) 스크랩</h2>
+                </div>
+                <span class="header-badge">LME 전기동 19,590원 연동</span>
+            </div>
+
+            <table class="scrap-table">
+                <thead>
+                    <tr>
+                        <th>품목 및 상태</th>
+                        <th style="text-align:right;">추정 매입단가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="st-name">
+                            <strong>A동 (밀베리)</strong>
+                            <span>피복 벗긴 굵은 단선 (순도 99.9%)</span>
+                        </td>
+                        <td class="st-price"><strong>12,300</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>상동 (중품)</strong>
+                            <span>모터 분해선, 변압기 코일동</span>
+                        </td>
+                        <td class="st-price"><strong>11,400</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>파동 (하품)</strong>
+                            <span>주석도금선, 얇은 에나멜선, 혼합동</span>
+                        </td>
+                        <td class="st-price"><strong>10,100</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>황동 노베 (신주)</strong>
+                            <span>판재 스크랩 (Cu 65% + Zn 35%)</span>
+                        </td>
+                        <td class="st-price"><strong>7,800</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>황동 절봉 (신주)</strong>
+                            <span>황동 봉 절삭 부스러기</span>
+                        </td>
+                        <td class="st-price"><strong>7,200</strong> <span>원/kg</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ============================================================
+             [4] 🥫 알루미늄 & 스테인리스 스크랩
+             ============================================================ -->
+        <section class="section-box" id="sec-al">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator green"></span>
+                    <h2>🥫 알루미늄 &amp; 서스 (STS)</h2>
+                </div>
+                <span class="header-badge">제련소 직납 기준</span>
+            </div>
+
+            <table class="scrap-table">
+                <thead>
+                    <tr>
+                        <th>품목 및 상태</th>
+                        <th style="text-align:right;">추정 매입단가</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="st-name">
+                            <strong>알루미늄 샷시</strong>
+                            <span>창틀 프로파일 (페인트/부속 제거)</span>
+                        </td>
+                        <td class="st-price"><strong>2,500</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>자동차 알루미늄 휠</strong>
+                            <span>납추/타이어 완전 분리 휠</span>
+                        </td>
+                        <td class="st-price"><strong>2,200</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>알루미늄 캔 (UBC)</strong>
+                            <span>음료수 캔 압축 베일</span>
+                        </td>
+                        <td class="st-price"><strong>1,800</strong> <span>원/kg</span></td>
+                    </tr>
+                    <tr>
+                        <td class="st-name">
+                            <strong>스테인리스 STS 304 (서스)</strong>
+                            <span>자석 안 붙는 니켈 8% 함유 정품</span>
+                        </td>
+                        <td class="st-price"><strong>1,850</strong> <span>원/kg</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer class="dossa-footer">
+        <div class="container footer-links">
+            <a href="index.html">포털홈</a>
+            <span class="sep">|</span>
+            <a href="price.html">국제시세</a>
+            <span class="sep">|</span>
+            <a href="scrap.html">스크랩·폐촉매</a>
+            <span class="sep">|</span>
+            <a href="calc.html">계산기</a>
+            <span class="sep">|</span>
+            <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP ▲</a>
+        </div>
+        <div class="container footer-copyright">
+            <p>Copyright © 2026 MetalsTerminal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 폐촉매 계산 엔진 (metals의 프리셋 로직)
+        const PRESETS = {
+            lpi:   { pd: 1.9, rh: 0.85, pt: 0.0, label: "팔라듐(Pd 1.9g) + 로듐(Rh 0.85g) 귀금속 가치 반영" },
+            gdi:   { pd: 2.1, rh: 0.45, pt: 0.0, label: "팔라듐(Pd 2.1g) + 로듐(Rh 0.45g) 귀금속 가치 반영" },
+            turbo: { pd: 2.5, rh: 0.65, pt: 0.0, label: "팔라듐(Pd 2.5g) + 로듐(Rh 0.65g) 귀금속 가치 반영" },
+            mpi:   { pd: 1.8, rh: 0.20, pt: 0.0, label: "팔라듐(Pd 1.8g) + 로듐(Rh 0.20g) 귀금속 가치 반영" },
+            hev:   { pd: 2.2, rh: 0.50, pt: 0.0, label: "팔라듐(Pd 2.2g) + 로듐(Rh 0.50g) 귀금속 가치 반영" },
+            dpf:   { pd: 0.0, rh: 0.10, pt: 3.8, label: "백금(Pt 3.8g 집중 함유) 디젤 DPF 코어 가치 반영" }
+        };
+
+        // 당일 기준 귀금속 단가 (원/g)
+        const PRICE_PD = 44500;
+        const PRICE_RH = 206000;
+        const PRICE_PT = 43400;
+
+        function runCatalystQuote() {
+            const sel = document.getElementById("cat-select").value;
+            const p = PRESETS[sel];
+            if (!p) return;
+
+            // 원자재 총 가치
+            const rawVal = (p.pd * PRICE_PD) + (p.rh * PRICE_RH) + (p.pt * PRICE_PT);
+            // 실무 제련 마진 30% 차감 (실거래 매입가 65% ~ 75% 밴드)
+            const minQuote = Math.round((rawVal * 0.65) / 1000) * 1000;
+            const maxQuote = Math.round((rawVal * 0.75) / 1000) * 1000;
+
+            document.getElementById("cat-quote-val").innerText = minQuote.toLocaleString();
+            document.getElementById("cat-quote-max").innerText = maxQuote.toLocaleString();
+            document.getElementById("cat-metals-desc").innerText = p.label + " (실무 안전마진 30% 선차감)";
+        }
+
+        document.addEventListener("DOMContentLoaded", runCatalystQuote);
+    </script>
+</body>
+</html>

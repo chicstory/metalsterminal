@@ -1,0 +1,73 @@
+[
+  {
+    "id": "rep_2026-10-10_cu",
+    "category": "구리",
+    "type": "[차트분석]",
+    "tagClass": "report",
+    "title": "런던 창고 재고 1,425톤 급감과 국내 A동 스크랩 가격 전망",
+    "date": "10-10",
+    "author": "MetalsTerminal Desk",
+    "replies": 7,
+    "article_url": "articles/2026-10-10-copper.html",
+    "summary_3lines": [
+      "외국 대형 가공업체들이 런던 LME 창고에서 구리를 1,425톤 출고해갔습니다.",
+      "창고에 남은 즉시 반출 가능한 구리가 줄어들면서 종가가 톤당 $9,685로 반등했습니다.",
+      "급전이 필요하지 않다면 마당에 쌓인 깨끗한 A동은 며칠 더 쥐고 계셔도 좋습니다."
+    ],
+    "sections": {
+      "current": "오늘 LME 전기동 종가는 톤당 $9,685 (+0.6%)로 마감했습니다. 원달러 환율 1,356.2원을 적용한 국내 원화 기준원가는 19,590원/kg이며, 현장 A동(밀베리) 매입 추정가는 kg당 12,300원 선을 형성하고 있습니다.",
+      "stocks": "LME 총 재고는 301,250톤으로 전일 대비 -1,425톤 감소했습니다. 특히 즉시 출고를 신청한 '취소영수증(Cancelled Warrants)' 비중이 21.4%로 올라서며 실물 인도 대기 수요가 집중되고 있습니다.",
+      "macro": "미국 기준금리 추가 인하 기대감으로 달러화 인덱스가 안정세를 보이고 있으며, 중국 지방정부의 전력망 투자 확대로 전력 케이블용 전기동 수요가 완만하게 회복되고 있습니다.",
+      "outlook": "단기 1~2주는 톤당 $9,500 ~ $9,800 박스권 내 완만한 강보합세가 예상됩니다. 마당 상차 기준 A동은 급하게 던지기보다는 이번 주 후반까지 추이를 지켜보시는 전략을 추천합니다."
+    },
+    "disclaimer": "본 리포트의 '향후 예측'은 LME 창고 재고 및 거시 지표 기반의 추정 분석이며, 개별 업체의 매매 판단에 따른 최종 손익에 대해 법적 책임을 지지 않습니다.",
+    "rss_sources": [
+      {
+        "media": "Mining.com",
+        "title": "Copper prices bounce as warehouse warrants get cancelled in Europe",
+        "date": "2026-10-10",
+        "url": "https://www.mining.com/markets/copper",
+        "snippet": "LME copper stocks recorded sharp withdrawals amid physical demand."
+      },
+      {
+        "media": "Reuters Commodities",
+        "title": "China grid investment supports refined copper consumption",
+        "date": "2026-10-10",
+        "url": "https://www.reuters.com/markets/commodities",
+        "snippet": "State grid procurement offset property sector weakness in Asia."
+      }
+    ]
+  },
+  {
+    "id": "rep_2026-10-10_rh",
+    "category": "로듐·폐촉매",
+    "type": "[촉매분석]",
+    "tagClass": "report",
+    "title": "로듐(Rhodium) 1g당 20만 원 돌파: 가솔린·디젤 폐촉매 매각 타이밍",
+    "date": "10-10",
+    "author": "MetalsTerminal Desk",
+    "replies": 5,
+    "article_url": "articles/2026-10-10-catalyst.html",
+    "summary_3lines": [
+      "남아공 주요 광산 공급 지연으로 존슨매티 로듐이 1g당 206,000원에 안착했습니다.",
+      "팔라듐(44,500원)과 백금(43,400원)도 바닥을 다지며 동반 반등세입니다.",
+      "승용 삼원촉매 및 포터 DPF 실무 매입 견적이 개당 1만~2만 원 상향 조정되었습니다."
+    ],
+    "sections": {
+      "current": "존슨매티(JM) 기준 로듐 가격은 온스당 $4,750 (1g당 206,000원)으로 강세를 유지 중입니다. 팔라듐은 $1,020/oz (44,500원/g), 백금은 $995/oz (43,400원/g) 선입니다.",
+      "stocks": "남아프리카공화국 PGM 광산의 전력난 및 설비 보수로 1차 제련 공급이 타이트한 상태이며, 유럽 자동차 배출가스 정화용 촉매 교체 수요가 견조합니다.",
+      "macro": "내연기관차 및 하이브리드(HEV) 차량의 글로벌 판매 비중이 여전히 75% 이상을 유지하면서 PGM 귀금속 수요의 절벽 우려가 해소되었습니다.",
+      "outlook": "가솔린 LPi 촉매(로듐 다량 함유)와 포터 DPF(백금 함유)는 현재 단가가 연중 최상단 부근이므로 분할 매각을 진행하기에 매우 유리한 타이밍입니다."
+    },
+    "disclaimer": "본 분석은 폐촉매 순정품 기준의 귀금속 환산 추정치이며, 사제 촉매나 재생품은 귀금속 함량이 없어 적용되지 않습니다.",
+    "rss_sources": [
+      {
+        "media": "Johnson Matthey PGM Market",
+        "title": "Rhodium holds firm on South African supply constraints",
+        "date": "2026-10-10",
+        "url": "https://matthey.com/en/products-and-markets/pgms",
+        "snippet": "Automotive catalyst recycling maintains high value threshold."
+      }
+    ]
+  }
+]
