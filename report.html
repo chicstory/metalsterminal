@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>일일 금속 리포트 &amp; AI 스크랩 분석 - MetalsTerminal</title>
-    <meta name="description" content="구리, 철스크랩, 알루미늄, 아연, 납, 니켈, 폐촉매, 귀금속 등 8대 금속별 Gemini Flash AI 시장 및 스크랩 여파 분석 일일 리포트">
+    <meta name="description" content="구리, 철스크랩, 알루미늄, 아연, 납, 니켈, 주석, 백금, 팔라듐, 로듐, 금, 은 등 품목별 Gemini Flash AI 시장 및 스크랩 여파 분석 일일 리포트">
     <link rel="stylesheet" href="style.css">
     <style>
         .report-filter-bar {
@@ -257,7 +257,7 @@
         <div class="container status-inner">
             <div class="status-badge-wrap">
                 <span class="live-dot"></span>
-                <span class="status-date" id="report-status-date">매일 09:00 정기 고시 8대 금속 리포트</span>
+                <span class="status-date" id="report-status-date">매일 09:00 정기 고시 금속별 일일 리포트</span>
             </div>
             <div class="status-rate">
                 기준환율: <strong id="report-usd-rate">1,356.2원</strong>
@@ -265,17 +265,21 @@
         </div>
     </aside>
 
-    <!-- 8대 금속 카테고리 필터 칩 -->
+    <!-- 금속 카테고리 필터 칩 (12종 전 품목) -->
     <div class="report-filter-bar">
         <button class="rf-chip active" onclick="filterReports('all', this)">전체</button>
-        <button class="rf-chip" onclick="filterReports('copper', this)">🥉 구리</button>
         <button class="rf-chip" onclick="filterReports('steel', this)">🏗️ 철스크랩</button>
+        <button class="rf-chip" onclick="filterReports('copper', this)">🥉 구리</button>
         <button class="rf-chip" onclick="filterReports('aluminum', this)">🥫 알루미늄</button>
         <button class="rf-chip" onclick="filterReports('zinc', this)">⚡ 아연</button>
         <button class="rf-chip" onclick="filterReports('lead', this)">🔋 납</button>
-        <button class="rf-chip" onclick="filterReports('nickel', this)">⚙️ 니켈·STS</button>
-        <button class="rf-chip" onclick="filterReports('catalyst', this)">🚗 폐촉매·PGM</button>
-        <button class="rf-chip" onclick="filterReports('precious', this)">👑 금·은</button>
+        <button class="rf-chip" onclick="filterReports('nickel', this)">⚙️ 니켈</button>
+        <button class="rf-chip" onclick="filterReports('tin', this)">🧪 주석</button>
+        <button class="rf-chip" onclick="filterReports('platinum', this)">🚗 백금</button>
+        <button class="rf-chip" onclick="filterReports('palladium', this)">🚘 팔라듐</button>
+        <button class="rf-chip" onclick="filterReports('rhodium', this)">✨ 로듐</button>
+        <button class="rf-chip" onclick="filterReports('gold', this)">👑 금</button>
+        <button class="rf-chip" onclick="filterReports('silver', this)">🪙 은</button>
     </div>
 
     <main class="mobile-container">
@@ -283,7 +287,7 @@
             <div class="section-header">
                 <div class="sh-left">
                     <span class="header-indicator amber"></span>
-                    <h2>8대 금속 일일 리포트 &amp; AI 여파 분석</h2>
+                    <h2>금속별 일일 리포트 &amp; AI 여파 분석</h2>
                 </div>
                 <span class="header-badge">리포트 클릭 시 본문 펼치기 ▼</span>
             </div>

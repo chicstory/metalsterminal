@@ -45,7 +45,7 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 BROWSER_HEADERS = {"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
 
 # ----------------------------------------------------
-# 1. 환율 및 12대 국제금속 시세 & 차트 데이터 수집기
+# 1. 환율 및 국제 금속 시세 & 차트 데이터 수집기
 # ----------------------------------------------------
 def fetch_usd_krw_rate():
     """네이버 금융 (하나은행 고시환율) 실시간 수집"""
@@ -62,8 +62,8 @@ def fetch_usd_krw_rate():
         return 1356.2, "기준 환율 (추정)"
 
 def collect_prices_and_charts(usd_rate):
-    """12대 금속 종가 및 30일 시계열 차트 데이터 수집"""
-    print("\n📊 [Step 1/3] 12대 국제 금속 종가 & 30일 차트 데이터 수집 중...")
+    """국제 금속 종가 및 30일 시계열 차트 데이터 수집"""
+    print("\n📊 [Step 1/3] 국제 금속 종가 & 30일 차트 데이터 수집 중...")
 
     # thepathlab 기존 아카이브 데이터 연동 확인
     WORKSPACE_ROOT = os.path.dirname(SCRIPT_DIR)
@@ -77,7 +77,7 @@ def collect_prices_and_charts(usd_rate):
         except Exception:
             pass
 
-    # 12대 금속 마스터 정의 (철 -> 비철 -> 귀금속)
+    # 국제 금속 마스터 정의 (철 -> 비철 -> 귀금속)
     METALS_DEF = [
         # 1. 철 (1종)
         {"key": "iron_scrap", "sec": "ferrous", "name_kr": "철스크랩", "name_en": "Steel Scrap", "source": "Global Index", "unit": "원/kg", "default_krw": 548, "raw_usd": "$372/t", "diff_krw": 0, "diff_pct": 0.0},
@@ -619,25 +619,8 @@ def call_metal_ai_analysis(metal_name: str, articles: list, current_price_info: 
 • (스크랩 유통 및 재생 시장) 국내 고철/비철 유통 단가, 야적장 스크랩 매입·매매가 및 리사이클링 업계 수익성 영향
 """
 
-    # 1. Google Gemini Flash 시도
+    # Google Gemini Flash API 호출 (GitHub Actions Secrets 또는 GEMINI_API_KEY)
     ai_raw = call_gemini_raw_text(prompt)
-
-    # 2. 로컬 Ollama Fallback
-    if not ai_raw:
-        try:
-            url = "http://localhost:11434/api/generate"
-            payload = {
-                "model": "gemma4:12b-it-qat",
-                "prompt": prompt,
-                "stream": False,
-                "options": {"temperature": 0.25}
-            }
-            req = urllib.request.Request(url, data=json.dumps(payload).encode("utf-8"), headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                res_data = json.loads(resp.read().decode("utf-8"))
-                ai_raw = res_data.get("response", "").strip()
-        except Exception:
-            pass
 
     if ai_raw:
         return parse_screenshot_format(ai_raw, fallback_content)
@@ -669,14 +652,12 @@ def parse_screenshot_format(text: str, fallback: dict) -> dict:
                     core_bullets.append(l_s.replace("**", ""))
 
         # 3. 세부 전망 파싱
-        # 원자재 단기/중기
         m_short = re.search(r"\(단기\)\s*(.+?)(?=\n[•\*-]|\(중기\)|\n\n|$)", text)
         if m_short: raw_materials_short = m_short.group(1).strip().replace("**", "")
 
         m_mid = re.search(r"\(중기\)\s*(.+?)(?=\n[•\*-]|\* 자동차|자동차 부품|$)", text)
         if m_mid: raw_materials_mid = m_mid.group(1).strip().replace("**", "")
 
-        # 부품 및 스크랩
         m_parts = re.search(r"\(부품\s*제조\s*및\s*원가\)\s*(.+?)(?=\n[•\*-]|\(스크랩|\n\n|$)", text)
         if m_parts: scrap_parts = m_parts.group(1).strip().replace("**", "")
 
@@ -696,11 +677,11 @@ def parse_screenshot_format(text: str, fallback: dict) -> dict:
         return fallback
 
 # ----------------------------------------------------
-# 8대 금속 전 품목 마스터 리포트 생성기
+# 12종 전 품목 마스터 리포트 생성기
 # ----------------------------------------------------
 def generate_reports_and_articles(prices_data, scrap_data):
-    """8대 주요 금속 전 품목 리포트 발행 (ThePathLab 스크린샷 100% 동일 레이아웃)"""
-    print("\n📰 [Step 3/3] 8대 주요 금속 실시간 뉴스 수집 & ThePathLab 스크린샷 동일 포맷 리포트 발행 중...")
+    """12종 전 품목 리포트 발행 (ThePathLab 스크린샷 100% 동일 레이아웃)"""
+    print("\n📰 [Step 3/3] 12종 전 품목 실시간 뉴스 수집 & 리포트 발행 중...")
 
     today_dt = datetime.now()
     today_str = today_dt.strftime("%Y-%m-%d")
@@ -708,7 +689,6 @@ def generate_reports_and_articles(prices_data, scrap_data):
     date_display = today_dt.strftime("%m-%d")
     full_date_label = f"{today_dt.strftime('%Y년 %m월 %d일')}({weekday_kr}) 09:00 정기고시"
 
-    # 시세 딕셔너리
     prices_map = {}
     for sec in prices_data.get("sections", []):
         for item in sec.get("items", []):
@@ -716,8 +696,28 @@ def generate_reports_and_articles(prices_data, scrap_data):
 
     usd_rate = prices_data.get("usd_rate", 1356.2)
 
-    # 8대 금속 정의
+    # 12종 전 품목 정의 (철스크랩, 구리, 알루미늄, 아연, 납, 니켈, 주석, 백금, 팔라듐, 로듐, 금, 은)
     METALS_REPORT_CONFIG = [
+        {
+            "key": "iron_scrap",
+            "name_kr": "철스크랩",
+            "name_en": "Steel Scrap",
+            "category": "steel",
+            "badge": "제강사 고철",
+            "query": "철스크랩 OR 고철 (현대제철 OR 동국제강 OR 제강사) when:7d",
+            "fallback": {
+                "issue_verdict": "단순 시황 (국내 전기로 제강사 마당 야드 재고 유지 및 분할 구매 기조 지속)",
+                "core_bullets": [
+                    "현대제철·동국제강 야적장 재고 안정: 철근 감산 기조에도 불구하고 필수 가동 일수용 안전 재고 유지 중.",
+                    "생철A 및 중량A 매입 단가 횡보: 고품질 판재류 생철A와 철골 중량A 위주의 선별적 입고 정책 지속.",
+                    "글로벌 수입 고철(터키·일본 H2) 오퍼가 보합: 환율 영향으로 수입산 대비 국내산 스크랩 조달 비중 집중."
+                ],
+                "outlook_raw_short": "제강사의 가동률 조절로 단기적인 고철 단가 급등락은 제한적이며 톤당 50만원대 초중반 박스권 횡보가 예상됨.",
+                "outlook_raw_mid": "글로벌 탄소중립 전환에 따른 전기로 비중 확대로 장기적으로 고품질 생철·중량 스크랩의 구조적 수요는 견고할 전망임.",
+                "outlook_scrap_parts": "차체 프레스 가공 부산물인 생철 스크랩의 안정적 발생과 제강사 직납 라인을 통한 회수 체계가 원활히 작동 중임.",
+                "outlook_scrap_recy": "중소 야적장(고물상)은 무리한 재고 축적보다는 회전율 중심의 빠른 매각 및 분할 출하 전략이 마진 방어에 유리함."
+            }
+        },
         {
             "key": "copper",
             "name_kr": "구리",
@@ -732,30 +732,10 @@ def generate_reports_and_articles(prices_data, scrap_data):
                     "글로벌 에너지 전환 수요 견조: 전기차 및 신재생에너지 인프라 구축 확대로 필수 구리 소비량이 지속 우위.",
                     "북미·남미 신규 광산 탐사 지속: 알래스카 등 신규 프로젝트 투자가 이어지나 단기적 수급 공백 해소에는 한계."
                 ],
-                "outlook_raw_short": "칠레 광산 파업 리스크와 사상 최고가 부근 시황이 맞물려 구리 가격의 하방 경직성이 매우 강해지며 단기 급등락 변동성이 확대될 전망임.",
+                "outlook_raw_short": "칠레 광산 파업 리스크와 사상 최고가 부근 시황이 맞물려 구리 가격의 하방 경직성이 매우 강해지며 단기 변동성이 확대될 전망임.",
                 "outlook_raw_mid": "전기차와 신재생 그리드 확충에 따른 구조적 수요 우위가 지속되며 신규 광산 개발 타임라인 지연으로 장기적 가격 상승 압력이 지속될 것임.",
                 "outlook_scrap_parts": "구리 가격 강세는 자동차 전장 부품(와이어링 하네스, 모터 권선 등)의 원가 상승 압박으로 직결되어 제조사 마진을 압박할 것임.",
                 "outlook_scrap_recy": "국내 비철 유통 시장에서 구리 스크랩(A동 꽈배기, 상동 파이프)의 가치가 더욱 높아지며 폐차 및 공장 스크랩 매입 단가 역시 강세를 유지할 전망임."
-            }
-        },
-        {
-            "key": "iron_scrap",
-            "name_kr": "철스크랩",
-            "name_en": "Steel Scrap",
-            "category": "steel",
-            "badge": "제강사 고철",
-            "query": "철스크랩 OR 고철 (현대제철 OR 동국제강 OR 제강사) when:7d",
-            "fallback": {
-                "issue_verdict": "단순 시황 (국내 전기로 제강사 마당 야드 재고 유지 및 분할 구매 기조 지속)",
-                "core_bullets": [
-                    "현대제철·동국제강 야적장 재고 안정: 추석 이후 건설 경기 둔화에 따른 철근 감산에도 불구하고 안전 재고 일수 유지 중.",
-                    "생철A 및 중량A 매입 단가 횡보: 고품질 판재류 생철A와 철골 구조물 중량A 위주의 선별적 입고 정책 유지.",
-                    "글로벌 수입 고철(터키·일본 H2) 오퍼가 보합: 원달러 환율 영향으로 수입산 대비 국내산 스크랩 조달 비중 집중."
-                ],
-                "outlook_raw_short": "제강사의 가동률 조절로 단기적인 고철 단가 급등락은 제한적이며 톤당 50만원대 초중반의 박스권 횡보가 예상됨.",
-                "outlook_raw_mid": "글로벌 탄소중립 전환에 따른 전기로 비중 확대로 장기적으로 고품질 생철·중량 스크랩의 구조적 수요는 견고할 전망임.",
-                "outlook_scrap_parts": "차체 프레스 가공 부산물인 생철 스크랩의 안정적 발생과 제강사 직납 라인을 통한 회수 체계가 원활히 작동 중임.",
-                "outlook_scrap_recy": "중소 야적장(고물상)은 무리한 재고 축적보다는 회전율 중심의 빠른 매각 및 분할 출하 전략이 마진 방어에 유리함."
             }
         },
         {
@@ -839,43 +819,123 @@ def generate_reports_and_articles(prices_data, scrap_data):
             }
         },
         {
-            "key": "catalyst",
-            "name_kr": "폐촉매·PGM",
-            "name_en": "Catalyst & PGM",
-            "category": "catalyst",
-            "badge": "JM 로듐·팔라듐",
-            "query": "로듐 OR 팔라듐 OR 백금 OR 폐촉매 when:7d",
+            "key": "tin",
+            "name_kr": "주석",
+            "name_en": "Tin",
+            "category": "tin",
+            "badge": "LME 주석",
+            "query": "주석 LME OR 솔더 OR 미얀마 주석광산 when:7d",
             "fallback": {
-                "issue_verdict": "중요 이슈 발생 (남아공 PGM 광산 생산 조정 및 하이브리드차 확대로 백금족 지지선 확보)",
+                "issue_verdict": "중요 이슈 발생 (미얀마 주석 광산 가동 중단 장기화 및 AI 반도체 솔더 수요 증가)",
                 "core_bullets": [
-                    "존슨매티 로듐 1g당 20만원선 안착: 사상 최저가 구간을 벗어나 강력한 가격 바닥을 다지며 기술적 반등.",
-                    "하이브리드(HEV) 차량 글로벌 인기 지속: 순수 전기차 캐즘(Chasm)으로 내연기관·HEV용 촉매 귀금속 수요 유지.",
-                    "남아프리카공화국 전력난 및 샤프트 폐쇄: PGM 채굴 원가 상승으로 인해 글로벌 신규 공급 축소."
+                    "미얀마 와(Wa) 주 광산 채굴 재개 지연: 전 세계 주석 공급의 핵심인 미얀마 광산 정상화가 늦어지며 정광 부족 지속.",
+                    "AI 데이터센터 및 반도체 패키징 솔더 수요 급증: 고성능 반도체 기판용 고순도 주석 솔더 소비 급증.",
+                    "LME 창고 주석 재고 급감: 반출 수요 지속으로 가용 실물 재고가 역사적 최저 수준 기록."
                 ],
-                "outlook_raw_short": "로듐·팔라듐의 투기적 매도세가 진정되며 백금족 3종 모두 단기 저점을 확인하고 완만한 우상향 추세가 예상됨.",
-                "outlook_raw_mid": "수소 경제(연료전지 백금 촉매)와 고효율 하이브리드 촉매 수요가 맞물려 귀금속 재활용의 전략적 가치가 급상승할 것임.",
-                "outlook_scrap_parts": "완성차 배기가스 정화용 세라믹 모노리스 코어 내 귀금속 함량 설계가 타이트해지며 신품 촉매 납품단가 유지.",
-                "outlook_scrap_recy": "국내 폐차장에서 적출되는 LPi(로듐 함유) 및 GDi 폐촉매 단가는 개당 15~20만원대, DPF는 18~23만원대의 견조한 시세 유지."
+                "outlook_raw_short": "공급 차질과 전자산업 수요 회복이 맞물려 톤당 $32,000선 상방 돌파 시도가 이어질 전망임.",
+                "outlook_raw_mid": "친환경 무연 솔더 규제 및 태양광 리본용 주석 소비 확대로 장기적인 구조적 공급 부족이 이어질 것으로 분석됨.",
+                "outlook_scrap_parts": "PCB 기판용 솔더 및 차량용 전자제어장치(ECU) 납품 단가 상승 압력 가중.",
+                "outlook_scrap_recy": "전자 스크랩 솔더 드로스(Solder Dross) 및 화이트메탈 베어링 스크랩의 가치가 급상승 중임."
             }
         },
         {
-            "key": "precious",
-            "name_kr": "금·은 (귀금속)",
-            "name_en": "Gold & Silver",
-            "category": "precious",
-            "badge": "COMEX 금·은",
-            "query": "금시세 COMEX OR 은시세 OR 도시광산 when:7d",
+            "key": "platinum",
+            "name_kr": "백금 (플래티넘)",
+            "name_en": "Platinum",
+            "category": "platinum",
+            "badge": "NYMEX 백금",
+            "query": "백금 시세 OR 플래티넘 OR DPF 촉매 when:7d",
             "fallback": {
-                "issue_verdict": "중요 이슈 발생 (글로벌 지정학적 불안과 각국 중앙은행 금 매입으로 역사적 최고치 행진)",
+                "issue_verdict": "단순 시황 (수소 연료전지 장기 수요 기대 및 디젤 DPF 촉매 수요 유지)",
                 "core_bullets": [
-                    "COMEX 금 사상 최고가권 횡보: 미국 금리 인하 사이클과 중동 지정학 리스크로 안전자산 선호 심리 극대화.",
-                    "산업용 은 수요 급증: 태양광 패널 및 AI 반도체 기판용 고순도 은 페이스트 소비 증가로 은 가격 동반 강세.",
-                    "도시광산 폐전자스크랩 회수율 급상승: PCB 기판 금도금 핀 및 접점부 스크랩 매입 경쟁 치열."
+                    "남아프리카공화국 백금 광산 감산 조치: 전력난 및 채굴 단가 상승으로 신규 백금 공급 축소.",
+                    "수소차 및 전해조 촉매 기대감: 수소 경제 확산에 따른 고순도 백금 수요 장기 전망 긍정적.",
+                    "디젤 상용차 DPF 코어 수요 안정: 트럭·버스 및 건설기계용 백금 코어 필터 생산 라인 소비 지속."
                 ],
-                "outlook_raw_short": "안전자산 랠리로 인해 단기 조정 시에도 강력한 대기 매수세가 유입되며 가격 하방이 매우 견고할 전망임.",
-                "outlook_raw_mid": "글로벌 탈달러화 기조와 중앙은행들의 외환보유고 금 비중 확대로 구조적 강세장이 수년간 지속될 것으로 분석됨.",
-                "outlook_scrap_parts": "전자제어장치(ECU) 및 하네스 커넥터 금도금 단자 원가 상승으로 전장 모듈 조립사의 귀금속 절감 설계 가속화.",
-                "outlook_scrap_recy": "폐컴퓨터, 통신장비 기판 등 도시광산 전자 스크랩의 kg당 매입 견적이 사상 최고 수준으로 상향 조정 중임."
+                "outlook_raw_short": "온스당 $950~$1,000 박스권 하단에서 강력한 지지력을 확인하며 안정적 흐름 유지 예상.",
+                "outlook_raw_mid": "수소 수전해 설비 본격 상용화 시점에 맞춰 백금의 산업용 프리미엄이 급격히 확대될 전망임.",
+                "outlook_scrap_parts": "디젤 유로6 DPF 코어 부품 내 백금 코팅 단가 유지로 신품 교체 비용 안정세.",
+                "outlook_scrap_recy": "포터2, 봉고3 등 디젤 폐차 DPF 스크랩은 백금(Pt 3.8g) 함유로 개당 15만원대 이상의 견조한 매입가 형성."
+            }
+        },
+        {
+            "key": "palladium",
+            "name_kr": "팔라듐",
+            "name_en": "Palladium",
+            "category": "palladium",
+            "badge": "NYMEX 팔라듐",
+            "query": "팔라듐 시세 OR 가솔린 촉매 OR 러시아 팔라듐 when:7d",
+            "fallback": {
+                "issue_verdict": "단순 시황 (가솔린 및 하이브리드(HEV) 차량 생산 호조로 저점 매수세 유입)",
+                "core_bullets": [
+                    "순수 전기차 캐즘(Chasm) 반사이익: 하이브리드 차량 판매 급증으로 가솔린 배기가스 정화용 팔라듐 소비 유지.",
+                    "러시아 노릴스크 니켈 부산물 공급 안정: 서방 제재 속에서도 팔라듐 실물 유통은 중국·인도를 통해 원활.",
+                    "가격 바닥권 확인: 과거 3,000달러대 거품이 1,000달러 수준으로 완전 정상화되며 가격 안정화."
+                ],
+                "outlook_raw_short": "단기 1,000달러 안팎에서 하방 지지선을 공고히 다지며 저점 매수세 유입 전망.",
+                "outlook_raw_mid": "내연기관/HEV 잔존 수명 동안 안정적인 산업용 소비가 이어져 급격한 가격 붕괴 위험은 낮음.",
+                "outlook_scrap_parts": "가솔린 승용차 매니폴드 일체형 촉매 코어 원자재 원가 안정.",
+                "outlook_scrap_recy": "GDi 및 MPi 가솔린 승용차 폐촉매 매입 견적은 개당 8~14만원 선에서 안정적으로 형성 중."
+            }
+        },
+        {
+            "key": "rhodium",
+            "name_kr": "로듐",
+            "name_en": "Rhodium",
+            "category": "rhodium",
+            "badge": "JM 로듐",
+            "query": "로듐 시세 OR 존슨매티 로듐 OR LPi 촉매 when:7d",
+            "fallback": {
+                "issue_verdict": "중요 이슈 발생 (존슨매티 로듐 1g당 20만원선 안착 및 희소 귀금속 공급 타이트)",
+                "core_bullets": [
+                    "존슨매티 고시가 g당 20만 원 돌파: 역사적 저점 구간을 완전히 벗어나 기술적 반등 추세 확립.",
+                    "질소산화물(NOx) 최고 정화 성능: LPG(LPi) 및 고배기량 가솔린 차량의 필수 촉매 원소로 대체 불가.",
+                    "남아공 광산 채굴 수율 극소: 연간 생산량이 극히 적어 작은 수요 변화에도 가격 급등 민감."
+                ],
+                "outlook_raw_short": "투기 세력 청산 완료 후 실물 수요 기반의 탄탄한 우상향 곡선 지속 전망.",
+                "outlook_raw_mid": "글로벌 배기가스 규제(유로7 등) 강화 시 로듐의 회수 가치는 더욱 급등할 것으로 예상.",
+                "outlook_scrap_parts": "LPi 및 터보 가솔린 순정 촉매 어셈블리 납품 단가 지지.",
+                "outlook_scrap_recy": "LPi 가스차(쏘나타, K5, 그랜저) 폐촉매는 로듐(Rh 0.85g) 함유로 개당 17~20만원대 최고가 매입선 유지."
+            }
+        },
+        {
+            "key": "gold",
+            "name_kr": "금",
+            "name_en": "Gold",
+            "category": "gold",
+            "badge": "COMEX 금",
+            "query": "금시세 COMEX OR 금값 전망 OR 중앙은행 금매입 when:7d",
+            "fallback": {
+                "issue_verdict": "중요 이슈 발생 (각국 중앙은행 탈달러화 금 매입 및 글로벌 지정학 리스크로 사상 최고가 랠리)",
+                "core_bullets": [
+                    "COMEX 금선물 역사적 신고가 행진: 미국 금리 인하 사이클 진입과 통화가치 하락 헷지 수요 집중.",
+                    "글로벌 중앙은행 금 비축 확대: 중국, 폴란드, 인도 등 신흥국 중앙은행들의 외환보유고 금 매입 지속.",
+                    "실물 금 ETF 자금 유입 가속: 기관 및 개인 투자자의 안전자산 배분 비중 확대."
+                ],
+                "outlook_raw_short": "조정 시마다 강력한 대기 매수세가 유입되며 우상향 채널 유지 전망.",
+                "outlook_raw_mid": "글로벌 다극화 체제와 지정학적 분절화로 금의 전략적 가치는 수년간 구조적 강세장 지속 분석.",
+                "outlook_scrap_parts": "ECU 커넥터 및 초정밀 반도체 와이어 본딩용 금 원가 상승으로 대체 도금재 연구 가속.",
+                "outlook_scrap_recy": "폐컴퓨터, 통신 중계기 등 도시광산 전자 스크랩(PCB) 매입 단가 사상 최고 수준 경신."
+            }
+        },
+        {
+            "key": "silver",
+            "name_kr": "은",
+            "name_en": "Silver",
+            "category": "silver",
+            "badge": "COMEX 은",
+            "query": "은시세 COMEX OR 은값 전망 OR 태양광 은페이스트 when:7d",
+            "fallback": {
+                "issue_verdict": "중요 이슈 발생 (태양광 패널 TOPCon 전지 및 AI 반도체 은 소비 폭증으로 공급 부족 심화)",
+                "core_bullets": [
+                    "신형 태양광 셀의 은 소비량 30% 증가: N-Type TOPCon 태양광 전지 보급으로 고순도 은 페이스트 수요 급증.",
+                    "금·은 가격 비율(Gold-Silver Ratio) 축소: 은의 저평가 매력이 부각되며 기관 매수세 유입.",
+                    "런던 LBMA 은 실물 재고 감소: 산업용 인도 수요가 급증하며 가용 실물 재고 타이트."
+                ],
+                "outlook_raw_short": "온스당 $32 돌파 시 추가 급등 랠리 가능성이 매우 높은 국면.",
+                "outlook_raw_mid": "에너지 전환 인프라의 필수 전도체로서 은의 산업적 희소성이 재평가되며 장기 호황 지속 전망.",
+                "outlook_scrap_parts": "자동차 전자제어 스위치 접점부 및 전력 반도체 기판 원가 상승.",
+                "outlook_scrap_recy": "산업용 은접점, 폐태양광 모듈 및 은도금 부품 스크랩의 회수 가치 급상승."
             }
         }
     ]
@@ -1041,12 +1101,11 @@ def generate_reports_and_articles(prices_data, scrap_data):
 </html>"""
         with open(art_path, "w", encoding="utf-8") as f:
             f.write(article_html)
-
     out_reports_path = os.path.join(DATA_DIR, "reports.json")
     with open(out_reports_path, "w", encoding="utf-8") as f:
         json.dump(reports_data, f, ensure_ascii=False, indent=2)
 
-    print(f"    -> [완료] data/reports.json & 8대 금속 전 품목 아티클 발행 완료!")
+    print(f"    -> [완료] data/reports.json & 전 품목 아티클 발행 완료!")
 
 # ----------------------------------------------------
 # 마스터 파이프라인 엔트리포인트
@@ -1057,22 +1116,22 @@ def main():
     print(f"   시각: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
 
-    # 1. 환율 및 12대 금속 종가 & 차트 수집 (PPS 가격 동시 결합)
+    # 1. 환율 및 국제 금속 종가 & 차트 수집 (PPS 가격 동시 결합)
     usd_rate, rate_src = fetch_usd_krw_rate()
     prices_data = collect_prices_and_charts(usd_rate)
 
     # 2. 스크랩 & 폐촉매 단가 실시간 연동 (ThePathLab 100% 동일 공식)
     scrap_data = compute_and_sync_scrap(prices_data, usd_rate)
 
-    # 3. 리포트 생성 및 정적 아티클 발행 (8대 금속 전 품목)
+    # 3. 리포트 생성 및 정적 아티클 발행
     generate_reports_and_articles(prices_data, scrap_data)
 
     print("=" * 60)
     print("🎉 [완료] Price + Scrap + Report 3대 영역 100% 동시 동기화 완료!")
     print(f"   • 환율: {usd_rate:,.1f}원 ({rate_src})")
-    print("   • 국제시세: 12종 전 품목 및 30일 시계열 차트 데이터 + 조달청 고시가 매핑 완료")
-    print("   • 스크랩시세: 철 5종 + 구리 3종 + 신주 3종 + 알루미늄 4종 + 특수 3종 + 조달청 6종 + 폐촉매 6대 단가 산출")
-    print("   • 리포트: 8대 주요 금속 전 품목 ThePathLab 스크린샷 100% 동일 AI 분석 아티클 발행")
+    print("   • 국제시세: 전 품목 종가 및 30일 시계열 차트 데이터 + 조달청 고시가 매핑 완료")
+    print("   • 스크랩시세: 철스크랩 + 비철 + 조달청 비축물자 + 폐촉매 단가 산출")
+    print("   • 리포트: 품목별 ThePathLab 양식 AI 분석 아티클 발행")
     print("=" * 60)
 
 if __name__ == "__main__":
