@@ -80,7 +80,7 @@ def sync_prices():
         get_metal_item("iron_scrap", "철스크랩", "Steel Scrap", "Global Index", "원/kg", "$372/t", 548, 0, 0.0)
     ]
 
-    # 2. 비철 (Non-ferrous - LME 6대 비철)
+    # 2. 비철 (Non-ferrous - LME)
     nonferrous_items = [
         get_metal_item("copper", "구리", "Copper", "LME", "원/kg", "$9,685/t", 19590, 120, 0.61),
         get_metal_item("aluminum", "알루미늄", "Aluminum", "LME", "원/kg", "$2,540/t", 4390, -35, -0.80),
@@ -90,7 +90,7 @@ def sync_prices():
         get_metal_item("tin", "주석", "Tin", "LME", "원/kg", "$32,800/t", 72945, -519, -0.71)
     ]
 
-    # 3. 귀금속 & PGM (5대 귀금속 - 백금, 팔라듐, 로듐, 금, 은)
+    # 3. 귀금속 & PGM (백금, 팔라듐, 로듐, 금, 은)
     precious_items = [
         get_metal_item("platinum", "백금", "Platinum", "NYMEX", "원/g", "$995/oz", 43400, 350, 0.81),
         get_metal_item("palladium", "팔라듐", "Palladium", "NYMEX", "원/g", "$1,020/oz", 44500, -210, -0.47),

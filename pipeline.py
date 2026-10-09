@@ -6,15 +6,15 @@ MetalsTerminal Unified Master Pipeline
 ======================================================
 1. Price & Chart:
    - 네이버 금융 실시간 USD/KRW 환율 수집
-   - 12대 금속 종가 및 30일 시계열 차트 데이터(LME, COMEX, NYMEX, JM)
+   - 국제 금속 품목별 종가 및 30일 시계열 차트 데이터(LME, COMEX, NYMEX, JM)
    - data/prices.json 갱신
 2. Scrap Engine:
-   - 당일 국제시세 기반 철스크랩 5등급 + 비철수율 + 차종별 폐촉매 6대 단가 자동 산출
+   - 당일 국제시세 기반 철스크랩 + 비철수율 + 차종별 폐촉매 단가 자동 산출
    - data/scrap.json 갱신
 3. Report Generator:
    - Mining.com & 글로벌 RSS 실시간 스크래핑
    - 국내 제강사(현대제철/동국제강) 고철 구매단가 인상/인하 이슈
-   - 4대 챕터 정형 아티클 생성 -> data/reports.json & articles/*.html
+   - 실시간 뉴스 결합 품목별 정형 아티클 생성 -> data/reports.json & articles/*.html
 """
 
 import os
@@ -1127,11 +1127,11 @@ def main():
     generate_reports_and_articles(prices_data, scrap_data)
 
     print("=" * 60)
-    print("🎉 [완료] Price + Scrap + Report 3대 영역 100% 동시 동기화 완료!")
+    print("🎉 [완료] Price + Scrap + Report 전 영역 동기화 완료!")
     print(f"   • 환율: {usd_rate:,.1f}원 ({rate_src})")
-    print("   • 국제시세: 전 품목 종가 및 30일 시계열 차트 데이터 + 조달청 고시가 매핑 완료")
+    print("   • 국제시세: 12개 전 품목 종가 및 30일 시계열 차트 데이터 + 조달청 고시가 매핑 완료")
     print("   • 스크랩시세: 철스크랩 + 비철 + 조달청 비축물자 + 폐촉매 단가 산출")
-    print("   • 리포트: 품목별 ThePathLab 양식 AI 분석 아티클 발행")
+    print("   • 리포트: 12개 품목별 실시간 뉴스 결합 AI 분석 아티클 발행")
     print("=" * 60)
 
 if __name__ == "__main__":
