@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MetalsTerminal - 비철·스크랩·폐촉매 실시간 시세 포털</title>
+    <meta name="description" content="매일 아침 9시 고시되는 비철금속, 스크랩, 폐촉매 원화 시세와 현장 추정단가">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. 최상단 헤더 (도싸 스타일 블랙 헤더) -->
+    <header class="dossa-header">
+        <div class="container dossa-header-inner">
+            <button class="btn-icon" onclick="toggleNav()" title="메뉴">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <a href="index.html" class="dossa-logo">
+                <span class="logo-accent">⚡</span> METALS<strong>TERMINAL</strong>
+            </a>
+            <div class="dossa-header-right">
+                <a href="calc.html" class="btn-calc-nav" title="계산기">
+                    <span>📱</span> 계산기
+                </a>
+            </div>
+        </div>
+
+        <!-- 2. 도싸식 4대 서브 메뉴 탭 -->
+        <nav class="dossa-subnav">
+            <div class="container dossa-subnav-inner">
+                <a href="#section-price" class="nav-tab active">시세·스크랩</a>
+                <a href="#section-report" class="nav-tab">쉬운리포트</a>
+                <a href="#section-market" class="nav-tab">직거래장터</a>
+                <a href="#section-free" class="nav-tab">자유게시판</a>
+                <a href="calc.html" class="nav-tab nav-highlight">계산기</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 3. 매일 9시 고시 상태 띠 (신선도 인디케이터) -->
+    <aside class="status-bar">
+        <div class="container status-inner">
+            <div class="status-badge-wrap">
+                <span class="live-dot"></span>
+                <span class="status-date" id="display-date">2026.10.10(금) 09:00 정기고시</span>
+            </div>
+            <div class="status-rate">
+                기준환율: <strong id="display-rate">1,356.2원</strong>
+            </div>
+        </div>
+    </aside>
+
+    <main class="mobile-container">
+
+        <!-- ============================================================
+             [핵심] 1. 모바일 극단적 가독성 시세 & 스크랩 전광판
+             ============================================================ -->
+        <section class="section-box" id="section-price">
+            <div class="section-header price-header">
+                <div class="sh-left">
+                    <span class="header-indicator red"></span>
+                    <h2>오늘의 시세 &amp; 스크랩 단가표</h2>
+                </div>
+                <div class="sh-filter">
+                    <button class="filter-chip active" onclick="filterMetals('all', this)">전체</button>
+                    <button class="filter-chip" onclick="filterMetals('nonferrous', this)">비철</button>
+                    <button class="filter-chip" onclick="filterMetals('pgm', this)">촉매·귀금속</button>
+                </div>
+            </div>
+
+            <!-- 시세 카드 리스트 (모바일 한 손 스캔 최적화) -->
+            <div class="metals-card-list" id="metals-container">
+                <!-- app.js에서 data/prices.json을 읽어와 동적 렌더링 -->
+            </div>
+
+            <div class="price-notice-footer">
+                <p>※ <strong>현장 추정가</strong>는 서울·경기권 A급 스크랩(부가가치세 별도, 마당 상차) 기준 참고용 지표입니다.</p>
+                <p>※ LME 및 해외 고시 데이터 기준 (환율: 하나은행 전신환매도율 적용)</p>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             2. 쉬운 리포트 (시세 바로 다음에 배치: 3줄 해설 & 팩트)
+             ============================================================ -->
+        <section class="section-box" id="section-report">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator amber"></span>
+                    <h2>오늘의 쉬운 리포트 (매거진)</h2>
+                </div>
+                <span class="header-badge">매일 9시 발행</span>
+            </div>
+            <ul class="dossa-board-list" id="list-reports">
+                <!-- app.js 동적 렌더링 -->
+            </ul>
+        </section>
+
+        <!-- 파트너 야적장 1줄 스폰서 배너 -->
+        <div class="sponsor-mini-banner">
+            <span class="sb-tag">공식 파트너</span>
+            <div class="sb-text"><strong>[경기 화성] ㈜대성메탈</strong> — A동·모터동·구리선 당일 현금 결제</div>
+            <a href="tel:010-8291-3841" class="sb-tel">📞 전화</a>
+        </div>
+
+        <!-- ============================================================
+             3. 직거래 장터 (비철·고철·폐촉매 통합 최신순 매물)
+             ============================================================ -->
+        <section class="section-box" id="section-market">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator green"></span>
+                    <h2>직거래 장터 (팝니다·삽니다)</h2>
+                </div>
+                <button class="btn-header-write" onclick="openWriteModal('market')">+ 매물등록</button>
+            </div>
+            <ul class="dossa-board-list" id="list-market">
+                <!-- app.js 동적 렌더링 -->
+            </ul>
+        </section>
+
+        <!-- ============================================================
+             4. 자유게시판 (현장 소통, 노하우, 질문)
+             ============================================================ -->
+        <section class="section-box" id="section-free">
+            <div class="section-header">
+                <div class="sh-left">
+                    <span class="header-indicator blue"></span>
+                    <h2>자유게시판 (현장소통 &amp; 질문)</h2>
+                </div>
+                <button class="btn-header-write" onclick="openWriteModal('free')">+ 글쓰기</button>
+            </div>
+            <ul class="dossa-board-list" id="list-free">
+                <!-- app.js 동적 렌더링 -->
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- 푸터 (도싸식 미니멀 블랙 푸터) -->
+    <footer class="dossa-footer">
+        <div class="container footer-links">
+            <a href="#section-price">시세표</a>
+            <span class="sep">|</span>
+            <a href="calc.html">계산기</a>
+            <span class="sep">|</span>
+            <a href="#section-market">직거래장터</a>
+            <span class="sep">|</span>
+            <a href="#section-report">쉬운리포트</a>
+            <span class="sep">|</span>
+            <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP ▲</a>
+        </div>
+        <div class="container footer-copyright">
+            <p>※ 안내된 단가는 시장 참고용 추정치이며 실제 거래 법적 책임을 지지 않습니다.</p>
+            <p>Copyright © 2026 MetalsTerminal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 익명 글쓰기 모달 레이어 -->
+    <div class="modal-backdrop" id="write-modal" onclick="closeModalOnBackdrop(event, 'write-modal')">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>📝 새 글 / 매물 등록 (로그인 불필요)</h3>
+                <button class="btn-close" onclick="closeModal('write-modal')">&times;</button>
+            </div>
+            <form id="write-form" onsubmit="handleFormSubmit(event)">
+                <div class="modal-body">
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label for="post-board">게시판 선택 *</label>
+                            <select id="post-board" required>
+                                <option value="market">직거래 장터</option>
+                                <option value="free">자유게시판 (Q&A)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="post-type">말머리 *</label>
+                            <select id="post-type" required>
+                                <option value="[팝니다]">[팝니다]</option>
+                                <option value="[삽니다]">[삽니다]</option>
+                                <option value="[홍보]">[야적장/장비홍보]</option>
+                                <option value="[질문]">[질문/이야기]</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label for="post-author">닉네임 *</label>
+                            <input type="text" id="post-author" placeholder="예: 평택야적장" required maxlength="12">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-pass">비밀번호 (4자리) *</label>
+                            <input type="password" id="post-pass" placeholder="숫자 4자리" required maxlength="4" pattern="[0-9]{4}">
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label for="post-region">거래 지역</label>
+                            <input type="text" id="post-region" placeholder="예: 경기 화성 / 충남 천안">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-contact">연락처</label>
+                            <input type="text" id="post-contact" placeholder="010-XXXX-XXXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-title">글 제목 *</label>
+                        <input type="text" id="post-title" placeholder="품목과 수량을 적어주세요 (예: 굵은 전선 A동 2톤 팝니다)" required maxlength="60">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-content">상세 내용 *</label>
+                        <textarea id="post-content" rows="4" placeholder="상태, 상차 위치, 계근 조건 등을 적어주세요." required></textarea>
+                    </div>
+
+                    <div class="form-group spam-group">
+                        <label for="post-quiz">🛡️ 스팸 방지: <strong>구리의 화학 기호는? (Cu)</strong> *</label>
+                        <input type="text" id="post-quiz" placeholder="Cu 입력" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('write-modal')">취소</button>
+                    <button type="submit" class="btn-submit">🚀 바로 등록하기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 글 상세 보기 모달 -->
+    <div class="modal-backdrop" id="view-modal" onclick="closeModalOnBackdrop(event, 'view-modal')">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <span class="view-tag" id="view-tag">[팝니다]</span>
+                <button class="btn-close" onclick="closeModal('view-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3 class="view-title" id="view-title">제목</h3>
+                <div class="view-meta">
+                    <span id="view-author">작성자</span> • <span id="view-date">날짜</span> • <span id="view-region">지역</span>
+                </div>
+                <div class="view-contact-box" id="view-contact-box">
+                    <span>📞 <strong>연락처:</strong> <span id="view-contact">010-XXXX-XXXX</span></span>
+                    <a href="#" id="view-tel-btn" class="tel-link">전화 걸기</a>
+                </div>
+                <div class="view-content" id="view-content">내용</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="deleteCurrentPost()">삭제하기</button>
+                <button type="button" class="btn-submit" onclick="closeModal('view-modal')">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

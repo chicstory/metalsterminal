@@ -1,0 +1,818 @@
+/* ==========================================================================
+   MetalsTerminal - DOSSA Mobile-First Pixel-Perfect Layout
+   ========================================================================== */
+
+:root {
+    --bg-page: #f4f6f8;
+    --bg-card: #ffffff;
+    --border-line: #e2e8f0;
+    --border-light: #f1f5f9;
+    
+    --text-title: #0f172a;
+    --text-body: #334155;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
+    
+    --dossa-black: #1e2229;
+    --dossa-subnav: #2d323d;
+    --dossa-green: #16a34a;
+    --dossa-red: #dc2626;
+    --dossa-blue: #2563eb;
+    --dossa-amber: #d97706;
+    
+    --kakao-yellow: #fee500;
+    --kakao-brown: #3c1e1e;
+    
+    --font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, "Apple SD Gothic Neo", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+html, body {
+    width: 100%;
+    background-color: var(--bg-page);
+    color: var(--text-body);
+    font-family: var(--font-family);
+    line-height: 1.45;
+    -webkit-text-size-adjust: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 640px; /* 도싸 모바일 뷰포트 기준 */
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+.mobile-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 10px 12px 30px 12px;
+}
+
+/* ==========================================================================
+   1. 도싸식 상단 블랙 헤더 & 서브 메뉴 탭
+   ========================================================================== */
+.dossa-header {
+    background: var(--dossa-black);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dossa-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+}
+
+.dossa-logo {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.logo-accent {
+    color: var(--kakao-yellow);
+}
+
+.dossa-logo strong {
+    color: #60a5fa;
+}
+
+.btn-write-header {
+    background: #3b82f6;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-write-header:active {
+    transform: scale(0.96);
+}
+
+/* 도싸 서브메뉴 4대 탭 (블랙 다크 그레이) */
+.dossa-subnav {
+    background: var(--dossa-subnav);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dossa-subnav-inner {
+    display: flex;
+    justify-content: space-around;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.dossa-subnav-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-tab {
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 8px;
+    white-space: nowrap;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    transition: all 0.15s ease;
+}
+
+.nav-tab:hover, .nav-tab.active {
+    color: #ffffff;
+    border-bottom-color: #38bdf8;
+}
+
+/* ==========================================================================
+   2. 신선도 상태 바 (9시 정기고시 띠)
+   ========================================================================== */
+.status-bar {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-line);
+}
+
+.status-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.status-badge-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+.status-date {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.status-rate {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+.status-rate strong {
+    color: var(--kakao-yellow);
+    font-weight: 800;
+}
+
+.btn-calc-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #3b82f6;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+/* ==========================================================================
+   3. 시세 헤더 필터 칩
+   ========================================================================== */
+.sh-filter {
+    display: flex;
+    gap: 4px;
+}
+
+.filter-chip {
+    background: #f1f5f9;
+    border: 1px solid var(--border-line);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.filter-chip.active {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+}
+
+/* ==========================================================================
+   4. 극단적 가독성 시세 카드 리스트 (Mobile Glance Feed)
+   ========================================================================== */
+.metals-card-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.metal-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-light);
+    transition: background 0.12s ease;
+}
+
+.metal-row:last-child {
+    border-bottom: none;
+}
+
+.metal-row:hover {
+    background: #f8fafc;
+}
+
+.metal-row.tint-up {
+    background: #fffafa;
+}
+
+.metal-row.tint-down {
+    background: #f8fafc;
+}
+
+.mr-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.mr-name-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-title);
+}
+
+.mr-name-line strong {
+    font-weight: 800;
+}
+
+.mr-scrap-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+
+.badge-metal {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.badge-metal.cu { background: #fee2e2; color: #b91c1c; }
+.badge-metal.al { background: #e0f2fe; color: #0369a1; }
+.badge-metal.fe { background: #f1f5f9; color: #475569; }
+.badge-metal.rh { background: #fef3c7; color: #b45309; }
+.badge-metal.zn { background: #dcfce7; color: #15803d; }
+.badge-metal.pb { background: #f1f5f9; color: #334155; }
+.badge-metal.sn { background: #fef9c3; color: #a16207; }
+.badge-metal.ni { background: #ede9fe; color: #6d28d9; }
+.badge-metal.au { background: #fef9c3; color: #854d0e; }
+.badge-metal.ag { background: #f1f5f9; color: #475569; }
+
+.mr-benchmark {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.mr-price-block {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mr-floor-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 2px;
+}
+
+.mr-floor-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-right: 2px;
+}
+
+.mr-floor-val {
+    font-size: 18px;
+    font-weight: 900;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.mr-floor-val.highlight {
+    color: var(--dossa-red);
+}
+
+.mr-floor-unit {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.mr-diff {
+    font-size: 11px;
+    font-weight: 700;
+}
+.mr-diff.up { color: var(--dossa-red); }
+.mr-diff.down { color: var(--dossa-blue); }
+.mr-diff.same { color: var(--text-muted); }
+
+.price-notice-footer {
+    background: #fafafa;
+    padding: 10px 14px;
+    border-top: 1px solid var(--border-line);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   4. 도싸식 고밀도 게시판 리스트 (초록색 댓글수 시그니처)
+   ========================================================================== */
+.dossa-board-list {
+    min-height: 150px;
+}
+
+.dossa-board-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+
+.dossa-board-item:last-child {
+    border-bottom: none;
+}
+
+.dossa-board-item:hover {
+    background: #f8fafc;
+}
+
+.dbi-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.dbi-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+.dbi-tag.sell { background: #fee2e2; color: #b91c1c; }
+.dbi-tag.buy { background: #dbeafe; color: #1e40af; }
+.dbi-tag.report { background: #fef3c7; color: #92400e; }
+.dbi-tag.talk { background: #f1f5f9; color: #475569; }
+
+.dbi-title {
+    font-weight: 500;
+    color: var(--text-title);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dossa-board-item:hover .dbi-title {
+    color: var(--dossa-blue);
+    text-decoration: underline;
+}
+
+/* 도싸 모바일 캡처 시그니처: 초록색 댓글수 */
+.dbi-comment-count {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--dossa-green);
+    min-width: 18px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   5. 파트너 미니 배너
+   ========================================================================== */
+.sponsor-mini-banner {
+    background: #ffffff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid var(--dossa-blue);
+    border-radius: 6px;
+    padding: 9px 12px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.sb-tag {
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 4px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.sb-text {
+    font-size: 12px;
+    color: var(--text-title);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sb-tel {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   6. 도싸식 푸터
+   ========================================================================== */
+.dossa-footer {
+    background: var(--dossa-black);
+    color: #94a3b8;
+    padding: 20px 0 30px 0;
+    font-size: 11px;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.footer-links .sep {
+    color: #475569;
+    margin: 0 6px;
+}
+
+.footer-copyright {
+    line-height: 1.6;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   7. 모달 레이어 (계산기, 익명 글쓰기, 글보기, 구독)
+   ========================================================================== */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.modal-backdrop.active {
+    display: flex;
+}
+
+.modal-dialog {
+    background: #ffffff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.modal-header {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-title);
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 16px 18px;
+}
+
+/* 계산기 모달 전용 스타일 */
+.calc-form label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 5px;
+}
+
+.calc-form select,
+.calc-form input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--border-line);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 12px;
+}
+
+.input-with-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-unit input {
+    margin-bottom: 0;
+    padding-right: 36px;
+}
+
+.unit-text {
+    position: absolute;
+    right: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.calc-display-panel {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.cd-title {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.cd-number {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--dossa-blue);
+}
+
+.cd-won {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-title);
+}
+
+.calc-guide-text {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+/* 글쓰기 폼 스타일 */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-title);
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--border-line);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+}
+
+.form-row.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.spam-group {
+    background: #eff6ff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #bfdbfe;
+}
+
+.modal-footer {
+    padding: 12px 18px;
+    background: #fafafa;
+    border-top: 1px solid var(--border-line);
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.btn-cancel {
+    background: #ffffff;
+    border: 1px solid var(--border-line);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background: #0f172a;
+    color: #ffffff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-submit.full-w {
+    width: 100%;
+}
+
+.btn-submit.kakao-btn {
+    background: var(--kakao-yellow);
+    color: var(--kakao-brown);
+}
+
+/* 글 상세 보기 모달 */
+.view-tag {
+    background: #e2e8f0;
+    color: #0f172a;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.view-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-title);
+    margin-bottom: 6px;
+}
+
+.view-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 8px;
+}
+
+.view-contact-box {
+    background: #f8fafc;
+    border: 1px solid var(--border-line);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tel-link {
+    background: var(--dossa-black);
+    color: #ffffff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.view-content {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-body);
+    white-space: pre-wrap;
+    min-height: 80px;
+}
+
+/* 카톡 모달 세부 */
+.sub-price-pill {
+    background: #dbeafe;
+    color: #1e40af;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.sub-p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.sub-step {
+    background: #f8fafc;
+    border: 1px solid var(--border-line);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}

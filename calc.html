@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>스크랩 계산기 - MetalsTerminal</title>
+    <meta name="description" content="비철, 고철, 폐촉매, 전자기판 현장 정산 예상 단가 계산기">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .calc-page-container {
+            max-width: 540px;
+            margin: 0 auto;
+            padding: 16px 12px 40px 12px;
+        }
+        .calc-header-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .btn-back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            background: #ffffff;
+            border: 1px solid var(--border-line);
+            padding: 7px 12px;
+            border-radius: 6px;
+        }
+        .calc-card-main {
+            background: #ffffff;
+            border: 1px solid var(--border-line);
+            border-radius: 12px;
+            padding: 20px 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .cc-title-area {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .cc-title-area h1 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-title);
+        }
+        .cc-title-area p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .calc-field {
+            margin-bottom: 16px;
+        }
+        .calc-field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 6px;
+        }
+        .calc-field select, .calc-field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border-line);
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #ffffff;
+        }
+        .input-box-unit {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-box-unit input {
+            padding-right: 45px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .unit-label-tag {
+            position: absolute;
+            right: 14px;
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+        .slider-wrap {
+            background: #f8fafc;
+            border: 1px solid var(--border-line);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 6px;
+        }
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .slider-header strong {
+            color: var(--dossa-red);
+        }
+        .slider-wrap input[type="range"] {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .result-billboard {
+            background: #0f172a;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .rb-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .rb-val-wrap {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 4px;
+        }
+        .rb-number {
+            font-size: 32px;
+            font-weight: 900;
+            color: #38bdf8;
+            letter-spacing: -1px;
+        }
+        .rb-won {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .rb-sub-detail {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="dossa-header">
+        <div class="container dossa-header-inner">
+            <a href="index.html" class="dossa-logo">
+                <span class="logo-accent">⚡</span> METALS<strong>TERMINAL</strong>
+            </a>
+            <a href="index.html" class="btn-write-header">
+                ← 시세판 홈으로
+            </a>
+        </div>
+    </header>
+
+    <div class="calc-page-container">
+        <div class="calc-header-nav">
+            <a href="index.html" class="btn-back-home">← 시세 전광판</a>
+            <span style="font-size:12px; color:#64748b;">기준환율 1,356.2원 적용</span>
+        </div>
+
+        <div class="calc-card-main">
+            <div class="cc-title-area">
+                <h1>📱 스크랩 &amp; 폐촉매 정산 계산기</h1>
+                <p>오늘자 실시간 시세와 현장 수율 감가를 적용하여 예상 매입액을 계산합니다.</p>
+            </div>
+
+            <div class="calc-field">
+                <label for="c-metal">품목 선택</label>
+                <select id="c-metal" onchange="calculate()">
+                    <optgroup label="🥉 구리 스크랩">
+                        <option value="12300" data-unit="kg">구리 A동 (밀베리 깨끗한 전선) - 12,300원/kg</option>
+                        <option value="11400" data-unit="kg">구리 상동 (모터코일·중품) - 11,400원/kg</option>
+                        <option value="10100" data-unit="kg">구리 파쇄동 (혼합 스크랩) - 10,100원/kg</option>
+                        <option value="4200" data-unit="kg">잡선·통신선 (피복 포함 원물) - 4,200원/kg</option>
+                    </optgroup>
+                    <optgroup label="🥫 알루미늄">
+                        <option value="2500" data-unit="kg">알루미늄 샷시 (창틀 스크랩) - 2,500원/kg</option>
+                        <option value="2200" data-unit="kg">알루미늄 휠 (자동차 휠) - 2,200원/kg</option>
+                        <option value="1800" data-unit="kg">알루미늄 캔·압축 - 1,800원/kg</option>
+                    </optgroup>
+                    <optgroup label="🏗️ 철스크랩 (고철)">
+                        <option value="400" data-unit="kg">고철 생철·중량A - 400원/kg</option>
+                        <option value="360" data-unit="kg">고철 경량철스크랩 - 360원/kg</option>
+                    </optgroup>
+                    <optgroup label="🚗 폐촉매 (삼원촉매/DPF)">
+                        <option value="95000" data-unit="개">승용 디젤 삼원촉매 (로듐 반영) - 약 95,000원/개</option>
+                        <option value="75000" data-unit="개">승용 가솔린 삼원촉매 - 약 75,000원/개</option>
+                        <option value="160000" data-unit="개">포터/봉고 DPF 촉매 - 약 160,000원/개</option>
+                    </optgroup>
+                    <optgroup label="🥇 전자기판 (도시광산)">
+                        <option value="14000" data-unit="kg">구형 PC 메인보드 (G31/H61급) - 14,000원/kg</option>
+                        <option value="35000" data-unit="kg">통신·서버 고품위 기판 - 35,000원/kg</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="calc-field">
+                <label for="c-amount" id="c-amount-label">중량 (kg)</label>
+                <div class="input-box-unit">
+                    <input type="number" id="c-amount" value="500" min="1" step="any" oninput="calculate()">
+                    <span class="unit-label-tag" id="c-unit-tag">kg</span>
+                </div>
+            </div>
+
+            <div class="calc-field">
+                <div class="slider-wrap">
+                    <div class="slider-header">
+                        <span>현장 이물질·피복 감가율</span>
+                        <strong><span id="loss-display">0</span>% 감가</strong>
+                    </div>
+                    <input type="range" id="c-loss" min="0" max="30" value="0" step="1" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="result-billboard">
+                <span class="rb-label">오늘의 예상 정산가 (VAT 별도)</span>
+                <div class="rb-val-wrap">
+                    <strong class="rb-number" id="c-final-price">6,150,000</strong>
+                    <span class="rb-won">원</span>
+                </div>
+                <div class="rb-sub-detail" id="c-sub-detail">
+                    단가 12,300원 × 500kg (감가 없음)
+                </div>
+            </div>
+
+            <p style="font-size:11px; color:#94a3b8; text-align:center; margin-top:14px; line-height:1.5;">
+                ※ 본 계산기는 당일 LME 및 고시 단가 기반의 단순 참고용이며, 실제 거래처 계근대 오차 및 감가 기준에 따라 차이가 있을 수 있습니다.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const select = document.getElementById("c-metal");
+            const amountInput = document.getElementById("c-amount");
+            const lossInput = document.getElementById("c-loss");
+            const unitTag = document.getElementById("c-unit-tag");
+            const amountLabel = document.getElementById("c-amount-label");
+            const lossDisplay = document.getElementById("loss-display");
+            const finalPriceEl = document.getElementById("c-final-price");
+            const subDetailEl = document.getElementById("c-sub-detail");
+
+            const selectedOption = select.options[select.selectedIndex];
+            const basePrice = parseFloat(selectedOption.value) || 0;
+            const unit = selectedOption.getAttribute("data-unit") || "kg";
+            const amount = parseFloat(amountInput.value) || 0;
+            const lossPct = parseFloat(lossInput.value) || 0;
+
+            unitTag.innerText = unit;
+            amountLabel.innerText = unit === "개" ? "수량 (개수)" : "중량 (kg)";
+            lossDisplay.innerText = lossPct;
+
+            const effectiveAmount = amount * (1 - (lossPct / 100));
+            const total = Math.round(basePrice * effectiveAmount);
+
+            finalPriceEl.innerText = total.toLocaleString("ko-KR");
+
+            if (lossPct > 0) {
+                subDetailEl.innerText = `단가 ${basePrice.toLocaleString()}원 × 실중량 ${effectiveAmount.toFixed(1)}${unit} (${lossPct}% 감가 적용)`;
+            } else {
+                subDetailEl.innerText = `단가 ${basePrice.toLocaleString()}원 × ${amount}${unit} (감가 없음)`;
+            }
+        }
+        document.addEventListener("DOMContentLoaded", calculate);
+    </script>
+</body>
+</html>
