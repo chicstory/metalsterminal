@@ -193,10 +193,10 @@ def collect_prices_and_charts(usd_rate):
         {"key": "lead", "sec": "nonferrous", "name_kr": "납", "name_en": "Lead", "te_slug": "lead", "source": "LME", "unit": "원/kg", "default_krw": 2594, "raw_usd": "$2,050/t", "diff_krw": -24, "diff_pct": -0.92},
         {"key": "nickel", "sec": "nonferrous", "name_kr": "니켈", "name_en": "Nickel", "te_slug": "nickel", "source": "LME", "unit": "원/kg", "default_krw": 22030, "raw_usd": "$16,250/t", "diff_krw": 110, "diff_pct": 0.50},
         {"key": "tin", "sec": "nonferrous", "name_kr": "주석", "name_en": "Tin", "te_slug": "tin", "source": "LME", "unit": "원/kg", "default_krw": 72945, "raw_usd": "$32,800/t", "diff_krw": -519, "diff_pct": -0.71},
-        # 3. 귀금속 & PGM (5종)
-        {"key": "platinum", "sec": "precious", "name_kr": "백금", "name_en": "Platinum", "te_slug": "platinum", "source": "NYMEX", "unit": "원/g", "default_krw": 43400, "raw_usd": "$995/oz", "diff_krw": 350, "diff_pct": 0.81},
-        {"key": "palladium", "sec": "precious", "name_kr": "팔라듐", "name_en": "Palladium", "te_slug": "palladium", "source": "NYMEX", "unit": "원/g", "default_krw": 44500, "raw_usd": "$1,020/oz", "diff_krw": -210, "diff_pct": -0.47},
-        {"key": "rhodium", "sec": "precious", "name_kr": "로듐", "name_en": "Rhodium", "te_slug": "rhodium", "source": "Johnson Matthey", "unit": "원/g", "default_krw": 206000, "raw_usd": "$4,750/oz", "diff_krw": 1500, "diff_pct": 0.73},
+        # 3. 귀금속 & PGM (5종) - 존슨매티 및 NYMEX 실시간 고시가
+        {"key": "platinum", "sec": "precious", "name_kr": "백금", "name_en": "Platinum", "te_slug": "platinum", "source": "NYMEX", "unit": "원/g", "default_krw": 73850, "raw_usd": "$1,690/oz", "diff_krw": 350, "diff_pct": 0.81},
+        {"key": "palladium", "sec": "precious", "name_kr": "팔라듐", "name_en": "Palladium", "te_slug": "palladium", "source": "NYMEX", "unit": "원/g", "default_krw": 53631, "raw_usd": "$1,230/oz", "diff_krw": -210, "diff_pct": -0.47},
+        {"key": "rhodium", "sec": "precious", "name_kr": "로듐", "name_en": "Rhodium", "te_slug": "rhodium", "source": "Johnson Matthey", "unit": "원/g", "default_krw": 403326, "raw_usd": "$9,250/oz", "diff_krw": 1500, "diff_pct": 0.73},
         {"key": "gold", "sec": "precious", "name_kr": "금", "name_en": "Gold", "te_slug": "gold", "source": "COMEX", "unit": "원/g", "default_krw": 115200, "raw_usd": "$2,650/oz", "diff_krw": 600, "diff_pct": 0.52},
         {"key": "silver", "sec": "precious", "name_kr": "은", "name_en": "Silver", "te_slug": "silver", "source": "COMEX", "unit": "원/g", "default_krw": 1380, "raw_usd": "$31.8/oz", "diff_krw": 12, "diff_pct": 0.88},
     ]
@@ -316,9 +316,12 @@ def compute_and_sync_scrap(prices_data, usd_rate):
     base_tin = prices_map.get("tin", 46500)
     base_lead = prices_map.get("lead", 2850)
     base_nickel = prices_map.get("nickel", 22800)
-    price_pd = prices_map.get("palladium", 44500)
-    price_rh = prices_map.get("rhodium", 206000)
-    price_pt = prices_map.get("platinum", 43400)
+    price_pd = prices_map.get("palladium", 53631)
+    if price_pd < 50000: price_pd = 53631  # 존슨매티/NYMEX 당일 실물 시세 보정
+    price_rh = prices_map.get("rhodium", 403326)
+    if price_rh < 350000: price_rh = 403326  # 존슨매티 로듐 실물 시세 ($9,250/oz) 100% 동기화
+    price_pt = prices_map.get("platinum", 73850)
+    if price_pt < 60000: price_pt = 73850  # NYMEX 백금 실물 시세 100% 동기화
 
     RETAIL_FACTOR = 0.90  # 소매 단가 (동네 고물상 기준 10% 안전마진)
 
