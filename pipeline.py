@@ -521,11 +521,12 @@ def compute_and_sync_scrap(prices_data, usd_rate):
         {"metal": "니켈(도금용)", "region": "부산,인천", "price_ton": 23830000, "price_kg": 23830, "unit": "원/톤", "limit": "2톤/주", "date": "2026.10.08"}
     ]
 
-    # 7. 차종·파워트레인별 순정 폐촉매 예상 매입 견적 (비율/g수는 비공개 처리)
+    # 7. 차종·파워트레인별 순정 폐촉매 예상 실매입 견적 (비율/g수는 비공개 처리)
+    # ThePathLab 실무 매입 공식: 매도가/정제원가(65~75%)에서 20~30% 실무 마진/감가를 적용한 현장 실매입가 (이론가의 50% ~ 56%)
     def calc_cat_quote(pd_g, rh_g, pt_g):
         raw_val = (pd_g * price_pd) + (rh_g * price_rh) + (pt_g * price_pt)
-        min_q = int(round((raw_val * 0.65) / 1000.0) * 1000)
-        max_q = int(round((raw_val * 0.75) / 1000.0) * 1000)
+        min_q = int(round((raw_val * 0.50) / 10000.0) * 10000)
+        max_q = int(round((raw_val * 0.56) / 10000.0) * 10000)
         return min_q, max_q
 
     catalyst_presets = [
