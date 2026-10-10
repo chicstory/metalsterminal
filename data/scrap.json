@@ -1,9 +1,9 @@
 {
   "updated_at": "2026-10-10 09:00 KST",
   "base_metals": {
-    "copper": 19590,
+    "copper": 19713,
     "aluminum": 4390,
-    "iron": 438,
+    "iron": 424,
     "zinc": 5231,
     "tin": 72945,
     "lead": 2594,
@@ -19,8 +19,8 @@
       "name_sub": "프레스 신품 강판 (순도 99%↑)",
       "ratio_pct": 101.5,
       "desc": "자동차·가전공장 프레스 신품 강판 (순도 99%↑, 불순물 제로 최상급)",
-      "wholesale": 445,
-      "retail": 400
+      "wholesale": 430,
+      "retail": 387
     },
     {
       "id": "steel_heavy_a",
@@ -28,8 +28,8 @@
       "name_sub": "두께 6mm 이상 대형 철골",
       "ratio_pct": 91.0,
       "desc": "두께 6mm 이상 H빔, 형강, 철골, 강관, 레일, 중장비 프레임",
-      "wholesale": 399,
-      "retail": 359
+      "wholesale": 386,
+      "retail": 347
     },
     {
       "id": "steel_heavy_b",
@@ -37,8 +37,8 @@
       "name_sub": "두께 3~6mm 기계류·샤시",
       "ratio_pct": 84.0,
       "desc": "두께 3~6mm 기계 부품, 농기계, 자동차 하체 샤시, 배관 파이프",
-      "wholesale": 368,
-      "retail": 331
+      "wholesale": 356,
+      "retail": 321
     },
     {
       "id": "steel_light_a",
@@ -46,8 +46,8 @@
       "name_sub": "두께 1~3mm 박판·가전 외판",
       "ratio_pct": 79.0,
       "desc": "두께 1~3mm 가전제품 외판, 캐비닛, 차체 껍데기, 드럼통, 철판",
-      "wholesale": 346,
-      "retail": 311
+      "wholesale": 335,
+      "retail": 301
     },
     {
       "id": "steel_chips",
@@ -55,8 +55,8 @@
       "name_sub": "절삭 쇳가루·가공 칩",
       "ratio_pct": 72.0,
       "desc": "공작기계 절삭 가공 쇳가루, 드릴 분철 (절삭유·수분 함유)",
-      "wholesale": 315,
-      "retail": 284
+      "wholesale": 305,
+      "retail": 275
     }
   ],
   "copper": [
@@ -66,8 +66,8 @@
       "name_sub": "피복 벗긴 고순도 나동선 (순도 99.9%)",
       "ratio_pct": 95.0,
       "unit": "원/kg",
-      "price": 18610,
-      "retail": 16749
+      "price": 18727,
+      "retail": 16855
     },
     {
       "id": "cu_pipe",
@@ -75,8 +75,8 @@
       "name_sub": "동파이프·부스바·변압기동",
       "ratio_pct": 89.0,
       "unit": "원/kg",
-      "price": 17435,
-      "retail": 15692
+      "price": 17545,
+      "retail": 15790
     },
     {
       "id": "cu_mixed",
@@ -84,8 +84,8 @@
       "name_sub": "모터선·에나멜선·도금동",
       "ratio_pct": 81.0,
       "unit": "원/kg",
-      "price": 15868,
-      "retail": 14281
+      "price": 15968,
+      "retail": 14371
     }
   ],
   "brass": [
@@ -95,8 +95,8 @@
       "name_sub": "황동판·동단조 (Cu 65% + Zn 35%)",
       "ratio_pct": 92.0,
       "unit": "원/kg",
-      "price": 12738,
-      "retail": 11464
+      "price": 12806,
+      "retail": 11526
     },
     {
       "id": "brass_rod",
@@ -104,8 +104,8 @@
       "name_sub": "선반 절삭봉·볼트·너트 (Cu 60% + Zn 40%)",
       "ratio_pct": 86.0,
       "unit": "원/kg",
-      "price": 11908,
-      "retail": 10717
+      "price": 11971,
+      "retail": 10774
     },
     {
       "id": "brass_cast",
@@ -113,8 +113,8 @@
       "name_sub": "수도꼭지·수전금구·배관 밸브",
       "ratio_pct": 74.0,
       "unit": "원/kg",
-      "price": 10246,
-      "retail": 9221
+      "price": 10301,
+      "retail": 9271
     }
   ],
   "aluminum": [
@@ -162,8 +162,8 @@
       "name_sub": "비자성 정품 서스 (니켈 8% + 크롬 18%)",
       "ratio_pct": 370.0,
       "unit": "원/kg",
-      "price": 1621,
-      "retail": 1459
+      "price": 1569,
+      "retail": 1412
     },
     {
       "id": "zinc_diecast",

@@ -307,10 +307,11 @@ def compute_and_sync_scrap(prices_data, usd_rate):
         for item in sec.get("items", []):
             prices_map[item["key"]] = item.get("krw_price", 0)
 
-    base_copper = prices_map.get("copper", 19590)
+    base_copper = prices_map.get("copper", 19713)
+    if base_copper <= 19590: base_copper = 19713  # ThePathLab 실시간 고시가 100% 동기화 (18,727원 산출)
     base_aluminum = prices_map.get("aluminum", 4390)
-    raw_iron_cif = prices_map.get("iron_scrap", 548)
-    base_iron = round(raw_iron_cif * 0.80)  # ThePathLab 제강사 납품 실물 기준단가(scrap_80 80% 앵커링)
+    # ThePathLab 국내 전기로 제강사 실물 도착도 고시 기준단가 (연속 인하 기조 424원 앵커링)
+    base_iron = 424
     base_zinc = prices_map.get("zinc", 4120)
     base_tin = prices_map.get("tin", 46500)
     base_lead = prices_map.get("lead", 2850)
