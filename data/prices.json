@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-30 09:00 KST",
-  "display_date": "2026.10.30(금) 09:00 정기고시",
-  "usd_rate": 1337.3,
+  "updated_at": "2026-10-31 09:00 KST",
+  "display_date": "2026.10.31(토) 09:00 정기고시",
+  "usd_rate": 1335.8,
   "rate_source": "하나은행 고시환율 (전신환매도율)",
   "pps_stockpiles": [
     {
@@ -106,7 +106,7 @@
           "te_slug": "scrap-steel",
           "te_url": "https://tradingeconomics.com/commodity/scrap-steel",
           "report_url": "report.html?metal=iron_scrap",
-          "article_url": "articles/2026-10-30-iron_scrap.html",
+          "article_url": "articles/2026-10-31-iron_scrap.html",
           "chart_img": "assets/charts/iron_scrap.png",
           "chart_title": "Trading Economics 철스크랩 1년 종가 시세 차트"
         }
@@ -131,7 +131,7 @@
           "te_slug": "copper",
           "te_url": "https://tradingeconomics.com/commodity/copper",
           "report_url": "report.html?metal=copper",
-          "article_url": "articles/2026-10-30-copper.html",
+          "article_url": "articles/2026-10-31-copper.html",
           "chart_img": "assets/charts/copper.png",
           "chart_title": "Trading Economics 구리 1년 종가 시세 차트"
         },
@@ -149,7 +149,7 @@
           "te_slug": "aluminum",
           "te_url": "https://tradingeconomics.com/commodity/aluminum",
           "report_url": "report.html?metal=aluminum",
-          "article_url": "articles/2026-10-30-aluminum.html",
+          "article_url": "articles/2026-10-31-aluminum.html",
           "chart_img": "assets/charts/aluminum.png",
           "chart_title": "Trading Economics 알루미늄 1년 종가 시세 차트"
         },
@@ -167,7 +167,7 @@
           "te_slug": "zinc",
           "te_url": "https://tradingeconomics.com/commodity/zinc",
           "report_url": "report.html?metal=zinc",
-          "article_url": "articles/2026-10-30-zinc.html",
+          "article_url": "articles/2026-10-31-zinc.html",
           "chart_img": "assets/charts/zinc.png",
           "chart_title": "Trading Economics 아연 1년 종가 시세 차트"
         },
@@ -185,7 +185,7 @@
           "te_slug": "lead",
           "te_url": "https://tradingeconomics.com/commodity/lead",
           "report_url": "report.html?metal=lead",
-          "article_url": "articles/2026-10-30-lead.html",
+          "article_url": "articles/2026-10-31-lead.html",
           "chart_img": "assets/charts/lead.png",
           "chart_title": "Trading Economics 납 1년 종가 시세 차트"
         },
@@ -203,7 +203,7 @@
           "te_slug": "nickel",
           "te_url": "https://tradingeconomics.com/commodity/nickel",
           "report_url": "report.html?metal=nickel",
-          "article_url": "articles/2026-10-30-nickel.html",
+          "article_url": "articles/2026-10-31-nickel.html",
           "chart_img": "assets/charts/nickel.png",
           "chart_title": "Trading Economics 니켈 1년 종가 시세 차트"
         },
@@ -221,7 +221,7 @@
           "te_slug": "tin",
           "te_url": "https://tradingeconomics.com/commodity/tin",
           "report_url": "report.html?metal=tin",
-          "article_url": "articles/2026-10-30-tin.html",
+          "article_url": "articles/2026-10-31-tin.html",
           "chart_img": "assets/charts/tin.png",
           "chart_title": "Trading Economics 주석 1년 종가 시세 차트"
         }
@@ -246,7 +246,7 @@
           "te_slug": "platinum",
           "te_url": "https://tradingeconomics.com/commodity/platinum",
           "report_url": "report.html?metal=platinum",
-          "article_url": "articles/2026-10-30-platinum.html",
+          "article_url": "articles/2026-10-31-platinum.html",
           "chart_img": "assets/charts/platinum.png",
           "chart_title": "Trading Economics 백금 1년 종가 시세 차트"
         },
@@ -264,7 +264,7 @@
           "te_slug": "palladium",
           "te_url": "https://tradingeconomics.com/commodity/palladium",
           "report_url": "report.html?metal=palladium",
-          "article_url": "articles/2026-10-30-palladium.html",
+          "article_url": "articles/2026-10-31-palladium.html",
           "chart_img": "assets/charts/palladium.png",
           "chart_title": "Trading Economics 팔라듐 1년 종가 시세 차트"
         },
@@ -282,7 +282,7 @@
           "te_slug": "rhodium",
           "te_url": "https://tradingeconomics.com/commodity/rhodium",
           "report_url": "report.html?metal=rhodium",
-          "article_url": "articles/2026-10-30-rhodium.html",
+          "article_url": "articles/2026-10-31-rhodium.html",
           "chart_img": "assets/charts/rhodium.png",
           "chart_title": "Trading Economics 로듐 1년 종가 시세 차트"
         },
@@ -300,7 +300,7 @@
           "te_slug": "gold",
           "te_url": "https://tradingeconomics.com/commodity/gold",
           "report_url": "report.html?metal=gold",
-          "article_url": "articles/2026-10-30-gold.html",
+          "article_url": "articles/2026-10-31-gold.html",
           "chart_img": "assets/charts/gold.png",
           "chart_title": "Trading Economics 금 1년 종가 시세 차트"
         },
@@ -318,7 +318,7 @@
           "te_slug": "silver",
           "te_url": "https://tradingeconomics.com/commodity/silver",
           "report_url": "report.html?metal=silver",
-          "article_url": "articles/2026-10-30-silver.html",
+          "article_url": "articles/2026-10-31-silver.html",
           "chart_img": "assets/charts/silver.png",
           "chart_title": "Trading Economics 은 1년 종가 시세 차트"
         }
