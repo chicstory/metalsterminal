@@ -149,12 +149,10 @@ def update_local_history(prices_data):
                     # copper는 TE가 $/lb이므로 prices.json과 동일하게 $/t로 저장하거나 raw 기준 유지
                     val = te_val * 2204.6226 if key == "copper" else te_val
             if key and val is not None:
-                series = history.setdefault(key, {})
-                rounded_val = round(val, 4)
-                prev_dates = [d for d in sorted(series.keys()) if d < today_key]
-                if is_market_closed_day and prev_dates and series[prev_dates[-1]] == rounded_val:
+                if is_market_closed_day:
                     continue
-                series[today_key] = rounded_val
+                series = history.setdefault(key, {})
+                series[today_key] = round(val, 4)
                 # 최근 250거래일(약 1년) 유지
                 sorted_dates = sorted(series.keys())[-250:]
                 history[key] = {d: series[d] for d in sorted_dates}
