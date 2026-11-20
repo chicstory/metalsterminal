@@ -761,11 +761,11 @@ def call_metal_ai_analysis(metal_name: str, articles: list, current_price_info: 
 * 핵심 사건 요약 3
 3. 향후 시장 여파 및 전망 코멘트:
 * 원자재 가격 및 글로벌 수급 여파:
-• (단기) 단기 수급 전망 및 가격 변동성 코멘트
+• (단기) 단기 가격 추세(모멘텀 지수/이평 이격)와 뉴스(실물 수급) 간 괴리 여부 및 변동성 코멘트
 • (중기) 중장기 구조적 수급 및 정책/광산 개발 영향
 * 자동차 부품 및 스크랩 유통 영향:
 • (부품 제조 및 원가) 관련 부품(전장/차체/촉매 등) 원가 상승/하락 영향
-• (스크랩 유통 및 재생 시장) 국내 고철/비철 유통 단가, 야적장 스크랩 매입·매매가 및 리사이클링 업계 수익성 영향
+• (스크랩 유통 및 재생 시장) 국제 선물 시세와 국내 실물 스크랩 체감가 간의 시차(래깅)·괴리, 야적장 매집/출하 심리 및 리사이클링 업계 수익성 영향
 """
 
     # Google Gemini Flash API 호출 (GitHub Actions Secrets 또는 GEMINI_API_KEY)
@@ -1108,12 +1108,24 @@ def generate_reports_and_articles(prices_data, scrap_data):
                 }
             ]
 
-        # 단가 문자열 준비
+        # 단가 및 모멘텀 문자열 준비 (시세-실물 괴리 분석용)
         price_obj = prices_map.get(k, {})
         krw_val = price_obj.get("krw_price", 0)
         raw_usd = price_obj.get("raw_usd", "-")
         unit = price_obj.get("unit", "원/kg")
-        price_info_str = f"기준단가: {krw_val:,}{unit} ({raw_usd}), 환율: {usd_rate:,.1f}원"
+        diff_pct = price_obj.get("diff_pct", 0.0)
+        mom = price_obj.get("momentum", {})
+        mom_str = ""
+        if mom:
+            mom_str = (
+                f" | 모멘텀 지수: {mom.get('score', '-')}/100 ({mom.get('label', '-')}, "
+                f"RSI(14)={mom.get('rsi_14', '-')}, 125일 이평 이격={mom.get('ma125_gap', '-')}%, "
+                f"125일 밴드 위치={mom.get('range_pos', '-')}%)"
+            )
+        price_info_str = (
+            f"기준단가: {krw_val:,}{unit} ({raw_usd}), 전일비: {diff_pct:+.2f}%, "
+            f"환율: {usd_rate:,.1f}원{mom_str}"
+        )
 
         # AI 분석 실행 (스크린샷 포맷)
         ai_data = call_metal_ai_analysis(cfg["name_kr"], real_news, price_info_str, cfg["fallback"])
