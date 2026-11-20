@@ -1216,6 +1216,14 @@ def main():
     # 3. 리포트 생성 및 정적 아티클 발행
     generate_reports_and_articles(prices_data, scrap_data)
 
+    # 4. 일일 아카이브 누적 저장 (data/archive/YYYY-MM-DD/)
+    try:
+        from archive import save_daily_archive
+        kst = timezone(timedelta(hours=9))
+        save_daily_archive(datetime.now(kst).strftime("%Y-%m-%d"))
+    except Exception as e:
+        print(f"    [WARN] 일일 아카이브 저장 스킵: {e}")
+
     print("=" * 60)
     print("🎉 [완료] Price + Scrap + Report 전 영역 동기화 완료!")
     print(f"   • 환율: {usd_rate:,.1f}원 ({rate_src})")

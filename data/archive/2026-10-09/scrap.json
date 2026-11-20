@@ -1,0 +1,149 @@
+{
+  "updated_at": "2026-10-09 09:00 KST",
+  "base_metals": {
+    "copper": 19590,
+    "aluminum": 4390,
+    "iron": 548,
+    "pd": 44500,
+    "rh": 206000,
+    "pt": 43400
+  },
+  "iron_scrap": [
+    {
+      "name": "생철 A",
+      "spec": "프레스 신품 강판 (순도 99%↑)",
+      "wholesale": 455,
+      "retail": 411
+    },
+    {
+      "name": "중량 A",
+      "spec": "두께 6mm 이상 H빔·철골·레일",
+      "wholesale": 411,
+      "retail": 367
+    },
+    {
+      "name": "중량 B",
+      "spec": "두께 3~6mm 기계류·배관 파이프",
+      "wholesale": 378,
+      "retail": 340
+    },
+    {
+      "name": "경량 A",
+      "spec": "두께 1~3mm 가전외판·드럼통",
+      "wholesale": 356,
+      "retail": 318
+    },
+    {
+      "name": "선반설 A",
+      "spec": "절삭칩·선반 가공 찌꺼기",
+      "wholesale": 334,
+      "retail": 301
+    }
+  ],
+  "nonferrous": [
+    {
+      "name": "A동 (밀베리)",
+      "spec": "피복 벗긴 굵은 단선 (순도 99.9%)",
+      "unit": "원/kg",
+      "price": 12342
+    },
+    {
+      "name": "상동 (중품)",
+      "spec": "모터 분해선, 변압기 코일동",
+      "unit": "원/kg",
+      "price": 11362
+    },
+    {
+      "name": "파동 (하품)",
+      "spec": "주석도금선, 얇은 에나멜선, 혼합동",
+      "unit": "원/kg",
+      "price": 9991
+    },
+    {
+      "name": "황동 노베 (신주)",
+      "spec": "판재 스크랩 (Cu 65% + Zn 35%)",
+      "unit": "원/kg",
+      "price": 7836
+    },
+    {
+      "name": "황동 절봉 (신주)",
+      "spec": "황동 봉 절삭 부스러기",
+      "unit": "원/kg",
+      "price": 7248
+    },
+    {
+      "name": "알루미늄 샷시",
+      "spec": "창틀 프로파일 (페인트/부속 제거)",
+      "unit": "원/kg",
+      "price": 2502
+    },
+    {
+      "name": "알루미늄 휠",
+      "spec": "납추/타이어 완전 분리 휠",
+      "unit": "원/kg",
+      "price": 2195
+    },
+    {
+      "name": "알루미늄 캔",
+      "spec": "음료수 캔 압축 베일",
+      "unit": "원/kg",
+      "price": 1800
+    },
+    {
+      "name": "스테인리스 STS 304",
+      "spec": "자석 안 붙는 니켈 8% 정품 서스",
+      "unit": "원/kg",
+      "price": 1850
+    }
+  ],
+  "catalyst_presets": [
+    {
+      "id": "lpi",
+      "name": "LPG 가스차 (2.0~3.0 LPi)",
+      "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi",
+      "metals": "Pd 1.9g + Rh 0.85g",
+      "min_quote": 169000,
+      "max_quote": 195000
+    },
+    {
+      "id": "gdi",
+      "name": "직분사 가솔린 (1.6~2.4 GDi)",
+      "models": "아반떼MD · YF/K5 · 그랜저HG GDi",
+      "metals": "Pd 2.1g + Rh 0.45g",
+      "min_quote": 121000,
+      "max_quote": 140000
+    },
+    {
+      "id": "turbo",
+      "name": "터보 가솔린 (1.6T~2.0T)",
+      "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터",
+      "metals": "Pd 2.5g + Rh 0.65g",
+      "min_quote": 159000,
+      "max_quote": 184000
+    },
+    {
+      "id": "mpi",
+      "name": "자연흡기 가솔린 (1.0~1.6 MPi)",
+      "models": "모닝 · 레이 · 아반떼HD/AD MPi",
+      "metals": "Pd 1.8g + Rh 0.20g",
+      "min_quote": 79000,
+      "max_quote": 91000
+    },
+    {
+      "id": "hev",
+      "name": "하이브리드 (1.6~2.0 HEV)",
+      "models": "니로 · 아반떼 · 쏘나타 · K5 HEV",
+      "metals": "Pd 2.2g + Rh 0.50g",
+      "min_quote": 131000,
+      "max_quote": 151000
+    },
+    {
+      "id": "dpf",
+      "name": "디젤 DPF (2.0~2.5 CRDi)",
+      "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어",
+      "metals": "Pt 3.8g 집중 함유",
+      "min_quote": 121000,
+      "max_quote": 139000
+    }
+  ]
+}

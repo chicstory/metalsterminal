@@ -159,13 +159,13 @@ let pricesData = null;
 let currentCategoryFilter = "all";
 
 // 리포트 목록 렌더링 (data/reports.json 연동)
-async function renderReports() {
+async function renderReports(reportsUrl = "data/reports.json") {
     const ul = document.getElementById("list-reports");
     if (!ul) return;
 
     let reports = appData.reports || [];
     try {
-        const res = await fetch("data/reports.json");
+        const res = await fetch(reportsUrl);
         if (res.ok) {
             reports = await res.json();
         }
@@ -207,14 +207,25 @@ async function renderReports() {
 // 초기 로딩 수정
 document.addEventListener("DOMContentLoaded", () => {
     loadLocalData();
-    loadPricesData();
-    renderReports();
+    if (window.MetalsCalendar) {
+        window.MetalsCalendar.init({
+            onSelect: (dateStr, prevDateStr, isLatest) => {
+                const pUrl = window.MetalsCalendar.getFileUrl("prices.json", dateStr, isLatest);
+                const rUrl = window.MetalsCalendar.getFileUrl("reports.json", dateStr, isLatest);
+                loadPricesData(pUrl);
+                renderReports(rUrl);
+            }
+        });
+    } else {
+        loadPricesData();
+        renderReports();
+    }
 });
 
 // 시세 데이터 비동기 로딩 (data/prices.json)
-async function loadPricesData() {
+async function loadPricesData(pricesUrl = "data/prices.json") {
     try {
-        const response = await fetch("data/prices.json");
+        const response = await fetch(pricesUrl);
         if (!response.ok) throw new Error("Network response was not ok");
         pricesData = await response.json();
     } catch (e) {

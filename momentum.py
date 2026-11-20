@@ -19,6 +19,28 @@ YAHOO_SYMBOLS = {
     "palladium": "PA=F",
 }
 
+TE_SLUGS = {
+    "zinc": "zinc",
+    "lead": "lead",
+    "nickel": "nickel",
+    "tin": "tin",
+    "rhodium": "rhodium",
+}
+
+
+def fetch_tradingeconomics_last(slug):
+    url = f"https://tradingeconomics.com/commodity/{slug}"
+    headers = {"User-Agent": "Mozilla/5.0"}
+    try:
+        res = requests.get(url, headers=headers, timeout=10)
+        res.raise_for_status()
+        m = re.search(r'"last"\s*:\s*([\d.]+)', res.text)
+        if m:
+            return float(m.group(1))
+    except Exception as e:
+        print(f"    [WARN] TradingEconomics fetch failed ({slug}): {e}")
+    return None
+
 
 def _parse_usd(raw_usd):
     if raw_usd is None:
@@ -108,6 +130,10 @@ def update_local_history(prices_data):
         for item in sec.get("items", []):
             key = item.get("key")
             val = _parse_usd(item.get("raw_usd"))
+            if key in TE_SLUGS:
+                te_val = fetch_tradingeconomics_last(TE_SLUGS[key])
+                if te_val is not None:
+                    val = te_val
             if key and val is not None:
                 series = history.setdefault(key, {})
                 series[today_key] = val

@@ -226,6 +226,8 @@
         <a href="#sec-catalyst" class="scrap-chip">🚗 폐촉매 견적표</a>
     </div>
 
+    <div id="archive-calendar-bar" class="archive-cal-bar"></div>
+
     <main class="mobile-container">
 
         <!-- ============================================================
@@ -422,23 +424,63 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", async () => {
-            await loadScrapData();
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.MetalsCalendar) {
+                window.MetalsCalendar.init({
+                    onSelect: (dateStr, prevDateStr, isLatest) => {
+                        const curUrl = window.MetalsCalendar.getFileUrl("scrap.json", dateStr, isLatest);
+                        const prevUrl = prevDateStr ? window.MetalsCalendar.getFileUrl("scrap.json", prevDateStr, false) : null;
+                        loadScrapData(curUrl, prevUrl);
+                    }
+                });
+            } else {
+                loadScrapData("data/scrap.json", null);
+            }
         });
 
-        async function loadScrapData() {
+        async function loadScrapData(scrapUrl = "data/scrap.json", prevScrapUrl = null) {
             try {
-                const res = await fetch("data/scrap.json");
+                const [res, prevRes] = await Promise.all([
+                    fetch(scrapUrl),
+                    prevScrapUrl ? fetch(prevScrapUrl).catch(() => null) : Promise.resolve(null)
+                ]);
                 if (res.ok) {
                     const data = await res.json();
-                    renderScrapTables(data);
+                    let prevData = null;
+                    if (prevRes && prevRes.ok) {
+                        prevData = await prevRes.json();
+                    }
+                    renderScrapTables(data, prevData);
                 }
             } catch (e) {
                 console.warn("스크랩 데이터 로드 오류, 기본값 유지:", e);
             }
         }
 
-        function renderScrapTables(data) {
+        function buildPrevScrapMap(prevData) {
+            const map = {};
+            if (!prevData) return map;
+            const groups = ["iron_scrap", "copper", "brass", "aluminum", "special", "catalyst_presets"];
+            groups.forEach(g => {
+                (prevData[g] || []).forEach(item => {
+                    const key = item.id || item.name;
+                    const val = item.wholesale ?? item.price ?? item.min_quote ?? null;
+                    if (key && val !== null) map[key] = val;
+                });
+            });
+            return map;
+        }
+
+        function scrapDiffBadge(curVal, prevVal) {
+            if (prevVal === undefined || prevVal === null || curVal === undefined || curVal === null) return "";
+            const diff = curVal - prevVal;
+            if (diff > 0) return `<span class="scrap-diff-pill up">▲ +${diff.toLocaleString()}</span>`;
+            if (diff < 0) return `<span class="scrap-diff-pill down">▼ ${diff.toLocaleString()}</span>`;
+            return `<span class="scrap-diff-pill same">─ 보합</span>`;
+        }
+
+        function renderScrapTables(data, prevData) {
+            const prevMap = buildPrevScrapMap(prevData);
             // 1. 조달청 테이블
             if (data.pps_table) {
                 const ppsTbody = document.getElementById("pps-tbody");
@@ -460,7 +502,7 @@
                     ironTbody.innerHTML = data.iron_scrap.map(item => `
                         <tr>
                             <td class="st-name"><strong>${item.name}</strong><span>${item.name_sub || item.desc}</span></td>
-                            <td class="st-price"><strong>${item.wholesale.toLocaleString()}</strong> <span>원/kg</span></td>
+                            <td class="st-price"><strong>${item.wholesale.toLocaleString()}</strong> <span>원/kg</span>${scrapDiffBadge(item.wholesale, prevMap[item.id || item.name])}</td>
                             <td class="st-price"><strong>${item.retail.toLocaleString()}</strong> <span>원/kg</span></td>
                         </tr>
                     `).join("");
@@ -475,7 +517,7 @@
                     cuHtml += data.copper.map(item => `
                         <tr>
                             <td class="st-name"><strong>${item.name}</strong><span>${item.name_sub}</span></td>
-                            <td class="st-price"><strong style="color:var(--dossa-red);">${item.price.toLocaleString()}</strong> <span>${item.unit}</span></td>
+                            <td class="st-price"><strong style="color:var(--dossa-red);">${item.price.toLocaleString()}</strong> <span>${item.unit}</span>${scrapDiffBadge(item.price, prevMap[item.id || item.name])}</td>
                             <td class="st-price"><strong>${item.retail.toLocaleString()}</strong> <span>${item.unit}</span></td>
                         </tr>
                     `).join("");
@@ -484,7 +526,7 @@
                     cuHtml += data.brass.map(item => `
                         <tr>
                             <td class="st-name"><strong>${item.name}</strong><span>${item.name_sub}</span></td>
-                            <td class="st-price"><strong>${item.price.toLocaleString()}</strong> <span>${item.unit}</span></td>
+                            <td class="st-price"><strong>${item.price.toLocaleString()}</strong> <span>${item.unit}</span>${scrapDiffBadge(item.price, prevMap[item.id || item.name])}</td>
                             <td class="st-price"><strong>${item.retail.toLocaleString()}</strong> <span>${item.unit}</span></td>
                         </tr>
                     `).join("");
@@ -500,7 +542,7 @@
                     alHtml += data.aluminum.map(item => `
                         <tr>
                             <td class="st-name"><strong>${item.name}</strong><span>${item.name_sub}</span></td>
-                            <td class="st-price"><strong>${item.price.toLocaleString()}</strong> <span>${item.unit}</span></td>
+                            <td class="st-price"><strong>${item.price.toLocaleString()}</strong> <span>${item.unit}</span>${scrapDiffBadge(item.price, prevMap[item.id || item.name])}</td>
                             <td class="st-price"><strong>${item.retail.toLocaleString()}</strong> <span>${item.unit}</span></td>
                         </tr>
                     `).join("");
@@ -509,7 +551,7 @@
                     alHtml += data.special.map(item => `
                         <tr>
                             <td class="st-name"><strong>${item.name}</strong><span>${item.name_sub}</span></td>
-                            <td class="st-price"><strong>${item.price.toLocaleString()}</strong> <span>${item.unit}</span></td>
+                            <td class="st-price"><strong>${item.price.toLocaleString()}</strong> <span>${item.unit}</span>${scrapDiffBadge(item.price, prevMap[item.id || item.name])}</td>
                             <td class="st-price"><strong>${item.retail.toLocaleString()}</strong> <span>${item.unit}</span></td>
                         </tr>
                     `).join("");
@@ -525,12 +567,13 @@
                         <tr>
                             <td class="st-name"><strong>${item.name}</strong><span>${item.models}</span></td>
                             <td><span class="badge-metal" style="background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; font-weight:700;">순정 정품</span></td>
-                            <td class="st-price"><strong style="color:var(--dossa-red);">${item.min_quote.toLocaleString()} ~ ${item.max_quote.toLocaleString()}</strong> <span>원/개</span></td>
+                            <td class="st-price"><strong style="color:var(--dossa-red);">${item.min_quote.toLocaleString()} ~ ${item.max_quote.toLocaleString()}</strong> <span>원/개</span>${scrapDiffBadge(item.min_quote, prevMap[item.id || item.name])}</td>
                         </tr>
                     `).join("");
                 }
             }
         }
     </script>
+    <script src="calendar.js"></script>
 </body>
 </html>

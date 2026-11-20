@@ -224,6 +224,8 @@
         </div>
     </aside>
 
+    <div id="archive-calendar-bar" class="archive-cal-bar"></div>
+
     <main class="mobile-container">
 
         <!-- ============================================================
@@ -301,13 +303,31 @@
     </footer>
 
     <script src="app.js"></script>
+    <script src="calendar.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            renderPricePage();
+            if (window.MetalsCalendar) {
+                window.MetalsCalendar.init({
+                    onSelect: (dateStr, prevDateStr, isLatest) => {
+                        const url = window.MetalsCalendar.getFileUrl("prices.json", dateStr, isLatest);
+                        renderPricePage(url);
+                    }
+                });
+            } else {
+                renderPricePage();
+            }
         });
 
-        async function renderPricePage() {
-            if (!pricesData) {
+        async function renderPricePage(pricesUrl = "data/prices.json") {
+            try {
+                const res = await fetch(pricesUrl);
+                if (res.ok) {
+                    pricesData = await res.json();
+                }
+            } catch (e) {
+                console.warn("아카이브 시세 로드 오류:", e);
+            }
+            if (!pricesData && typeof loadPricesData === "function") {
                 await loadPricesData();
             }
             const container = document.getElementById("price-page-container");
