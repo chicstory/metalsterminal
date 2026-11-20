@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-20 09:00 KST",
+  "updated_at": "2026-11-21 09:00 KST",
   "base_metals": {
-    "copper": 19713,
-    "aluminum": 4390,
+    "copper": 16244,
+    "aluminum": 3727,
     "iron": 424,
-    "zinc": 5231,
-    "tin": 72945,
-    "lead": 2594,
-    "nickel": 22030,
-    "pd": 53631,
-    "rh": 403326,
-    "pt": 73850
+    "zinc": 4676,
+    "tin": 57606,
+    "lead": 2476,
+    "nickel": 20687,
+    "pd": 38571,
+    "rh": 386792,
+    "pt": 55750
   },
   "iron_scrap": [
     {
@@ -66,8 +66,8 @@
       "name_sub": "피복 벗긴 고순도 나동선 (순도 99.9%)",
       "ratio_pct": 95.0,
       "unit": "원/kg",
-      "price": 18727,
-      "retail": 16855
+      "price": 15432,
+      "retail": 13889
     },
     {
       "id": "cu_pipe",
@@ -75,8 +75,8 @@
       "name_sub": "동파이프·부스바·변압기동",
       "ratio_pct": 89.0,
       "unit": "원/kg",
-      "price": 17545,
-      "retail": 15790
+      "price": 14457,
+      "retail": 13011
     },
     {
       "id": "cu_mixed",
@@ -84,8 +84,8 @@
       "name_sub": "모터선·에나멜선·도금동",
       "ratio_pct": 81.0,
       "unit": "원/kg",
-      "price": 15968,
-      "retail": 14371
+      "price": 13158,
+      "retail": 11842
     }
   ],
   "brass": [
@@ -95,8 +95,8 @@
       "name_sub": "황동판·동단조 (Cu 65% + Zn 35%)",
       "ratio_pct": 92.0,
       "unit": "원/kg",
-      "price": 12806,
-      "retail": 11526
+      "price": 10688,
+      "retail": 9619
     },
     {
       "id": "brass_rod",
@@ -104,8 +104,8 @@
       "name_sub": "선반 절삭봉·볼트·너트 (Cu 60% + Zn 40%)",
       "ratio_pct": 86.0,
       "unit": "원/kg",
-      "price": 11971,
-      "retail": 10774
+      "price": 9991,
+      "retail": 8992
     },
     {
       "id": "brass_cast",
@@ -113,8 +113,8 @@
       "name_sub": "수도꼭지·수전금구·배관 밸브",
       "ratio_pct": 74.0,
       "unit": "원/kg",
-      "price": 10301,
-      "retail": 9271
+      "price": 8597,
+      "retail": 7737
     }
   ],
   "aluminum": [
@@ -124,8 +124,8 @@
       "name_sub": "납추·타이어 완전 분리 고순도 휠",
       "ratio_pct": 92.0,
       "unit": "원/kg",
-      "price": 4039,
-      "retail": 3635
+      "price": 3429,
+      "retail": 3086
     },
     {
       "id": "al_engine",
@@ -133,8 +133,8 @@
       "name_sub": "철 부속 분리 엔진 블록·변속기 케이스",
       "ratio_pct": 85.0,
       "unit": "원/kg",
-      "price": 3732,
-      "retail": 3358
+      "price": 3168,
+      "retail": 2851
     },
     {
       "id": "al_sash",
@@ -142,8 +142,8 @@
       "name_sub": "창호 프로파일 (페인트/부속 제거 6063재)",
       "ratio_pct": 82.0,
       "unit": "원/kg",
-      "price": 3600,
-      "retail": 3240
+      "price": 3056,
+      "retail": 2751
     },
     {
       "id": "al_can",
@@ -151,8 +151,8 @@
       "name_sub": "음료수 캔 압축 베일",
       "ratio_pct": 50.0,
       "unit": "원/kg",
-      "price": 2195,
-      "retail": 1976
+      "price": 1864,
+      "retail": 1677
     }
   ],
   "special": [
@@ -171,8 +171,8 @@
       "name_sub": "아연 합금 주물 부속",
       "ratio_pct": 68.0,
       "unit": "원/kg",
-      "price": 3557,
-      "retail": 3201
+      "price": 3180,
+      "retail": 2862
     },
     {
       "id": "tin_solder",
@@ -180,8 +180,8 @@
       "name_sub": "전자 솔더·화이트메탈 베어링",
       "ratio_pct": 78.0,
       "unit": "원/kg",
-      "price": 56897,
-      "retail": 51207
+      "price": 44933,
+      "retail": 40439
     }
   ],
   "pps_table": [
@@ -273,48 +273,48 @@
       "name": "LPG 가스차 (2.0~3.0 LPi)",
       "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
-      "min_quote": 220000,
-      "max_quote": 250000
+      "min_quote": 200000,
+      "max_quote": 230000
     },
     {
       "id": "gdi",
       "name": "직분사 가솔린 (1.6~2.4 GDi)",
       "models": "아반떼MD · YF/K5 · 그랜저HG GDi",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
-      "min_quote": 150000,
-      "max_quote": 160000
+      "min_quote": 130000,
+      "max_quote": 140000
     },
     {
       "id": "turbo",
       "name": "터보 가솔린 (1.6T~2.0T)",
       "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
-      "min_quote": 200000,
-      "max_quote": 220000
+      "min_quote": 170000,
+      "max_quote": 190000
     },
     {
       "id": "mpi",
       "name": "자연흡기 가솔린 (1.0~1.6 MPi)",
       "models": "모닝 · 레이 · 아반떼HD/AD MPi",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
-      "min_quote": 90000,
-      "max_quote": 100000
+      "min_quote": 70000,
+      "max_quote": 80000
     },
     {
       "id": "hev",
       "name": "하이브리드 (1.6~2.0 HEV)",
       "models": "니로 · 아반떼 · 쏘나타 · K5 HEV",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
-      "min_quote": 160000,
-      "max_quote": 180000
+      "min_quote": 140000,
+      "max_quote": 160000
     },
     {
       "id": "dpf",
       "name": "디젤 DPF (2.0~2.5 CRDi)",
       "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어",
       "spec_desc": "출고 당시 순정 정품 DPF 기준 (백금 코어 일체형)",
-      "min_quote": 160000,
-      "max_quote": 180000
+      "min_quote": 130000,
+      "max_quote": 140000
     }
   ]
 }

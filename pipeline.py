@@ -236,10 +236,41 @@ def collect_prices_and_charts(usd_rate):
         {"item_name": "니켈(도금용)", "region": "부산,인천", "price_ton": 23830000, "price_kg": 23830, "unit": "원/톤", "limit": "2톤/주", "date": "2026.10.08"}
     ]
 
+    # 실시간 시세 조회 (Yahoo Finance 2일치 + TradingEconomics 당일 종가)
+    live_quotes = {}
+    try:
+        from momentum import YAHOO_SYMBOLS, TE_SLUGS, fetch_yahoo_closes, fetch_tradingeconomics_last
+        prev_history = {}
+        hist_path = os.path.join(DATA_DIR, "history.json")
+        if os.path.exists(hist_path):
+            try:
+                with open(hist_path, "r", encoding="utf-8") as hf:
+                    prev_history = json.load(hf)
+            except Exception:
+                prev_history = {}
+
+        for yk, sym in YAHOO_SYMBOLS.items():
+            closes = fetch_yahoo_closes(sym)
+            if closes:
+                cur = closes[-1]
+                prev = closes[-2] if len(closes) >= 2 else cur
+                live_quotes[yk] = (cur, prev, yk == "copper")  # copper는 $/lb -> $/t 환산 필요
+
+        for tk, slug in TE_SLUGS.items():
+            cur = fetch_tradingeconomics_last(slug)
+            if cur is not None:
+                series = prev_history.get(tk, {})
+                prev_dates = [d for d in sorted(series.keys()) if d < today_ymd]
+                prev = series[prev_dates[-1]] if prev_dates else cur
+                live_quotes[tk] = (cur, prev, False)
+    except Exception as e:
+        print(f"    [WARN] 실시간 시세 조회 일부 폴백: {e}")
+
     # 단 1번만 순회하여 중복 없이 items 생성 (Trading Economics 1년 차트 & 리포트 바로가기 링크 탑재)
     for m in METALS_DEF:
         k = m["key"]
         krw = m["default_krw"]
+        raw_usd_str = m["raw_usd"]
         diff_k = m["diff_krw"]
         diff_p = m["diff_pct"]
 
@@ -248,6 +279,23 @@ def collect_prices_and_charts(usd_rate):
             krw = bm.get("krw_price", krw)
             diff_k = bm.get("diff_krw", diff_k)
             diff_p = bm.get("diff_pct", diff_p)
+
+        if k in live_quotes:
+            cur_val, prev_val, is_lb = live_quotes[k]
+            usd_val = cur_val * 2204.6226 if is_lb else cur_val
+            prev_usd_val = prev_val * 2204.6226 if is_lb else prev_val
+
+            if m["unit"] == "원/g":
+                krw = round((usd_val * usd_rate) / 31.1034768)
+                prev_krw = round((prev_usd_val * usd_rate) / 31.1034768)
+                raw_usd_str = f"${usd_val:,.2f}/oz" if k == "silver" else f"${round(usd_val):,}/oz"
+            else:
+                krw = round((usd_val * usd_rate) / 1000.0)
+                prev_krw = round((prev_usd_val * usd_rate) / 1000.0)
+                raw_usd_str = f"${round(usd_val):,}/t"
+
+            diff_k = krw - prev_krw
+            diff_p = round(((usd_val - prev_usd_val) / prev_usd_val) * 100.0, 2) if prev_usd_val else 0.0
 
         trend = "same"
         if diff_k > 0: trend = "up"
@@ -264,7 +312,7 @@ def collect_prices_and_charts(usd_rate):
             "name_en": m["name_en"],
             "source": m["source"],
             "unit": m["unit"],
-            "raw_usd": m["raw_usd"],
+            "raw_usd": raw_usd_str,
             "krw_price": krw,
             "diff_krw": diff_k,
             "diff_pct": diff_p,
@@ -315,7 +363,6 @@ def compute_and_sync_scrap(prices_data, usd_rate):
             prices_map[item["key"]] = item.get("krw_price", 0)
 
     base_copper = prices_map.get("copper", 19713)
-    if base_copper <= 19590: base_copper = 19713  # ThePathLab 실시간 고시가 100% 동기화 (18,727원 산출)
     base_aluminum = prices_map.get("aluminum", 4390)
     # ThePathLab 국내 전기로 제강사 실물 도착도 고시 기준단가 (연속 인하 기조 424원 앵커링)
     base_iron = 424
@@ -324,11 +371,8 @@ def compute_and_sync_scrap(prices_data, usd_rate):
     base_lead = prices_map.get("lead", 2850)
     base_nickel = prices_map.get("nickel", 22800)
     price_pd = prices_map.get("palladium", 53631)
-    if price_pd < 50000: price_pd = 53631  # 존슨매티/NYMEX 당일 실물 시세 보정
     price_rh = prices_map.get("rhodium", 403326)
-    if price_rh < 350000: price_rh = 403326  # 존슨매티 로듐 실물 시세 ($9,250/oz) 100% 동기화
     price_pt = prices_map.get("platinum", 73850)
-    if price_pt < 60000: price_pt = 73850  # NYMEX 백금 실물 시세 100% 동기화
 
     RETAIL_FACTOR = 0.90  # 소매 단가 (동네 고물상 기준 10% 안전마진)
 
