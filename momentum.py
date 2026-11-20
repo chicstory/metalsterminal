@@ -124,13 +124,13 @@ def update_local_history(prices_data):
 
 def _tier_from_score(score):
     if score <= 24:
-        return "극단적 침체", "extreme-fear"
+        return "극단적 과매도", "extreme-fear"
     if score <= 44:
-        return "약세·관망", "fear"
+        return "약세·조정", "fear"
     if score <= 55:
         return "중립·보합", "neutral"
     if score <= 74:
-        return "강세·모멘텀", "greed"
+        return "강세·상승", "greed"
     return "과열·급등", "extreme-greed"
 
 

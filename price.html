@@ -435,7 +435,7 @@
                                 <div class="mom-gauge-marker" style="left: ${Math.max(2, Math.min(98, mom.score))}%;"></div>
                             </div>
                             <div class="mom-gauge-scale">
-                                <span>0 극단적 침체</span>
+                                <span>0 극단적 과매도</span>
                                 <span>50 중립</span>
                                 <span>100 과열·급등</span>
                             </div>
@@ -452,6 +452,9 @@
                                     <span class="mom-ev-lbl">125일 밴드 위치 (30%)</span>
                                     <strong class="mom-ev-val">${mom.range_pos !== null && mom.range_pos !== undefined ? mom.range_pos + '%' : '-'}</strong>
                                 </div>
+                            </div>
+                            <div style="margin-top:8px; font-size:11px; color:#64748b; line-height:1.45;">
+                                ※ 순수 가격 위치 지표입니다. 수급 리포트(펀더멘털)가 강세인데 지수가 <strong>과매도(25 이하)</strong>라면 가격 저평가·괴리 구간으로 해석할 수 있습니다.
                             </div>
                         </div>
                         ` : ''}
