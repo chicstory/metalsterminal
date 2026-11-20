@@ -282,7 +282,7 @@ function renderMetalsCards() {
 
             const mom = m.momentum;
             const momBadge = mom
-                ? `<span class="mom-pill mom-${mom.tier || 'neutral'}" title="RSI(14): ${mom.rsi_14 ?? '-'} / 20일 이평 이격: ${mom.ma20_gap ?? '-'}% / 밴드 위치: ${mom.range_pos ?? '-'}%">모멘텀 ${mom.score} · ${mom.label}</span>`
+                ? `<span class="mom-pill mom-${mom.tier || 'neutral'}" title="RSI(14): ${mom.rsi_14 ?? '-'} / ${mom.ma125_days || 125}일 이평 이격: ${mom.ma125_gap ?? '-'}% / 125일 밴드 위치: ${mom.range_pos ?? '-'}%">모멘텀 ${mom.score} · ${mom.label}</span>`
                 : "";
 
             row.innerHTML = `

@@ -445,11 +445,11 @@
                                     <strong class="mom-ev-val">${mom.rsi_14 !== null && mom.rsi_14 !== undefined ? mom.rsi_14 : '-'}</strong>
                                 </div>
                                 <div class="mom-ev-item">
-                                    <span class="mom-ev-lbl">20일 이평 이격도 (30%)</span>
-                                    <strong class="mom-ev-val">${mom.ma20_gap !== null && mom.ma20_gap !== undefined ? (mom.ma20_gap > 0 ? '+' : '') + mom.ma20_gap + '%' : '-'}</strong>
+                                    <span class="mom-ev-lbl">${mom.ma125_days && mom.ma125_days < 125 ? `${mom.ma125_days}일` : '125일'} 이평 이격도 (30%)</span>
+                                    <strong class="mom-ev-val">${mom.ma125_gap !== null && mom.ma125_gap !== undefined ? (mom.ma125_gap > 0 ? '+' : '') + mom.ma125_gap + '%' : '-'}</strong>
                                 </div>
                                 <div class="mom-ev-item">
-                                    <span class="mom-ev-lbl">기간 밴드 위치 (30%)</span>
+                                    <span class="mom-ev-lbl">125일 밴드 위치 (30%)</span>
                                     <strong class="mom-ev-val">${mom.range_pos !== null && mom.range_pos !== undefined ? mom.range_pos + '%' : '-'}</strong>
                                 </div>
                             </div>

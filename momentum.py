@@ -33,7 +33,7 @@ def _parse_usd(raw_usd):
 
 
 def fetch_yahoo_closes(symbol):
-    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=3mo&interval=1d"
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?range=1y&interval=1d"
     headers = {"User-Agent": "Mozilla/5.0"}
     try:
         res = requests.get(url, headers=headers, timeout=10)
@@ -53,7 +53,7 @@ def _seed_history_from_git():
     history = {}
     try:
         out = subprocess.check_output(
-            ["git", "-C", BASE_DIR, "log", "-n", "90", "--format=%H %cs", "--", "data/prices.json"],
+            ["git", "-C", BASE_DIR, "log", "-n", "250", "--format=%H %cs", "--", "data/prices.json"],
             stderr=subprocess.DEVNULL,
             text=True,
             encoding="utf-8",
@@ -111,8 +111,8 @@ def update_local_history(prices_data):
             if key and val is not None:
                 series = history.setdefault(key, {})
                 series[today_key] = val
-                # 최근 90일만 유지
-                sorted_dates = sorted(series.keys())[-90:]
+                # 최근 250거래일(약 1년) 유지
+                sorted_dates = sorted(series.keys())[-250:]
                 history[key] = {d: series[d] for d in sorted_dates}
 
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -142,7 +142,8 @@ def compute_momentum(closes, basis):
             "label": "중립·보합",
             "tier": "neutral",
             "rsi_14": None,
-            "ma20_gap": None,
+            "ma125_gap": None,
+            "ma125_days": days_used,
             "range_pos": None,
             "days_used": days_used,
             "basis": f"{basis} (데이터 축적중)",
@@ -161,16 +162,17 @@ def compute_momentum(closes, basis):
         rs = avg_gain / avg_loss
         rsi_14 = 100.0 - (100.0 / (1.0 + rs))
 
-    # 2. 20일 이동평균 이격도 (-10% ~ +10% -> 0 ~ 100)
+    # 2. 125일 이동평균 이격도 (-20% ~ +20% -> 0 ~ 100, 실물 선적·중기 추세 반영)
     current = closes[-1]
-    ma_window = closes[-min(20, days_used):]
-    ma20 = sum(ma_window) / len(ma_window)
-    ma20_gap = ((current - ma20) / ma20) * 100.0 if ma20 else 0.0
-    ma_score = max(0.0, min(100.0, (ma20_gap + 10.0) * 5.0))
+    ma_window = closes[-min(125, days_used):]
+    ma125_days = len(ma_window)
+    ma125 = sum(ma_window) / ma125_days
+    ma125_gap = ((current - ma125) / ma125) * 100.0 if ma125 else 0.0
+    ma_score = max(0.0, min(100.0, (ma125_gap + 20.0) * 2.5))
 
-    # 3. 기간 내 가격 밴드 위치 (0 ~ 100)
-    p_min = min(closes)
-    p_max = max(closes)
+    # 3. 125일(약 6개월) 가격 밴드 위치 (0 ~ 100)
+    p_min = min(ma_window)
+    p_max = max(ma_window)
     if p_max == p_min:
         range_pos = 50.0
     else:
@@ -185,7 +187,8 @@ def compute_momentum(closes, basis):
         "label": label,
         "tier": tier,
         "rsi_14": round(rsi_14, 1),
-        "ma20_gap": round(ma20_gap, 2),
+        "ma125_gap": round(ma125_gap, 2),
+        "ma125_days": ma125_days,
         "range_pos": round(range_pos, 1),
         "days_used": days_used,
         "basis": basis,
@@ -235,6 +238,6 @@ if __name__ == "__main__":
             m = item.get("momentum", {})
             print(
                 f"{item['key']:10s} | {m.get('score'):3d} ({m.get('label')}) "
-                f"| RSI={m.get('rsi_14')} MA20={m.get('ma20_gap')}% POS={m.get('range_pos')}% "
+                f"| RSI={m.get('rsi_14')} MA125={m.get('ma125_gap')}%({m.get('ma125_days')}d) POS={m.get('range_pos')}% "
                 f"| {m.get('days_used')}d [{m.get('basis')}]"
             )

@@ -114,7 +114,8 @@
             "label": "중립·보합",
             "tier": "neutral",
             "rsi_14": 50.0,
-            "ma20_gap": 0.0,
+            "ma125_gap": 0.0,
+            "ma125_days": 44,
             "range_pos": 50.0,
             "days_used": 44,
             "basis": "자체 종가 히스토리"
@@ -145,13 +146,14 @@
           "chart_img": "assets/charts/copper.png",
           "chart_title": "Trading Economics 구리 1년 종가 시세 차트",
           "momentum": {
-            "score": 5,
+            "score": 9,
             "label": "극단적 침체",
             "tier": "extreme-fear",
             "rsi_14": 13.3,
-            "ma20_gap": -11.62,
+            "ma125_gap": -14.43,
+            "ma125_days": 125,
             "range_pos": 0.0,
-            "days_used": 66,
+            "days_used": 252,
             "basis": "Yahoo Finance (HG=F)"
           }
         },
@@ -173,13 +175,14 @@
           "chart_img": "assets/charts/aluminum.png",
           "chart_title": "Trading Economics 알루미늄 1년 종가 시세 차트",
           "momentum": {
-            "score": 5,
+            "score": 6,
             "label": "극단적 침체",
             "tier": "extreme-fear",
             "rsi_14": 13.2,
-            "ma20_gap": -12.4,
+            "ma125_gap": -19.02,
+            "ma125_days": 125,
             "range_pos": 0.0,
-            "days_used": 66,
+            "days_used": 252,
             "basis": "Yahoo Finance (ALI=F)"
           }
         },
@@ -205,7 +208,8 @@
             "label": "중립·보합",
             "tier": "neutral",
             "rsi_14": 50.0,
-            "ma20_gap": 0.0,
+            "ma125_gap": 0.0,
+            "ma125_days": 44,
             "range_pos": 50.0,
             "days_used": 44,
             "basis": "자체 종가 히스토리"
@@ -233,7 +237,8 @@
             "label": "중립·보합",
             "tier": "neutral",
             "rsi_14": 50.0,
-            "ma20_gap": 0.0,
+            "ma125_gap": 0.0,
+            "ma125_days": 44,
             "range_pos": 50.0,
             "days_used": 44,
             "basis": "자체 종가 히스토리"
@@ -261,7 +266,8 @@
             "label": "중립·보합",
             "tier": "neutral",
             "rsi_14": 50.0,
-            "ma20_gap": 0.0,
+            "ma125_gap": 0.0,
+            "ma125_days": 44,
             "range_pos": 50.0,
             "days_used": 44,
             "basis": "자체 종가 히스토리"
@@ -289,7 +295,8 @@
             "label": "중립·보합",
             "tier": "neutral",
             "rsi_14": 50.0,
-            "ma20_gap": 0.0,
+            "ma125_gap": 0.0,
+            "ma125_days": 44,
             "range_pos": 50.0,
             "days_used": 44,
             "basis": "자체 종가 히스토리"
@@ -323,10 +330,11 @@
             "score": 12,
             "label": "극단적 침체",
             "tier": "extreme-fear",
-            "rsi_14": 30.8,
-            "ma20_gap": -12.04,
+            "rsi_14": 30.6,
+            "ma125_gap": -22.83,
+            "ma125_days": 125,
             "range_pos": 0.0,
-            "days_used": 66,
+            "days_used": 252,
             "basis": "Yahoo Finance (PL=F)"
           }
         },
@@ -348,13 +356,14 @@
           "chart_img": "assets/charts/palladium.png",
           "chart_title": "Trading Economics 팔라듐 1년 종가 시세 차트",
           "momentum": {
-            "score": 17,
+            "score": 16,
             "label": "극단적 침체",
             "tier": "extreme-fear",
-            "rsi_14": 41.2,
-            "ma20_gap": -9.41,
+            "rsi_14": 41.1,
+            "ma125_gap": -26.71,
+            "ma125_days": 125,
             "range_pos": 0.0,
-            "days_used": 66,
+            "days_used": 252,
             "basis": "Yahoo Finance (PA=F)"
           }
         },
@@ -376,11 +385,12 @@
           "chart_img": "assets/charts/rhodium.png",
           "chart_title": "Trading Economics 로듐 1년 종가 시세 차트",
           "momentum": {
-            "score": 65,
+            "score": 67,
             "label": "강세·모멘텀",
             "tier": "greed",
             "rsi_14": 50.0,
-            "ma20_gap": 0.0,
+            "ma125_gap": 2.26,
+            "ma125_days": 44,
             "range_pos": 100.0,
             "days_used": 44,
             "basis": "자체 종가 히스토리"
@@ -404,13 +414,14 @@
           "chart_img": "assets/charts/gold.png",
           "chart_title": "Trading Economics 금 1년 종가 시세 차트",
           "momentum": {
-            "score": 10,
+            "score": 13,
             "label": "극단적 침체",
             "tier": "extreme-fear",
-            "rsi_14": 25.4,
-            "ma20_gap": -10.41,
+            "rsi_14": 25.2,
+            "ma125_gap": -16.41,
+            "ma125_days": 125,
             "range_pos": 0.0,
-            "days_used": 66,
+            "days_used": 252,
             "basis": "Yahoo Finance (GC=F)"
           }
         },
@@ -435,10 +446,11 @@
             "score": 10,
             "label": "극단적 침체",
             "tier": "extreme-fear",
-            "rsi_14": 25.1,
-            "ma20_gap": -17.14,
+            "rsi_14": 24.9,
+            "ma125_gap": -32.31,
+            "ma125_days": 125,
             "range_pos": 0.0,
-            "days_used": 66,
+            "days_used": 252,
             "basis": "Yahoo Finance (SI=F)"
           }
         }
