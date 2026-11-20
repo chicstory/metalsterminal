@@ -2,8 +2,8 @@ name: Daily MetalsTerminal Pipeline & AI Report Sync
 
 on:
   schedule:
-    # 매일 UTC 23:37 (한국 시간 KST 오전 08:37, UTC 자정 정각 큐 지연 회피)
-    - cron: '37 23 * * *'
+    # UTC 월~금 23:37 (한국 시간 KST 화~토 오전 08:37 — 글로벌 월~금 5거래일 마감 종가 기준, 주말 휴장 제외)
+    - cron: '37 23 * * 1-5'
   workflow_dispatch:
     # 깃허브 웹 UI에서 수동 원클릭 즉시 실행 지원
 

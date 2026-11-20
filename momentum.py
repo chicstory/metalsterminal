@@ -133,6 +133,12 @@ def update_local_history(prices_data):
     if not re.match(r"^\d{4}-\d{2}-\d{2}$", today_key):
         today_key = datetime.now(kst).strftime("%Y-%m-%d")
 
+    # 글로벌 LME/COMEX/NYMEX 기준 KST 일(6)·월(0) 오전은 주말 휴장 구간
+    try:
+        is_market_closed_day = datetime.strptime(today_key, "%Y-%m-%d").weekday() in (6, 0)
+    except Exception:
+        is_market_closed_day = False
+
     for sec in prices_data.get("sections", []):
         for item in sec.get("items", []):
             key = item.get("key")
@@ -144,7 +150,11 @@ def update_local_history(prices_data):
                     val = te_val * 2204.6226 if key == "copper" else te_val
             if key and val is not None:
                 series = history.setdefault(key, {})
-                series[today_key] = round(val, 4)
+                rounded_val = round(val, 4)
+                prev_dates = [d for d in sorted(series.keys()) if d < today_key]
+                if is_market_closed_day and prev_dates and series[prev_dates[-1]] == rounded_val:
+                    continue
+                series[today_key] = rounded_val
                 # 최근 250거래일(약 1년) 유지
                 sorted_dates = sorted(series.keys())[-250:]
                 history[key] = {d: series[d] for d in sorted_dates}
