@@ -236,10 +236,10 @@ def collect_prices_and_charts(usd_rate):
         {"item_name": "니켈(도금용)", "region": "부산,인천", "price_ton": 23830000, "price_kg": 23830, "unit": "원/톤", "limit": "2톤/주", "date": "2026.10.08"}
     ]
 
-    # 실시간 시세 조회 (Yahoo Finance 2일치 + TradingEconomics 당일 종가)
+    # 실시간 시세 조회 (1순위: TradingEconomics 차트 동일 기준 종가, 전일비 보조: Yahoo Finance / history.json)
     live_quotes = {}
     try:
-        from momentum import YAHOO_SYMBOLS, TE_SLUGS, fetch_yahoo_closes, fetch_tradingeconomics_last
+        from momentum import YAHOO_SYMBOLS, fetch_yahoo_closes, fetch_tradingeconomics_last
         prev_history = {}
         hist_path = os.path.join(DATA_DIR, "history.json")
         if os.path.exists(hist_path):
@@ -249,20 +249,37 @@ def collect_prices_and_charts(usd_rate):
             except Exception:
                 prev_history = {}
 
+        yf_cache = {}
         for yk, sym in YAHOO_SYMBOLS.items():
             closes = fetch_yahoo_closes(sym)
             if closes:
-                cur = closes[-1]
-                prev = closes[-2] if len(closes) >= 2 else cur
-                live_quotes[yk] = (cur, prev, yk == "copper")  # copper는 $/lb -> $/t 환산 필요
+                yf_cache[yk] = closes
 
-        for tk, slug in TE_SLUGS.items():
-            cur = fetch_tradingeconomics_last(slug)
-            if cur is not None:
-                series = prev_history.get(tk, {})
+        for m in METALS_DEF:
+            k = m["key"]
+            slug = m.get("te_slug", k)
+            te_cur = fetch_tradingeconomics_last(slug)
+
+            if te_cur is not None:
+                cur_usd = te_cur * 2204.6226 if k == "copper" else te_cur
+                # 전일가 산출: 1) Yahoo Finance 직전 거래일(6대 선물) -> 2) history.json 직전일 -> 3) 당일가 동일
+                series = prev_history.get(k, {})
                 prev_dates = [d for d in sorted(series.keys()) if d < today_ymd]
-                prev = series[prev_dates[-1]] if prev_dates else cur
-                live_quotes[tk] = (cur, prev, False)
+                if k in yf_cache and len(yf_cache[k]) >= 2:
+                    prev_raw = yf_cache[k][-2]
+                    prev_usd = prev_raw * 2204.6226 if k == "copper" else prev_raw
+                elif prev_dates:
+                    prev_usd = series[prev_dates[-1]]
+                else:
+                    prev_usd = cur_usd
+                live_quotes[k] = (cur_usd, prev_usd)
+            elif k in yf_cache:
+                closes = yf_cache[k]
+                cur_raw = closes[-1]
+                prev_raw = closes[-2] if len(closes) >= 2 else cur_raw
+                cur_usd = cur_raw * 2204.6226 if k == "copper" else cur_raw
+                prev_usd = prev_raw * 2204.6226 if k == "copper" else prev_raw
+                live_quotes[k] = (cur_usd, prev_usd)
     except Exception as e:
         print(f"    [WARN] 실시간 시세 조회 일부 폴백: {e}")
 
@@ -281,9 +298,7 @@ def collect_prices_and_charts(usd_rate):
             diff_p = bm.get("diff_pct", diff_p)
 
         if k in live_quotes:
-            cur_val, prev_val, is_lb = live_quotes[k]
-            usd_val = cur_val * 2204.6226 if is_lb else cur_val
-            prev_usd_val = prev_val * 2204.6226 if is_lb else prev_val
+            usd_val, prev_usd_val = live_quotes[k]
 
             if m["unit"] == "원/g":
                 krw = round((usd_val * usd_rate) / 31.1034768)

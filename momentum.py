@@ -20,11 +20,18 @@ YAHOO_SYMBOLS = {
 }
 
 TE_SLUGS = {
+    "iron_scrap": "scrap-steel",
+    "copper": "copper",
+    "aluminum": "aluminum",
     "zinc": "zinc",
     "lead": "lead",
     "nickel": "nickel",
     "tin": "tin",
+    "platinum": "platinum",
+    "palladium": "palladium",
     "rhodium": "rhodium",
+    "gold": "gold",
+    "silver": "silver",
 }
 
 
@@ -133,10 +140,11 @@ def update_local_history(prices_data):
             if key in TE_SLUGS:
                 te_val = fetch_tradingeconomics_last(TE_SLUGS[key])
                 if te_val is not None:
-                    val = te_val
+                    # copper는 TE가 $/lb이므로 prices.json과 동일하게 $/t로 저장하거나 raw 기준 유지
+                    val = te_val * 2204.6226 if key == "copper" else te_val
             if key and val is not None:
                 series = history.setdefault(key, {})
-                series[today_key] = val
+                series[today_key] = round(val, 4)
                 # 최근 250거래일(약 1년) 유지
                 sorted_dates = sorted(series.keys())[-250:]
                 history[key] = {d: series[d] for d in sorted_dates}
