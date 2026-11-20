@@ -818,3 +818,115 @@ ul {
     flex-direction: column;
     gap: 6px;
 }
+
+/* -----------------------------------------------------------
+   🧭 금속별 가격 모멘텀 지수 (CNN F&G 스타일)
+   ----------------------------------------------------------- */
+.mom-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    margin-left: 6px;
+    line-height: 1.3;
+    white-space: nowrap;
+}
+.mom-extreme-fear { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+.mom-fear         { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+.mom-neutral      { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+.mom-greed        { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.mom-extreme-greed{ background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+.mom-detail-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+}
+.mom-detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.mom-detail-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+    display: block;
+}
+.mom-detail-basis {
+    font-size: 11px;
+    color: #64748b;
+}
+.mom-score-box {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.mom-score-box strong {
+    font-size: 17px;
+    font-weight: 900;
+}
+.mom-gauge-bar {
+    position: relative;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ef4444 0%, #f97316 28%, #94a3b8 50%, #22c55e 72%, #2563eb 100%);
+    margin: 6px 0 4px;
+}
+.mom-gauge-marker {
+    position: absolute;
+    top: -3px;
+    width: 6px;
+    height: 16px;
+    background: #0f172a;
+    border: 2px solid #ffffff;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.mom-gauge-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+.mom-evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.mom-ev-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 7px 9px;
+    text-align: center;
+}
+.mom-ev-lbl {
+    display: block;
+    font-size: 10.5px;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+.mom-ev-val {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+}
+@media (max-width: 520px) {
+    .mom-evidence-grid {
+        grid-template-columns: 1fr;
+    }
+}

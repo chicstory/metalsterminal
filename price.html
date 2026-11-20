@@ -352,12 +352,17 @@
                     }
 
                     const reportUrl = m.report_url || `report.html?metal=${m.key}`;
+                    const mom = m.momentum;
+                    const momBadge = mom
+                        ? `<span class="mom-pill mom-${mom.tier || 'neutral'}">모멘텀 ${mom.score} · ${mom.label}</span>`
+                        : "";
 
                     row.innerHTML = `
                         <div class="mr-info">
                             <div class="mr-name-line">
                                 <strong>${m.name_kr}</strong>
                                 <span class="mr-en-name">${m.name_en}</span>
+                                ${momBadge}
                             </div>
                             <div class="mr-benchmark">
                                 <span class="mr-source-tag">${m.source}</span>
@@ -414,6 +419,42 @@
                                 <div class="stat-val ${diffClass}">${diffText}</div>
                             </div>
                         </div>
+
+                        ${mom ? `
+                        <div class="mom-detail-card">
+                            <div class="mom-detail-head">
+                                <div>
+                                    <span class="mom-detail-title">🧭 ${m.name_kr} 가격 모멘텀 지수</span>
+                                    <span class="mom-detail-basis">${mom.basis || ''} · ${mom.days_used || 0}거래일 기준</span>
+                                </div>
+                                <div class="mom-score-box mom-${mom.tier || 'neutral'}">
+                                    <strong>${mom.score}</strong><span>/100 · ${mom.label}</span>
+                                </div>
+                            </div>
+                            <div class="mom-gauge-bar">
+                                <div class="mom-gauge-marker" style="left: ${Math.max(2, Math.min(98, mom.score))}%;"></div>
+                            </div>
+                            <div class="mom-gauge-scale">
+                                <span>0 극단적 침체</span>
+                                <span>50 중립</span>
+                                <span>100 과열·급등</span>
+                            </div>
+                            <div class="mom-evidence-grid">
+                                <div class="mom-ev-item">
+                                    <span class="mom-ev-lbl">RSI (14일 · 40%)</span>
+                                    <strong class="mom-ev-val">${mom.rsi_14 !== null && mom.rsi_14 !== undefined ? mom.rsi_14 : '-'}</strong>
+                                </div>
+                                <div class="mom-ev-item">
+                                    <span class="mom-ev-lbl">20일 이평 이격도 (30%)</span>
+                                    <strong class="mom-ev-val">${mom.ma20_gap !== null && mom.ma20_gap !== undefined ? (mom.ma20_gap > 0 ? '+' : '') + mom.ma20_gap + '%' : '-'}</strong>
+                                </div>
+                                <div class="mom-ev-item">
+                                    <span class="mom-ev-lbl">기간 밴드 위치 (30%)</span>
+                                    <strong class="mom-ev-val">${mom.range_pos !== null && mom.range_pos !== undefined ? mom.range_pos + '%' : '-'}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        ` : ''}
 
                         <!-- 1년 시세 차트 이미지 -->
                         <div class="te-chart-wrap">

@@ -108,7 +108,17 @@
           "report_url": "report.html?metal=iron_scrap",
           "article_url": "articles/2026-11-20-iron_scrap.html",
           "chart_img": "assets/charts/iron_scrap.png",
-          "chart_title": "Trading Economics 철스크랩 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 철스크랩 1년 종가 시세 차트",
+          "momentum": {
+            "score": 50,
+            "label": "중립·보합",
+            "tier": "neutral",
+            "rsi_14": 50.0,
+            "ma20_gap": 0.0,
+            "range_pos": 50.0,
+            "days_used": 44,
+            "basis": "자체 종가 히스토리"
+          }
         }
       ]
     },
@@ -133,7 +143,17 @@
           "report_url": "report.html?metal=copper",
           "article_url": "articles/2026-11-20-copper.html",
           "chart_img": "assets/charts/copper.png",
-          "chart_title": "Trading Economics 구리 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 구리 1년 종가 시세 차트",
+          "momentum": {
+            "score": 5,
+            "label": "극단적 침체",
+            "tier": "extreme-fear",
+            "rsi_14": 13.3,
+            "ma20_gap": -11.62,
+            "range_pos": 0.0,
+            "days_used": 66,
+            "basis": "Yahoo Finance (HG=F)"
+          }
         },
         {
           "key": "aluminum",
@@ -151,7 +171,17 @@
           "report_url": "report.html?metal=aluminum",
           "article_url": "articles/2026-11-20-aluminum.html",
           "chart_img": "assets/charts/aluminum.png",
-          "chart_title": "Trading Economics 알루미늄 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 알루미늄 1년 종가 시세 차트",
+          "momentum": {
+            "score": 5,
+            "label": "극단적 침체",
+            "tier": "extreme-fear",
+            "rsi_14": 13.2,
+            "ma20_gap": -12.4,
+            "range_pos": 0.0,
+            "days_used": 66,
+            "basis": "Yahoo Finance (ALI=F)"
+          }
         },
         {
           "key": "zinc",
@@ -169,7 +199,17 @@
           "report_url": "report.html?metal=zinc",
           "article_url": "articles/2026-11-20-zinc.html",
           "chart_img": "assets/charts/zinc.png",
-          "chart_title": "Trading Economics 아연 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 아연 1년 종가 시세 차트",
+          "momentum": {
+            "score": 50,
+            "label": "중립·보합",
+            "tier": "neutral",
+            "rsi_14": 50.0,
+            "ma20_gap": 0.0,
+            "range_pos": 50.0,
+            "days_used": 44,
+            "basis": "자체 종가 히스토리"
+          }
         },
         {
           "key": "lead",
@@ -187,7 +227,17 @@
           "report_url": "report.html?metal=lead",
           "article_url": "articles/2026-11-20-lead.html",
           "chart_img": "assets/charts/lead.png",
-          "chart_title": "Trading Economics 납 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 납 1년 종가 시세 차트",
+          "momentum": {
+            "score": 50,
+            "label": "중립·보합",
+            "tier": "neutral",
+            "rsi_14": 50.0,
+            "ma20_gap": 0.0,
+            "range_pos": 50.0,
+            "days_used": 44,
+            "basis": "자체 종가 히스토리"
+          }
         },
         {
           "key": "nickel",
@@ -205,7 +255,17 @@
           "report_url": "report.html?metal=nickel",
           "article_url": "articles/2026-11-20-nickel.html",
           "chart_img": "assets/charts/nickel.png",
-          "chart_title": "Trading Economics 니켈 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 니켈 1년 종가 시세 차트",
+          "momentum": {
+            "score": 50,
+            "label": "중립·보합",
+            "tier": "neutral",
+            "rsi_14": 50.0,
+            "ma20_gap": 0.0,
+            "range_pos": 50.0,
+            "days_used": 44,
+            "basis": "자체 종가 히스토리"
+          }
         },
         {
           "key": "tin",
@@ -223,7 +283,17 @@
           "report_url": "report.html?metal=tin",
           "article_url": "articles/2026-11-20-tin.html",
           "chart_img": "assets/charts/tin.png",
-          "chart_title": "Trading Economics 주석 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 주석 1년 종가 시세 차트",
+          "momentum": {
+            "score": 50,
+            "label": "중립·보합",
+            "tier": "neutral",
+            "rsi_14": 50.0,
+            "ma20_gap": 0.0,
+            "range_pos": 50.0,
+            "days_used": 44,
+            "basis": "자체 종가 히스토리"
+          }
         }
       ]
     },
@@ -248,7 +318,17 @@
           "report_url": "report.html?metal=platinum",
           "article_url": "articles/2026-11-20-platinum.html",
           "chart_img": "assets/charts/platinum.png",
-          "chart_title": "Trading Economics 백금 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 백금 1년 종가 시세 차트",
+          "momentum": {
+            "score": 12,
+            "label": "극단적 침체",
+            "tier": "extreme-fear",
+            "rsi_14": 30.8,
+            "ma20_gap": -12.04,
+            "range_pos": 0.0,
+            "days_used": 66,
+            "basis": "Yahoo Finance (PL=F)"
+          }
         },
         {
           "key": "palladium",
@@ -266,7 +346,17 @@
           "report_url": "report.html?metal=palladium",
           "article_url": "articles/2026-11-20-palladium.html",
           "chart_img": "assets/charts/palladium.png",
-          "chart_title": "Trading Economics 팔라듐 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 팔라듐 1년 종가 시세 차트",
+          "momentum": {
+            "score": 17,
+            "label": "극단적 침체",
+            "tier": "extreme-fear",
+            "rsi_14": 41.2,
+            "ma20_gap": -9.41,
+            "range_pos": 0.0,
+            "days_used": 66,
+            "basis": "Yahoo Finance (PA=F)"
+          }
         },
         {
           "key": "rhodium",
@@ -284,7 +374,17 @@
           "report_url": "report.html?metal=rhodium",
           "article_url": "articles/2026-11-20-rhodium.html",
           "chart_img": "assets/charts/rhodium.png",
-          "chart_title": "Trading Economics 로듐 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 로듐 1년 종가 시세 차트",
+          "momentum": {
+            "score": 65,
+            "label": "강세·모멘텀",
+            "tier": "greed",
+            "rsi_14": 50.0,
+            "ma20_gap": 0.0,
+            "range_pos": 100.0,
+            "days_used": 44,
+            "basis": "자체 종가 히스토리"
+          }
         },
         {
           "key": "gold",
@@ -302,7 +402,17 @@
           "report_url": "report.html?metal=gold",
           "article_url": "articles/2026-11-20-gold.html",
           "chart_img": "assets/charts/gold.png",
-          "chart_title": "Trading Economics 금 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 금 1년 종가 시세 차트",
+          "momentum": {
+            "score": 10,
+            "label": "극단적 침체",
+            "tier": "extreme-fear",
+            "rsi_14": 25.4,
+            "ma20_gap": -10.41,
+            "range_pos": 0.0,
+            "days_used": 66,
+            "basis": "Yahoo Finance (GC=F)"
+          }
         },
         {
           "key": "silver",
@@ -320,7 +430,17 @@
           "report_url": "report.html?metal=silver",
           "article_url": "articles/2026-11-20-silver.html",
           "chart_img": "assets/charts/silver.png",
-          "chart_title": "Trading Economics 은 1년 종가 시세 차트"
+          "chart_title": "Trading Economics 은 1년 종가 시세 차트",
+          "momentum": {
+            "score": 10,
+            "label": "극단적 침체",
+            "tier": "extreme-fear",
+            "rsi_14": 25.1,
+            "ma20_gap": -17.14,
+            "range_pos": 0.0,
+            "days_used": 66,
+            "basis": "Yahoo Finance (SI=F)"
+          }
         }
       ]
     }

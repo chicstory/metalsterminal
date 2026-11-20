@@ -291,6 +291,13 @@ def collect_prices_and_charts(usd_rate):
     with open(out_prices_path, "w", encoding="utf-8") as f:
         json.dump(prices_payload, f, ensure_ascii=False, indent=2)
 
+    try:
+        from momentum import enrich_prices_with_momentum
+        prices_payload = enrich_prices_with_momentum(out_prices_path)
+        print("    -> [완료] 12개 품목 가격 모멘텀 지수(Momentum Index) 산출 및 반영 완료!")
+    except Exception as e:
+        print(f"    [WARN] 모멘텀 지수 산출 스킵 (폴백): {e}")
+
     print(f"    -> [완료] data/prices.json 12개 품목 시세(중복 0건) 및 자체 TE 1년 차트·조달청 9종 비축표 저장 완료!")
     return prices_payload
 
