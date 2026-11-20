@@ -209,8 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
     loadLocalData();
     loadPricesData();
     renderReports();
-    renderBoard("market", "list-market");
-    renderBoard("free", "list-free");
 });
 
 // 시세 데이터 비동기 로딩 (data/prices.json)
@@ -317,7 +315,7 @@ function filterMetals(category, btnEl) {
 }
 
 function toggleNav() {
-    alert("⚡ MetalsTerminal\n\n• 시세·스크랩\n• 쉬운리포트\n• 직거래장터\n• 자유게시판\n• 스크랩 계산기(calc.html)");
+    alert("⚡ MetalsTerminal\n\n• 국제시세 (price.html)\n• 스크랩시세 (scrap.html)\n• 리포트 (report.html)");
 }
 
 function loadLocalData() {
@@ -518,7 +516,7 @@ function closeModalOnBackdrop(event, modalId) {
 }
 
 function openNavDrawer() {
-    alert("⚡ MetalsTerminal\n\n• 시세·단가\n• 쉬운리포트\n• 직거래장터\n• 자유게시판\n• 스크랩 계산기");
+    alert("⚡ MetalsTerminal\n\n• 국제시세\n• 스크랩시세\n• 리포트");
 }
 
 function escapeHtml(text) {

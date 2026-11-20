@@ -25,14 +25,12 @@
             </div>
         </div>
 
-        <!-- 2. 확정 메뉴 순서: 국제시세 - 스크랩시세 - 리포트 - 자유게시판 - 직거래 -->
+        <!-- 2. 확정 메뉴 순서: 국제시세 - 스크랩시세 - 리포트 -->
         <nav class="dossa-subnav">
             <div class="container dossa-subnav-inner">
                 <a href="price.html" class="nav-tab">국제시세</a>
                 <a href="scrap.html" class="nav-tab">스크랩시세</a>
                 <a href="report.html" class="nav-tab">리포트</a>
-                <a href="#section-free" class="nav-tab">자유게시판</a>
-                <a href="#section-market" class="nav-tab">직거래</a>
             </div>
         </nav>
     </header>
@@ -104,38 +102,6 @@
             <a href="tel:010-8291-3841" class="sb-tel">📞 문의</a>
         </div>
 
-        <!-- ============================================================
-             [3] 자유게시판 (현장 소통, 노하우, 질문)
-             ============================================================ -->
-        <section class="section-box" id="section-free">
-            <div class="section-header">
-                <div class="sh-left">
-                    <span class="header-indicator blue"></span>
-                    <h2>자유게시판 (현장소통 &amp; 질문)</h2>
-                </div>
-                <button class="btn-header-write" onclick="openWriteModal('free')">+ 글쓰기</button>
-            </div>
-            <ul class="dossa-board-list" id="list-free">
-                <!-- app.js 동적 렌더링 -->
-            </ul>
-        </section>
-
-        <!-- ============================================================
-             [4] 직거래 (비철·고철·폐촉매 통합 최신 매물)
-             ============================================================ -->
-        <section class="section-box" id="section-market">
-            <div class="section-header">
-                <div class="sh-left">
-                    <span class="header-indicator green"></span>
-                    <h2>직거래 (팝니다·삽니다)</h2>
-                </div>
-                <button class="btn-header-write" onclick="openWriteModal('market')">+ 매물등록</button>
-            </div>
-            <ul class="dossa-board-list" id="list-market">
-                <!-- app.js 동적 렌더링 -->
-            </ul>
-        </section>
-
     </main>
 
     <!-- 푸터 (도싸식 미니멀 블랙 푸터) -->
@@ -146,10 +112,6 @@
             <a href="scrap.html">스크랩시세</a>
             <span class="sep">|</span>
             <a href="report.html">리포트</a>
-            <span class="sep">|</span>
-            <a href="#section-free">자유게시판</a>
-            <span class="sep">|</span>
-            <a href="#section-market">직거래</a>
             <span class="sep">|</span>
             <a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP ▲</a>
         </div>
