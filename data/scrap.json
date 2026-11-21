@@ -1,16 +1,16 @@
 {
   "updated_at": "2026-11-21 09:00 KST",
   "base_metals": {
-    "copper": 16188,
-    "aluminum": 3822,
+    "copper": 16282,
+    "aluminum": 3824,
     "iron": 424,
-    "zinc": 4680,
-    "tin": 57666,
-    "lead": 2479,
-    "nickel": 20709,
-    "pd": 38438,
-    "rh": 387195,
-    "pt": 55665
+    "zinc": 4687,
+    "tin": 56622,
+    "lead": 2481,
+    "nickel": 20697,
+    "pd": 38659,
+    "rh": 389619,
+    "pt": 55828
   },
   "iron_scrap": [
     {
@@ -66,8 +66,8 @@
       "name_sub": "피복 벗긴 고순도 나동선 (순도 99.9%)",
       "ratio_pct": 95.0,
       "unit": "원/kg",
-      "price": 15379,
-      "retail": 13841
+      "price": 15468,
+      "retail": 13921
     },
     {
       "id": "cu_pipe",
@@ -75,8 +75,8 @@
       "name_sub": "동파이프·부스바·변압기동",
       "ratio_pct": 89.0,
       "unit": "원/kg",
-      "price": 14407,
-      "retail": 12967
+      "price": 14491,
+      "retail": 13042
     },
     {
       "id": "cu_mixed",
@@ -84,8 +84,8 @@
       "name_sub": "모터선·에나멜선·도금동",
       "ratio_pct": 81.0,
       "unit": "원/kg",
-      "price": 13112,
-      "retail": 11801
+      "price": 13188,
+      "retail": 11870
     }
   ],
   "brass": [
@@ -95,8 +95,8 @@
       "name_sub": "황동판·동단조 (Cu 65% + Zn 35%)",
       "ratio_pct": 92.0,
       "unit": "원/kg",
-      "price": 10658,
-      "retail": 9592
+      "price": 10712,
+      "retail": 9641
     },
     {
       "id": "brass_rod",
@@ -104,8 +104,8 @@
       "name_sub": "선반 절삭봉·볼트·너트 (Cu 60% + Zn 40%)",
       "ratio_pct": 86.0,
       "unit": "원/kg",
-      "price": 9963,
-      "retail": 8967
+      "price": 10014,
+      "retail": 9012
     },
     {
       "id": "brass_cast",
@@ -113,8 +113,8 @@
       "name_sub": "수도꼭지·수전금구·배관 밸브",
       "ratio_pct": 74.0,
       "unit": "원/kg",
-      "price": 8573,
-      "retail": 7716
+      "price": 8617,
+      "retail": 7755
     }
   ],
   "aluminum": [
@@ -124,8 +124,8 @@
       "name_sub": "납추·타이어 완전 분리 고순도 휠",
       "ratio_pct": 92.0,
       "unit": "원/kg",
-      "price": 3516,
-      "retail": 3165
+      "price": 3518,
+      "retail": 3166
     },
     {
       "id": "al_engine",
@@ -133,8 +133,8 @@
       "name_sub": "철 부속 분리 엔진 블록·변속기 케이스",
       "ratio_pct": 85.0,
       "unit": "원/kg",
-      "price": 3249,
-      "retail": 2924
+      "price": 3250,
+      "retail": 2925
     },
     {
       "id": "al_sash",
@@ -142,8 +142,8 @@
       "name_sub": "창호 프로파일 (페인트/부속 제거 6063재)",
       "ratio_pct": 82.0,
       "unit": "원/kg",
-      "price": 3134,
-      "retail": 2821
+      "price": 3136,
+      "retail": 2822
     },
     {
       "id": "al_can",
@@ -151,8 +151,8 @@
       "name_sub": "음료수 캔 압축 베일",
       "ratio_pct": 50.0,
       "unit": "원/kg",
-      "price": 1911,
-      "retail": 1720
+      "price": 1912,
+      "retail": 1721
     }
   ],
   "special": [
@@ -171,8 +171,8 @@
       "name_sub": "아연 합금 주물 부속",
       "ratio_pct": 68.0,
       "unit": "원/kg",
-      "price": 3182,
-      "retail": 2864
+      "price": 3187,
+      "retail": 2868
     },
     {
       "id": "tin_solder",
@@ -180,8 +180,8 @@
       "name_sub": "전자 솔더·화이트메탈 베어링",
       "ratio_pct": 78.0,
       "unit": "원/kg",
-      "price": 44979,
-      "retail": 40482
+      "price": 44165,
+      "retail": 39749
     }
   ],
   "pps_table": [
@@ -290,7 +290,7 @@
       "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 170000,
-      "max_quote": 190000
+      "max_quote": 200000
     },
     {
       "id": "mpi",

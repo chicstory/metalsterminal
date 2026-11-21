@@ -1,18 +1,18 @@
 [
   {
-    "id": "rep_2026-11-20_iron_scrap",
+    "id": "rep_2026-11-21_iron_scrap",
     "metal_key": "iron_scrap",
     "name_kr": "철스크랩",
     "name_en": "Steel Scrap",
     "category": "steel",
     "badge": "제강사 고철",
-    "title": "[2026-11-20] 철스크랩 일일 리포트: 국내 전기로 제강사 마당 야드 재고 유지 및 분할 구매 기조 지속",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 철스크랩 일일 리포트: 국내 전기로 제강사 마당 야드 재고 유지 및 분할 구매 기조 지속",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-iron_scrap.html",
-    "current_price": "548 원/kg",
-    "raw_usd": "$372/t",
+    "article_url": "articles/2026-11-21-iron_scrap.html",
+    "current_price": "544 원/kg",
+    "raw_usd": "$404/t",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "단순 시황 (국내 전기로 제강사 마당 야드 재고 유지 및 분할 구매 기조 지속)",
@@ -29,10 +29,10 @@
     "recent_news": [
       {
         "media": "스틸데일리",
-        "title": "동국제강 전공장 철 스크랩 23일 인하",
-        "date": "2026-11-13 08:25",
-        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5nR0Q2X0FtS0RYVlNzRFRWZjkwZU1KdFVDcHRvRzRmcG5HOEdTeGxDZjZZdGRUMUVwQlg1VkV6N3lFN1hRUmZ3djE5dlQ0c1ItMzlOS2VNanpIbFM1bnF1UTlhdm9DbF9jRklGbWtRSEvSAXRBVV95cUxQTGRfMDctTG1STXB3M2JwVTRZTmN0OEY4Nm9NZElINUkwZDEzQWlMb2xQaWdKNU1lVXVhTU1ZTFdBTHduZTlGYURWRVREUTF0d0o1bHcybnl5NjJtZFN3NmQteGUxOC1rT2xlWFhOQzVGMnVXRg?oc=5",
-        "snippet": "동국제강 전공장 철 스크랩 23일 인하 &nbsp;&nbsp; 스틸데일리"
+        "title": "인천 철 스크랩 수요 다음 주 '회복'",
+        "date": "2026-11-20 00:10",
+        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9wSHJVUjh3d2V4RVIyUnJXR0ZUSG82U0tiMWhqcUROVnlsUm9KYXk5aTljUFotc3BJY01GOURuR1M0NGYxQ2FmMFEwRWduYlY5ZmtGc0t6TUVGa3MzV0FmMHhVa3RXdndJdUNteUFQX1kyaG9T0gF0QVVfeXFMT3BIclVSOHd3ZXhFUjJScldHRlRIbzZTS2IxaGpxRE5WeWxSb0pheTlpOWNQWi1zcEljTUY5RG5HUzQ0ZjFDYWYwUTBFZ25iVjlma0ZzS3pNRUZrczNXQWYweFVrdFd2d0l1Q215QVBfWTJob1M?oc=5",
+        "snippet": "인천 철 스크랩 수요 다음 주 '회복' &nbsp;&nbsp; 스틸데일리"
       },
       {
         "media": "철강금속신문",
@@ -42,42 +42,42 @@
         "snippet": "철스크랩 수입 3년來 최대…제강사 누적 10차 인하 단행 &nbsp;&nbsp; 철강금속신문"
       },
       {
-        "media": "스틸데일리",
-        "title": "인천 철 스크랩 수요 다음 주 '회복'",
-        "date": "2026-11-20 00:10",
-        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9wSHJVUjh3d2V4RVIyUnJXR0ZUSG82U0tiMWhqcUROVnlsUm9KYXk5aTljUFotc3BJY01GOURuR1M0NGYxQ2FmMFEwRWduYlY5ZmtGc0t6TUVGa3MzV0FmMHhVa3RXdndJdUNteUFQX1kyaG9T0gF0QVVfeXFMT3BIclVSOHd3ZXhFUjJScldHRlRIbzZTS2IxaGpxRE5WeWxSb0pheTlpOWNQWi1zcEljTUY5RG5HUzQ0ZjFDYWYwUTBFZ25iVjlma0ZzS3pNRUZrczNXQWYweFVrdFd2d0l1Q215QVBfWTJob1M?oc=5",
-        "snippet": "인천 철 스크랩 수요 다음 주 '회복' &nbsp;&nbsp; 스틸데일리"
+        "media": "페로타임즈",
+        "title": "현대·대한, 철스크랩 매입價 인하…톤당 1만 원",
+        "date": "2026-11-15 11:08",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Wc0VfSzRzQ2NYWjZkODNwT0xpRUpuQkJvR3dBNi1ncm8wYll5VGltTTJVbGh4ZU04SVBlRnpSczFpWW9Hc2ZOb1BoeEtWZTU1TUxNUlMzTVlSdFZqeDR1VnFyWEgyQVJwSE9maQ?oc=5",
+        "snippet": "현대·대한, 철스크랩 매입價 인하…톤당 1만 원 &nbsp;&nbsp; 페로타임즈"
       },
       {
         "media": "스틸데일리",
-        "title": "현대제철, 23일 철 스크랩 구매가격 인하",
-        "date": "2026-11-13 07:40",
-        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB4OE4wSm5ZV1l5dXVxNmFZMTZ5THVMYWphMVQwc09VTWNWXzdCVE5CU2lQNFdhbUhwOXVuTE1JUTVLLVFZNE00VmtZZEJsSDlCZzlQMV9MM2RDODZrNE44S1hOYkFCaVR1T0JyYjN5UkjSAXRBVV95cUxNLVQxeXBORGtSZ0VoUWRqVEdWaTZCUjZaZHFHN2JfdTZQVTRVUmtKQUZvZXNjZ3QxcWZFY1RhZHpJUU84ckZqNVJiYUk0NWRiY2NEVUFJZ3JHYlZuR2NQQnJzSjNnUGRPS2RTbngtSm9rcE16Nw?oc=5",
-        "snippet": "현대제철, 23일 철 스크랩 구매가격 인하 &nbsp;&nbsp; 스틸데일리"
+        "title": "철스크랩 산업, 수출에서 돌파구를 찾아야 한다",
+        "date": "2026-11-18 18:28",
+        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1vZWxQTEJDV3B2MnZBUjY3VktvRk03TWVtWXpDWDV3NjZwcXdCRUREemlncXhBQUJkM1BrUnJSYjctT3ltMXVHaXNibUZneGVFY0c2aGYtREtLbExrQzZMU2l2NnNReElET0J2Zng2cEJlcm020gF0QVVfeXFMTW9lbFBMQkNXcHYydkFSNjdWS29GTTdNZW1ZekNYNXc2NnBxd0JFRER6aWdxeEFBQmQzUGtSclJiNy1PeW0xdUdpc2JtRmd4ZUVjRzZoZi1ES0tsTGtDNkxTaXY2c1F4SURPQnZmeDZwQmVybTY?oc=5",
+        "snippet": "철스크랩 산업, 수출에서 돌파구를 찾아야 한다 &nbsp;&nbsp; 스틸데일리"
       },
       {
-        "media": "스틸데일리",
-        "title": "과거 36년, 제강사의 틀에 갇힌 우리나라 철스크랩 업계",
-        "date": "2026-11-16 20:00",
-        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9vOVZ0V3hSdVo3QVdSSWxBb1ZhWDBLTTBHRU9iMXo4NjNGcThZNENHUE5QSFhSWGVNRGl1c2c0WXpnVzJsYkZvMk1TTFVqZGN3WnhlSEZndzh3YXFaMmt4Zk1id0JxTFFKWmJyNG85YXHSAXRBVV95cUxOSGMwVzlaVmxXRENJa0VjcV94d3ZTbkxBMzRoT0drQlFCYk1TSkVjcUpyM2NrdmNrWXctdFJLU2JRWnowZTJnMWdnWlJyYzZxbDhuS0x5M0lhekIxQ1ltdFU0R2RRc3ZPcTZQLTRaaXZLVl8tVA?oc=5",
-        "snippet": "과거 36년, 제강사의 틀에 갇힌 우리나라 철스크랩 업계 &nbsp;&nbsp; 스틸데일리"
+        "media": "페로타임즈",
+        "title": "한국철강, 오는 24일 철스크랩 매입價 인하…톤당 1만 원",
+        "date": "2026-11-17 07:03",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9vaTcwVmZXVGNEZWMwaTFRRVhqQm1tMzIta3NibFN3MWdjRUx6aGNrU1NFRkh0eF9vcUZGRFZuRndxSUxTNFNueHUwQWI1Mmw3Z0pSOUp1WTd2dDUzNFF0NlMxdlNGLTlaYTByZg?oc=5",
+        "snippet": "한국철강, 오는 24일 철스크랩 매입價 인하…톤당 1만 원 &nbsp;&nbsp; 페로타임즈"
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_copper",
+    "id": "rep_2026-11-21_copper",
     "metal_key": "copper",
     "name_kr": "구리",
     "name_en": "Copper",
     "category": "copper",
     "badge": "LME 전기동",
-    "title": "[2026-11-20] 구리 일일 리포트: 남미 주요 광산 파업 우려 및 에너지 전환 수요 증가로 구조적 수급 ...",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 구리 일일 리포트: 남미 주요 광산 파업 우려 및 에너지 전환 수요 증가로 구조적 수급 ...",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-copper.html",
-    "current_price": "19,590 원/kg",
-    "raw_usd": "$9,685/t",
+    "article_url": "articles/2026-11-21-copper.html",
+    "current_price": "16,282 원/kg",
+    "raw_usd": "$12,092/t",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "중요 이슈 발생 (남미 주요 광산 파업 우려 및 에너지 전환 수요 증가로 구조적 수급 불안 심리 고조)",
@@ -100,13 +100,6 @@
         "snippet": "\"젠슨 황 퇴진에 구리 가격 4개월 만에 최저\"… AI 우려가 원자재 시장까지 흔들었다 &nbsp;&nbsp; 글로벌이코노믹"
       },
       {
-        "media": "KB Think",
-        "title": "골드만 \"구리, AI주처럼 움직여…최근 하락은 수급 아닌 포지션 영향\"",
-        "date": "2026-11-18 23:15",
-        "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5oU1BHN2dwUGxYRGdxdXV1Wm81aTRkbzgtRGtmS2xNR3ZiTm1lX1Vyd09VdlB4MHJmU0V6VG56b0xqeW5SbERIVnR2NWJMMTFDZXgwN0NGT0ZkeFJTR1IzTjh1dW5SZGoyM09zbE1Oak9Tdw?oc=5",
-        "snippet": "골드만 \"구리, AI주처럼 움직여…최근 하락은 수급 아닌 포지션 영향\" &nbsp;&nbsp; KB Think"
-      },
-      {
         "media": "산업일보",
         "title": "[구리 가격] AI 투자 우려에 4개월 만의 최저…중국 현물 프리미엄은 사상 최고",
         "date": "2026-11-16 00:16",
@@ -121,6 +114,13 @@
         "snippet": "NH증권 \"구리가격 낙폭과대…투자의견 '중립'으로 하향\" &nbsp;&nbsp; 연합뉴스"
       },
       {
+        "media": "연합인포맥스",
+        "title": "골드만 \"구리, AI주처럼 움직여…최근 하락은 수급 아닌 포지션 영향\"",
+        "date": "2026-11-19 01:15",
+        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1odjdOTm54M0dibjh3MlAwendSMDlBQlZWcEY1QkpSUWVEdjcydFR6SGg4cjQ4Qm00d3NMZzRDSUlGZ2k4eE0xcXZldmVqVXBodkl6cXFuSFdKX3NqLTgzUEFvbkE5bXNWcUgxTnhOTWE?oc=5",
+        "snippet": "골드만 \"구리, AI주처럼 움직여…최근 하락은 수급 아닌 포지션 영향\" &nbsp;&nbsp; 연합인포맥스"
+      },
+      {
         "media": "더구루",
         "title": "\"구리값, 더 오른다 vs 떨어진다\" 글로벌 IB 전망 엇갈려",
         "date": "2026-11-16 05:38",
@@ -130,19 +130,19 @@
     ]
   },
   {
-    "id": "rep_2026-11-20_aluminum",
+    "id": "rep_2026-11-21_aluminum",
     "metal_key": "aluminum",
     "name_kr": "알루미늄",
     "name_en": "Aluminum",
     "category": "aluminum",
     "badge": "LME 알루미늄",
-    "title": "[2026-11-20] 알루미늄 일일 리포트: 기니 보크사이트 수출 통제 및 중국 제련소 생산 캡으로 원가 상승 압력",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 알루미늄 일일 리포트: 기니 보크사이트 수출 통제 및 중국 제련소 생산 캡으로 원가 상승 압력",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-aluminum.html",
-    "current_price": "4,390 원/kg",
-    "raw_usd": "$2,540/t",
+    "article_url": "articles/2026-11-21-aluminum.html",
+    "current_price": "3,824 원/kg",
+    "raw_usd": "$2,840/t",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "중요 이슈 발생 (기니 보크사이트 수출 통제 및 중국 제련소 생산 캡으로 원가 상승 압력)",
@@ -172,13 +172,6 @@
         "snippet": "이란 전쟁에 알루미늄 재고 급감…유럽 조달비용 상승 &nbsp;&nbsp; 한국경제"
       },
       {
-        "media": "CNews",
-        "title": "알루미늄 시장 백워데이션 발생...단기 수급 불균형 신호",
-        "date": "2026-11-13 06:07",
-        "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9CT2MzdmgyMTFoakNnN1d4d1VoUlg5SDM5cjAxc1M5RHJhbDViVVZrNkRKcjB3bGh4SXFDTEt3R3VzSUQxWTNmRVhaM1ZqWDZWWUNqSmRMNUlvbGJsTVltakxZX3prSmhncVZleHpETDVTWVI1UERr?oc=5",
-        "snippet": "알루미늄 시장 백워데이션 발생...단기 수급 불균형 신호 &nbsp;&nbsp; CNews"
-      },
-      {
         "media": "KB Think",
         "title": "골드만 \"구리, AI주처럼 움직여…최근 하락은 수급 아닌 포지션 영향\"",
         "date": "2026-11-18 23:15",
@@ -186,28 +179,35 @@
         "snippet": "골드만 \"구리, AI주처럼 움직여…최근 하락은 수급 아닌 포지션 영향\" &nbsp;&nbsp; KB Think"
       },
       {
-        "media": "데일리바이트(DAILY BYTE)",
-        "title": "트라피구라, LME 알루미늄 재고 최저에 롱 매집",
-        "date": "2026-11-13 20:25",
-        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNWmFGLVJ5cWJ6OS1EZmtWZ21BQmxhSWRGcW8wdnJXbmpRQ01rYm52WGw4Zk50MFVjSzBPMzVUZDA0UUFfeEgtd2N4Z29LMElkdDZPcTdOUjV5ckhXSnhpOC1OOU4yejROQVY4SGUycl9RNkZldHg3WHhXdV9LTUV0N1lybkdBUGl1MlVGMUtEbEZKUUl2MjFsdw?oc=5",
-        "snippet": "트라피구라, LME 알루미늄 재고 최저에 롱 매집 &nbsp;&nbsp; 데일리바이트(DAILY BYTE)"
+        "media": "페로타임즈",
+        "title": "[LME-1116] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납",
+        "date": "2026-11-17 00:10",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9ydmF2OW0yZXBma1NVeWdZRWI1U3pCU3FtelFSMm9CanUwQlBlaldEWEJNR3BLLXpTTUkyWnpFWXFQakNUZURkV1dUdk04Rm1iLUg5Qjk1ZjN0VE55Ri1wWi1LVnVnMU5WYzU4RQ?oc=5",
+        "snippet": "[LME-1116] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납 &nbsp;&nbsp; 페로타임즈"
+      },
+      {
+        "media": "IndexBox",
+        "title": "호주 보크사이트 수출, 2026년 1~10월 4.8% 감소한 5,144만 톤 | 시그널 오션스 - 뉴스 및 통계",
+        "date": "2026-11-16 00:11",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPZEZFV21KWFdPaGR4WXotNDJpem5yaG5pMjRKcEtVSjVBdnI4dlU3RGRnZURqemRXSFhPQU4tUG9CaXpZRlE2bF92T0ItcUI2aG5HS0lnOFRwTTRaelYwZVBVNDZQNlowUHhtb3BHUFhrbDBZalFWT05CbHJWVkFMTVlVYVdRc2ZiX2ZxNkNlODhqQzJSZnltVm0tUlU4UUJQd0hEX25ZMnNMdVJ0VnBOU0R3?oc=5",
+        "snippet": "호주 보크사이트 수출, 2026년 1~10월 4.8% 감소한 5,144만 톤 | 시그널 오션스 - 뉴스 및 통계 &nbsp;&nbsp; IndexBox"
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_zinc",
+    "id": "rep_2026-11-21_zinc",
     "metal_key": "zinc",
     "name_kr": "아연",
     "name_en": "Zinc",
     "category": "zinc",
     "badge": "LME 아연",
-    "title": "[2026-11-20] 아연 일일 리포트: TC) 사상 최저 수준 지속",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 아연 일일 리포트: TC) 사상 최저 수준 지속",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-zinc.html",
-    "current_price": "5,231 원/kg",
-    "raw_usd": "$3,085/t",
+    "article_url": "articles/2026-11-21-zinc.html",
+    "current_price": "4,687 원/kg",
+    "raw_usd": "$3,481/t",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "단순 시황 (글로벌 아연 정광 제련 수수료(TC) 사상 최저 수준 지속)",
@@ -251,28 +251,28 @@
         "snippet": "빌 해거티 美 상원의원 \"고려아연 제련소, 美 핵심광물 공급망의 전략적 축\" &nbsp;&nbsp; ER 이코노믹리뷰"
       },
       {
-        "media": "데일리안",
-        "title": "美 해거티 상원의원, 고려아연 제련소 사업에 주목…“핵심광물 협력 사례”",
-        "date": "2026-11-18 08:19",
-        "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPX2NSYzdGb3RBODczd0lQNi1tLThETDFFOVRUSlFVNkJXdmg5WWhoYmV2dGJ5WE5NOUlNT191ZGJDZl9CbU9iQnFjRXNneDYwMFR5LS1KcW9xcG1CT2l1T0JnWnhYZFlSM2k4d3ZwZ2lSeUN1ZzNBc0ZGVmI4Q3EzQ1BVdDBuZG0xc3VORVVCNEF4c1RRNDNqbFBDOVY1Xzdad0V3NU5uSG9YelVWQ2xpSnA3UFV2M2lDaWlhSi01ejhibUxBV2xuN0prdTJNdFdfUmFtT1BQcnc0dkFjQVV6SVluTGJaLXJBTDAxQUFuUlZNUkhvRmw1UVVTVXFERGV0MFNXMTBPS0ZtNFJ2MHk5clNoQlhvUHc?oc=5",
-        "snippet": "美 해거티 상원의원, 고려아연 제련소 사업에 주목…“핵심광물 협력 사례” &nbsp;&nbsp; 데일리안"
+        "media": "팍스경제TV",
+        "title": "고려아연, 10조 '美 테네시 제련소' 전력 확보···”2029년부터 공급\"",
+        "date": "2026-11-15 09:11",
+        "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1nbFlLZmFrLU9fNlpCSGNENlZULWdfRDlia3pudDF2eUxtSmE0YTNQMEs2cnAyXzhaNnB3VUZmVnJRZHlHTmxVbWVmUGYxRllWd2ZiWDA1Tmh4X1pfX0gyczdaT3JURFp2?oc=5",
+        "snippet": "고려아연, 10조 '美 테네시 제련소' 전력 확보···”2029년부터 공급\" &nbsp;&nbsp; 팍스경제TV"
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_lead",
+    "id": "rep_2026-11-21_lead",
     "metal_key": "lead",
     "name_kr": "납 (연)",
     "name_en": "Lead",
     "category": "lead",
     "badge": "LME 연",
-    "title": "[2026-11-20] 납 (연) 일일 리포트: 동절기 차량용 납축전지 교체 시즌 진입에 따른 계절적 수요 발생",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 납 (연) 일일 리포트: 동절기 차량용 납축전지 교체 시즌 진입에 따른 계절적 수요 발생",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-lead.html",
-    "current_price": "2,594 원/kg",
-    "raw_usd": "$2,050/t",
+    "article_url": "articles/2026-11-21-lead.html",
+    "current_price": "2,481 원/kg",
+    "raw_usd": "$1,843/t",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "단순 시황 (동절기 차량용 납축전지 교체 시즌 진입에 따른 계절적 수요 발생)",
@@ -303,34 +303,34 @@
       },
       {
         "media": "페로타임즈",
-        "title": "[LME-1118] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납",
-        "date": "2026-11-19 00:10",
-        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE4tWm51eDFha2VBaDBPblkwb2xBVG9FbzFlbU9odWEwSmRvQWNiX1FpLUlVcjFqcDQ5c3FNNkxxUHROT2oxcEtpYXlNdVhFWnpoWG5id3VSWENGeXA3Vk5URmpKd21DYjlOUGNyag?oc=5",
-        "snippet": "[LME-1118] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납 &nbsp;&nbsp; 페로타임즈"
-      },
-      {
-        "media": "페로타임즈",
         "title": "[LME-1119] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납",
         "date": "2026-11-20 00:10",
         "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBHdGMtTFpKTWFJOXJRODRHaUlrRTB4U3diMzRheV82cWJFRG85M0JDemFMakt5MEJhZGV0M0R5ZHVVSmx5NkRUZ3pmN09nQ0tLbGxIckRCWG1lWGgySG5WUzd1c1pKdXViejFSOA?oc=5",
         "snippet": "[LME-1119] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납 &nbsp;&nbsp; 페로타임즈"
+      },
+      {
+        "media": "페로타임즈",
+        "title": "[LME-1118] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납",
+        "date": "2026-11-19 00:10",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE4tWm51eDFha2VBaDBPblkwb2xBVG9FbzFlbU9odWEwSmRvQWNiX1FpLUlVcjFqcDQ5c3FNNkxxUHROT2oxcEtpYXlNdVhFWnpoWG5id3VSWENGeXA3Vk5URmpKd21DYjlOUGNyag?oc=5",
+        "snippet": "[LME-1118] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납 &nbsp;&nbsp; 페로타임즈"
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_nickel",
+    "id": "rep_2026-11-21_nickel",
     "metal_key": "nickel",
     "name_kr": "니켈",
     "name_en": "Nickel",
     "category": "nickel",
     "badge": "LME 니켈",
-    "title": "[2026-11-20] 니켈 일일 리포트: NPI) 대량 공급에 따른 가격 상단 제약",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 니켈 일일 리포트: NPI) 대량 공급에 따른 가격 상단 제약",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-nickel.html",
-    "current_price": "22,030 원/kg",
-    "raw_usd": "$16,250/t",
+    "article_url": "articles/2026-11-21-nickel.html",
+    "current_price": "20,697 원/kg",
+    "raw_usd": "$15,371/t",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "단순 시황 (인도네시아 니켈선철(NPI) 대량 공급에 따른 가격 상단 제약)",
@@ -367,11 +367,11 @@
         "snippet": "[LME-1116] 비철금속 선물지표-니켈 알루미늄 아연 동 주석 납 &nbsp;&nbsp; 페로타임즈"
       },
       {
-        "media": "스틸데일리",
-        "title": "아페람, 인니 NPI 성장 둔화…STS 원료 공급구조 변화 전망",
-        "date": "2026-11-15 20:00",
-        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1Jand4ZDVZazhROWpueFNXSUhGY2F0Q3NNOUpud2Jld0t4UW1SNHU5bHpsZkJzZVVUUmtvZElGa0dDeWdjY25qdnVYOWVkUWF1akZvc2NIa0dKYWVRRS1QMzV4SXBDQlpUek5sYWc2V2pDcEVU0gF0QVVfeXFMTUlqd3hkNVlrOFE5am54U1dJSEZjYXRDc005Sm53YmV3S3hRbVI0dTlsemxmQnNlVVRSa29kSUZrR0N5Z2Njbmp2dVg5ZWRRYXVqRm9zY0hrR0phZVFFLVAzNXhJcENCWlR6TmxhZzZXakNwRVQ?oc=5",
-        "snippet": "아페람, 인니 NPI 성장 둔화…STS 원료 공급구조 변화 전망 &nbsp;&nbsp; 스틸데일리"
+        "media": "매일경제",
+        "title": "“원료부터 전구체까지 자체 생산…인니 니켈 광산 등 경영권 확보”",
+        "date": "2026-11-19 23:32",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE42T1NfUU1KQkh1TU4yQXFhYWV5ZEk5Y29RR09FZGNucHNBS1BBQlA3d0hBaUhuZS1lTVBPSkk2YS1ZMEk4Q3BvakVLQ0toLTlSb3c?oc=5",
+        "snippet": "“원료부터 전구체까지 자체 생산…인니 니켈 광산 등 경영권 확보” &nbsp;&nbsp; 매일경제"
       },
       {
         "media": "Shanghai Metals Market",
@@ -383,19 +383,19 @@
     ]
   },
   {
-    "id": "rep_2026-11-20_tin",
+    "id": "rep_2026-11-21_tin",
     "metal_key": "tin",
     "name_kr": "주석",
     "name_en": "Tin",
     "category": "tin",
     "badge": "LME 주석",
-    "title": "[2026-11-20] 주석 일일 리포트: 미얀마 주석 광산 가동 중단 장기화 및 AI 반도체 솔더 수요 증가",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 주석 일일 리포트: 미얀마 주석 광산 가동 중단 장기화 및 AI 반도체 솔더 수요 증가",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-tin.html",
-    "current_price": "72,945 원/kg",
-    "raw_usd": "$32,800/t",
+    "article_url": "articles/2026-11-21-tin.html",
+    "current_price": "56,622 원/kg",
+    "raw_usd": "$42,051/t",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "중요 이슈 발생 (미얀마 주석 광산 가동 중단 장기화 및 AI 반도체 솔더 수요 증가)",
@@ -411,28 +411,28 @@
     },
     "recent_news": [
       {
-        "media": "Market Growth Reports",
-        "title": "주석 광석 시장 규모, 동향 | 보고서 [2035]",
-        "date": "2026-11-19 10:13",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNaENjSGdXSi1Hb180aHVxT3h1VW00Y0lUTUJoTUp0dC1rZGpHcE55TzRBQXF6UTdyVnJLMFhFdERzMEhpdi1jWGZkMmxJYmNWWE42VzVRZzNVdDRjdGQ4VVYzLUFUTk1SYVlyVlFpUkpXeDMwa1JhTFBTdXZGS21VMg?oc=5",
-        "snippet": "주석 광석 시장 규모, 동향 | 보고서 [2035] &nbsp;&nbsp; Market Growth Reports"
+        "media": "지디넷코리아",
+        "title": "Xinhua Silk Road: 윈난주석그룹, 혁신으로 산업 고도화",
+        "date": "2026-11-20 07:10",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBnNVA3VktqdTRzTEhmalpiNlZXSnNsQ2dzUk5WYTdyalVHYl9rajBVTXJZX1RsWVFXd0JvbUtwOGdXWW0tRE5FRW5lc2ZLZGFvbjR5bXpn?oc=5",
+        "snippet": "Xinhua Silk Road: 윈난주석그룹, 혁신으로 산업 고도화 &nbsp;&nbsp; 지디넷코리아"
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_platinum",
+    "id": "rep_2026-11-21_platinum",
     "metal_key": "platinum",
     "name_kr": "백금 (플래티넘)",
     "name_en": "Platinum",
     "category": "platinum",
     "badge": "NYMEX 백금",
-    "title": "[2026-11-20] 백금 (플래티넘) 일일 리포트: 수소 연료전지 장기 수요 기대 및 디젤 DPF 촉매 수요 유지",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 백금 (플래티넘) 일일 리포트: 수소 연료전지 장기 수요 기대 및 디젤 DPF 촉매 수요 유지",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-platinum.html",
-    "current_price": "73,850 원/g",
-    "raw_usd": "$1,690/oz",
+    "article_url": "articles/2026-11-21-platinum.html",
+    "current_price": "55,828 원/g",
+    "raw_usd": "$1,290/oz",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "단순 시황 (수소 연료전지 장기 수요 기대 및 디젤 DPF 촉매 수요 유지)",
@@ -450,26 +450,26 @@
       {
         "media": "원자재뉴스",
         "title": "글로벌 백금 (플래티넘) 시장 최근 수급 동향 및 가격 분석",
-        "date": "2026-11-20",
+        "date": "2026-11-21",
         "url": "https://www.mining.com",
         "snippet": "백금 (플래티넘) 주요 생산 광산 및 제련소 동향, 국내 스크랩 시장 현황 분석 보고서."
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_palladium",
+    "id": "rep_2026-11-21_palladium",
     "metal_key": "palladium",
     "name_kr": "팔라듐",
     "name_en": "Palladium",
     "category": "palladium",
     "badge": "NYMEX 팔라듐",
-    "title": "[2026-11-20] 팔라듐 일일 리포트: HEV) 차량 생산 호조로 저점 매수세 유입",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 팔라듐 일일 리포트: HEV) 차량 생산 호조로 저점 매수세 유입",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-palladium.html",
-    "current_price": "53,631 원/g",
-    "raw_usd": "$1,230/oz",
+    "article_url": "articles/2026-11-21-palladium.html",
+    "current_price": "38,659 원/g",
+    "raw_usd": "$893/oz",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "단순 시황 (가솔린 및 하이브리드(HEV) 차량 생산 호조로 저점 매수세 유입)",
@@ -487,26 +487,26 @@
       {
         "media": "원자재뉴스",
         "title": "글로벌 팔라듐 시장 최근 수급 동향 및 가격 분석",
-        "date": "2026-11-20",
+        "date": "2026-11-21",
         "url": "https://www.mining.com",
         "snippet": "팔라듐 주요 생산 광산 및 제련소 동향, 국내 스크랩 시장 현황 분석 보고서."
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_rhodium",
+    "id": "rep_2026-11-21_rhodium",
     "metal_key": "rhodium",
     "name_kr": "로듐",
     "name_en": "Rhodium",
     "category": "rhodium",
     "badge": "JM 로듐",
-    "title": "[2026-11-20] 로듐 일일 리포트: 존슨매티 로듐 1g당 20만원선 안착 및 희소 귀금속 공급 타이트",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 로듐 일일 리포트: 존슨매티 로듐 1g당 20만원선 안착 및 희소 귀금속 공급 타이트",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-rhodium.html",
-    "current_price": "403,326 원/g",
-    "raw_usd": "$9,250/oz",
+    "article_url": "articles/2026-11-21-rhodium.html",
+    "current_price": "389,619 원/g",
+    "raw_usd": "$9,000/oz",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "중요 이슈 발생 (존슨매티 로듐 1g당 20만원선 안착 및 희소 귀금속 공급 타이트)",
@@ -524,26 +524,26 @@
       {
         "media": "원자재뉴스",
         "title": "글로벌 로듐 시장 최근 수급 동향 및 가격 분석",
-        "date": "2026-11-20",
+        "date": "2026-11-21",
         "url": "https://www.mining.com",
         "snippet": "로듐 주요 생산 광산 및 제련소 동향, 국내 스크랩 시장 현황 분석 보고서."
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_gold",
+    "id": "rep_2026-11-21_gold",
     "metal_key": "gold",
     "name_kr": "금",
     "name_en": "Gold",
     "category": "gold",
     "badge": "COMEX 금",
-    "title": "[2026-11-20] 금 일일 리포트: 각국 중앙은행 탈달러화 금 매입 및 글로벌 지정학 리스크로 사상 최고...",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 금 일일 리포트: 각국 중앙은행 탈달러화 금 매입 및 글로벌 지정학 리스크로 사상 최고...",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-gold.html",
-    "current_price": "115,200 원/g",
-    "raw_usd": "$2,650/oz",
+    "article_url": "articles/2026-11-21-gold.html",
+    "current_price": "153,034 원/g",
+    "raw_usd": "$3,535/oz",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "중요 이슈 발생 (각국 중앙은행 탈달러화 금 매입 및 글로벌 지정학 리스크로 사상 최고가 랠리)",
@@ -573,13 +573,6 @@
         "snippet": "금값 1년여 만에 최저에도 내년 반등 전망…국내 투자자 저가 매수 속 '온도차' &nbsp;&nbsp; 더팩트"
       },
       {
-        "media": "Investing.com 한국어",
-        "title": "골드만삭스, 2027년 말 금값 전망 온스당 4,650달러로 하향",
-        "date": "2026-11-14 12:08",
-        "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1WMmZ2Q0otQWlOR1dMb0JoY05mbU0zcWtCRHFNZGZObjJySXdFM0dLUk5TS094RlIteXRvZWNkX2dIaWYycDNhcjVFZ2wxWHhvRWhELWNIQS1GVEZlSC1PU1FUVmxfM19pYVJfZWlPNA?oc=5",
-        "snippet": "골드만삭스, 2027년 말 금값 전망 온스당 4,650달러로 하향 &nbsp;&nbsp; Investing.com 한국어"
-      },
-      {
         "media": "에너지경제신문",
         "title": "“금값 반등만 기다렸는데”…4000달러 무너지자 비관론 확산 [머니+]",
         "date": "2026-11-16 05:58",
@@ -587,28 +580,35 @@
         "snippet": "“금값 반등만 기다렸는데”…4000달러 무너지자 비관론 확산 [머니+] &nbsp;&nbsp; 에너지경제신문"
       },
       {
-        "media": "우리경제신문",
-        "title": "국제 금값, 1년여 만에 최저…1월 고점 대비 31.5% 급락",
-        "date": "2026-11-17 01:53",
-        "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1JcThNOXBMNmZtNjVqU0RLYVBHRWpaY0dULUh2ODZ3TloyZ3hZSzEwZVJkbjYwQlBMWkphWTQ5elNMMF9reUNHeGRIeGFERU8xbEp2N1RJcnY?oc=5",
-        "snippet": "국제 금값, 1년여 만에 최저…1월 고점 대비 31.5% 급락 &nbsp;&nbsp; 우리경제신문"
+        "media": "IDNFinancials",
+        "title": "골드만삭스, 2027년 금값 트로이온스당 4,800달러 전망",
+        "date": "2026-11-15 01:00",
+        "url": "https://news.google.com/rss/articles/CBMiwgJBVV95cUxPdkNHQzVWQ3ROSXE5ejlXYXZ0X1gxRlZLZzd5YmlZZEdBckl4b244Wm1RU3Jzb3RjWEd3N1dkR0RWRXJsLXNBdUdDUFdlbHF5Q3FXc29OMUNtYmZYN25ydk9vOXJCaDVxeUItYjhlWHZmeDFpYU5iNlR2T2FrTVBYN19yNEtVUUNpN0JGeWhfTE9adnhZUWtOUTBFd3BkeGwwU3dmQ3phOHlja2tUS25lalZCenM4RjBaZ05UbDZXeEIteUNfZldaQlYydnFJN2lWaUlQc1ZqQnJaOXNGd0xqNEdRcVd1Z203TUFKejYtUjhRYk1UTXd0UFVLbWJsUDZaeUZRZzkwRmw4YnhXMWtROHRTRzRXelNUUElUTWVBVllYbXVjRS00SHhUVGRKU2poSjN1Mi1CMXAtb3BZZ3lZR3Z3?oc=5",
+        "snippet": "골드만삭스, 2027년 금값 트로이온스당 4,800달러 전망 &nbsp;&nbsp; IDNFinancials"
+      },
+      {
+        "media": "www.tmgm.com",
+        "title": "금값, 52주 최저치로 하락. 향후 전망은?",
+        "date": "2026-11-17 09:56",
+        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQSTlTM2JnUDY3NW5YWkZVd3F4cHFTM2sxYjNXTGxEWnJodVJlVm9ISXRTSGdWUy1HOHNvYlVST3BfcUtQd1QxTnEzNnRpWWxVUHZHWXBjNGVoX3k0ZTBLWVpHU0NFbnhNVUFsQVRkTjBRVzE0RGRwdEZ2Z0tTNld3cGNudGI0cHJRR0dn?oc=5",
+        "snippet": "금값, 52주 최저치로 하락. 향후 전망은? &nbsp;&nbsp; www.tmgm.com"
       }
     ]
   },
   {
-    "id": "rep_2026-11-20_silver",
+    "id": "rep_2026-11-21_silver",
     "metal_key": "silver",
     "name_kr": "은",
     "name_en": "Silver",
     "category": "silver",
     "badge": "COMEX 은",
-    "title": "[2026-11-20] 은 일일 리포트: 태양광 패널 TOPCon 전지 및 AI 반도체 은 소비 폭증으로 공급...",
-    "date": "2026-11-20",
-    "pub_datetime": "2026년 11월 20일(금) 09:00 정기고시",
+    "title": "[2026-11-21] 은 일일 리포트: 태양광 패널 TOPCon 전지 및 AI 반도체 은 소비 폭증으로 공급...",
+    "date": "2026-11-21",
+    "pub_datetime": "2026년 11월 21일(토) 09:00 정기고시",
     "author": "MetalsTerminal Scrap Desk",
-    "article_url": "articles/2026-11-20-silver.html",
-    "current_price": "1,380 원/g",
-    "raw_usd": "$31.8/oz",
+    "article_url": "articles/2026-11-21-silver.html",
+    "current_price": "1,783 원/g",
+    "raw_usd": "$41.19/oz",
     "ai_analysis": {
       "engine": "Gemini Flash",
       "issue_verdict": "중요 이슈 발생 (태양광 패널 TOPCon 전지 및 AI 반도체 은 소비 폭증으로 공급 부족 심화)",
@@ -626,7 +626,7 @@
       {
         "media": "원자재뉴스",
         "title": "글로벌 은 시장 최근 수급 동향 및 가격 분석",
-        "date": "2026-11-20",
+        "date": "2026-11-21",
         "url": "https://www.mining.com",
         "snippet": "은 주요 생산 광산 및 제련소 동향, 국내 스크랩 시장 현황 분석 보고서."
       }
