@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-11-21 09:00 KST",
+  "updated_at": "2026-11-24 09:00 KST",
   "base_metals": {
-    "copper": 16282,
-    "aluminum": 3824,
+    "copper": 16353,
+    "aluminum": 3855,
     "iron": 424,
-    "zinc": 4687,
-    "tin": 56622,
-    "lead": 2481,
-    "nickel": 20697,
-    "pd": 38659,
-    "rh": 389619,
-    "pt": 55828
+    "zinc": 4731,
+    "tin": 55034,
+    "lead": 2460,
+    "nickel": 20758,
+    "pd": 38129,
+    "rh": 386908,
+    "pt": 55589
   },
   "iron_scrap": [
     {
@@ -66,8 +66,8 @@
       "name_sub": "피복 벗긴 고순도 나동선 (순도 99.9%)",
       "ratio_pct": 95.0,
       "unit": "원/kg",
-      "price": 15468,
-      "retail": 13921
+      "price": 15535,
+      "retail": 13982
     },
     {
       "id": "cu_pipe",
@@ -75,8 +75,8 @@
       "name_sub": "동파이프·부스바·변압기동",
       "ratio_pct": 89.0,
       "unit": "원/kg",
-      "price": 14491,
-      "retail": 13042
+      "price": 14554,
+      "retail": 13099
     },
     {
       "id": "cu_mixed",
@@ -84,8 +84,8 @@
       "name_sub": "모터선·에나멜선·도금동",
       "ratio_pct": 81.0,
       "unit": "원/kg",
-      "price": 13188,
-      "retail": 11870
+      "price": 13246,
+      "retail": 11921
     }
   ],
   "brass": [
@@ -95,8 +95,8 @@
       "name_sub": "황동판·동단조 (Cu 65% + Zn 35%)",
       "ratio_pct": 92.0,
       "unit": "원/kg",
-      "price": 10712,
-      "retail": 9641
+      "price": 10768,
+      "retail": 9691
     },
     {
       "id": "brass_rod",
@@ -104,8 +104,8 @@
       "name_sub": "선반 절삭봉·볼트·너트 (Cu 60% + Zn 40%)",
       "ratio_pct": 86.0,
       "unit": "원/kg",
-      "price": 10014,
-      "retail": 9012
+      "price": 10065,
+      "retail": 9059
     },
     {
       "id": "brass_cast",
@@ -113,8 +113,8 @@
       "name_sub": "수도꼭지·수전금구·배관 밸브",
       "ratio_pct": 74.0,
       "unit": "원/kg",
-      "price": 8617,
-      "retail": 7755
+      "price": 8661,
+      "retail": 7795
     }
   ],
   "aluminum": [
@@ -124,8 +124,8 @@
       "name_sub": "납추·타이어 완전 분리 고순도 휠",
       "ratio_pct": 92.0,
       "unit": "원/kg",
-      "price": 3518,
-      "retail": 3166
+      "price": 3547,
+      "retail": 3192
     },
     {
       "id": "al_engine",
@@ -133,8 +133,8 @@
       "name_sub": "철 부속 분리 엔진 블록·변속기 케이스",
       "ratio_pct": 85.0,
       "unit": "원/kg",
-      "price": 3250,
-      "retail": 2925
+      "price": 3277,
+      "retail": 2949
     },
     {
       "id": "al_sash",
@@ -142,8 +142,8 @@
       "name_sub": "창호 프로파일 (페인트/부속 제거 6063재)",
       "ratio_pct": 82.0,
       "unit": "원/kg",
-      "price": 3136,
-      "retail": 2822
+      "price": 3161,
+      "retail": 2845
     },
     {
       "id": "al_can",
@@ -151,8 +151,8 @@
       "name_sub": "음료수 캔 압축 베일",
       "ratio_pct": 50.0,
       "unit": "원/kg",
-      "price": 1912,
-      "retail": 1721
+      "price": 1928,
+      "retail": 1735
     }
   ],
   "special": [
@@ -171,8 +171,8 @@
       "name_sub": "아연 합금 주물 부속",
       "ratio_pct": 68.0,
       "unit": "원/kg",
-      "price": 3187,
-      "retail": 2868
+      "price": 3217,
+      "retail": 2895
     },
     {
       "id": "tin_solder",
@@ -180,8 +180,8 @@
       "name_sub": "전자 솔더·화이트메탈 베어링",
       "ratio_pct": 78.0,
       "unit": "원/kg",
-      "price": 44165,
-      "retail": 39749
+      "price": 42927,
+      "retail": 38634
     }
   ],
   "pps_table": [
@@ -274,7 +274,7 @@
       "models": "쏘나타 · K5 · 그랜저 · SM5/7 LPi",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 200000,
-      "max_quote": 230000
+      "max_quote": 220000
     },
     {
       "id": "gdi",
@@ -290,7 +290,7 @@
       "models": "아반떼 N라인 · 쏘나타 터보 · 벨로스터",
       "spec_desc": "출고 당시 순정 정품 촉매 기준 (당일 PGM 시세 및 실무할인 반영)",
       "min_quote": 170000,
-      "max_quote": 200000
+      "max_quote": 190000
     },
     {
       "id": "mpi",
@@ -313,7 +313,7 @@
       "name": "디젤 DPF (2.0~2.5 CRDi)",
       "models": "포터2 · 봉고3 · 싼타페 · 쏘렌토 DPF 코어",
       "spec_desc": "출고 당시 순정 정품 DPF 기준 (백금 코어 일체형)",
-      "min_quote": 130000,
+      "min_quote": 120000,
       "max_quote": 140000
     }
   ]
